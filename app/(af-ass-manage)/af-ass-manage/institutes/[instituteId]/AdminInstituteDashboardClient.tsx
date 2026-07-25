@@ -60,7 +60,7 @@ export function AdminInstituteDashboardClient({ institute }: { institute: any })
                 </div>
 
                 <div className="flex gap-2 flex-wrap">
-                    <Link href={`/institute/${institute.slug}`} target="_blank" className="bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 px-4 py-2.5 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2">
+                    <Link href={`/institute/${institute.id}-${institute.slug}`} target="_blank" className="bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 px-4 py-2.5 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2">
                         <ExternalLink className="w-4 h-4" /> Public View
                     </Link>
                     <Link href={`/af-ass-manage/institutes/${institute.id}/edit`} className="bg-stone-800 hover:bg-stone-900 text-stone-50 px-4 py-2.5 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2 border border-stone-900">
