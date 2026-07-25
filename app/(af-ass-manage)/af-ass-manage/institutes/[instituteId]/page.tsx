@@ -40,7 +40,7 @@ export default async function AdminInstituteDashboard({ params }: { params: Prom
             batches: true,
             faqs: true,
             achievements: true,
-            notablepersons: true
+            notablepersons: true,
         }
     });
 

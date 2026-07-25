@@ -29,6 +29,7 @@ import { prisma } from "@/lib/prisma";
 import type { ReactNode } from "react";
 import { ManagerSidebarWrapper } from "@/components/manager/ManagerSidebarWrapper";
 import { SidebarLink } from "@/components/manager/SidebarLink";
+import { ScrollToTopAdmin } from "@/components/admin/ScrollToTopAdmin";
 
 export const metadata: Metadata = {
   title: "Admin Control Panel | AcademyFind",
@@ -154,6 +155,7 @@ export default async function AdminLayout({
                     {children}
                 </main>
 
+                <ScrollToTopAdmin />
             </div>
         </div>
     );

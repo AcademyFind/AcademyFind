@@ -47,9 +47,16 @@ export function AdminInstituteDashboardClient({ institute }: { institute: any })
                         {institute.name}
                         {institute.isVerified && <CheckCircle2 className="w-6 h-6 text-emerald-500" />}
                     </h1>
-                    <p className="text-stone-500 font-medium mt-1 flex items-center gap-2">
-                        <MapPin className="w-4 h-4" /> {institute.city?.name} • {institute.providerType}
-                    </p>
+                    <div className="text-stone-500 font-medium mt-1">
+                        <p className="flex items-center gap-2">
+                            <MapPin className="w-4 h-4" /> {institute.city?.name} • {institute.providerType}
+                        </p>
+                        {institute.address && (
+                            <p className="text-sm text-stone-400 mt-0.5 ml-6">
+                                {institute.address}
+                            </p>
+                        )}
+                    </div>
                 </div>
 
                 <div className="flex gap-2 flex-wrap">
