@@ -1,8 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { updateUserRole, toggleUserStatus } from "@/lib/User/admin/adminUser"
+import { updateUserRole, toggleUserStatus, createAdminToUserDm } from "@/lib/User/admin/adminUser"
 import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
+import { MessageSquare } from "lucide-react"
 
 export function RoleSelect({ userId, currentRole }: { userId: string, currentRole: string }) {
     const [isLoading, setIsLoading] = useState(false);
@@ -59,6 +61,35 @@ export function UserStatusToggle({ userId, isActive }: { userId: string, isActiv
             }`}
         >
             {isLoading ? "..." : (isActive ? "Block User" : "Unblock")}
+        </button>
+    )
+}
+
+export function AdminMessageUserButton({ userId, userName }: { userId: string, userName?: string }) {
+    const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
+
+    async function handleMessage() {
+        setIsLoading(true);
+        const result = await createAdminToUserDm(userId);
+        
+        if (result.success && result.conversationId) {
+            toast.success("Starting conversation...");
+            router.push(`/chat/${result.conversationId}`);
+        } else {
+            toast.error(result.error || "Cannot message this user");
+            setIsLoading(false);
+        }
+    }
+
+    return (
+        <button
+            onClick={handleMessage}
+            disabled={isLoading}
+            title={userName ? `Message ${userName}` : "Message User"}
+            className="flex items-center justify-center p-2 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+            <MessageSquare className="w-4 h-4" />
         </button>
     )
 }

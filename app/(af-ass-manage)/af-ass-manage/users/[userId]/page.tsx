@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Mail, Clock, ShieldAlert, ArrowLeft, History, Star, Building2, FileText } from "lucide-react";
 import AdminUserEditForm from "@/components/admin/AdminUserEditForm";
 import ManagerControl from "@/components/admin/AdminManagerControls"; 
+import { AdminMessageUserButton } from "@/components/admin/AdminUserClientControl";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -63,6 +64,9 @@ export default async function UserDetailsPage({ params }: { params: Promise<{ us
                             <Badge variant="outline" className="bg-stone-100 text-stone-700 border-stone-200 uppercase tracking-wider font-bold shadow-none">
                                 {user.role}
                             </Badge>
+                            <div className="ml-auto flex items-center">
+                                <AdminMessageUserButton userId={user.id} userName={user.name || undefined} />
+                            </div>
                         </div>
                         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-stone-500 font-medium">
                             <span className="flex items-center gap-1.5"><Mail className="w-4 h-4 text-stone-400" /> {user.email}</span>

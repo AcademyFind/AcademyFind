@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma"
 import { Users as UsersIcon, Mail, Phone, Calendar, ArrowRight } from "lucide-react" // ArrowRight add kiya
 import { format } from "date-fns";
 import { formatIST } from "@/lib/utils";
-import { RoleSelect, UserStatusToggle } from "@/components/admin/AdminUserClientControl" 
+import { RoleSelect, UserStatusToggle, AdminMessageUserButton } from "@/components/admin/AdminUserClientControl" 
 import UserFilters from "@/components/admin/AdminUserFilters"
 import UserPagination from "@/components/admin/AdminUserPagination"
 import Image from "next/image"
@@ -132,6 +132,7 @@ export default async function AdminUsersPage({
                                                 ) : (
                                                     <span className="text-xs text-slate-400 font-medium px-3 py-1.5">Superuser</span>
                                                 )}
+                                                <AdminMessageUserButton userId={user.id} userName={user.name || undefined} />
                                                 
                                                 <Button asChild size="sm" variant="ghost" className="h-8 bg-slate-100 hover:bg-blue-100 hover:text-blue-700 text-slate-600 rounded-lg px-3">
                                                     <Link href={`/af-ass-manage/users/${user.id}`}>

@@ -41,7 +41,7 @@ export default function AdminUserEditForm({ user }: { user: any }) {
                     <label className="text-xs font-bold text-slate-500 uppercase">Full Name</label>
                     <Input name="name" defaultValue={user.name || ""} placeholder="Unknown" />
                 </div>
-                
+
                 <div className="space-y-2">
                     <label className="text-xs font-bold text-slate-500 uppercase">Phone Number</label>
                     <Input name="phone" defaultValue={user.phone || ""} placeholder="N/A" />
@@ -51,7 +51,7 @@ export default function AdminUserEditForm({ user }: { user: any }) {
                     <label className="text-xs font-bold text-slate-500 uppercase">Platform Role</label>
                     <select name="role" defaultValue={user.role} className="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="USER">Standard User</option>
-                        <option value="CONTENT_WRITER">Content Writer</option>
+                        <option value="SALES_MANAGER">Sales Manager</option>
                         <option value="INSTITUTE_MANAGER">Institute Manager</option>
                         <option value="ADMIN">Administrator</option>
                     </select>
@@ -61,7 +61,7 @@ export default function AdminUserEditForm({ user }: { user: any }) {
             {/* Powerful Toggles */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t">
                 {/* Active Status */}
-                <div 
+                <div
                     onClick={() => setIsActive(!isActive)}
                     className={`flex-1 flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-all ${isActive ? 'bg-emerald-50 border-emerald-200' : 'bg-red-50 border-red-200'}`}
                 >
@@ -73,7 +73,7 @@ export default function AdminUserEditForm({ user }: { user: any }) {
                 </div>
 
                 {/* Add Institute Permission */}
-                <div 
+                <div
                     onClick={() => setCanAddInstitute(!canAddInstitute)}
                     className={`flex-1 flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-all ${canAddInstitute ? 'bg-purple-50 border-purple-200' : 'bg-slate-50 border-slate-200'}`}
                 >
