@@ -577,7 +577,7 @@ export default async function InstitutePage({ params }: PageProps) {
 
             {/* Sticky CTA */}
             <div>
-              <InstituteEnquiryForm instituteId={institute.id} feeInfo={institute.feeInfo} mapsUrl={safeMapsUrl} />
+              <InstituteEnquiryForm instituteId={institute.id} feeInfo={institute.feeInfo} mapsUrl={safeMapsUrl} isLoggedIn={!!userId} instituteName={institute.name} />
             </div>
           </div>
         </div>
