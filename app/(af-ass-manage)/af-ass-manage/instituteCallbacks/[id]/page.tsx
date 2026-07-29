@@ -11,10 +11,10 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 const PLAN_CONFIG = {
-  ULTRA:    { label: "Ultra",    icon: Zap,        badgeClass: "bg-purple-100 text-purple-700" },
-  PREMIUM:  { label: "Premium",  icon: Star,       badgeClass: "bg-stone-50 text-stone-700 border border-stone-200/50 shadow-sm" },
+  ULTRA: { label: "Ultra", icon: Zap, badgeClass: "bg-purple-100 text-purple-700" },
+  PREMIUM: { label: "Premium", icon: Star, badgeClass: "bg-stone-50 text-stone-700 border border-stone-200/50 shadow-sm" },
   VERIFIED: { label: "Verified", icon: BadgeCheck, badgeClass: "bg-emerald-100 text-emerald-700" },
-  BASIC:    { label: "Basic",    icon: Building2,  badgeClass: "bg-stone-100 text-stone-700" },
+  BASIC: { label: "Basic", icon: Building2, badgeClass: "bg-stone-100 text-stone-700" },
 };
 
 export default async function AdminCallbackDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -37,8 +37,8 @@ export default async function AdminCallbackDetailPage({ params }: { params: Prom
   const allTargetInstituteIds = Array.from(
     new Set(
       callback.distributionLogs
-        .filter((log) => log.mode === "individual" && log.targetInstituteIds)
-        .flatMap((log) => log.targetInstituteIds)
+        .filter((log: any) => log.mode === "individual" && log.targetInstituteIds)
+        .flatMap((log: any) => log.targetInstituteIds)
     )
   );
 
@@ -49,7 +49,7 @@ export default async function AdminCallbackDetailPage({ params }: { params: Prom
   });
 
   // Create a map for quick lookup
-  const instituteMap = new Map(targetInstitutes.map((inst) => [inst.id, inst.name]));
+  const instituteMap = new Map(targetInstitutes.map((inst: any) => [inst.id, inst.name]));
 
   return (
     <div className="w-full space-y-6">
@@ -58,7 +58,7 @@ export default async function AdminCallbackDetailPage({ params }: { params: Prom
       </Link>
 
       <Card className="border-stone-200 shadow-sm bg-white overflow-hidden">
-        
+
         {/* Header Section */}
         <CardHeader className="flex flex-col sm:flex-row justify-between items-start pb-6 gap-4 bg-stone-50/50">
           <div>
@@ -69,157 +69,157 @@ export default async function AdminCallbackDetailPage({ params }: { params: Prom
               <Calendar className="w-4 h-4" /> {formatIST(callback.createdAt)}
             </div>
           </div>
-          
+
           {/* Controls Component */}
           <div className="shrink-0">
-             <CallbackControls id={callback.id} currentStatus={callback.status} />
+            <CallbackControls id={callback.id} currentStatus={callback.status} />
           </div>
         </CardHeader>
-        
+
         <Separator className="bg-stone-100" />
 
         <CardContent className="p-6 md:p-8 space-y-8">
-            {/* Target Institute Link Card */}
-            <div>
+          {/* Target Institute Link Card */}
+          <div>
             <h3 className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-3">Enquired For</h3>
             {callback.institute ? (
-                <Link 
+              <Link
                 href={`/af-ass-manage/institutes/${callback.institute.id}`}
                 className="flex items-center gap-4 p-4 rounded-2xl bg-stone-50 border border-stone-100 hover:border-stone-300 transition group"
-                >
+              >
                 <div className="p-3 bg-white rounded-xl shadow-sm text-stone-500 group-hover:scale-105 transition">
-                    <Building2 className="w-6 h-6" />
+                  <Building2 className="w-6 h-6" />
                 </div>
                 <div>
-                    <h4 className="font-bold text-stone-900 group-hover:text-stone-700 transition">{callback.institute.name}</h4>
-                    <p className="text-sm text-stone-500 flex items-center gap-1 mt-0.5">
+                  <h4 className="font-bold text-stone-900 group-hover:text-stone-700 transition">{callback.institute.name}</h4>
+                  <p className="text-sm text-stone-500 flex items-center gap-1 mt-0.5">
                     Click to view institute profile in admin panel &rarr;
-                    </p>
+                  </p>
                 </div>
-                </Link>
+              </Link>
             ) : (
-                <div className="p-4 rounded-2xl bg-red-50 text-red-600 border border-red-100 font-medium">
+              <div className="p-4 rounded-2xl bg-red-50 text-red-600 border border-red-100 font-medium">
                 The target institute has been deleted from the database.
-                </div>
+              </div>
             )}
-            </div>
+          </div>
 
-            {/* Contact Details Grid */}
-            <div>
+          {/* Contact Details Grid */}
+          <div>
             <h3 className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-3">Student Contact Details</h3>
             <div className="grid sm:grid-cols-2 gap-4">
-            <a href={`tel:${callback.phone}`} className="flex items-center gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-100 hover:border-emerald-200 hover:bg-emerald-50 transition group">
+              <a href={`tel:${callback.phone}`} className="flex items-center gap-3 p-4 rounded-2xl bg-stone-50 border border-stone-100 hover:border-emerald-200 hover:bg-emerald-50 transition group">
                 <div className="p-2.5 bg-white rounded-xl shadow-sm text-emerald-500"><Phone className="w-5 h-5" /></div>
                 <div>
-                <p className="text-xs font-medium text-stone-500">Mobile Number</p>
-                <p className="font-semibold text-stone-800">{callback.phone}</p>
+                  <p className="text-xs font-medium text-stone-500">Mobile Number</p>
+                  <p className="font-semibold text-stone-800">{callback.phone}</p>
                 </div>
-            </a>
+              </a>
             </div>
-            </div>
+          </div>
 
-            {/* Message Box */}
-            <div>
+          {/* Message Box */}
+          <div>
             <h3 className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-3">Student Message</h3>
             <div className="bg-stone-50 border border-stone-200 rounded-2xl p-6 text-stone-700 leading-relaxed shadow-sm flex gap-3">
-            <MessageSquare className="w-5 h-5 text-stone-400 shrink-0 mt-0.5" />
-            {callback.message ? (
+              <MessageSquare className="w-5 h-5 text-stone-400 shrink-0 mt-0.5" />
+              {callback.message ? (
                 <p className="whitespace-pre-wrap">{callback.message}</p>
-            ) : (
+              ) : (
                 <p className="text-stone-400 italic">No custom message was provided by the student.</p>
-            )}
+              )}
             </div>
-            </div>
+          </div>
 
-            {/* 🚀 Distribution History */}
-            {callback.distributionLogs && callback.distributionLogs.length > 0 && (
+          {/* 🚀 Distribution History */}
+          {callback.distributionLogs && callback.distributionLogs.length > 0 && (
             <div className="pt-4 border-t border-stone-100">
-                <h3 className="text-sm font-bold text-stone-900 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-stone-900 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <History className="w-4 h-4 text-stone-500" /> Distribution History
-                </h3>
-                
-                <div className="space-y-3">
-                {callback.distributionLogs.map((log: any, idx: number) => {
-                    const bulkFilters = typeof log.bulkFilters === 'string' ? JSON.parse(log.bulkFilters) : log.bulkFilters;
-                    const isIndividual = log.mode === 'individual';
+              </h3>
 
-                    return (
+              <div className="space-y-3">
+                {callback.distributionLogs.map((log: any, idx: number) => {
+                  const bulkFilters = typeof log.bulkFilters === 'string' ? JSON.parse(log.bulkFilters) : log.bulkFilters;
+                  const isIndividual = log.mode === 'individual';
+
+                  return (
                     <div key={log.id} className="bg-stone-50 border border-stone-100 rounded-2xl p-4 hover:border-stone-200 transition">
-                        <div className="flex items-start justify-between gap-3 flex-wrap">
+                      <div className="flex items-start justify-between gap-3 flex-wrap">
                         <div>
-                            <p className="text-sm font-bold text-stone-900">
+                          <p className="text-sm font-bold text-stone-900">
                             {isIndividual ? '👤 Individual Selection' : '📊 Bulk Distribution'}
-                            </p>
-                            <p className="text-xs text-stone-500 mt-0.5">
+                          </p>
+                          <p className="text-xs text-stone-500 mt-0.5">
                             By <b>{log.admin?.name || log.admin?.email || 'Unknown'}</b> • {formatIST(log.createdAt)}
-                            </p>
+                          </p>
                         </div>
                         <Badge variant="outline" className="bg-emerald-100 text-emerald-700 border-emerald-200 uppercase tracking-wider font-bold shadow-none whitespace-nowrap">
-                            {log.targetCount} Institutes
+                          {log.targetCount} Institutes
                         </Badge>
-                        </div>
+                      </div>
 
-                        {isIndividual && log.targetInstituteIds && log.targetInstituteIds.length > 0 && (
+                      {isIndividual && log.targetInstituteIds && log.targetInstituteIds.length > 0 && (
                         <div className="mt-3 text-xs text-stone-600 bg-white rounded-lg p-3 border border-stone-100 shadow-sm">
-                            <p className="font-bold text-stone-700 mb-2">Forwarded to:</p>
-                            <ul className="list-none space-y-1">
+                          <p className="font-bold text-stone-700 mb-2">Forwarded to:</p>
+                          <ul className="list-none space-y-1">
                             {log.targetInstituteIds.map((instId: string) => (
-                                <li key={instId} className="flex items-center gap-2">
+                              <li key={instId} className="flex items-center gap-2">
                                 <Building2 className="w-3.5 h-3.5 text-stone-400" />
                                 <Link prefetch={false} href={`/af-ass-manage/institutes/${instId}`} className="text-blue-600 hover:underline hover:text-blue-800 font-medium">
-                                    {instituteMap.get(instId) || 'Unknown Institute'}
+                                  {instituteMap.get(instId) || 'Unknown Institute'}
                                 </Link>
-                                </li>
+                              </li>
                             ))}
-                            </ul>
+                          </ul>
                         </div>
-                        )}
+                      )}
 
-                        {!isIndividual && bulkFilters && (
+                      {!isIndividual && bulkFilters && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 text-xs text-stone-600 bg-white rounded-lg p-3 border border-stone-100 shadow-sm">
-                            {bulkFilters.plansAll ? (
+                          {bulkFilters.plansAll ? (
                             <div><b>Plans:</b> All Plans</div>
-                            ) : bulkFilters.plans?.length > 0 ? (
+                          ) : bulkFilters.plans?.length > 0 ? (
                             <div><b>Plans:</b> {bulkFilters.plans.join(', ')}</div>
-                            ) : null}
+                          ) : null}
 
-                            {bulkFilters.citiesAll ? (
+                          {bulkFilters.citiesAll ? (
                             <div><b>Cities:</b> All Cities</div>
-                            ) : bulkFilters.cityIds?.length > 0 ? (
+                          ) : bulkFilters.cityIds?.length > 0 ? (
                             <div><b>Cities:</b> {bulkFilters.cityIds.length} selected</div>
-                            ) : null}
+                          ) : null}
 
-                            {bulkFilters.categoriesAll ? (
+                          {bulkFilters.categoriesAll ? (
                             <div><b>Categories:</b> All Categories</div>
-                            ) : bulkFilters.categoryIds?.length > 0 ? (
+                          ) : bulkFilters.categoryIds?.length > 0 ? (
                             <div><b>Categories:</b> {bulkFilters.categoryIds.length} selected</div>
-                            ) : null}
+                          ) : null}
 
-                            {bulkFilters.search && (
+                          {bulkFilters.search && (
                             <div><b>Search:</b> "{bulkFilters.search}"</div>
-                            )}
+                          )}
                         </div>
-                        )}
+                      )}
 
-                        {log.adminNote && (
+                      {log.adminNote && (
                         <div className="mt-3 p-3 bg-white border border-stone-200 rounded-xl text-xs text-stone-800 shadow-sm">
-                            <b>Note:</b> {log.adminNote}
+                          <b>Note:</b> {log.adminNote}
                         </div>
-                        )}
+                      )}
                     </div>
-                    );
+                  );
                 })}
-                </div>
+              </div>
             </div>
-            )}
+          )}
         </CardContent>
       </Card>
 
       {/* 🚀 LEAD DISTRIBUTION FORM */}
       <LeadDistributionForm
-        enquiryId={callback.id} 
-        originalInstituteId={callback.instituteId} 
-        studentName={callback.name} 
+        enquiryId={callback.id}
+        originalInstituteId={callback.instituteId}
+        studentName={callback.name}
       />
     </div>
   );
