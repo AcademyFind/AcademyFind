@@ -34,7 +34,7 @@ export default async function AdminDashboardPage() {
         prisma.institute.count(),
         prisma.category.count(),
         prisma.instituteClaim.count({ where: { status: "PENDING" } }),
-        prisma.instituteEnquiry.count({ where: { status: "NEW" } }),
+        prisma.instituteEnquiry.count({ where: { status: "NEW", isForwarded: false } }),
         prisma.lifeCoachRequest.count({ where: { status: "PENDING" } }),
         prisma.messageReport.count({ where: { status: "PENDING" } }),
         prisma.instituteRequest.count({ where: { status: "PENDING" } }),

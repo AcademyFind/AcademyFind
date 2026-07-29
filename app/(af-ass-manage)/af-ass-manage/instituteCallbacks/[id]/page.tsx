@@ -33,6 +33,24 @@ export default async function AdminCallbackDetailPage({ params }: { params: Prom
 
   if (!callback) return notFound();
 
+  // Find all unique target institute IDs from individual logs
+  const allTargetInstituteIds = Array.from(
+    new Set(
+      callback.distributionLogs
+        .filter((log) => log.mode === "individual" && log.targetInstituteIds)
+        .flatMap((log) => log.targetInstituteIds)
+    )
+  );
+
+  // Fetch the institute names
+  const targetInstitutes = await prisma.institute.findMany({
+    where: { id: { in: allTargetInstituteIds } },
+    select: { id: true, name: true },
+  });
+
+  // Create a map for quick lookup
+  const instituteMap = new Map(targetInstitutes.map((inst) => [inst.id, inst.name]));
+
   return (
     <div className="w-full space-y-6">
       <Link href="/af-ass-manage/instituteCallbacks" className="inline-flex items-center gap-2 text-sm font-medium text-stone-500 hover:text-stone-900 transition-colors">
@@ -140,6 +158,22 @@ export default async function AdminCallbackDetailPage({ params }: { params: Prom
                             {log.targetCount} Institutes
                         </Badge>
                         </div>
+
+                        {isIndividual && log.targetInstituteIds && log.targetInstituteIds.length > 0 && (
+                        <div className="mt-3 text-xs text-stone-600 bg-white rounded-lg p-3 border border-stone-100 shadow-sm">
+                            <p className="font-bold text-stone-700 mb-2">Forwarded to:</p>
+                            <ul className="list-none space-y-1">
+                            {log.targetInstituteIds.map((instId: string) => (
+                                <li key={instId} className="flex items-center gap-2">
+                                <Building2 className="w-3.5 h-3.5 text-stone-400" />
+                                <Link prefetch={false} href={`/af-ass-manage/institutes/${instId}`} className="text-blue-600 hover:underline hover:text-blue-800 font-medium">
+                                    {instituteMap.get(instId) || 'Unknown Institute'}
+                                </Link>
+                                </li>
+                            ))}
+                            </ul>
+                        </div>
+                        )}
 
                         {!isIndividual && bulkFilters && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 text-xs text-stone-600 bg-white rounded-lg p-3 border border-stone-100 shadow-sm">

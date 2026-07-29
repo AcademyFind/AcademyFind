@@ -90,7 +90,7 @@ export default async function AdminLayout({
         prisma.lifeCoachRequest.count({ where: { status: "PENDING" } }),
         prisma.subscriptionPayment.count({ where: { status: "PENDING" } }),
         prisma.jobApplication.count({ where: { status: "NEW" } }),
-        prisma.instituteEnquiry.count({ where: { status: "NEW" } }),
+        prisma.instituteEnquiry.count({ where: { status: "NEW", isForwarded: false } }),
     ]);
 
     // New route counts
