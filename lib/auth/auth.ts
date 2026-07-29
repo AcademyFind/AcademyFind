@@ -2,6 +2,7 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "@/lib/prisma";
 import { emailOTP } from "better-auth/plugins";
+import { oneTap } from "better-auth/plugins";
 import { Resend } from "resend";
 import dotenv from 'dotenv';
 
@@ -129,6 +130,7 @@ export const auth = betterAuth({
                     console.error(`❌ Failed to send ${type} email via Resend:`, err);
                 }
             }
-        })
+        }),
+        oneTap()
     ]
 });
