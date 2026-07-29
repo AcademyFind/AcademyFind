@@ -37,10 +37,10 @@ export default async function AdminCallbackDetailPage({ params }: { params: Prom
   const allTargetInstituteIds = Array.from(
     new Set(
       callback.distributionLogs
-        .filter((log: any) => log.mode === "individual" && log.targetInstituteIds)
-        .flatMap((log: any) => log.targetInstituteIds)
+        .filter((log: any) => log.mode === "individual" && Array.isArray(log.targetInstituteIds))
+        .flatMap((log: any) => log.targetInstituteIds as string[])
     )
-  );
+  ) as string[];
 
   // Fetch the institute names
   const targetInstitutes = await prisma.institute.findMany({
