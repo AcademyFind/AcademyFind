@@ -25,8 +25,10 @@ export default async function AdminDashboardPage() {
         pendingCallbacks,
         pendingLifeCoach,
         pendingChatReports,
+        pendingInstituteRequests,
         recentClaims,
-        recentUsers
+        recentUsers,
+        
     ] = await Promise.all([
         prisma.user.count(),
         prisma.institute.count(),
@@ -35,6 +37,7 @@ export default async function AdminDashboardPage() {
         prisma.instituteEnquiry.count({ where: { status: "NEW" } }),
         prisma.lifeCoachRequest.count({ where: { status: "PENDING" } }),
         prisma.messageReport.count({ where: { status: "PENDING" } }),
+        prisma.instituteRequest.count({ where: { status: "PENDING" } }),
         
         // Latest 5 Pending Claims
         prisma.instituteClaim.findMany({
@@ -96,6 +99,14 @@ export default async function AdminDashboardPage() {
                     bg="bg-white border border-blue-50" 
                     link="/af-ass-manage/instituteCallbacks"
                     alert={pendingCallbacks > 0} 
+                />
+                <StatCard 
+                    title="New Institute List Requests" 
+                    value={pendingInstituteRequests} 
+                    icon={<FolderTree className="w-5 h-5 text-green-600" />} 
+                    bg="bg-white border border-green-50" 
+                    link="/af-ass-manage/instituteRequests"
+                    alert={pendingInstituteRequests > 0} 
                 />
                 <StatCard 
                     title="Life Coach Requests" 
