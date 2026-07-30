@@ -157,6 +157,8 @@ export default function BlogEditorForm({
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [saveState]);
+
+
   const [slugWasEdited, setSlugWasEdited] = useState(mode === "edit");
   const [tagInput, setTagInput] = useState("");
   const [adminControls, setAdminControls] = useState<AdminControls>(() => ({
@@ -424,6 +426,18 @@ export default function BlogEditorForm({
       }
     });
   };
+
+  // Handle Ctrl+S / Cmd+S to save draft
+  useEffect(() => {
+    const handleKeyDown = (e: globalThis.KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        submit("draft");
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [submit]);
 
   const handleDelete = async () => {
     setSaveState("saving");
