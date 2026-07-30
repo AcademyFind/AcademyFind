@@ -454,35 +454,54 @@ export default function BlogEditorForm({
           Delete Post
         </Button>
       )}
-      <Button
-        type="button"
-        variant="outline"
-        size="lg"
-        disabled={isPending || isUploading}
-        onClick={() => submit("draft")}
-        className="border-slate-200 bg-white text-slate-700 hover:bg-slate-50 rounded-2xl font-bold transition-all duration-200 cursor-pointer text-sm shadow-xs border px-5 py-2.5 flex items-center gap-2"
-      >
-        {isPending && saveState === "saving" ? (
-          <Loader2 className="animate-spin size-4" />
-        ) : (
-          <FileText className="size-4 text-slate-400" />
-        )}
-        {management === "admin" ? "Save Changes" : "Save Draft"}
-      </Button>
-      <Button
-        type="button"
-        size="lg"
-        disabled={isPending || isUploading}
-        onClick={() => submit("publish")}
-        className="bg-amber-500 text-white shadow-md hover:bg-amber-600 hover:shadow-lg rounded-2xl font-bold transition-all duration-200 border-0 cursor-pointer text-sm px-6 py-2.5 flex items-center gap-2"
-      >
-        {isPending && saveState === "saving" ? (
-          <Loader2 className="animate-spin size-4" />
-        ) : (
-          <Send className="size-4" />
-        )}
-        Publish
-      </Button>
+      {management === "admin" ? (
+        <Button
+          type="button"
+          size="lg"
+          disabled={isPending || isUploading}
+          onClick={() => submit("draft")}
+          className={`bg-amber-500 text-white shadow-md hover:bg-amber-600 hover:shadow-lg rounded-2xl font-bold transition-all duration-200 border-0 cursor-pointer text-sm px-6 py-2.5 flex items-center justify-center gap-2 ${mode === "edit" && postId ? "col-span-1" : "col-span-2"}`}
+        >
+          {isPending && saveState === "saving" ? (
+            <Loader2 className="animate-spin size-4" />
+          ) : (
+            <Check className="size-4" />
+          )}
+          Save Changes
+        </Button>
+      ) : (
+        <>
+          <Button
+            type="button"
+            variant="outline"
+            size="lg"
+            disabled={isPending || isUploading}
+            onClick={() => submit("draft")}
+            className="border-slate-200 bg-white text-slate-700 hover:bg-slate-50 rounded-2xl font-bold transition-all duration-200 cursor-pointer text-sm shadow-xs border px-5 py-2.5 flex items-center gap-2"
+          >
+            {isPending && saveState === "saving" ? (
+              <Loader2 className="animate-spin size-4" />
+            ) : (
+              <FileText className="size-4 text-slate-400" />
+            )}
+            Save Draft
+          </Button>
+          <Button
+            type="button"
+            size="lg"
+            disabled={isPending || isUploading}
+            onClick={() => submit("publish")}
+            className="bg-amber-500 text-white shadow-md hover:bg-amber-600 hover:shadow-lg rounded-2xl font-bold transition-all duration-200 border-0 cursor-pointer text-sm px-6 py-2.5 flex items-center gap-2"
+          >
+            {isPending && saveState === "saving" ? (
+              <Loader2 className="animate-spin size-4" />
+            ) : (
+              <Send className="size-4" />
+            )}
+            Publish
+          </Button>
+        </>
+      )}
     </>
   );
 
@@ -788,7 +807,7 @@ export default function BlogEditorForm({
               {management === "admin" && (
                 <div className="space-y-2">
                   <Label className="font-semibold text-slate-700">
-                    Publish As (Brand) *
+                    Publish As (Brand)
                   </Label>
                   <Select
                     value={form.brandId || NONE_VALUE}
@@ -800,6 +819,7 @@ export default function BlogEditorForm({
                       <SelectValue placeholder="Choose a brand" />
                     </SelectTrigger>
                     <SelectContent className="rounded-2xl border-slate-100 shadow-lg">
+                      <SelectItem value={NONE_VALUE}>Original Author / No Brand</SelectItem>
                       {options.brands.map((brand) => (
                         <SelectItem key={brand.id} value={brand.id}>
                           {brand.name}
@@ -808,7 +828,7 @@ export default function BlogEditorForm({
                     </SelectContent>
                   </Select>
                   <p className="text-[11px] text-slate-400">
-                    Select which brand to publish this post under.
+                    Select a brand if you are writing this post, or leave blank to keep original author.
                   </p>
                 </div>
               )}
@@ -1096,8 +1116,9 @@ export default function BlogEditorForm({
                 </span>
               </div>
               <p className="text-[11px] leading-relaxed text-slate-400">
-                Save a draft to keep working, or publish when the post is ready
-                for readers.
+                {management === "admin" 
+                  ? "Save all the workflow, visibility and content changes made above."
+                  : "Save a draft to keep working, or publish when the post is ready for readers."}
               </p>
               <div className="grid grid-cols-2 gap-2">{actionButtons}</div>
             </div>

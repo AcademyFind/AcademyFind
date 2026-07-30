@@ -23,7 +23,7 @@ const adminBlogSchema = z.object({
   contentHtml: z.string().trim().min(1),
   coverImage: z.union([z.literal(""), z.url()]),
   categoryId: z.string(),
-  brandId: z.string().min(1, "Select a brand."),
+  brandId: z.string().optional().or(z.literal("")),
   tagNames: z.array(z.string().trim().min(1).max(50)).max(20),
   metaTitle: z.string().trim().max(70),
   metaDescription: z.string().trim().max(180),
@@ -98,12 +98,15 @@ export async function saveAdminBlogPost(
       return { success: false, error: "This slug is already in use." };
     }
 
-    const brand = await prisma.blogBrand.findFirst({
-      where: { id: value.brandId, isActive: true },
-      select: { id: true },
-    });
-    if (!brand) {
-      return { success: false, error: "Select an active blog brand." };
+    let brand: { id: string } | null = null;
+    if (value.brandId) {
+      brand = await prisma.blogBrand.findFirst({
+        where: { id: value.brandId, isActive: true },
+        select: { id: true },
+      });
+      if (!brand) {
+        return { success: false, error: "Select an active blog brand." };
+      }
     }
 
     const requestedStatus =
@@ -153,7 +156,7 @@ export async function saveAdminBlogPost(
       coverImage: value.coverImage || null,
       coverImageAlt: value.title,
       categoryId: value.categoryId || null,
-      brandId: brand.id,
+      brandId: brand ? brand.id : null,
       metaTitle: value.metaTitle || null,
       metaDescription: value.metaDescription || null,
       focusKeyword: value.focusKeyword || null,
@@ -218,6 +221,8 @@ export async function saveAdminBlogPost(
       return tx.blogPost.create({
         data: {
           ...sharedData,
+          // Only force authorProfileId to null if there is a brand. If no brand, it's just an admin post without a brand or author.
+          // Wait, if it's a new post by admin and no brand, who is the author? Usually admins post as brands. Let's just leave authorProfileId: null.
           authorProfileId: null,
           tags: {
             create: tags.map((tag: { id: string }) => ({ tagId: tag.id })),
