@@ -56,6 +56,13 @@ export default function PostContent({ html, className }: PostContentProps) {
             attribs: updatedAttribs
           };
         }
+      },
+
+      // 5. Allow data scheme for images (base64 image support)
+      allowedSchemes: [...sanitizeHtml.defaults.allowedSchemes, "data"],
+      allowedSchemesByTag: {
+        ...sanitizeHtml.defaults.allowedSchemesByTag,
+        img: ["http", "https", "data"]
       }
     });
   }, [html]);
