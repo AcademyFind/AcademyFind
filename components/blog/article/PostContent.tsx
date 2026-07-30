@@ -17,14 +17,14 @@ export default function PostContent({ html, className }: PostContentProps) {
         ...sanitizeHtml.defaults.allowedTags,
         "h1", "h2", "h3", "h4", "h5", "h6",
         "iframe", "figure", "figcaption", "video", "source",
-        "table", "thead", "tbody", "tr", "th", "td", "hr", "br"
+        "table", "thead", "tbody", "tr", "th", "td", "hr", "br", "img"
       ],
 
       // 2. Class, id aur link/image metrics ko handle karna
       allowedAttributes: {
         ...sanitizeHtml.defaults.allowedAttributes,
         a: ["href", "name", "target", "rel", "xlink:show", "xlink:href"],
-        img: ["src", "alt", "title", "width", "height", "loading", "decoding", "fetchpriority", "referrerpolicy"],
+        img: ["src", "alt", "title", "width", "height", "loading", "decoding", "fetchpriority", "referrerpolicy", "containerstyle", "wrapperstyle"],
         iframe: ["src", "allowfullscreen", "referrerpolicy", "width", "height", "frameborder"],
         video: ["src", "controls", "autoplay", "loop", "muted", "poster", "width", "height"],
         source: ["src", "type", "srcset"],
