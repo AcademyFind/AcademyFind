@@ -62,19 +62,23 @@ export default function ContactForm() {
             disabled={isLoading}
         />
 
-        <Input
-            name="phone"
-            type="tel"
-            placeholder="Phone Number *"
-            required
-            disabled={isLoading}
-            maxLength={10}
-            pattern="[6-9][0-9]{9}"
-            title="Please enter a valid 10-digit Indian mobile number"
-            onInput={(e) => {
-                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
-            }}
+        <div className="relative flex items-center">
+            <span className="absolute left-3.5 text-slate-500 font-medium text-sm pointer-events-none">+91</span>
+            <Input
+                name="phone"
+                type="tel"
+                placeholder="Phone Number *"
+                required
+                disabled={isLoading}
+                maxLength={10}
+                pattern="[6-9][0-9]{9}"
+                title="Please enter a valid 10-digit Indian mobile number"
+                className="pl-11"
+                onInput={(e) => {
+                    e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                }}
             />
+        </div>
 
         <Input 
             name="subject" 

@@ -108,7 +108,12 @@ export default function LifeCoachLandingPage() {
               </div>
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Contact Number <span className="text-red-500">*</span></label>
-                <input type="tel" maxLength={10} name="phone" required placeholder="+91 98765 43210" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-amber-500/20 focus:border-amber-400 outline-none text-sm transition-all" />
+                <div className="relative flex items-center">
+                  <span className="absolute left-3.5 text-slate-500 font-medium text-sm pointer-events-none">+91</span>
+                  <input type="tel" maxLength={10} name="phone" required placeholder="98765 43210" className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-amber-500/20 focus:border-amber-400 outline-none text-sm transition-all" onInput={(e) => {
+                      e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                  }} />
+                </div>
               </div>
             </div>
 

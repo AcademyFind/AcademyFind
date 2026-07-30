@@ -321,15 +321,15 @@ export default function RegisterComponent() { // Component ka naam RegisterPage 
 
                   <div>
                     <label className="mb-2 block text-sm font-medium text-slate-700">Mobile No. </label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                    <div className="relative flex items-center">
+                      <span className="absolute left-3.5 text-slate-500 font-medium text-sm pointer-events-none">+91</span>
                       <input
                         type="tel"
                         placeholder="Enter your mobile No."
                         maxLength={10}
-                        className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 text-sm outline-none transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20"
+                        className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-11 pr-4 text-sm outline-none transition-all focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20"
                         value={phone}
-                        onChange={(e) => setphone(e.target.value)}
+                        onChange={(e) => setphone(e.target.value.replace(/\D/g, ''))}
                       />
                     </div>
                   </div>

@@ -88,3 +88,17 @@ export async function syncSingleInstituteToMeili(instituteId: string) {
     return { success: false, error: String(error) };
   }
 }
+
+async function main() {
+  const instituteId = "cms51rkp1000004jr6wex10eu";
+  try {
+    console.log(`Starting sync for institute ID: ${instituteId}...`);
+    await syncSingleInstituteToMeili(instituteId);
+  } catch (err) {
+    console.error("Error syncing institute:", err);
+  } finally {
+    await prisma.$disconnect(); // Prevents the terminal process from hanging
+  }
+}
+
+main();

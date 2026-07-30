@@ -89,16 +89,19 @@ export default function InstituteEnquiryForm({
             placeholder="Name*"
             className="w-full p-3 text-sm border border-slate-200 rounded-xl focus:bg-white focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 outline-none transition-all duration-300"
           />
-          <input
-            required
-            name="phone"
-            maxLength={10}
-            type="tel"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-            placeholder="Mobile*"
-            className="w-full p-3 text-sm border border-slate-200 rounded-xl focus:bg-white focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 outline-none transition-all duration-300"
-          />
+          <div className="relative flex items-center">
+            <span className="absolute left-3.5 text-slate-500 font-medium text-sm pointer-events-none">+91</span>
+            <input
+              required
+              name="phone"
+              maxLength={10}
+              type="tel"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value.replace(/\D/g, ''))}
+              placeholder="Mobile*"
+              className="w-full py-3 pr-3 pl-11 text-sm border border-slate-200 rounded-xl focus:bg-white focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 outline-none transition-all duration-300"
+            />
+          </div>
           <input
             name="email"
             type="email"

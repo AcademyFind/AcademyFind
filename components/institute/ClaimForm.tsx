@@ -150,15 +150,21 @@ export default function ClaimForm({ instituteId, instituteName, userId, defaultN
 
             <div className="space-y-2">
               <label className="text-sm font-semibold text-slate-700">Phone Number <span className="text-red-500">*</span></label>
-              <input
-                type="tel"
-                name="phone"
-                required
-                maxLength={10}
-                defaultValue={defaultPhone || ""}
-                className="w-full px-4 py-3.5 bg-slate-50/50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 outline-none transition-all"
-                placeholder="+91 98765 43210"
-              />
+              <div className="relative flex items-center">
+                <span className="absolute left-3.5 text-slate-500 font-medium text-sm pointer-events-none">+91</span>
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  maxLength={10}
+                  defaultValue={defaultPhone || ""}
+                  className="w-full py-3.5 pr-4 pl-11 bg-slate-50/50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 outline-none transition-all"
+                  placeholder="98765 43210"
+                  onInput={(e) => {
+                      e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                  }}
+                />
+              </div>
             </div>
           </div>
 

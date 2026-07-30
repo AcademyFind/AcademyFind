@@ -178,7 +178,12 @@ export default function CreateInstituteForm({
                         </div>
                         <div className="space-y-2.5">
                             <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">Phone Number <span className="text-red-500">*</span></label>
-                            <Input maxLength={10} name="ownerPhone" type="tel" required placeholder="e.g. 9876543210" defaultValue={defaultPhone || ""} className="bg-slate-50/50 border-slate-200 focus-visible:ring-amber-400 rounded-xl" />
+                            <div className="relative flex items-center">
+                                <span className="absolute left-3.5 text-slate-500 font-medium text-sm pointer-events-none">+91</span>
+                                <Input maxLength={10} name="ownerPhone" type="tel" required placeholder="9876543210" defaultValue={defaultPhone || ""} className="pl-11 bg-slate-50/50 border-slate-200 focus-visible:ring-amber-400 rounded-xl" onInput={(e) => {
+                                    e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                                }} />
+                            </div>
                         </div>
                         <div className="space-y-2.5">
                             <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">
@@ -288,9 +293,11 @@ export default function CreateInstituteForm({
                             <label className="text-xs font-bold text-slate-600 uppercase tracking-wide">
                                 {providerType === "INDIVIDUAL" ? "Contact Number *" : "Official Phone *"}
                             </label>
-                            <div className="relative">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium">+91</span>
-                                <Input name="phone" type="tel" required placeholder="9876543210" maxLength={10} className="pl-12 bg-slate-50/50 border-slate-200 focus-visible:ring-amber-400 rounded-xl" />
+                            <div className="relative flex items-center">
+                                <span className="absolute left-3.5 text-slate-500 font-medium text-sm pointer-events-none">+91</span>
+                                <Input name="phone" type="tel" required placeholder="9876543210" maxLength={10} className="pl-11 bg-slate-50/50 border-slate-200 focus-visible:ring-amber-400 rounded-xl" onInput={(e) => {
+                                    e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                                }} />
                             </div>
                         </div>
                         <div className="space-y-2.5">
