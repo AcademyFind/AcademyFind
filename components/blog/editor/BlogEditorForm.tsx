@@ -419,7 +419,7 @@ export default function BlogEditorForm({
       const res = management === "admin"
         ? await deleteAdminBlogPost(postId!)
         : await deleteBlogPost(postId!);
-      
+
       if (res.success) {
         toast.success("Post deleted successfully.");
         if (management === "admin") {
@@ -529,8 +529,8 @@ export default function BlogEditorForm({
                   {status === "DRAFT"
                     ? "Draft"
                     : status
-                        .toLocaleLowerCase()
-                        .replaceAll("_", " ")}
+                      .toLocaleLowerCase()
+                      .replaceAll("_", " ")}
                 </Badge>
               </div>
               <p className="hidden text-[10px] font-semibold uppercase tracking-wider text-slate-400 sm:block">
@@ -1056,11 +1056,11 @@ export default function BlogEditorForm({
                         onCheckedChange={(checked) =>
                           updateAdminField(
                             key as
-                              | "isFeatured"
-                              | "isPinned"
-                              | "allowComments"
-                              | "robotsIndex"
-                              | "robotsFollow",
+                            | "isFeatured"
+                            | "isPinned"
+                            | "allowComments"
+                            | "robotsIndex"
+                            | "robotsFollow",
                             checked,
                           )
                         }
@@ -1116,7 +1116,7 @@ export default function BlogEditorForm({
                 </span>
               </div>
               <p className="text-[11px] leading-relaxed text-slate-400">
-                {management === "admin" 
+                {management === "admin"
                   ? "Save all the workflow, visibility and content changes made above."
                   : "Save a draft to keep working, or publish when the post is ready for readers."}
               </p>
@@ -1129,8 +1129,8 @@ export default function BlogEditorForm({
       <div className="sticky bottom-0 z-20 flex gap-2 border-t border-slate-100 bg-white/80 backdrop-blur-md p-4 sm:hidden">
         <div className="grid w-full grid-cols-2 gap-2">{actionButtons}</div>
       </div>
-      
-      <ConfirmModal 
+
+      <ConfirmModal
         isOpen={isConfirmOpen}
         onClose={() => setIsConfirmOpen(false)}
         onConfirm={handleDelete}
