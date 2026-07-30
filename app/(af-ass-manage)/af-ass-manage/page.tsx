@@ -1,11 +1,11 @@
 import { prisma } from "@/lib/prisma"
-import { 
-    Users, 
-    Building2, 
-    FileText, 
-    FolderTree, 
-    ArrowRight, 
-    Clock, 
+import {
+    Users,
+    Building2,
+    FileText,
+    FolderTree,
+    ArrowRight,
+    Clock,
     ShieldAlert,
     PhoneCall,
     LifeBuoy,
@@ -26,9 +26,10 @@ export default async function AdminDashboardPage() {
         pendingLifeCoach,
         pendingChatReports,
         pendingInstituteRequests,
+        pendingBlogs,
         recentClaims,
         recentUsers,
-        
+
     ] = await Promise.all([
         prisma.user.count(),
         prisma.institute.count(),
@@ -38,7 +39,8 @@ export default async function AdminDashboardPage() {
         prisma.lifeCoachRequest.count({ where: { status: "PENDING" } }),
         prisma.messageReport.count({ where: { status: "PENDING" } }),
         prisma.instituteRequest.count({ where: { status: "PENDING" } }),
-        
+        prisma.blogPost.count({ where: { status: "PENDING_REVIEW" } }),
+
         // Latest 5 Pending Claims
         prisma.instituteClaim.findMany({
             where: { status: "PENDING" },
@@ -57,7 +59,7 @@ export default async function AdminDashboardPage() {
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500">
-            
+
             {/* 1. Welcome Banner */}
             <div className="bg-gradient-to-br from-stone-800 via-stone-700 to-stone-900 rounded-[2rem] p-8 md:p-10 text-white shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
@@ -70,65 +72,73 @@ export default async function AdminDashboardPage() {
 
             {/* 2. Quick Stats Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <StatCard 
-                    title="Total Users" 
-                    value={totalUsers} 
-                    icon={<Users className="w-5 h-5 text-stone-600" />} 
-                    bg="bg-white border border-stone-100" 
-                    link="/af-ass-manage/users" 
+                <StatCard
+                    title="Total Users"
+                    value={totalUsers}
+                    icon={<Users className="w-5 h-5 text-stone-600" />}
+                    bg="bg-white border border-stone-100"
+                    link="/af-ass-manage/users"
                 />
-                <StatCard 
-                    title="Institutes Listed" 
-                    value={totalInstitutes} 
-                    icon={<Building2 className="w-5 h-5 text-emerald-600" />} 
-                    bg="bg-white border border-emerald-50" 
-                    link="/af-ass-manage/institutes" 
+                <StatCard
+                    title="Institutes Listed"
+                    value={totalInstitutes}
+                    icon={<Building2 className="w-5 h-5 text-emerald-600" />}
+                    bg="bg-white border border-emerald-50"
+                    link="/af-ass-manage/institutes"
                 />
-                <StatCard 
-                    title="Pending Claims" 
-                    value={pendingClaimsCount} 
-                    icon={<ShieldAlert className="w-5 h-5 text-rose-600" />} 
-                    bg="bg-white border border-rose-50" 
-                    link="/af-ass-manage/claims" 
+                <StatCard
+                    title="Pending Claims"
+                    value={pendingClaimsCount}
+                    icon={<ShieldAlert className="w-5 h-5 text-rose-600" />}
+                    bg="bg-white border border-rose-50"
+                    link="/af-ass-manage/claims"
                     alert={pendingClaimsCount > 0}
                 />
-                <StatCard 
-                    title="New Callbacks" 
-                    value={pendingCallbacks} 
-                    icon={<PhoneCall className="w-5 h-5 text-blue-600" />} 
-                    bg="bg-white border border-blue-50" 
+                <StatCard
+                    title="New Callbacks"
+                    value={pendingCallbacks}
+                    icon={<PhoneCall className="w-5 h-5 text-blue-600" />}
+                    bg="bg-white border border-blue-50"
                     link="/af-ass-manage/instituteCallbacks"
-                    alert={pendingCallbacks > 0} 
+                    alert={pendingCallbacks > 0}
                 />
-                <StatCard 
-                    title="New Institute List Requests" 
-                    value={pendingInstituteRequests} 
-                    icon={<FolderTree className="w-5 h-5 text-green-600" />} 
-                    bg="bg-white border border-green-50" 
+                <StatCard
+                    title="New Institute List Requests"
+                    value={pendingInstituteRequests}
+                    icon={<FolderTree className="w-5 h-5 text-green-600" />}
+                    bg="bg-white border border-green-50"
                     link="/af-ass-manage/instituteRequests"
-                    alert={pendingInstituteRequests > 0} 
+                    alert={pendingInstituteRequests > 0}
                 />
-                <StatCard 
-                    title="Life Coach Requests" 
-                    value={pendingLifeCoach} 
-                    icon={<LifeBuoy className="w-5 h-5 text-indigo-600" />} 
-                    bg="bg-white border border-indigo-50" 
+                <StatCard
+                    title="Life Coach Requests"
+                    value={pendingLifeCoach}
+                    icon={<LifeBuoy className="w-5 h-5 text-indigo-600" />}
+                    bg="bg-white border border-indigo-50"
                     link="/af-ass-manage/life-coach"
-                    alert={pendingLifeCoach > 0} 
+                    alert={pendingLifeCoach > 0}
                 />
-                <StatCard 
-                    title="Chat Reports" 
-                    value={pendingChatReports} 
-                    icon={<MessageCircle className="w-5 h-5 text-stone-600" />} 
-                    bg="bg-white border border-stone-50" 
+                <StatCard
+                    title="Blogs Pending Review"
+                    value={pendingBlogs}
+                    icon={<FileText className="w-5 h-5 text-indigo-600" />}
+                    bg="bg-white border border-indigo-50"
+                    link="/af-ass-manage/blog"
+                    alert={pendingBlogs > 0}
+                />
+                <StatCard
+                    title="Chat Reports"
+                    value={pendingChatReports}
+                    icon={<MessageCircle className="w-5 h-5 text-stone-600" />}
+                    bg="bg-white border border-stone-50"
                     link="/af-ass-manage/chat"
-                    alert={pendingChatReports > 0} 
+                    alert={pendingChatReports > 0}
                 />
             </div>
 
             {/* 3. Recent Activity Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-4">
-                
+
                 {/* Left: Pending Claims */}
                 <div className="border border-stone-100/50 bg-white/60 backdrop-blur-md rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden flex flex-col">
                     <div className="p-6 border-b border-stone-100/50 bg-stone-50/30 flex items-center justify-between">
@@ -168,12 +178,12 @@ export default async function AdminDashboardPage() {
                         {recentUsers.length === 0 ? (
                             <div className="text-center text-slate-400 py-8 text-sm">No users found.</div>
                         ) : (
-                            recentUsers.map((user:any) => (
+                            recentUsers.map((user: any) => (
                                 <div key={user.id} className="flex justify-between items-center p-4 rounded-2xl border border-slate-100/80 bg-white shadow-sm hover:shadow-md hover:border-stone-200 transition-all duration-300">
                                     <div>
                                         <p className="font-bold text-slate-800 line-clamp-1">{user.name || "Anonymous"}</p>
                                         <p className="text-sm text-slate-500 mt-1 flex items-center gap-1">
-                                            {user.email} 
+                                            {user.email}
                                         </p>
                                     </div>
                                     <div className="text-right shrink-0">

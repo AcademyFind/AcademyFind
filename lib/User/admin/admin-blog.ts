@@ -272,6 +272,23 @@ export async function archiveAdminBlogPost(postId: string) {
   }
 }
 
+export async function unarchiveAdminBlogPost(postId: string) {
+  try {
+    const adminUser = await requireAdmin();
+    await prisma.blogPost.update({
+      where: { id: postId },
+      data: {
+        status: "DRAFT",
+        lastEditedById: adminUser.id,
+      },
+    });
+    revalidatePath("/af-ass-manage/blog");
+    return { success: true };
+  } catch {
+    return { success: false, error: "Unable to unarchive this post." };
+  }
+}
+
 export async function deleteAdminBlogPost(postId: string) {
   try {
     await requireAdmin();
@@ -296,5 +313,50 @@ export async function deleteAdminBlogPost(postId: string) {
   } catch (error) {
     console.error("Error deleting admin blog post:", error);
     return { success: false, error: "Unable to delete this post." };
+  }
+}
+
+export async function updateAdminBlogStatus(postId: string, status: "PUBLISHED" | "REJECTED") {
+  try {
+    const adminUser = await requireAdmin();
+    const existing = await prisma.blogPost.findUnique({
+      where: { id: postId },
+      select: { authorProfile: { select: { userId: true } }, status: true }
+    });
+
+    if (!existing) {
+      return { success: false, error: "Post not found." };
+    }
+
+    const post = await prisma.blogPost.update({
+      where: { id: postId },
+      data: {
+        status,
+        lastEditedById: adminUser.id,
+        reviewedById: adminUser.id,
+        reviewedAt: new Date(),
+        ...(status === "PUBLISHED" ? { publishedById: adminUser.id, publishedAt: new Date() } : {})
+      },
+      select: { id: true, slug: true }
+    });
+
+    if (status === "PUBLISHED") {
+      await syncBlogPostToMeili(postId);
+      // Reward if it was not already published
+      if (existing.status !== "PUBLISHED" && existing.authorProfile?.userId) {
+        await creditWallet(existing.authorProfile.userId, 5, "BLOG_POST", "Blog post published", postId);
+      }
+    } else if (status === "REJECTED") {
+      await deleteBlogPostFromMeili(postId);
+    }
+
+    revalidatePath("/blog");
+    revalidatePath(`/blog/${post.slug}`);
+    revalidatePath("/af-ass-manage/blog");
+    revalidatePath("/blog/search");
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating admin blog status:", error);
+    return { success: false, error: "Unable to update status." };
   }
 }

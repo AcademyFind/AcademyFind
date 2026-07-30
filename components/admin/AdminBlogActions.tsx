@@ -4,22 +4,26 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import toast from "react-hot-toast";
-import { Archive, ExternalLink, Loader2, Pencil, Trash2 } from "lucide-react";
+import { Archive, ArchiveRestore, ExternalLink, Loader2, Pencil, Trash2, Check, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
   archiveAdminBlogPost,
+  unarchiveAdminBlogPost,
   deleteAdminBlogPost,
+  updateAdminBlogStatus,
 } from "@/lib/User/admin/admin-blog";
 
 export default function AdminBlogActions({
   postId,
   slug,
   isArchived,
+  status,
 }: {
   postId: string;
   slug: string;
   isArchived: boolean;
+  status: string;
 }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -33,6 +37,30 @@ export default function AdminBlogActions({
         return;
       }
       toast.success("Post archived.");
+      router.refresh();
+    });
+  };
+
+  const unarchive = () => {
+    startTransition(async () => {
+      const result = await unarchiveAdminBlogPost(postId);
+      if (!result.success) {
+        toast.error(result.error ?? "Unable to unarchive this post.");
+        return;
+      }
+      toast.success("Post unarchived to draft.");
+      router.refresh();
+    });
+  };
+
+  const updateStatus = (newStatus: "PUBLISHED" | "REJECTED") => {
+    startTransition(async () => {
+      const result = await updateAdminBlogStatus(postId, newStatus);
+      if (!result.success) {
+        toast.error(result.error ?? `Unable to update post status.`);
+        return;
+      }
+      toast.success(newStatus === "PUBLISHED" ? "Post published." : "Post rejected.");
       router.refresh();
     });
   };
@@ -57,12 +85,42 @@ export default function AdminBlogActions({
 
   return (
     <div className="flex items-center justify-end gap-1">
-      <Button asChild type="button" variant="ghost" size="icon-sm">
+      {status === "PENDING_REVIEW" && (
+        <>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            disabled={isPending}
+            onClick={() => updateStatus("PUBLISHED")}
+            aria-label="Approve post"
+            title="Approve post"
+            className="text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 px-2"
+          >
+            {isPending ? <Loader2 className="animate-spin size-4 mr-1" /> : <Check className="size-4 mr-1" />}
+            Approve
+          </Button>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            disabled={isPending}
+            onClick={() => updateStatus("REJECTED")}
+            aria-label="Reject post"
+            title="Reject post"
+            className="text-red-600 hover:text-red-700 hover:bg-red-50 px-2"
+          >
+            {isPending ? <Loader2 className="animate-spin size-4 mr-1" /> : <X className="size-4 mr-1" />}
+            Reject
+          </Button>
+        </>
+      )}
+      <Button asChild type="button" variant="ghost" size="icon-sm" title="View post">
         <Link href={`/blog/${slug}`} target="_blank" aria-label="View post">
           <ExternalLink />
         </Link>
       </Button>
-      <Button asChild type="button" variant="ghost" size="icon-sm">
+      <Button asChild type="button" variant="ghost" size="icon-sm" title="Edit post">
         <Link
           href={`/af-ass-manage/blog/edit/${postId}`}
           aria-label="Edit post"
@@ -78,11 +136,25 @@ export default function AdminBlogActions({
           disabled={isPending}
           onClick={archive}
           aria-label="Archive post"
+          title="Archive post"
           className="text-slate-500 hover:text-amber-700"
         >
           {isPending ? <Loader2 className="animate-spin" /> : <Archive />}
         </Button>
-      ) : null}
+      ) : (
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon-sm"
+          disabled={isPending}
+          onClick={unarchive}
+          aria-label="Unarchive post"
+          title="Unarchive post"
+          className="text-slate-500 hover:text-emerald-700"
+        >
+          {isPending ? <Loader2 className="animate-spin" /> : <ArchiveRestore />}
+        </Button>
+      )}
       <Button
         type="button"
         variant={confirmingDelete ? "destructive" : "ghost"}
@@ -91,6 +163,7 @@ export default function AdminBlogActions({
         onClick={remove}
         onBlur={() => setConfirmingDelete(false)}
         aria-label={confirmingDelete ? "Confirm delete" : "Delete post"}
+        title={confirmingDelete ? "Confirm delete" : "Delete post"}
       >
         {isPending ? (
           <Loader2 className="animate-spin" />

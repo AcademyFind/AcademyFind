@@ -76,7 +76,7 @@ async function persistBlogPost(
 
   let author = await prisma.blogAuthorProfile.findUnique({
     where: { userId: session.user.id },
-    select: { id: true },
+    select: { id: true, displayName: true },
   });
 
   // Auto-onboard the author if profile doesn't exist
@@ -111,7 +111,7 @@ async function persistBlogPost(
           username,
           avatarUrl: user.image || null,
         },
-        select: { id: true },
+        select: { id: true, displayName: true },
       });
     } else {
       return { success: false, error: "An author profile is required." };
@@ -131,11 +131,11 @@ async function persistBlogPost(
     return { success: false, error: "This slug is already in use." };
   }
 
-  let existingPost = null;
+  let existingPost: any = null;
   if (value.id) {
     existingPost = await prisma.blogPost.findUnique({
       where: { id: value.id },
-      select: { authorProfileId: true, publishedAt: true },
+      select: { authorProfileId: true, publishedAt: true, status: true },
     });
 
     if (!existingPost || existingPost.authorProfileId !== author.id) {
@@ -190,8 +190,9 @@ async function persistBlogPost(
       }),
     );
 
+    let savedPost;
     if (value.id) {
-      return tx.blogPost.update({
+      savedPost = await tx.blogPost.update({
         where: { id: value.id },
         data: {
           ...sharedData,
@@ -206,21 +207,34 @@ async function persistBlogPost(
         },
         select: { id: true, slug: true },
       });
+    } else {
+      savedPost = await tx.blogPost.create({
+        data: {
+          ...sharedData,
+          authorProfileId: author.id,
+          tags: {
+            create: tags.map((tag: { id: string }) => ({ tagId: tag.id })),
+          },
+          faqs: {
+            create: value.faqs.map((faq: { question: string; answer: string }, order: number) => ({ ...faq, order })),
+          },
+        },
+        select: { id: true, slug: true },
+      });
     }
 
-    return tx.blogPost.create({
-      data: {
-        ...sharedData,
-        authorProfileId: author.id,
-        tags: {
-          create: tags.map((tag: { id: string }) => ({ tagId: tag.id })),
-        },
-        faqs: {
-          create: value.faqs.map((faq: { question: string; answer: string }, order: number) => ({ ...faq, order })),
-        },
-      },
-      select: { id: true, slug: true },
-    });
+    if (value.intent === "publish" && existingPost?.status !== "PENDING_REVIEW" && existingPost?.status !== "PUBLISHED") {
+      await tx.adminNotification.create({
+        data: {
+          type: "BLOG_REVIEW",
+          title: "New Blog Pending Review",
+          message: `${author.displayName} has submitted a new blog post "${value.title}" for review.`,
+          actionUrl: `/af-ass-manage/blog/edit/${savedPost.id}`,
+        }
+      });
+    }
+
+    return savedPost;
   });
 
   // Sync to Meilisearch search index

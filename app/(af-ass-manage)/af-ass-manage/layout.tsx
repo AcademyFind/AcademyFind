@@ -2,12 +2,12 @@ import { auth } from "@/lib/auth/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { 
-    LayoutDashboard, 
-    Building2, 
-    Users, 
-    FolderTree, 
-    FileText, 
+import {
+    LayoutDashboard,
+    Building2,
+    Users,
+    FolderTree,
+    FileText,
     ArrowLeft,
     MapPin,
     FileType2,
@@ -32,11 +32,11 @@ import { SidebarLink } from "@/components/manager/SidebarLink";
 import { ScrollToTopAdmin } from "@/components/admin/ScrollToTopAdmin";
 
 export const metadata: Metadata = {
-  title: "Admin Control Panel | AcademyFind",
-  robots: {
-    index: false,
-    follow: false,
-  },
+    title: "Admin Control Panel | AcademyFind",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 export default async function AdminLayout({
@@ -80,7 +80,8 @@ export default async function AdminLayout({
         lifeCoachCount,
         paymentCount,
         jobAppCount,
-        enquiryCount
+        enquiryCount,
+        blogCount,
     ] = await Promise.all([
         prisma.instituteClaim.count({ where: { status: "PENDING" } }),
         prisma.review.count({ where: { status: "PENDING" } }),
@@ -91,6 +92,7 @@ export default async function AdminLayout({
         prisma.subscriptionPayment.count({ where: { status: "PENDING" } }),
         prisma.jobApplication.count({ where: { status: "NEW" } }),
         prisma.instituteEnquiry.count({ where: { status: "NEW", isForwarded: false } }),
+        prisma.blogPost.count({ where: { status: "PENDING_REVIEW" } }),
     ]);
 
     // New route counts
@@ -102,7 +104,7 @@ export default async function AdminLayout({
     return (
         <div className="bg-[#FAF8F5] min-h-screen pb-12">
             <div className="w-full lg:pt-6 px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-6">
-                
+
                 {/* --- ADMIN SIDEBAR --- */}
                 <ManagerSidebarWrapper title="Admin Center">
                     <div>
@@ -119,25 +121,25 @@ export default async function AdminLayout({
 
                     <nav className="flex flex-col gap-1.5 mt-2">
                         <SidebarLink href="/af-ass-manage" icon={<LayoutDashboard />} label="Overview" />
-                        <SidebarLink href="/af-ass-manage/notifications" icon={<BellIcon />} label="Notifications" count={notificationCount}/>
-                        
+                        <SidebarLink href="/af-ass-manage/notifications" icon={<BellIcon />} label="Notifications" count={notificationCount} />
+
                         {/* 👇 Yahan naye counts pass kiye hain */}
                         <SidebarLink href="/af-ass-manage/life-coach" icon={<LifeBuoy />} label="Life Coach" count={lifeCoachCount} />
-                        <SidebarLink href="/af-ass-manage/claims" icon={<FileText />} label="Claim Requests" count={claimCount}/>
-                        <SidebarLink href="/af-ass-manage/reviews" icon={<Star />} label="Review Requests" count={reviewCount}/>
-                        <SidebarLink href="/af-ass-manage/instituteRequests" icon={<FileType2 />} label="Institute Requests" count={instituteReqCount}/>
-                        <SidebarLink href="/af-ass-manage/instituteCallbacks" icon={<PhoneCall />} label="Institute Callbacks" count={enquiryCount}/>                        
-                        <SidebarLink href="/af-ass-manage/contactmessages" icon={<Contact />} label="Contact Messages" count={contactCount}/>
+                        <SidebarLink href="/af-ass-manage/claims" icon={<FileText />} label="Claim Requests" count={claimCount} />
+                        <SidebarLink href="/af-ass-manage/reviews" icon={<Star />} label="Review Requests" count={reviewCount} />
+                        <SidebarLink href="/af-ass-manage/instituteRequests" icon={<FileType2 />} label="Institute Requests" count={instituteReqCount} />
+                        <SidebarLink href="/af-ass-manage/instituteCallbacks" icon={<PhoneCall />} label="Institute Callbacks" count={enquiryCount} />
+                        <SidebarLink href="/af-ass-manage/contactmessages" icon={<Contact />} label="Contact Messages" count={contactCount} />
                         <SidebarLink href="/af-ass-manage/payments" icon={<Pyramid />} label="Payment Approvals" count={paymentCount} />
-                        
+
                         <SidebarLink href="/af-ass-manage/institutes" icon={<Building2 />} label="All Institutes" />
                         <SidebarLink href="/af-ass-manage/users" icon={<Users />} label="User Management" />
                         <SidebarLink href="/af-ass-manage/sales_manager" icon={<Briefcase />} label="Sales Managers" />
-                        
+
                         {/* 👇 Careers me jobAppCount pass kiya hai */}
                         <SidebarLink href="/af-ass-manage/careers" icon={<IdCard />} label="Careers" count={jobAppCount} />
-                        <SidebarLink href="/af-ass-manage/blog" icon={<BookOpen />} label="Blog Management" />
-                        
+                        <SidebarLink href="/af-ass-manage/blog" icon={<BookOpen />} label="Blog Management" count={blogCount} />
+
                         <div className="my-2 border-t border-stone-100/50"></div>
                         <SidebarLink href="/af-ass-manage/categories" icon={<FolderTree />} label="Categories" />
                         <SidebarLink href="/af-ass-manage/cities" icon={<MapPin />} label="Cities & Regions" />

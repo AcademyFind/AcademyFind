@@ -12,6 +12,7 @@ import {
 
 import { BlogStatus } from "@/app/generated/prisma/enums";
 import AdminBlogActions from "@/components/admin/AdminBlogActions";
+import AdminBlogFilter from "@/components/admin/AdminBlogFilter";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -192,46 +193,13 @@ export default async function AdminBlogPage({
         </div>
       </div>
 
-      <form className="grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 md:grid-cols-[1fr_180px_200px_auto]">
-        <div className="relative">
-          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
-          <Input
-            name="query"
-            defaultValue={query}
-            placeholder="Search title or slug…"
-            className="h-10 bg-white pl-9"
-          />
-        </div>
-        <Select name="status" defaultValue={status ?? ALL}>
-          <SelectTrigger className="h-10 w-full bg-white">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value={ALL}>All statuses</SelectItem>
-            {Object.values(BlogStatus).map((item: string) => (
-              <SelectItem key={item} value={item}>
-                {item.toLocaleLowerCase().replaceAll("_", " ")}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select name="brand" defaultValue={brandId ?? ALL}>
-          <SelectTrigger className="h-10 w-full bg-white">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value={ALL}>All brands</SelectItem>
-            {brands.map((brand: { id: string; name: string }) => (
-              <SelectItem key={brand.id} value={brand.id}>
-                {brand.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Button type="submit" className="h-10 bg-slate-900 text-white hover:bg-slate-800">
-          Filter
-        </Button>
-      </form>
+      <AdminBlogFilter
+        query={query}
+        status={status}
+        brandId={brandId}
+        brands={brands}
+        ALL={ALL}
+      />
 
       <div className="overflow-x-auto rounded-2xl border border-slate-200">
         <table className="w-full min-w-[900px] text-left text-sm">
@@ -317,6 +285,7 @@ export default async function AdminBlogPage({
                     postId={post.id}
                     slug={post.slug}
                     isArchived={post.status === "ARCHIVED"}
+                    status={post.status}
                   />
                 </td>
               </tr>
