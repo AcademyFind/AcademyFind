@@ -32,6 +32,7 @@ import { MemberDrawer } from "./components/MemberDrawer";
 import BlogCard from "@/components/blog/cards/BlogCard";
 import { BlogCardPost } from "@/types/BlogCard";
 import { OpenBatchChatButton } from "@/components/manager/OpenBatchChatButton";
+import { InteractiveGallery } from "@/components/ui/interactive-gallery";
 
 export const revalidate = 0;
 
@@ -426,7 +427,7 @@ export default async function InstitutePage({ params }: PageProps) {
                 
                 {/* Floating Logo */}
                 <div className="absolute -top-16 md:-top-20 left-6 md:left-10 h-32 w-32 md:h-40 md:w-40 flex items-center justify-center overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border-4 border-white shadow-xl bg-white">
-                  <Image src={mainLogo} alt={institute.name} width={160} height={160} className="h-full w-full object-cover" />
+                  <Image src={mainLogo} alt={institute.name} width={160} height={160} className="h-full w-full object-contain object-center" />
                 </div>
 
                 <div className="mt-16 md:mt-20">
@@ -960,25 +961,11 @@ export default async function InstitutePage({ params }: PageProps) {
             <div className={`relative rounded-3xl overflow-hidden ${!hasUltraAccess ? 'min-h-[350px]' : ''}`}>
               {!hasUltraAccess && <LockedOverlay title="Infrastructure Images" instituteId={institute.id} slug={institute.slug} />}
 
-              <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ${!hasUltraAccess ? 'opacity-40 blur-[4px] pointer-events-none select-none grayscale-[50%]' : ''}`}>
-                {hasUltraAccess ? (
-                  validClassroomImages.map((url: string, idx: number) => (
-                    <div key={idx} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm group cursor-pointer">
-                      <img
-                        src={url}
-                        alt={`${institute.name} Classroom ${idx + 1}`}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
-                    </div>
-                  ))
-                ) : (
-                  // Placeholders
-                  [1, 2, 3, 4].map((i: number) => (
-                    <div key={i} className="aspect-[4/3] rounded-2xl bg-amber-200 border border-slate-300"></div>
-                  ))
-                )}
-              </div>
+              <InteractiveGallery 
+                images={validClassroomImages} 
+                altPrefix={`${institute.name} Classroom`} 
+                hasUltraAccess={hasUltraAccess} 
+              />
             </div>
           </section>
         )}
@@ -1003,23 +990,11 @@ export default async function InstitutePage({ params }: PageProps) {
               )}
 
               {/* Grid Content (Actual or Mock for Blur) */}
-              <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ${!hasUltraAccess ? 'opacity-40 pointer-events-none select-none grayscale-[50%]' : ''}`}>
-
-                {hasUltraAccess ? (
-                  // Actual Images
-                  validGalleryImages.map((url: string, idx: number) => (
-                    <div key={idx} className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200 bg-slate-100 shadow-sm group cursor-pointer">
-                      <img src={url} alt={`Gallery ${idx}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    </div>
-                  ))
-                ) : (
-                  // Mock Placeholders for Basic Plan (Creates a realistic blurred background)
-                  [1, 2, 3, 4].map((i: number) => (
-                    <div key={i} className="aspect-4/3 rounded-3xl bg-amber-200 animate-pulse border border-amber-500" />
-                  ))
-                )}
-
-              </div>
+              <InteractiveGallery 
+                images={validGalleryImages} 
+                altPrefix="Gallery Image" 
+                hasUltraAccess={hasUltraAccess} 
+              />
             </div>
           </section>
         )}
