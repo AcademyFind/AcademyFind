@@ -26,6 +26,9 @@ export async function GET() {
   <sitemap>
     <loc>${baseUrl}/sitemap-categories-city.xml</loc>
   </sitemap>
+  <sitemap>
+    <loc>${baseUrl}/sitemap-blogs.xml</loc>
+  </sitemap>
   ${instituteSitemaps}
 </sitemapindex>`;
 
