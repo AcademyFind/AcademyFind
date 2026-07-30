@@ -17,6 +17,7 @@ export async function getInstituteById(
       //batches:true,
       notablepersons:true,
       achievements:true,
+      operatingHours: { orderBy: { dayOfWeek: "asc" } },
 
       categories: {
         include: {

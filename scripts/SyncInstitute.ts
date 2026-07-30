@@ -44,7 +44,7 @@ export async function syncSingleInstituteToMeili(instituteId: string) {
       providerType: inst.providerType,
       averageRating: inst.averageRating ?? 0,
       reviewCount: inst.reviewCount ?? 0,
-      googleRating: inst.googleRating,             
+      googleRating: inst.googleRating,
       googleReviewCount: inst.googleReviewCount,
       isActive: inst.isActive,
       imageUrl: inst.imageUrl ?? "",
@@ -64,22 +64,22 @@ export async function syncSingleInstituteToMeili(instituteId: string) {
     };
 
     console.log(`Syncing ${documentId} to Meilisearch...`);
-    
+
     // Server action me synchronous delay avoid karne ke liye inline response send kiya
     await index.addDocuments([documentToSync]);
     console.log(`✅ Push request triggered successfully for ${documentId}!`);
 
     // Next.js paths Safe Runtime Check fallback wrapper
     const isNextRuntime = !!process.env.NEXT_RUNTIME || (typeof window === "undefined" && !process.env.INIT_CWD);
-    
+
     if (isNextRuntime) {
-       try {
-           revalidatePath(`/institute/${inst.id}-${inst.slug}`);
-           revalidatePath('/af-ass-manage/institutes');
-           console.log("⚡ Next.js paths revalidated successfully.");
-       } catch (revalidateError) {
-           console.warn("Skipping revalidatePath outside Web server environment.");
-       }
+      try {
+        revalidatePath(`/institute/${inst.id}-${inst.slug}`);
+        revalidatePath('/af-ass-manage/institutes');
+        console.log("⚡ Next.js paths revalidated successfully.");
+      } catch (revalidateError) {
+        console.warn("Skipping revalidatePath outside Web server environment.");
+      }
     }
 
     return { success: true, action: "synced" };
@@ -90,7 +90,7 @@ export async function syncSingleInstituteToMeili(instituteId: string) {
 }
 
 async function main() {
-  const instituteId = "cms51rkp1000004jr6wex10eu";
+  const instituteId = "cms7y08dm000004i5s51n9inj";
   try {
     console.log(`Starting sync for institute ID: ${instituteId}...`);
     await syncSingleInstituteToMeili(instituteId);

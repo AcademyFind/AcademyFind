@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
 import { v2 as cloudinary } from "cloudinary";
+import { syncSingleInstituteToMeili } from '@/scripts/SyncInstitute';
 
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -90,6 +91,12 @@ export async function createInstitute(formData: FormData, selectedCategoryIds: s
             }
             return institute;
         });
+
+        // Sync to MeiliSearch
+        const syncResult = await syncSingleInstituteToMeili(newInstitute.id);
+        if (!syncResult.success) {
+            console.error("Failed to sync new institute to Meilisearch:", syncResult.error);
+        }
 
         revalidatePath("/af-ass-manage/institutes");
         return { success: true, message: "Institute created successfully!", id: newInstitute.id };
@@ -270,6 +277,12 @@ export async function updateInstituteByAdmin(
                 }
             }
         });
+
+        // Sync to MeiliSearch
+        const syncResult = await syncSingleInstituteToMeili(instituteId);
+        if (!syncResult.success) {
+            console.error("Failed to sync updated institute to Meilisearch:", syncResult.error);
+        }
 
         // Revalidate Paths so the changes show up immediately everywhere!
         revalidatePath("/af-ass-manage/institutes");

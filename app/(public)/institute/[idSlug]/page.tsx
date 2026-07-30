@@ -641,6 +641,28 @@ export default async function InstitutePage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* 🚀 OPERATING HOURS */}
+        {institute.operatingHours && institute.operatingHours.length > 0 && (
+          <section className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2 mb-4">
+              <Clock className="w-5 h-5 text-amber-500" /> Weekly Operating Hours
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {institute.operatingHours.map((hour: any) => {
+                const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                return (
+                  <div key={hour.id} className="flex justify-between items-center bg-slate-50 border border-slate-100 rounded-xl p-3">
+                    <span className="font-semibold text-slate-700 text-sm">{days[hour.dayOfWeek] || `Day ${hour.dayOfWeek}`}</span>
+                    <span className={`text-xs font-bold px-2 py-1 rounded-md ${hour.isClosed ? 'bg-red-100 text-red-700' : 'bg-emerald-100 text-emerald-700'}`}>
+                      {hour.isClosed ? 'CLOSED' : `${hour.openTime} - ${hour.closeTime}`}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
         {/* 🚀 PROS & CONS */}
         {(institute.pros?.length > 0 || institute.cons?.length > 0) && (
           <section className="grid md:grid-cols-2 gap-6">
