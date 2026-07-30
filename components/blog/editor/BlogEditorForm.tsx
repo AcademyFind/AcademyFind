@@ -10,6 +10,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useEffect,
   useTransition,
 } from "react";
 import toast from "react-hot-toast";
@@ -144,6 +145,18 @@ export default function BlogEditorForm({
     "saved" | "saving" | "unsaved"
   >("saved");
   const [status, setStatus] = useState(initialData?.status ?? "DRAFT");
+
+  // Prevent accidental tab closing if there are unsaved changes
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (saveState === "unsaved") {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [saveState]);
   const [slugWasEdited, setSlugWasEdited] = useState(mode === "edit");
   const [tagInput, setTagInput] = useState("");
   const [adminControls, setAdminControls] = useState<AdminControls>(() => ({
