@@ -39,13 +39,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Blog Not Found | AcademyFind" };
   }
 
-  const title = `${post.title} | AcademyFind Blog`;
-  const description = post.excerpt || `Read ${post.title} on AcademyFind.`;
+  const title = post.metaTitle || `${post.title} | AcademyFind Blog`;
+  const description = post.metaDescription || post.excerpt || `Read ${post.title} on AcademyFind.`;
   const url = `https://academyfind.com/blog/${post.slug}`;
+
+  const keywords: string[] = [];
+  if (post.focusKeyword) keywords.push(post.focusKeyword);
+  if (post.tags) {
+    keywords.push(...post.tags.map((t: any) => t.tag.name));
+  }
 
   return {
     title,
     description,
+    keywords: keywords.length > 0 ? keywords : undefined,
     alternates: { canonical: url },
     openGraph: {
       title,
@@ -114,7 +121,7 @@ export default async function BlogDetailPage({
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 overflow-x-hidden">
       <Script id="schema-article" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <Script id="schema-breadcrumb-blog" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <ViewTracker postId={post.id} />
@@ -131,7 +138,7 @@ export default async function BlogDetailPage({
       />
 
       <div className="grid gap-10 xl:grid-cols-[minmax(0,1fr)_320px]">
-        <main>
+        <main className="min-w-0">
           <PostContent html={post.contentHtml} className="prose-lg" />
 
           <FAQSection faqs={post.faqs} />

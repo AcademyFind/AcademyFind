@@ -13,6 +13,11 @@ export async function getBlogPostBySlug(slug: string) {
                 authorProfile: true,
                 category: true,
                 brand: true,
+                tags: {
+                    include: {
+                        tag: true
+                    }
+                },
                 faqs: {
                     orderBy: {
                         order: "asc"

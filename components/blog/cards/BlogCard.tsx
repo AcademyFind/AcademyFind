@@ -22,7 +22,7 @@ export default function BlogCard({ post }: BlogCardProps) {
             src={post.coverImage || "/images/blog-placeholder.jpg"}
             alt={post.coverImageAlt || post.title}
             fill
-            className="object-cover transition duration-500 group-hover:scale-105"
+            className="object-contain bg-slate-100 transition duration-500 group-hover:scale-105"
           />
 
           {post.category && (

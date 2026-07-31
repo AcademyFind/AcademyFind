@@ -77,7 +77,7 @@ export default function BentoHero({ featuredPosts }: { featuredPosts: any[] }) {
                 src={mainPost.coverImage || DEFAULT_IMAGE}
                 alt={mainPost.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-contain bg-slate-950 transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
 
@@ -113,7 +113,7 @@ export default function BentoHero({ featuredPosts }: { featuredPosts: any[] }) {
                 src={sidePost1.coverImage || DEFAULT_IMAGE}
                 alt={sidePost1.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-contain bg-slate-950 transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
 
@@ -146,7 +146,7 @@ export default function BentoHero({ featuredPosts }: { featuredPosts: any[] }) {
                 src={sidePost2.coverImage || DEFAULT_IMAGE}
                 alt={sidePost2.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-contain bg-slate-950 transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
 

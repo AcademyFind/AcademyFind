@@ -72,7 +72,7 @@ export default function FeaturedPosts({ posts }: FeaturedPostsProps) {
                   src={mainPost.coverImage || DEFAULT_IMAGE}
                   alt={mainPost.title}
                   fill
-                  className="object-cover transition duration-700 group-hover:scale-105"
+                  className="object-contain bg-slate-100 transition duration-700 group-hover:scale-105"
                 />
 
                 <div className="absolute left-6 top-6 rounded-full bg-amber-400 px-4 py-2 text-sm font-bold text-slate-900">
@@ -128,7 +128,7 @@ export default function FeaturedPosts({ posts }: FeaturedPostsProps) {
                     src={post.coverImage || DEFAULT_IMAGE}
                     alt={post.title}
                     fill
-                    className="object-cover transition duration-500 group-hover:scale-105"
+                    className="object-contain bg-slate-100 transition duration-500 group-hover:scale-105"
                   />
                 </div>
 
