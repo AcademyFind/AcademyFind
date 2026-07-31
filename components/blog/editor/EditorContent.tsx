@@ -114,9 +114,12 @@ export default function EditorContent({ editor }: Props) {
           [&_.ProseMirror_img]:my-8
           [&_.ProseMirror_img]:max-w-full
 
+          [&_.ProseMirror_.tableWrapper]:overflow-x-auto
+          [&_.ProseMirror_.tableWrapper]:my-6
+          [&_.ProseMirror_.tableWrapper]:max-w-full
           [&_.ProseMirror_table]:w-full
           [&_.ProseMirror_table]:border-collapse
-          [&_.ProseMirror_table]:my-6
+          [&_.ProseMirror_table]:my-0
           [&_.ProseMirror_table]:overflow-hidden
           [&_.ProseMirror_table]:rounded-xl
           [&_.ProseMirror_table]:shadow-sm

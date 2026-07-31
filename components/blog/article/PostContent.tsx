@@ -139,10 +139,14 @@ export default function PostContent({ html, className }: PostContentProps) {
         // ---------------------------
         // Tables
         // ---------------------------
-        "prose-table:block",
+        "[&_.tableWrapper]:overflow-x-auto",
+        "[&_.tableWrapper]:max-w-full",
+        "[&_.tableWrapper]:w-full",
+        "[&_.tableWrapper]:my-8",
+        
         "prose-table:w-full",
-        "prose-table:overflow-x-auto",
         "prose-table:border-collapse",
+        "prose-table:my-0",
 
         "prose-th:bg-slate-100",
         "prose-th:border",
