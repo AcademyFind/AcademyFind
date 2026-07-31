@@ -178,7 +178,7 @@ export default async function BlogPage({ searchParams }: Props) {
   };
 
   return (
-    <>
+    <div className="overflow-x-hidden min-w-0 w-full flex flex-col">
       <Script id="schema-blog-collection" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }} />
       <BentoHero featuredPosts={featuredPosts} />
       <LatestPosts posts={latestPosts} />
@@ -188,6 +188,6 @@ export default async function BlogPage({ searchParams }: Props) {
       <CategoryTabs activeCategorySlug={categorySlug} categories={categories} />
       <Newsletter />
       <CTASection stats={stats} />
-    </>
+    </div>
   );
 }

@@ -52,17 +52,17 @@ export default async function AdminInstituteDashboard({ params }: { params: Prom
         select: { city: true, deviceType: true, duration: true }
     });
 
-    const avgDuration = visits.length > 0 
-        ? Math.round(visits.reduce((acc, curr) => acc + curr.duration, 0) / visits.length) 
+    const avgDuration = visits.length > 0
+        ? Math.round(visits.reduce((acc: number, curr: { duration: number; }) => acc + curr.duration, 0) / visits.length)
         : 0;
 
     const deviceMap: Record<string, number> = {};
     const cityMap: Record<string, number> = {};
-    
+
     visits.forEach(v => {
         const dev = v.deviceType || "Unknown";
         deviceMap[dev] = (deviceMap[dev] || 0) + 1;
-        
+
         const city = v.city || "Unknown";
         cityMap[city] = (cityMap[city] || 0) + 1;
     });
