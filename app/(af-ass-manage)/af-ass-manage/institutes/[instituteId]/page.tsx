@@ -59,7 +59,7 @@ export default async function AdminInstituteDashboard({ params }: { params: Prom
     const deviceMap: Record<string, number> = {};
     const cityMap: Record<string, number> = {};
 
-    visits.forEach(v => {
+    visits.forEach((v: any) => {
         const dev = v.deviceType || "Unknown";
         deviceMap[dev] = (deviceMap[dev] || 0) + 1;
 
@@ -69,8 +69,8 @@ export default async function AdminInstituteDashboard({ params }: { params: Prom
 
     const deviceData = Object.keys(deviceMap).map(k => ({ name: k, value: deviceMap[k] }));
     const cityData = Object.keys(cityMap)
-        .map(k => ({ name: k, value: cityMap[k] }))
-        .sort((a, b) => b.value - a.value);
+        .map((k: any) => ({ name: k, value: cityMap[k] }))
+        .sort((a: { value: number; }, b: { value: number; }) => b.value - a.value);
 
     const analyticsData = {
         deviceData,
