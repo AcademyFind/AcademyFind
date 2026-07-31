@@ -867,9 +867,9 @@ export default function BlogEditorForm({
                     {form.tagNames.map((tag) => (
                       <Badge
                         key={tag.toLocaleLowerCase()}
-                        className="bg-amber-50 text-amber-800 hover:bg-amber-100 hover:text-amber-900 rounded-lg px-2.5 py-1 text-xs border border-amber-100/50 shadow-xs flex items-center gap-1.5"
+                        className="bg-amber-50 text-amber-800 hover:bg-amber-100 hover:text-amber-900 rounded-lg px-2.5 py-1 text-xs border border-amber-100/50 shadow-xs flex items-center gap-1.5 max-w-full"
                       >
-                        {tag}
+                        <span className="truncate">{tag}</span>
                         <button
                           type="button"
                           aria-label={`Remove ${tag}`}
@@ -879,7 +879,7 @@ export default function BlogEditorForm({
                               form.tagNames.filter((item) => item !== tag),
                             )
                           }
-                          className="rounded-full hover:bg-amber-200/50 p-0.5 hover:text-red-600 transition-colors"
+                          className="rounded-full hover:bg-amber-200/50 p-0.5 hover:text-red-600 transition-colors shrink-0"
                         >
                           <X className="size-3" />
                         </button>
