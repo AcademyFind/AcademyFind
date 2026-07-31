@@ -34,3 +34,11 @@ export function formatIST(dateInput: string | Date, formatStr: string = "PPP 'at
   // Now pass this "shifted" date to date-fns
   return dateFnsFormat(localIstDate, formatStr);
 }
+
+export function calculateReadingTime(html: string): number {
+  if (!html) return 1;
+  const text = html.replace(/<[^>]+>/g, " ");
+  const words = text.trim().split(/\s+/).length;
+  const readingTime = Math.ceil(words / 200);
+  return readingTime > 0 ? readingTime : 1;
+}

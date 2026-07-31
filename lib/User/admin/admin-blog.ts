@@ -9,6 +9,7 @@ import type { BlogEditorSaveInput } from "@/components/blog/editor/types";
 import { getCachedSession } from "@/lib/auth/session";
 import { prisma } from "@/lib/prisma";
 import { syncBlogPostToMeili, deleteBlogPostFromMeili } from "@/lib/User/user/blog/meilisync";
+import { calculateReadingTime } from "@/lib/utils";
 import { Resend } from "resend";
 
 const adminBlogSchema = z.object({
@@ -171,6 +172,7 @@ export async function saveAdminBlogPost(
       isPinned: value.admin.isPinned,
       allowComments: value.admin.allowComments,
       scheduledAt,
+      readingTime: calculateReadingTime(value.contentHtml),
       rejectionReason:
         requestedStatus === "REJECTED"
           ? value.admin.rejectionReason || null

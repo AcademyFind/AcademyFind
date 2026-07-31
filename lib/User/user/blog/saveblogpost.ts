@@ -8,6 +8,7 @@ import type { BlogEditorSaveInput } from "@/components/blog/editor/types";
 import { getCachedSession } from "@/lib/auth/session";
 import { prisma } from "@/lib/prisma";
 import { syncBlogPostToMeili } from "./meilisync";
+import { calculateReadingTime } from "@/lib/utils";
 
 const blogEditorSchema = z.object({
   id: z.string().min(1).optional(),
@@ -170,6 +171,7 @@ async function persistBlogPost(
     focusKeyword: value.focusKeyword || null,
     status,
     publishedAt,
+    readingTime: calculateReadingTime(value.contentHtml),
     ...(value.intent === "publish" ? { submittedAt: new Date() } : {}),
   } as const;
 
