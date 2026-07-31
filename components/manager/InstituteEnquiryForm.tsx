@@ -89,8 +89,7 @@ export default function InstituteEnquiryForm({
             placeholder="Name*"
             className="w-full p-3 text-sm border border-slate-200 rounded-xl focus:bg-white focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 outline-none transition-all duration-300"
           />
-          <div className="relative flex items-center">
-            <span className="absolute left-3.5 text-slate-500 font-medium text-sm pointer-events-none">+91</span>
+          <div className="relative flex items-center w-full py-3 px-3 text-sm border border-slate-200 rounded-xl focus-within:bg-white focus-within:border-amber-400 focus-within:ring-4 focus-within:ring-amber-400/20 transition-all duration-300">
             <input
               required
               name="phone"
@@ -98,9 +97,12 @@ export default function InstituteEnquiryForm({
               type="tel"
               value={mobile}
               onChange={(e) => setMobile(e.target.value.replace(/\D/g, ''))}
-              placeholder="Mobile*"
-              className="w-full py-3 pr-3 pl-11 text-sm border border-slate-200 rounded-xl focus:bg-white focus:border-amber-400 focus:ring-4 focus:ring-amber-400/20 outline-none transition-all duration-300"
+              placeholder="Mobile* +91"
+              className="peer order-2 flex-1 bg-transparent outline-none border-none min-w-0 p-0 text-slate-900 placeholder:text-slate-500 focus:placeholder:text-transparent"
             />
+            <span className="hidden peer-focus:inline-block peer-[:not(:placeholder-shown)]:inline-block order-1 text-slate-900 font-medium whitespace-nowrap pointer-events-none mr-2">
+              +91
+            </span>
           </div>
           <input
             name="email"
