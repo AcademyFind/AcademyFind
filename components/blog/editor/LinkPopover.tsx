@@ -135,8 +135,8 @@ export default function LinkPopover({
           <Button
             type="button"
             onMouseDown={(e) => e.preventDefault()} // Prevents losing focus on editor
-            size="icon"
-            className="text-left text-xs p-1.5 hover:bg-slate-100 rounded transition-colors"
+            size="sm"
+            className="text-xs transition-colors"
             variant="destructive"
             onClick={removeLink}
           >
