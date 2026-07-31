@@ -57,12 +57,12 @@ export default async function AnalyticsPage({ params }: { params: Promise<{ inst
 
     // Calculate average duration
     const avgDuration = visits.length > 0
-        ? Math.round(visits.reduce((acc, curr) => acc + curr.duration, 0) / visits.length)
+        ? Math.round(visits.reduce((acc: number, curr: { duration: number; }) => acc + curr.duration, 0) / visits.length)
         : 0;
 
     // Aggregate Device data
     const deviceMap: Record<string, number> = {};
-    visits.forEach(v => {
+    visits.forEach((v: any) => {
         const dev = v.deviceType || "Unknown";
         deviceMap[dev] = (deviceMap[dev] || 0) + 1;
     });
@@ -70,13 +70,13 @@ export default async function AnalyticsPage({ params }: { params: Promise<{ inst
 
     // Aggregate City data
     const cityMap: Record<string, number> = {};
-    visits.forEach(v => {
+    visits.forEach((v: any) => {
         const city = v.city || "Unknown";
         cityMap[city] = (cityMap[city] || 0) + 1;
     });
     const cityData = Object.keys(cityMap)
-        .map(k => ({ name: k, value: cityMap[k] }))
-        .sort((a, b) => b.value - a.value); // Sort descending
+        .map((k: any) => ({ name: k, value: cityMap[k] }))
+        .sort((a: { value: number; }, b: { value: number; }) => b.value - a.value); // Sort descending
 
     return (
         <div className="space-y-6 animate-in fade-in duration-500">
