@@ -33,16 +33,16 @@ export default function SearchBar() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search articles, coaching, exams..."
-          className="h-12 flex-1 bg-transparent px-4 text-base text-slate-700 placeholder:text-slate-400 focus:outline-none"
+          className="h-12 flex-1 min-w-0 bg-transparent px-2 sm:px-4 text-base text-slate-700 placeholder:text-slate-400 focus:outline-none"
         />
 
         {/* Search Button */}
 
         <button
           type="submit"
-          className="inline-flex items-center gap-2 rounded-xl bg-amber-400 px-5 py-3 text-sm font-semibold text-slate-900 transition-all hover:bg-amber-500 active:scale-[0.98]"
+          className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-amber-400 px-4 sm:px-5 py-3 text-sm font-semibold text-slate-900 transition-all hover:bg-amber-500 active:scale-[0.98]"
         >
-          Search
+          <span className="hidden sm:inline">Search</span>
 
           <ArrowRight className="h-4 w-4" />
         </button>

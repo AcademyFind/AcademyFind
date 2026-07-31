@@ -26,42 +26,42 @@ export default function BentoHero({ featuredPosts }: { featuredPosts: any[] }) {
         <div className="grid gap-6 lg:grid-cols-12 lg:grid-rows-[auto_auto] lg:gap-8">
 
           {/* Main Hero Copy - Spans 7 cols on Desktop */}
-          <div className="flex flex-col justify-center rounded-3xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-100 lg:col-span-7 lg:p-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="flex min-w-0 flex-col justify-center rounded-3xl bg-white p-5 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-slate-100 lg:col-span-7 lg:p-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="inline-flex items-center gap-2 self-start rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-700 ring-1 ring-amber-200/50">
-              <Sparkles className="h-4 w-4" />
+              <Sparkles className="h-4 w-4 shrink-0" />
               The AcademyFind Blog
             </div>
-            <h1 className="mt-8 text-5xl font-black tracking-tight text-slate-900 sm:text-6xl lg:text-7xl font-serif">
+            <h1 className="mt-6 sm:mt-8 text-4xl sm:text-5xl font-black tracking-tight text-slate-900 lg:text-7xl font-serif">
               Fuel your <br />
               <span className="bg-gradient-to-r from-amber-600 to-amber-500 bg-clip-text text-transparent">
                 Curiosity.
               </span>
             </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-600">
+            <p className="mt-4 sm:mt-6 max-w-lg text-base sm:text-lg leading-relaxed text-slate-600">
               Discover the absolute best coaching reviews, expert preparation strategies, and deep dives into the Indian education system.
             </p>
 
-            <div className="mt-10">
+            <div className="mt-6 sm:mt-10">
               {/* Inherits search bar but we wrap it to restrict width if needed */}
-              <div className="[&>form]:mx-0 [&>form]:max-w-xl">
+              <div className="[&>form]:mx-0 [&>form]:max-w-xl w-full min-w-0">
                 <SearchBar />
               </div>
             </div>
 
-            <div className="mt-8 [&_.text-slate-500]:text-slate-500 [&_a]:bg-slate-100 [&_a]:text-slate-700 [&_a:hover]:bg-amber-100 [&_a:hover]:text-amber-700">
+            <div className="mt-6 sm:mt-8 [&_.text-slate-500]:text-slate-500 [&_a]:bg-slate-100 [&_a]:text-slate-700 [&_a:hover]:bg-amber-100 [&_a:hover]:text-amber-700 w-full min-w-0">
               <TrendingTopics />
             </div>
 
             {/* Writer Call to Action */}
-            <div className="mt-8 flex items-center gap-3 border-t border-slate-100 pt-6">
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-6">
               <span className="text-sm text-slate-500">Interested in writing for us?</span>
-              <Link 
-                href="/blog/write" 
+              <Link
+                href="/blog/write"
                 prefetch={false}
                 className="group flex items-center gap-1.5 text-sm font-semibold text-amber-600 transition-colors hover:text-amber-700"
               >
                 Join the Creator Workspace
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
