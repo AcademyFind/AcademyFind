@@ -9,6 +9,7 @@ import type { BlogEditorSaveInput } from "@/components/blog/editor/types";
 import { getCachedSession } from "@/lib/auth/session";
 import { prisma } from "@/lib/prisma";
 import { syncBlogPostToMeili, deleteBlogPostFromMeili } from "@/lib/User/user/blog/meilisync";
+import { Resend } from "resend";
 
 const adminBlogSchema = z.object({
   id: z.string().min(1).optional(),
@@ -239,7 +240,7 @@ export async function saveAdminBlogPost(
     await syncBlogPostToMeili(post.id);
 
     // 🚀 Reward 5 AFC if post is newly published
-    if (requestedStatus === "PUBLISHED" && existing?.status !== "PUBLISHED" && existing?.authorProfile?.userId) {
+    if (requestedStatus === "PUBLISHED" && !existing?.publishedAt && existing?.authorProfile?.userId) {
       await creditWallet(existing.authorProfile.userId, 5, "BLOG_POST", "Blog post published", post.id);
     }
 
@@ -326,7 +327,7 @@ export async function updateAdminBlogStatus(postId: string, status: "PUBLISHED" 
     const adminUser = await requireAdmin();
     const existing = await prisma.blogPost.findUnique({
       where: { id: postId },
-      select: { authorProfile: { select: { userId: true } }, status: true }
+      select: { title: true, publishedAt: true, authorProfile: { select: { userId: true } }, status: true }
     });
 
     if (!existing) {
@@ -348,8 +349,46 @@ export async function updateAdminBlogStatus(postId: string, status: "PUBLISHED" 
     if (status === "PUBLISHED") {
       await syncBlogPostToMeili(postId);
       // Reward if it was not already published
-      if (existing.status !== "PUBLISHED" && existing.authorProfile?.userId) {
+      if (!existing.publishedAt && existing.authorProfile?.userId) {
         await creditWallet(existing.authorProfile.userId, 5, "BLOG_POST", "Blog post published", postId);
+        
+        try {
+          const user = await prisma.user.findUnique({
+            where: { id: existing.authorProfile.userId },
+            select: { name: true, email: true }
+          });
+          
+          if (user?.email) {
+            const resend = new Resend(process.env.RESEND_API_KEY!);
+            await resend.emails.send({
+              from: 'AcademyFind <Verification@academyfind.com>',
+              to: user.email,
+              subject: '🎉 Your Blog Post has been Published!',
+              html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 10px;">
+                  <h2 style="color: #333;">Hello ${user.name || 'Contributor'},</h2>
+                  <p style="color: #555; font-size: 16px; line-height: 1.5;">
+                    Great news! Your blog post <strong>"${existing.title}"</strong> has been approved by our admin team and is now published on AcademyFind.
+                  </p>
+                  <p style="color: #555; font-size: 16px; line-height: 1.5;">
+                    It's now visible to our entire community. Thank you for sharing your valuable insights with us!
+                  </p>
+                  <div style="text-align: center; margin: 30px 0;">
+                    <a href="https://academyfind.com/blog/${post.slug}" style="background-color: #d97706; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">View Your Post</a>
+                  </div>
+                  <p style="color: #555; font-size: 16px; line-height: 1.5;">
+                    Keep the momentum going! Write and upload more blogs to earn rewards and grow your profile.
+                  </p>
+                  <p style="color: #555; font-size: 16px; line-height: 1.5;">
+                    Best regards,<br/>The AcademyFind Team
+                  </p>
+                </div>
+              `
+            });
+          }
+        } catch (e) {
+          console.error("Error sending blog approval email:", e);
+        }
       }
     } else if (status === "REJECTED") {
       await deleteBlogPostFromMeili(postId);
