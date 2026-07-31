@@ -3,6 +3,7 @@ import { Lock, BarChart3, Users, Bookmark, Clock } from "lucide-react";
 import Link from "next/link";
 import { format } from "date-fns";
 import { formatIST } from "@/lib/utils"; // Date format karne ke liye
+import { DemographicsCharts } from "@/components/manager/AnalyticsCharts";
 
 export default async function AnalyticsPage({ params }: { params: Promise<{ instituteId: string }> }) {
     const { instituteId } = await params;
@@ -21,7 +22,7 @@ export default async function AnalyticsPage({ params }: { params: Promise<{ inst
             viewHistory: {
                 include: { user: { select: { name: true, email: true, image: true, username: true } } },
                 orderBy: { viewedAt: 'desc' },
-                take: 50 
+                take: 50
             }
         }
     });
@@ -47,6 +48,36 @@ export default async function AnalyticsPage({ params }: { params: Promise<{ inst
     }
 
     // 🔓 UNLOCKED VIEW FOR ULTRA
+
+    // Fetch Detailed Analytics Data (New Feature)
+    const visits = await prisma.instituteVisit.findMany({
+        where: { instituteId },
+        select: { city: true, deviceType: true, duration: true }
+    });
+
+    // Calculate average duration
+    const avgDuration = visits.length > 0
+        ? Math.round(visits.reduce((acc, curr) => acc + curr.duration, 0) / visits.length)
+        : 0;
+
+    // Aggregate Device data
+    const deviceMap: Record<string, number> = {};
+    visits.forEach(v => {
+        const dev = v.deviceType || "Unknown";
+        deviceMap[dev] = (deviceMap[dev] || 0) + 1;
+    });
+    const deviceData = Object.keys(deviceMap).map(k => ({ name: k, value: deviceMap[k] }));
+
+    // Aggregate City data
+    const cityMap: Record<string, number> = {};
+    visits.forEach(v => {
+        const city = v.city || "Unknown";
+        cityMap[city] = (cityMap[city] || 0) + 1;
+    });
+    const cityData = Object.keys(cityMap)
+        .map(k => ({ name: k, value: cityMap[k] }))
+        .sort((a, b) => b.value - a.value); // Sort descending
+
     return (
         <div className="space-y-6 animate-in fade-in duration-500">
             <div>
@@ -76,10 +107,17 @@ export default async function AnalyticsPage({ params }: { params: Promise<{ inst
                     </div>
                 </div>
             </div>
-            
-            {/* 🚀 NEW: Detailed Lists of Users */}
+
+            {/* 🚀 NEW: Demographics & Engagement Charts */}
+            <DemographicsCharts
+                cityData={cityData}
+                deviceData={deviceData}
+                avgDuration={avgDuration}
+            />
+
+            {/* 🚀 Detailed Lists of Users */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
-                
+
                 {/* Shortlisted Users List */}
                 <div className="border border-stone-100 bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col h-[500px]">
                     <div className="p-5 border-b bg-stone-50 flex items-center justify-between">
@@ -96,11 +134,11 @@ export default async function AnalyticsPage({ params }: { params: Promise<{ inst
                             </div>
                         ) : (
                             institute.shortlistedBy.map((item) => (
-                                <UserListItem 
-                                    key={item.userId} 
-                                    user={item.user} 
-                                    date={item.createdAt} 
-                                    actionType="Saved" 
+                                <UserListItem
+                                    key={item.userId}
+                                    user={item.user}
+                                    date={item.createdAt}
+                                    actionType="Saved"
                                 />
                             ))
                         )}
@@ -123,11 +161,11 @@ export default async function AnalyticsPage({ params }: { params: Promise<{ inst
                             </div>
                         ) : (
                             institute.viewHistory.map((item) => (
-                                <UserListItem 
-                                    key={item.id} 
-                                    user={item.user} 
-                                    date={item.viewedAt} 
-                                    actionType="Viewed" 
+                                <UserListItem
+                                    key={item.id}
+                                    user={item.user}
+                                    date={item.viewedAt}
+                                    actionType="Viewed"
                                 />
                             ))
                         )}

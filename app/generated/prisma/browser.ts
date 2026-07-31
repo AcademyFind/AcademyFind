@@ -258,6 +258,11 @@ export type GeneralResume = Prisma.GeneralResumeModel
  */
 export type InstituteDailyView = Prisma.InstituteDailyViewModel
 /**
+ * Model InstituteVisit
+ * 
+ */
+export type InstituteVisit = Prisma.InstituteVisitModel
+/**
  * Model InstituteFacility
  * 
  */

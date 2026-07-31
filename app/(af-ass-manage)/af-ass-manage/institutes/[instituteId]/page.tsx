@@ -46,7 +46,39 @@ export default async function AdminInstituteDashboard({ params }: { params: Prom
 
     if (!institute) return notFound();
 
+    // Fetch Detailed Analytics Data for Admin
+    const visits = await prisma.instituteVisit.findMany({
+        where: { instituteId },
+        select: { city: true, deviceType: true, duration: true }
+    });
+
+    const avgDuration = visits.length > 0 
+        ? Math.round(visits.reduce((acc, curr) => acc + curr.duration, 0) / visits.length) 
+        : 0;
+
+    const deviceMap: Record<string, number> = {};
+    const cityMap: Record<string, number> = {};
+    
+    visits.forEach(v => {
+        const dev = v.deviceType || "Unknown";
+        deviceMap[dev] = (deviceMap[dev] || 0) + 1;
+        
+        const city = v.city || "Unknown";
+        cityMap[city] = (cityMap[city] || 0) + 1;
+    });
+
+    const deviceData = Object.keys(deviceMap).map(k => ({ name: k, value: deviceMap[k] }));
+    const cityData = Object.keys(cityMap)
+        .map(k => ({ name: k, value: cityMap[k] }))
+        .sort((a, b) => b.value - a.value);
+
+    const analyticsData = {
+        deviceData,
+        cityData,
+        avgDuration
+    };
+
     return (
-        <AdminInstituteDashboardClient institute={institute} />
+        <AdminInstituteDashboardClient institute={institute} analyticsData={analyticsData} />
     );
 }

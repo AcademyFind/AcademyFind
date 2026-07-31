@@ -99,6 +99,7 @@ export const ModelName = {
   JobApplication: 'JobApplication',
   GeneralResume: 'GeneralResume',
   InstituteDailyView: 'InstituteDailyView',
+  InstituteVisit: 'InstituteVisit',
   InstituteFacility: 'InstituteFacility',
   InstituteBatch: 'InstituteBatch',
   BatchStudent: 'BatchStudent',
@@ -956,6 +957,25 @@ export const InstituteDailyViewScalarFieldEnum = {
 } as const
 
 export type InstituteDailyViewScalarFieldEnum = (typeof InstituteDailyViewScalarFieldEnum)[keyof typeof InstituteDailyViewScalarFieldEnum]
+
+
+export const InstituteVisitScalarFieldEnum = {
+  id: 'id',
+  instituteId: 'instituteId',
+  userId: 'userId',
+  sessionId: 'sessionId',
+  city: 'city',
+  country: 'country',
+  region: 'region',
+  os: 'os',
+  browser: 'browser',
+  deviceType: 'deviceType',
+  duration: 'duration',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InstituteVisitScalarFieldEnum = (typeof InstituteVisitScalarFieldEnum)[keyof typeof InstituteVisitScalarFieldEnum]
 
 
 export const InstituteFacilityScalarFieldEnum = {

@@ -432,6 +432,7 @@ export const ModelName = {
   JobApplication: 'JobApplication',
   GeneralResume: 'GeneralResume',
   InstituteDailyView: 'InstituteDailyView',
+  InstituteVisit: 'InstituteVisit',
   InstituteFacility: 'InstituteFacility',
   InstituteBatch: 'InstituteBatch',
   BatchStudent: 'BatchStudent',
@@ -483,7 +484,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill"
+    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteVisit" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -4039,6 +4040,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    InstituteVisit: {
+      payload: Prisma.$InstituteVisitPayload<ExtArgs>
+      fields: Prisma.InstituteVisitFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.InstituteVisitFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.InstituteVisitFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload>
+        }
+        findFirst: {
+          args: Prisma.InstituteVisitFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.InstituteVisitFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload>
+        }
+        findMany: {
+          args: Prisma.InstituteVisitFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload>[]
+        }
+        create: {
+          args: Prisma.InstituteVisitCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload>
+        }
+        createMany: {
+          args: Prisma.InstituteVisitCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.InstituteVisitCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload>[]
+        }
+        delete: {
+          args: Prisma.InstituteVisitDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload>
+        }
+        update: {
+          args: Prisma.InstituteVisitUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload>
+        }
+        deleteMany: {
+          args: Prisma.InstituteVisitDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.InstituteVisitUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.InstituteVisitUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload>[]
+        }
+        upsert: {
+          args: Prisma.InstituteVisitUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$InstituteVisitPayload>
+        }
+        aggregate: {
+          args: Prisma.InstituteVisitAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateInstituteVisit>
+        }
+        groupBy: {
+          args: Prisma.InstituteVisitGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InstituteVisitGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.InstituteVisitCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.InstituteVisitCountAggregateOutputType> | number
+        }
+      }
+    }
     InstituteFacility: {
       payload: Prisma.$InstituteFacilityPayload<ExtArgs>
       fields: Prisma.InstituteFacilityFieldRefs
@@ -7547,6 +7622,25 @@ export const InstituteDailyViewScalarFieldEnum = {
 export type InstituteDailyViewScalarFieldEnum = (typeof InstituteDailyViewScalarFieldEnum)[keyof typeof InstituteDailyViewScalarFieldEnum]
 
 
+export const InstituteVisitScalarFieldEnum = {
+  id: 'id',
+  instituteId: 'instituteId',
+  userId: 'userId',
+  sessionId: 'sessionId',
+  city: 'city',
+  country: 'country',
+  region: 'region',
+  os: 'os',
+  browser: 'browser',
+  deviceType: 'deviceType',
+  duration: 'duration',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InstituteVisitScalarFieldEnum = (typeof InstituteVisitScalarFieldEnum)[keyof typeof InstituteVisitScalarFieldEnum]
+
+
 export const InstituteFacilityScalarFieldEnum = {
   id: 'id',
   instituteId: 'instituteId',
@@ -8828,6 +8922,7 @@ export type GlobalOmitConfig = {
   jobApplication?: Prisma.JobApplicationOmit
   generalResume?: Prisma.GeneralResumeOmit
   instituteDailyView?: Prisma.InstituteDailyViewOmit
+  instituteVisit?: Prisma.InstituteVisitOmit
   instituteFacility?: Prisma.InstituteFacilityOmit
   instituteBatch?: Prisma.InstituteBatchOmit
   batchStudent?: Prisma.BatchStudentOmit

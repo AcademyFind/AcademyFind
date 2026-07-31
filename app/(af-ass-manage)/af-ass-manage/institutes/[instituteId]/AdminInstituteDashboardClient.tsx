@@ -22,8 +22,9 @@ import ClassroomImages from "@/app/(public)/manager/[instituteId]/profile/edit/E
 import EditFAQs from "@/app/(public)/manager/[instituteId]/profile/edit/EditFAQS";
 import EditAchievements from "@/app/(public)/manager/[instituteId]/profile/edit/EditAchievements";
 import EditNotablePersons from "@/app/(public)/manager/[instituteId]/profile/edit/EditNotablePersons";
+import { DemographicsCharts } from "@/components/manager/AnalyticsCharts";
 
-export function AdminInstituteDashboardClient({ institute }: { institute: any }) {
+export function AdminInstituteDashboardClient({ institute, analyticsData }: { institute: any, analyticsData?: any }) {
 
     const formatChartData = () => {
         if (!institute.dailyViews || institute.dailyViews.length === 0) return [];
@@ -141,6 +142,17 @@ export function AdminInstituteDashboardClient({ institute }: { institute: any })
                                             <div className="flex items-center justify-center h-full bg-stone-50 rounded-xl border border-stone-100 text-stone-500 text-sm">No daily view data available yet.</div>
                                         )}
                                     </div>
+
+                                    {analyticsData && (
+                                        <div className="mt-8">
+                                            <h4 className="text-sm font-bold text-stone-800 mb-2">Visitor Demographics & Engagement</h4>
+                                            <DemographicsCharts 
+                                                cityData={analyticsData.cityData} 
+                                                deviceData={analyticsData.deviceData} 
+                                                avgDuration={analyticsData.avgDuration} 
+                                            />
+                                        </div>
+                                    )}
 
                                     <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
                                         <div>

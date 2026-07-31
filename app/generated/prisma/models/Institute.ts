@@ -717,6 +717,7 @@ export type InstituteWhereInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheListRelationFilter
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheListRelationFilter
   dailyViews?: Prisma.InstituteDailyViewListRelationFilter
+  visits?: Prisma.InstituteVisitListRelationFilter
   enquiries?: Prisma.InstituteEnquiryListRelationFilter
   facilities?: Prisma.InstituteFacilityListRelationFilter
   faqs?: Prisma.InstituteFAQListRelationFilter
@@ -813,6 +814,7 @@ export type InstituteOrderByWithRelationInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheOrderByRelationAggregateInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheOrderByRelationAggregateInput
   dailyViews?: Prisma.InstituteDailyViewOrderByRelationAggregateInput
+  visits?: Prisma.InstituteVisitOrderByRelationAggregateInput
   enquiries?: Prisma.InstituteEnquiryOrderByRelationAggregateInput
   facilities?: Prisma.InstituteFacilityOrderByRelationAggregateInput
   faqs?: Prisma.InstituteFAQOrderByRelationAggregateInput
@@ -912,6 +914,7 @@ export type InstituteWhereUniqueInput = Prisma.AtLeast<{
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheListRelationFilter
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheListRelationFilter
   dailyViews?: Prisma.InstituteDailyViewListRelationFilter
+  visits?: Prisma.InstituteVisitListRelationFilter
   enquiries?: Prisma.InstituteEnquiryListRelationFilter
   facilities?: Prisma.InstituteFacilityListRelationFilter
   faqs?: Prisma.InstituteFAQListRelationFilter
@@ -1149,6 +1152,7 @@ export type InstituteCreateInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -1244,6 +1248,7 @@ export type InstituteUncheckedCreateInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -1339,6 +1344,7 @@ export type InstituteUpdateInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -1434,6 +1440,7 @@ export type InstituteUncheckedUpdateInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -2260,6 +2267,20 @@ export type InstituteUpdateOneRequiredWithoutDailyViewsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutDailyViewsInput, Prisma.InstituteUpdateWithoutDailyViewsInput>, Prisma.InstituteUncheckedUpdateWithoutDailyViewsInput>
 }
 
+export type InstituteCreateNestedOneWithoutVisitsInput = {
+  create?: Prisma.XOR<Prisma.InstituteCreateWithoutVisitsInput, Prisma.InstituteUncheckedCreateWithoutVisitsInput>
+  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutVisitsInput
+  connect?: Prisma.InstituteWhereUniqueInput
+}
+
+export type InstituteUpdateOneRequiredWithoutVisitsNestedInput = {
+  create?: Prisma.XOR<Prisma.InstituteCreateWithoutVisitsInput, Prisma.InstituteUncheckedCreateWithoutVisitsInput>
+  connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutVisitsInput
+  upsert?: Prisma.InstituteUpsertWithoutVisitsInput
+  connect?: Prisma.InstituteWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.InstituteUpdateToOneWithWhereWithoutVisitsInput, Prisma.InstituteUpdateWithoutVisitsInput>, Prisma.InstituteUncheckedUpdateWithoutVisitsInput>
+}
+
 export type InstituteCreateNestedOneWithoutFacilitiesInput = {
   create?: Prisma.XOR<Prisma.InstituteCreateWithoutFacilitiesInput, Prisma.InstituteUncheckedCreateWithoutFacilitiesInput>
   connectOrCreate?: Prisma.InstituteCreateOrConnectWithoutFacilitiesInput
@@ -2520,6 +2541,7 @@ export type InstituteCreateWithoutCityInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -2614,6 +2636,7 @@ export type InstituteUncheckedCreateWithoutCityInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -2804,6 +2827,7 @@ export type InstituteCreateWithoutCategoriesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -2898,6 +2922,7 @@ export type InstituteUncheckedCreateWithoutCategoriesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -3008,6 +3033,7 @@ export type InstituteUpdateWithoutCategoriesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -3102,6 +3128,7 @@ export type InstituteUncheckedUpdateWithoutCategoriesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -3196,6 +3223,7 @@ export type InstituteCreateWithoutManagersInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -3290,6 +3318,7 @@ export type InstituteUncheckedCreateWithoutManagersInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -3400,6 +3429,7 @@ export type InstituteUpdateWithoutManagersInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -3494,6 +3524,7 @@ export type InstituteUncheckedUpdateWithoutManagersInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -3588,6 +3619,7 @@ export type InstituteCreateWithoutReviewsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -3682,6 +3714,7 @@ export type InstituteUncheckedCreateWithoutReviewsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -3792,6 +3825,7 @@ export type InstituteUpdateWithoutReviewsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -3886,6 +3920,7 @@ export type InstituteUncheckedUpdateWithoutReviewsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -3980,6 +4015,7 @@ export type InstituteCreateWithoutClaimsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -4074,6 +4110,7 @@ export type InstituteUncheckedCreateWithoutClaimsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -4184,6 +4221,7 @@ export type InstituteUpdateWithoutClaimsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -4278,6 +4316,7 @@ export type InstituteUncheckedUpdateWithoutClaimsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -4373,6 +4412,7 @@ export type InstituteCreateWithoutShortlistedByInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -4467,6 +4507,7 @@ export type InstituteUncheckedCreateWithoutShortlistedByInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -4577,6 +4618,7 @@ export type InstituteUpdateWithoutShortlistedByInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -4671,6 +4713,7 @@ export type InstituteUncheckedUpdateWithoutShortlistedByInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -4765,6 +4808,7 @@ export type InstituteCreateWithoutViewHistoryInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -4859,6 +4903,7 @@ export type InstituteUncheckedCreateWithoutViewHistoryInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -4969,6 +5014,7 @@ export type InstituteUpdateWithoutViewHistoryInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -5063,6 +5109,7 @@ export type InstituteUncheckedUpdateWithoutViewHistoryInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -5157,6 +5204,7 @@ export type InstituteCreateWithoutEnquiriesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
   highlightStats?: Prisma.InstituteHighlightStatCreateNestedManyWithoutInstituteInput
@@ -5251,6 +5299,7 @@ export type InstituteUncheckedCreateWithoutEnquiriesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
   highlightStats?: Prisma.InstituteHighlightStatUncheckedCreateNestedManyWithoutInstituteInput
@@ -5361,6 +5410,7 @@ export type InstituteUpdateWithoutEnquiriesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
   highlightStats?: Prisma.InstituteHighlightStatUpdateManyWithoutInstituteNestedInput
@@ -5455,6 +5505,7 @@ export type InstituteUncheckedUpdateWithoutEnquiriesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
   highlightStats?: Prisma.InstituteHighlightStatUncheckedUpdateManyWithoutInstituteNestedInput
@@ -5549,6 +5600,7 @@ export type InstituteCreateWithoutMembershipsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -5643,6 +5695,7 @@ export type InstituteUncheckedCreateWithoutMembershipsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -5753,6 +5806,7 @@ export type InstituteUpdateWithoutMembershipsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -5847,6 +5901,7 @@ export type InstituteUncheckedUpdateWithoutMembershipsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -5941,6 +5996,7 @@ export type InstituteCreateWithoutStudentRecordsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -6035,6 +6091,7 @@ export type InstituteUncheckedCreateWithoutStudentRecordsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -6145,6 +6202,7 @@ export type InstituteUpdateWithoutStudentRecordsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -6239,6 +6297,7 @@ export type InstituteUncheckedUpdateWithoutStudentRecordsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -6333,6 +6392,7 @@ export type InstituteCreateWithoutTeacherRecordsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -6427,6 +6487,7 @@ export type InstituteUncheckedCreateWithoutTeacherRecordsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -6537,6 +6598,7 @@ export type InstituteUpdateWithoutTeacherRecordsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -6631,6 +6693,7 @@ export type InstituteUncheckedUpdateWithoutTeacherRecordsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -6725,6 +6788,7 @@ export type InstituteCreateWithoutConversationsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -6819,6 +6883,7 @@ export type InstituteUncheckedCreateWithoutConversationsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -6929,6 +6994,7 @@ export type InstituteUpdateWithoutConversationsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -7023,6 +7089,7 @@ export type InstituteUncheckedUpdateWithoutConversationsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -7117,6 +7184,7 @@ export type InstituteCreateWithoutInstituteRequestInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -7211,6 +7279,7 @@ export type InstituteUncheckedCreateWithoutInstituteRequestInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -7321,6 +7390,7 @@ export type InstituteUpdateWithoutInstituteRequestInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -7415,6 +7485,7 @@ export type InstituteUncheckedUpdateWithoutInstituteRequestInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -7509,6 +7580,7 @@ export type InstituteCreateWithoutPaymentsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -7603,6 +7675,7 @@ export type InstituteUncheckedCreateWithoutPaymentsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -7713,6 +7786,7 @@ export type InstituteUpdateWithoutPaymentsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -7807,6 +7881,7 @@ export type InstituteUncheckedUpdateWithoutPaymentsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -7901,6 +7976,7 @@ export type InstituteCreateWithoutSalesAssignmentsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -7995,6 +8071,7 @@ export type InstituteUncheckedCreateWithoutSalesAssignmentsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -8105,6 +8182,7 @@ export type InstituteUpdateWithoutSalesAssignmentsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -8199,6 +8277,7 @@ export type InstituteUncheckedUpdateWithoutSalesAssignmentsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -8292,6 +8371,7 @@ export type InstituteCreateWithoutDailyViewsInput = {
   claims?: Prisma.InstituteClaimCreateNestedManyWithoutInstituteInput
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -8386,6 +8466,7 @@ export type InstituteUncheckedCreateWithoutDailyViewsInput = {
   claims?: Prisma.InstituteClaimUncheckedCreateNestedManyWithoutInstituteInput
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -8496,6 +8577,7 @@ export type InstituteUpdateWithoutDailyViewsInput = {
   claims?: Prisma.InstituteClaimUpdateManyWithoutInstituteNestedInput
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -8590,6 +8672,403 @@ export type InstituteUncheckedUpdateWithoutDailyViewsInput = {
   claims?: Prisma.InstituteClaimUncheckedUpdateManyWithoutInstituteNestedInput
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
+  enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
+  facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
+  faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
+  highlightStats?: Prisma.InstituteHighlightStatUncheckedUpdateManyWithoutInstituteNestedInput
+  operatingHours?: Prisma.InstituteOperatingHourUncheckedUpdateManyWithoutInstituteNestedInput
+  instituteRequest?: Prisma.InstituteRequestUncheckedUpdateOneWithoutInstituteNestedInput
+  notablepersons?: Prisma.NotablePersonsUncheckedUpdateManyWithoutInstituteNestedInput
+  salesAssignments?: Prisma.SalesAssignmentUncheckedUpdateOneWithoutInstituteNestedInput
+  payments?: Prisma.SubscriptionPaymentUncheckedUpdateManyWithoutInstituteNestedInput
+  viewHistory?: Prisma.UserHistoryUncheckedUpdateManyWithoutInstituteNestedInput
+  shortlistedBy?: Prisma.UserShortlistUncheckedUpdateManyWithoutInstituteNestedInput
+  blogPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutRelatedInstituteNestedInput
+  memberships?: Prisma.InstituteMembershipUncheckedUpdateManyWithoutInstituteNestedInput
+  studentRecords?: Prisma.StudentInstituteRecordUncheckedUpdateManyWithoutInstituteNestedInput
+  teacherRecords?: Prisma.TeacherInstituteRecordUncheckedUpdateManyWithoutInstituteNestedInput
+  conversations?: Prisma.ConversationUncheckedUpdateManyWithoutInstituteNestedInput
+}
+
+export type InstituteCreateWithoutVisitsInput = {
+  id?: string
+  providerType?: $Enums.ProviderType
+  name: string
+  slug: string
+  description?: string | null
+  phone?: string | null
+  email?: string | null
+  website?: string | null
+  address: string
+  latitude?: number | null
+  longitude?: number | null
+  logo?: string | null
+  coverImage?: string | null
+  googlePlaceId?: string | null
+  googleRating?: number | null
+  googleReviewCount?: number | null
+  isVerified?: boolean
+  isFeatured?: boolean
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  imageUrl?: string | null
+  averageRating?: number | null
+  reviewCount?: number
+  googleMapsUrl?: string | null
+  placeTypes?: Prisma.InstituteCreateplaceTypesInput | string[]
+  gallery?: Prisma.InstituteCreategalleryInput | string[]
+  subscriptionPlan?: $Enums.SubscriptionPlan
+  planWeight?: number
+  youtubeVideos?: Prisma.InstituteCreateyoutubeVideosInput | string[]
+  classroomImages?: Prisma.InstituteCreateclassroomImagesInput | string[]
+  feeInfo?: string | null
+  planExpiresAt?: Date | string | null
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+  telegramUrl?: string | null
+  twitterUrl?: string | null
+  youtubeUrl?: string | null
+  linkedinUrl?: string | null
+  whatsappUrl?: string | null
+  isPublished?: boolean
+  mode?: $Enums.InstituteMode
+  viewCount?: number
+  affiliations?: Prisma.InstituteCreateaffiliationsInput | string[]
+  awards?: Prisma.InstituteCreateawardsInput | string[]
+  brochureUrl?: string | null
+  compareCount?: number
+  cons?: Prisma.InstituteCreateconsInput | string[]
+  establishedYear?: number | null
+  feeMax?: number | null
+  feeMin?: number | null
+  hasCertification?: boolean
+  hasDemoClasses?: boolean
+  hasHostelFacility?: boolean
+  hasOnlineClasses?: boolean
+  hasScholarship?: boolean
+  mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
+  metaDescription?: string | null
+  metaTitle?: string | null
+  pros?: Prisma.InstituteCreateprosInput | string[]
+  refundPolicy?: string | null
+  totalBranches?: number | null
+  totalStudents?: number | null
+  crmIntegrations?: Prisma.CRMIntegrationCreateNestedManyWithoutInstituteInput
+  city: Prisma.CityCreateNestedOneWithoutInstitutesInput
+  categories?: Prisma.InstituteCategoryCreateNestedManyWithoutInstituteInput
+  managers?: Prisma.InstituteManagerCreateNestedManyWithoutInstituteInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutInstituteInput
+  communityQuestions?: Prisma.CommunityQuestionCreateNestedManyWithoutInstituteInput
+  compareListItems?: Prisma.CompareListInstituteCreateNestedManyWithoutInstituteInput
+  achievements?: Prisma.InstituteAchievementCreateNestedManyWithoutInstituteInput
+  batches?: Prisma.InstituteBatchCreateNestedManyWithoutInstituteInput
+  claims?: Prisma.InstituteClaimCreateNestedManyWithoutInstituteInput
+  comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
+  comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
+  dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
+  facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
+  faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
+  highlightStats?: Prisma.InstituteHighlightStatCreateNestedManyWithoutInstituteInput
+  operatingHours?: Prisma.InstituteOperatingHourCreateNestedManyWithoutInstituteInput
+  instituteRequest?: Prisma.InstituteRequestCreateNestedOneWithoutInstituteInput
+  notablepersons?: Prisma.NotablePersonsCreateNestedManyWithoutInstituteInput
+  salesAssignments?: Prisma.SalesAssignmentCreateNestedOneWithoutInstituteInput
+  payments?: Prisma.SubscriptionPaymentCreateNestedManyWithoutInstituteInput
+  viewHistory?: Prisma.UserHistoryCreateNestedManyWithoutInstituteInput
+  shortlistedBy?: Prisma.UserShortlistCreateNestedManyWithoutInstituteInput
+  blogPosts?: Prisma.BlogPostCreateNestedManyWithoutRelatedInstituteInput
+  memberships?: Prisma.InstituteMembershipCreateNestedManyWithoutInstituteInput
+  studentRecords?: Prisma.StudentInstituteRecordCreateNestedManyWithoutInstituteInput
+  teacherRecords?: Prisma.TeacherInstituteRecordCreateNestedManyWithoutInstituteInput
+  conversations?: Prisma.ConversationCreateNestedManyWithoutInstituteInput
+}
+
+export type InstituteUncheckedCreateWithoutVisitsInput = {
+  id?: string
+  providerType?: $Enums.ProviderType
+  name: string
+  slug: string
+  description?: string | null
+  phone?: string | null
+  email?: string | null
+  website?: string | null
+  address: string
+  latitude?: number | null
+  longitude?: number | null
+  logo?: string | null
+  coverImage?: string | null
+  googlePlaceId?: string | null
+  googleRating?: number | null
+  googleReviewCount?: number | null
+  cityId: string
+  isVerified?: boolean
+  isFeatured?: boolean
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  imageUrl?: string | null
+  averageRating?: number | null
+  reviewCount?: number
+  googleMapsUrl?: string | null
+  placeTypes?: Prisma.InstituteCreateplaceTypesInput | string[]
+  gallery?: Prisma.InstituteCreategalleryInput | string[]
+  subscriptionPlan?: $Enums.SubscriptionPlan
+  planWeight?: number
+  youtubeVideos?: Prisma.InstituteCreateyoutubeVideosInput | string[]
+  classroomImages?: Prisma.InstituteCreateclassroomImagesInput | string[]
+  feeInfo?: string | null
+  planExpiresAt?: Date | string | null
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+  telegramUrl?: string | null
+  twitterUrl?: string | null
+  youtubeUrl?: string | null
+  linkedinUrl?: string | null
+  whatsappUrl?: string | null
+  isPublished?: boolean
+  mode?: $Enums.InstituteMode
+  viewCount?: number
+  affiliations?: Prisma.InstituteCreateaffiliationsInput | string[]
+  awards?: Prisma.InstituteCreateawardsInput | string[]
+  brochureUrl?: string | null
+  compareCount?: number
+  cons?: Prisma.InstituteCreateconsInput | string[]
+  establishedYear?: number | null
+  feeMax?: number | null
+  feeMin?: number | null
+  hasCertification?: boolean
+  hasDemoClasses?: boolean
+  hasHostelFacility?: boolean
+  hasOnlineClasses?: boolean
+  hasScholarship?: boolean
+  mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
+  metaDescription?: string | null
+  metaTitle?: string | null
+  pros?: Prisma.InstituteCreateprosInput | string[]
+  refundPolicy?: string | null
+  totalBranches?: number | null
+  totalStudents?: number | null
+  crmIntegrations?: Prisma.CRMIntegrationUncheckedCreateNestedManyWithoutInstituteInput
+  categories?: Prisma.InstituteCategoryUncheckedCreateNestedManyWithoutInstituteInput
+  managers?: Prisma.InstituteManagerUncheckedCreateNestedManyWithoutInstituteInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutInstituteInput
+  communityQuestions?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutInstituteInput
+  compareListItems?: Prisma.CompareListInstituteUncheckedCreateNestedManyWithoutInstituteInput
+  achievements?: Prisma.InstituteAchievementUncheckedCreateNestedManyWithoutInstituteInput
+  batches?: Prisma.InstituteBatchUncheckedCreateNestedManyWithoutInstituteInput
+  claims?: Prisma.InstituteClaimUncheckedCreateNestedManyWithoutInstituteInput
+  comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
+  comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
+  dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
+  facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
+  faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
+  highlightStats?: Prisma.InstituteHighlightStatUncheckedCreateNestedManyWithoutInstituteInput
+  operatingHours?: Prisma.InstituteOperatingHourUncheckedCreateNestedManyWithoutInstituteInput
+  instituteRequest?: Prisma.InstituteRequestUncheckedCreateNestedOneWithoutInstituteInput
+  notablepersons?: Prisma.NotablePersonsUncheckedCreateNestedManyWithoutInstituteInput
+  salesAssignments?: Prisma.SalesAssignmentUncheckedCreateNestedOneWithoutInstituteInput
+  payments?: Prisma.SubscriptionPaymentUncheckedCreateNestedManyWithoutInstituteInput
+  viewHistory?: Prisma.UserHistoryUncheckedCreateNestedManyWithoutInstituteInput
+  shortlistedBy?: Prisma.UserShortlistUncheckedCreateNestedManyWithoutInstituteInput
+  blogPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutRelatedInstituteInput
+  memberships?: Prisma.InstituteMembershipUncheckedCreateNestedManyWithoutInstituteInput
+  studentRecords?: Prisma.StudentInstituteRecordUncheckedCreateNestedManyWithoutInstituteInput
+  teacherRecords?: Prisma.TeacherInstituteRecordUncheckedCreateNestedManyWithoutInstituteInput
+  conversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutInstituteInput
+}
+
+export type InstituteCreateOrConnectWithoutVisitsInput = {
+  where: Prisma.InstituteWhereUniqueInput
+  create: Prisma.XOR<Prisma.InstituteCreateWithoutVisitsInput, Prisma.InstituteUncheckedCreateWithoutVisitsInput>
+}
+
+export type InstituteUpsertWithoutVisitsInput = {
+  update: Prisma.XOR<Prisma.InstituteUpdateWithoutVisitsInput, Prisma.InstituteUncheckedUpdateWithoutVisitsInput>
+  create: Prisma.XOR<Prisma.InstituteCreateWithoutVisitsInput, Prisma.InstituteUncheckedCreateWithoutVisitsInput>
+  where?: Prisma.InstituteWhereInput
+}
+
+export type InstituteUpdateToOneWithWhereWithoutVisitsInput = {
+  where?: Prisma.InstituteWhereInput
+  data: Prisma.XOR<Prisma.InstituteUpdateWithoutVisitsInput, Prisma.InstituteUncheckedUpdateWithoutVisitsInput>
+}
+
+export type InstituteUpdateWithoutVisitsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  providerType?: Prisma.EnumProviderTypeFieldUpdateOperationsInput | $Enums.ProviderType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googlePlaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleRating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  googleReviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  averageRating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  googleMapsUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  placeTypes?: Prisma.InstituteUpdateplaceTypesInput | string[]
+  gallery?: Prisma.InstituteUpdategalleryInput | string[]
+  subscriptionPlan?: Prisma.EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+  planWeight?: Prisma.IntFieldUpdateOperationsInput | number
+  youtubeVideos?: Prisma.InstituteUpdateyoutubeVideosInput | string[]
+  classroomImages?: Prisma.InstituteUpdateclassroomImagesInput | string[]
+  feeInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twitterUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsappUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mode?: Prisma.EnumInstituteModeFieldUpdateOperationsInput | $Enums.InstituteMode
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  affiliations?: Prisma.InstituteUpdateaffiliationsInput | string[]
+  awards?: Prisma.InstituteUpdateawardsInput | string[]
+  brochureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  cons?: Prisma.InstituteUpdateconsInput | string[]
+  establishedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  feeMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  feeMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  hasCertification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasDemoClasses?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasHostelFacility?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasOnlineClasses?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasScholarship?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
+  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pros?: Prisma.InstituteUpdateprosInput | string[]
+  refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  totalStudents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  crmIntegrations?: Prisma.CRMIntegrationUpdateManyWithoutInstituteNestedInput
+  city?: Prisma.CityUpdateOneRequiredWithoutInstitutesNestedInput
+  categories?: Prisma.InstituteCategoryUpdateManyWithoutInstituteNestedInput
+  managers?: Prisma.InstituteManagerUpdateManyWithoutInstituteNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutInstituteNestedInput
+  communityQuestions?: Prisma.CommunityQuestionUpdateManyWithoutInstituteNestedInput
+  compareListItems?: Prisma.CompareListInstituteUpdateManyWithoutInstituteNestedInput
+  achievements?: Prisma.InstituteAchievementUpdateManyWithoutInstituteNestedInput
+  batches?: Prisma.InstituteBatchUpdateManyWithoutInstituteNestedInput
+  claims?: Prisma.InstituteClaimUpdateManyWithoutInstituteNestedInput
+  comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
+  comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
+  dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
+  facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
+  faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
+  highlightStats?: Prisma.InstituteHighlightStatUpdateManyWithoutInstituteNestedInput
+  operatingHours?: Prisma.InstituteOperatingHourUpdateManyWithoutInstituteNestedInput
+  instituteRequest?: Prisma.InstituteRequestUpdateOneWithoutInstituteNestedInput
+  notablepersons?: Prisma.NotablePersonsUpdateManyWithoutInstituteNestedInput
+  salesAssignments?: Prisma.SalesAssignmentUpdateOneWithoutInstituteNestedInput
+  payments?: Prisma.SubscriptionPaymentUpdateManyWithoutInstituteNestedInput
+  viewHistory?: Prisma.UserHistoryUpdateManyWithoutInstituteNestedInput
+  shortlistedBy?: Prisma.UserShortlistUpdateManyWithoutInstituteNestedInput
+  blogPosts?: Prisma.BlogPostUpdateManyWithoutRelatedInstituteNestedInput
+  memberships?: Prisma.InstituteMembershipUpdateManyWithoutInstituteNestedInput
+  studentRecords?: Prisma.StudentInstituteRecordUpdateManyWithoutInstituteNestedInput
+  teacherRecords?: Prisma.TeacherInstituteRecordUpdateManyWithoutInstituteNestedInput
+  conversations?: Prisma.ConversationUpdateManyWithoutInstituteNestedInput
+}
+
+export type InstituteUncheckedUpdateWithoutVisitsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  providerType?: Prisma.EnumProviderTypeFieldUpdateOperationsInput | $Enums.ProviderType
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googlePlaceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleRating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  googleReviewCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cityId?: Prisma.StringFieldUpdateOperationsInput | string
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  averageRating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reviewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  googleMapsUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  placeTypes?: Prisma.InstituteUpdateplaceTypesInput | string[]
+  gallery?: Prisma.InstituteUpdategalleryInput | string[]
+  subscriptionPlan?: Prisma.EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
+  planWeight?: Prisma.IntFieldUpdateOperationsInput | number
+  youtubeVideos?: Prisma.InstituteUpdateyoutubeVideosInput | string[]
+  classroomImages?: Prisma.InstituteUpdateclassroomImagesInput | string[]
+  feeInfo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  planExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twitterUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsappUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mode?: Prisma.EnumInstituteModeFieldUpdateOperationsInput | $Enums.InstituteMode
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  affiliations?: Prisma.InstituteUpdateaffiliationsInput | string[]
+  awards?: Prisma.InstituteUpdateawardsInput | string[]
+  brochureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  compareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  cons?: Prisma.InstituteUpdateconsInput | string[]
+  establishedYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  feeMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  feeMin?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  hasCertification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasDemoClasses?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasHostelFacility?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasOnlineClasses?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  hasScholarship?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
+  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pros?: Prisma.InstituteUpdateprosInput | string[]
+  refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  totalStudents?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  crmIntegrations?: Prisma.CRMIntegrationUncheckedUpdateManyWithoutInstituteNestedInput
+  categories?: Prisma.InstituteCategoryUncheckedUpdateManyWithoutInstituteNestedInput
+  managers?: Prisma.InstituteManagerUncheckedUpdateManyWithoutInstituteNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutInstituteNestedInput
+  communityQuestions?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutInstituteNestedInput
+  compareListItems?: Prisma.CompareListInstituteUncheckedUpdateManyWithoutInstituteNestedInput
+  achievements?: Prisma.InstituteAchievementUncheckedUpdateManyWithoutInstituteNestedInput
+  batches?: Prisma.InstituteBatchUncheckedUpdateManyWithoutInstituteNestedInput
+  claims?: Prisma.InstituteClaimUncheckedUpdateManyWithoutInstituteNestedInput
+  comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
+  comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
+  dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -8685,6 +9164,7 @@ export type InstituteCreateWithoutFacilitiesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
   highlightStats?: Prisma.InstituteHighlightStatCreateNestedManyWithoutInstituteInput
@@ -8779,6 +9259,7 @@ export type InstituteUncheckedCreateWithoutFacilitiesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
   highlightStats?: Prisma.InstituteHighlightStatUncheckedCreateNestedManyWithoutInstituteInput
@@ -8889,6 +9370,7 @@ export type InstituteUpdateWithoutFacilitiesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
   highlightStats?: Prisma.InstituteHighlightStatUpdateManyWithoutInstituteNestedInput
@@ -8983,6 +9465,7 @@ export type InstituteUncheckedUpdateWithoutFacilitiesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
   highlightStats?: Prisma.InstituteHighlightStatUncheckedUpdateManyWithoutInstituteNestedInput
@@ -9076,6 +9559,7 @@ export type InstituteCreateWithoutBatchesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -9170,6 +9654,7 @@ export type InstituteUncheckedCreateWithoutBatchesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -9280,6 +9765,7 @@ export type InstituteUpdateWithoutBatchesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -9374,6 +9860,7 @@ export type InstituteUncheckedUpdateWithoutBatchesInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -9469,6 +9956,7 @@ export type InstituteCreateWithoutHighlightStatsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -9563,6 +10051,7 @@ export type InstituteUncheckedCreateWithoutHighlightStatsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -9673,6 +10162,7 @@ export type InstituteUpdateWithoutHighlightStatsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -9767,6 +10257,7 @@ export type InstituteUncheckedUpdateWithoutHighlightStatsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -9860,6 +10351,7 @@ export type InstituteCreateWithoutAchievementsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -9954,6 +10446,7 @@ export type InstituteUncheckedCreateWithoutAchievementsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -10064,6 +10557,7 @@ export type InstituteUpdateWithoutAchievementsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -10158,6 +10652,7 @@ export type InstituteUncheckedUpdateWithoutAchievementsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -10253,6 +10748,7 @@ export type InstituteCreateWithoutFaqsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   highlightStats?: Prisma.InstituteHighlightStatCreateNestedManyWithoutInstituteInput
@@ -10347,6 +10843,7 @@ export type InstituteUncheckedCreateWithoutFaqsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   highlightStats?: Prisma.InstituteHighlightStatUncheckedCreateNestedManyWithoutInstituteInput
@@ -10457,6 +10954,7 @@ export type InstituteUpdateWithoutFaqsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   highlightStats?: Prisma.InstituteHighlightStatUpdateManyWithoutInstituteNestedInput
@@ -10551,6 +11049,7 @@ export type InstituteUncheckedUpdateWithoutFaqsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   highlightStats?: Prisma.InstituteHighlightStatUncheckedUpdateManyWithoutInstituteNestedInput
@@ -10645,6 +11144,7 @@ export type InstituteCreateWithoutOperatingHoursInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -10739,6 +11239,7 @@ export type InstituteUncheckedCreateWithoutOperatingHoursInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -10849,6 +11350,7 @@ export type InstituteUpdateWithoutOperatingHoursInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -10943,6 +11445,7 @@ export type InstituteUncheckedUpdateWithoutOperatingHoursInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -11036,6 +11539,7 @@ export type InstituteCreateWithoutCompareListItemsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -11130,6 +11634,7 @@ export type InstituteUncheckedCreateWithoutCompareListItemsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -11240,6 +11745,7 @@ export type InstituteUpdateWithoutCompareListItemsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -11334,6 +11840,7 @@ export type InstituteUncheckedUpdateWithoutCompareListItemsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -11428,6 +11935,7 @@ export type InstituteCreateWithoutCommunityQuestionsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -11522,6 +12030,7 @@ export type InstituteUncheckedCreateWithoutCommunityQuestionsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -11632,6 +12141,7 @@ export type InstituteUpdateWithoutCommunityQuestionsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -11726,6 +12236,7 @@ export type InstituteUncheckedUpdateWithoutCommunityQuestionsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -11821,6 +12332,7 @@ export type InstituteCreateWithoutNotablepersonsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -11915,6 +12427,7 @@ export type InstituteUncheckedCreateWithoutNotablepersonsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -12025,6 +12538,7 @@ export type InstituteUpdateWithoutNotablepersonsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -12119,6 +12633,7 @@ export type InstituteUncheckedUpdateWithoutNotablepersonsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -12212,6 +12727,7 @@ export type InstituteCreateWithoutComparisonsAsFirstInput = {
   claims?: Prisma.InstituteClaimCreateNestedManyWithoutInstituteInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -12306,6 +12822,7 @@ export type InstituteUncheckedCreateWithoutComparisonsAsFirstInput = {
   claims?: Prisma.InstituteClaimUncheckedCreateNestedManyWithoutInstituteInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -12405,6 +12922,7 @@ export type InstituteCreateWithoutComparisonsAsSecondInput = {
   claims?: Prisma.InstituteClaimCreateNestedManyWithoutInstituteInput
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -12499,6 +13017,7 @@ export type InstituteUncheckedCreateWithoutComparisonsAsSecondInput = {
   claims?: Prisma.InstituteClaimUncheckedCreateNestedManyWithoutInstituteInput
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -12609,6 +13128,7 @@ export type InstituteUpdateWithoutComparisonsAsFirstInput = {
   claims?: Prisma.InstituteClaimUpdateManyWithoutInstituteNestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -12703,6 +13223,7 @@ export type InstituteUncheckedUpdateWithoutComparisonsAsFirstInput = {
   claims?: Prisma.InstituteClaimUncheckedUpdateManyWithoutInstituteNestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -12808,6 +13329,7 @@ export type InstituteUpdateWithoutComparisonsAsSecondInput = {
   claims?: Prisma.InstituteClaimUpdateManyWithoutInstituteNestedInput
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -12902,6 +13424,7 @@ export type InstituteUncheckedUpdateWithoutComparisonsAsSecondInput = {
   claims?: Prisma.InstituteClaimUncheckedUpdateManyWithoutInstituteNestedInput
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -12997,6 +13520,7 @@ export type InstituteCreateWithoutBlogPostsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -13091,6 +13615,7 @@ export type InstituteUncheckedCreateWithoutBlogPostsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -13201,6 +13726,7 @@ export type InstituteUpdateWithoutBlogPostsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -13295,6 +13821,7 @@ export type InstituteUncheckedUpdateWithoutBlogPostsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -13388,6 +13915,7 @@ export type InstituteCreateWithoutCrmIntegrationsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQCreateNestedManyWithoutInstituteInput
@@ -13482,6 +14010,7 @@ export type InstituteUncheckedCreateWithoutCrmIntegrationsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute1Input
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedCreateNestedManyWithoutInstitute2Input
   dailyViews?: Prisma.InstituteDailyViewUncheckedCreateNestedManyWithoutInstituteInput
+  visits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutInstituteInput
   enquiries?: Prisma.InstituteEnquiryUncheckedCreateNestedManyWithoutInstituteInput
   facilities?: Prisma.InstituteFacilityUncheckedCreateNestedManyWithoutInstituteInput
   faqs?: Prisma.InstituteFAQUncheckedCreateNestedManyWithoutInstituteInput
@@ -13592,6 +14121,7 @@ export type InstituteUpdateWithoutCrmIntegrationsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -13686,6 +14216,7 @@ export type InstituteUncheckedUpdateWithoutCrmIntegrationsInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -13846,6 +14377,7 @@ export type InstituteUpdateWithoutCityInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUpdateManyWithoutInstituteNestedInput
@@ -13940,6 +14472,7 @@ export type InstituteUncheckedUpdateWithoutCityInput = {
   comparisonsAsFirst?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute1NestedInput
   comparisonsAsSecond?: Prisma.InstituteComparisonCacheUncheckedUpdateManyWithoutInstitute2NestedInput
   dailyViews?: Prisma.InstituteDailyViewUncheckedUpdateManyWithoutInstituteNestedInput
+  visits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutInstituteNestedInput
   enquiries?: Prisma.InstituteEnquiryUncheckedUpdateManyWithoutInstituteNestedInput
   facilities?: Prisma.InstituteFacilityUncheckedUpdateManyWithoutInstituteNestedInput
   faqs?: Prisma.InstituteFAQUncheckedUpdateManyWithoutInstituteNestedInput
@@ -14042,6 +14575,7 @@ export type InstituteCountOutputType = {
   comparisonsAsFirst: number
   comparisonsAsSecond: number
   dailyViews: number
+  visits: number
   enquiries: number
   facilities: number
   faqs: number
@@ -14071,6 +14605,7 @@ export type InstituteCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensi
   comparisonsAsFirst?: boolean | InstituteCountOutputTypeCountComparisonsAsFirstArgs
   comparisonsAsSecond?: boolean | InstituteCountOutputTypeCountComparisonsAsSecondArgs
   dailyViews?: boolean | InstituteCountOutputTypeCountDailyViewsArgs
+  visits?: boolean | InstituteCountOutputTypeCountVisitsArgs
   enquiries?: boolean | InstituteCountOutputTypeCountEnquiriesArgs
   facilities?: boolean | InstituteCountOutputTypeCountFacilitiesArgs
   faqs?: boolean | InstituteCountOutputTypeCountFaqsArgs
@@ -14179,6 +14714,13 @@ export type InstituteCountOutputTypeCountComparisonsAsSecondArgs<ExtArgs extends
  */
 export type InstituteCountOutputTypeCountDailyViewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.InstituteDailyViewWhereInput
+}
+
+/**
+ * InstituteCountOutputType without action
+ */
+export type InstituteCountOutputTypeCountVisitsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InstituteVisitWhereInput
 }
 
 /**
@@ -14358,6 +14900,7 @@ export type InstituteSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   comparisonsAsFirst?: boolean | Prisma.Institute$comparisonsAsFirstArgs<ExtArgs>
   comparisonsAsSecond?: boolean | Prisma.Institute$comparisonsAsSecondArgs<ExtArgs>
   dailyViews?: boolean | Prisma.Institute$dailyViewsArgs<ExtArgs>
+  visits?: boolean | Prisma.Institute$visitsArgs<ExtArgs>
   enquiries?: boolean | Prisma.Institute$enquiriesArgs<ExtArgs>
   facilities?: boolean | Prisma.Institute$facilitiesArgs<ExtArgs>
   faqs?: boolean | Prisma.Institute$faqsArgs<ExtArgs>
@@ -14595,6 +15138,7 @@ export type InstituteInclude<ExtArgs extends runtime.Types.Extensions.InternalAr
   comparisonsAsFirst?: boolean | Prisma.Institute$comparisonsAsFirstArgs<ExtArgs>
   comparisonsAsSecond?: boolean | Prisma.Institute$comparisonsAsSecondArgs<ExtArgs>
   dailyViews?: boolean | Prisma.Institute$dailyViewsArgs<ExtArgs>
+  visits?: boolean | Prisma.Institute$visitsArgs<ExtArgs>
   enquiries?: boolean | Prisma.Institute$enquiriesArgs<ExtArgs>
   facilities?: boolean | Prisma.Institute$facilitiesArgs<ExtArgs>
   faqs?: boolean | Prisma.Institute$faqsArgs<ExtArgs>
@@ -14636,6 +15180,7 @@ export type $InstitutePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     comparisonsAsFirst: Prisma.$InstituteComparisonCachePayload<ExtArgs>[]
     comparisonsAsSecond: Prisma.$InstituteComparisonCachePayload<ExtArgs>[]
     dailyViews: Prisma.$InstituteDailyViewPayload<ExtArgs>[]
+    visits: Prisma.$InstituteVisitPayload<ExtArgs>[]
     enquiries: Prisma.$InstituteEnquiryPayload<ExtArgs>[]
     facilities: Prisma.$InstituteFacilityPayload<ExtArgs>[]
     faqs: Prisma.$InstituteFAQPayload<ExtArgs>[]
@@ -15125,6 +15670,7 @@ export interface Prisma__InstituteClient<T, Null = never, ExtArgs extends runtim
   comparisonsAsFirst<T extends Prisma.Institute$comparisonsAsFirstArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$comparisonsAsFirstArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteComparisonCachePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comparisonsAsSecond<T extends Prisma.Institute$comparisonsAsSecondArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$comparisonsAsSecondArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteComparisonCachePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   dailyViews<T extends Prisma.Institute$dailyViewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$dailyViewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteDailyViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  visits<T extends Prisma.Institute$visitsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$visitsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteVisitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   enquiries<T extends Prisma.Institute$enquiriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$enquiriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteEnquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   facilities<T extends Prisma.Institute$facilitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$facilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteFacilityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   faqs<T extends Prisma.Institute$faqsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Institute$faqsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteFAQPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -15920,6 +16466,30 @@ export type Institute$dailyViewsArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.InstituteDailyViewScalarFieldEnum | Prisma.InstituteDailyViewScalarFieldEnum[]
+}
+
+/**
+ * Institute.visits
+ */
+export type Institute$visitsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the InstituteVisit
+   */
+  select?: Prisma.InstituteVisitSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the InstituteVisit
+   */
+  omit?: Prisma.InstituteVisitOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InstituteVisitInclude<ExtArgs> | null
+  where?: Prisma.InstituteVisitWhereInput
+  orderBy?: Prisma.InstituteVisitOrderByWithRelationInput | Prisma.InstituteVisitOrderByWithRelationInput[]
+  cursor?: Prisma.InstituteVisitWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InstituteVisitScalarFieldEnum | Prisma.InstituteVisitScalarFieldEnum[]
 }
 
 /**
