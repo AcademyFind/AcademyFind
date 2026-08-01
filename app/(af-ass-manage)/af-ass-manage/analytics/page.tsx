@@ -16,16 +16,9 @@ export default async function AnalyticsPage() {
   today.setHours(0, 0, 0, 0);
 
   // Fetch data in parallel
-  const [gaData, gscData, todayVisitorsCount] = await Promise.all([
+  const [gaData, gscData] = await Promise.all([
     getTrafficData(),
     getSearchConsoleData(),
-    prisma.visitorSession.count({
-      where: {
-        updatedAt: {
-          gte: today,
-        }
-      }
-    })
   ]);
 
   if (gaData.error || gscData.error) {
@@ -39,6 +32,11 @@ export default async function AnalyticsPage() {
         </div>
       </div>
     );
+  }
+
+  let todayVisitorsCount = 0;
+  if (!('error' in gaData) && 'chartData' in gaData && Array.isArray(gaData.chartData) && gaData.chartData.length > 0) {
+    todayVisitorsCount = gaData.chartData[gaData.chartData.length - 1].visitors || 0;
   }
 
   return (
@@ -72,7 +70,7 @@ export default async function AnalyticsPage() {
             <p className="text-xs text-slate-500">Active users in last 30 days</p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Page Views</CardTitle>
@@ -119,10 +117,10 @@ export default async function AnalyticsPage() {
       </div>
 
       {/* Render the interactive charts in a client component */}
-      <AnalyticsCharts 
-        chartData={gaData.chartData || []} 
-        topPages={gaData.topPages || []} 
-        channels={gaData.channels || []} 
+      <AnalyticsCharts
+        chartData={gaData.chartData || []}
+        topPages={gaData.topPages || []}
+        channels={gaData.channels || []}
       />
     </div>
   );

@@ -92,7 +92,6 @@ export default async function AdminDashboardPage() {
                     icon={<Activity className="w-5 h-5 text-indigo-600 animate-pulse" />}
                     bg="bg-white border border-indigo-100"
                     link="/af-ass-manage/analytics/visitors"
-                    alert={todayVisitorsCount > 0}
                 />
                 <StatCard
                     title="Total Users"

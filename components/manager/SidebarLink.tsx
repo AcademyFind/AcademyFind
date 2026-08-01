@@ -9,17 +9,20 @@ export function SidebarLink({
     icon,
     label,
     count,
+    exact,
 }: {
     href: string;
     icon: ReactNode;
     label: string;
     count?: number;
+    exact?: boolean;
 }) {
     const pathname = usePathname();
-    // Match exact path for overview, or startsWith for subpages
-    const isActive = href === '/af-ass-manage' 
+    
+    // Match exact path if exact is true or if it's the root overview
+    const isActive = (exact || href === '/af-ass-manage')
         ? pathname === href
-        : pathname.startsWith(href);
+        : pathname === href || pathname.startsWith(href + '/');
 
     return (
         <Link 
