@@ -1,12 +1,12 @@
 import { google } from 'googleapis';
 
-function formatPrivateKey(key: string | undefined) {
-  if (!key) return undefined;
-  let formattedKey = key;
-  if (formattedKey.startsWith('"') && formattedKey.endsWith('"')) {
-    formattedKey = formattedKey.slice(1, -1);
+function formatEnvVar(value: string | undefined) {
+  if (!value) return undefined;
+  let formatted = value;
+  if (formatted.startsWith('"') && formatted.endsWith('"')) {
+    formatted = formatted.slice(1, -1);
   }
-  return formattedKey.replace(/\\n/g, '\n');
+  return formatted.replace(/\\n/g, '\n');
 }
 
 export async function getSearchConsoleData() {
@@ -20,8 +20,8 @@ export async function getSearchConsoleData() {
       process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY
         ? {
             credentials: {
-              client_email: process.env.GOOGLE_CLIENT_EMAIL,
-              private_key: formatPrivateKey(process.env.GOOGLE_PRIVATE_KEY),
+              client_email: formatEnvVar(process.env.GOOGLE_CLIENT_EMAIL),
+              private_key: formatEnvVar(process.env.GOOGLE_PRIVATE_KEY),
             },
             scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
           }
