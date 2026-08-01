@@ -7,10 +7,19 @@ export async function getSearchConsoleData() {
   }
 
   try {
-    // Automatically picks up GOOGLE_APPLICATION_CREDENTIALS
-    const auth = new google.auth.GoogleAuth({
-      scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
-    });
+    const auth = new google.auth.GoogleAuth(
+      process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY
+        ? {
+            credentials: {
+              client_email: process.env.GOOGLE_CLIENT_EMAIL,
+              private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+            },
+            scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
+          }
+        : {
+            scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
+          }
+    );
 
     const webmasters = google.webmasters({ version: 'v3', auth });
 

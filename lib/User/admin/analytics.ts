@@ -1,7 +1,15 @@
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 
-// Initialize the client. It automatically picks up GOOGLE_APPLICATION_CREDENTIALS from the environment.
-const analyticsDataClient = new BetaAnalyticsDataClient();
+const analyticsDataClient = new BetaAnalyticsDataClient(
+  process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY
+    ? {
+        credentials: {
+          client_email: process.env.GOOGLE_CLIENT_EMAIL,
+          private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        },
+      }
+    : undefined
+);
 
 export async function getTrafficData() {
   const propertyId = process.env.GA_PROPERTY_ID;
