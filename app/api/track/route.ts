@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { cookies } from 'next/headers';
+import { getSession } from '@/lib/auth/getSession';
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { eventType, pageUrl, details, userId } = body;
+    const { eventType, pageUrl, details } = body;
+
+    const authSession = await getSession();
+    const userId = authSession?.user?.id || null;
 
     // 1. Get or Generate a Tracking Cookie
     const cookieStore = await cookies();
