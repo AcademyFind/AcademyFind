@@ -2,19 +2,30 @@ import { getTrafficData } from '@/lib/User/admin/analytics';
 import { getSearchConsoleData } from '@/lib/User/admin/searchConsole';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart3, MousePointerClick, Users, Activity, ListFilter } from 'lucide-react';
+import { prisma } from '@/lib/prisma';
 import AnalyticsCharts from './analytics-charts';
 
 export const metadata = {
   title: 'Analytics Dashboard',
 };
 
-export const revalidate = 3600; // Cache for 1 hour
+export const revalidate = 0; // Force dynamic for real-time live visitors
 
 export default async function AnalyticsPage() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   // Fetch data in parallel
-  const [gaData, gscData] = await Promise.all([
+  const [gaData, gscData, todayVisitorsCount] = await Promise.all([
     getTrafficData(),
-    getSearchConsoleData()
+    getSearchConsoleData(),
+    prisma.visitorSession.count({
+      where: {
+        updatedAt: {
+          gte: today,
+        }
+      }
+    })
   ]);
 
   if (gaData.error || gscData.error) {
@@ -40,6 +51,17 @@ export default async function AnalyticsPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <Card className="border-indigo-100 dark:border-indigo-900 bg-indigo-50/50 dark:bg-indigo-900/10">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-indigo-700 dark:text-indigo-300">Live Today</CardTitle>
+            <Activity className="h-4 w-4 text-indigo-500 animate-pulse" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-indigo-700 dark:text-indigo-300">{todayVisitorsCount}</div>
+            <p className="text-xs text-indigo-500/80">Unique visitors today</p>
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Users</CardTitle>

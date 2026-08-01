@@ -139,8 +139,33 @@ export default async function VisitorJourneyPage({ params }: { params: Promise<{
                     <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold border ${getEventColor(event.eventType)} uppercase tracking-wider`}>
                       {event.eventType}
                     </span>
+
                     <span className="text-sm font-medium text-slate-900 dark:text-white break-all">
-                      {event.pageUrl}
+                      <a href={event.pageUrl || '#'} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 dark:hover:text-indigo-400 hover:underline decoration-indigo-300 dark:decoration-indigo-700 underline-offset-2 transition-colors">
+                        {(() => {
+                          const url = event.pageUrl;
+                          if (!url) return 'Unknown';
+                          if (url === '/') return 'Home Page';
+                          if (url.startsWith('/institute/')) {
+                            const slug = url.split('/institute/')[1];
+                            if (slug) return `Visited Institute: ${slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}`;
+                          }
+                          if (url.startsWith('/categories/')) {
+                            const slug = url.split('/categories/')[1];
+                            if (slug) return `Visited Category: ${slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}`;
+                          }
+                          if (url.startsWith('/search')) {
+                            const query = new URLSearchParams(url.split('?')[1]).get('q');
+                            if (query) return `Searched for: "${query}"`;
+                            return 'Search Page';
+                          }
+                          if (url === '/login') return 'Login Page';
+                          if (url === '/register') return 'Registration Page';
+                          if (url === '/about') return 'About Us';
+                          if (url === '/contact') return 'Contact Page';
+                          return url;
+                        })()}
+                      </a>
                     </span>
                   </div>
                   <span className="text-xs font-mono text-slate-400 whitespace-nowrap bg-slate-50 dark:bg-slate-800/50 px-2 py-1 rounded">
