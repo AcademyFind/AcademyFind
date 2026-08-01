@@ -9,14 +9,17 @@ import {
     ShieldAlert,
     PhoneCall,
     LifeBuoy,
-    MessageCircle
+    MessageCircle,
+    Activity
 } from "lucide-react"
 import Link from "next/link"
 import { format } from "date-fns";
 import { formatIST } from "@/lib/utils";
 
 export default async function AdminDashboardPage() {
-    // 🚀 Performance Optimization: Promise.all se saari queries ek saath parallel me chalengi
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     const [
         totalUsers,
         totalInstitutes,
@@ -29,7 +32,7 @@ export default async function AdminDashboardPage() {
         pendingBlogs,
         recentClaims,
         recentUsers,
-
+        todayVisitorsCount
     ] = await Promise.all([
         prisma.user.count(),
         prisma.institute.count(),
@@ -54,7 +57,10 @@ export default async function AdminDashboardPage() {
             orderBy: { createdAt: 'desc' },
             take: 5,
             select: { id: true, name: true, email: true, role: true, createdAt: true }
-        })
+        }),
+
+        // Today's Visitors Count
+        prisma.visitorSession.count({ where: { updatedAt: { gte: today } } })
     ]);
 
     return (
@@ -72,6 +78,14 @@ export default async function AdminDashboardPage() {
 
             {/* 2. Quick Stats Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <StatCard
+                    title="Live Visitors Today"
+                    value={todayVisitorsCount}
+                    icon={<Activity className="w-5 h-5 text-indigo-600 animate-pulse" />}
+                    bg="bg-white border border-indigo-100"
+                    link="/af-ass-manage/analytics/visitors"
+                    alert={todayVisitorsCount > 0}
+                />
                 <StatCard
                     title="Total Users"
                     value={totalUsers}

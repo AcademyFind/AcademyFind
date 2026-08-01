@@ -148,11 +148,19 @@ export default async function VisitorJourneyPage({ params }: { params: Promise<{
                           if (url === '/') return 'Home Page';
                           if (url.startsWith('/institute/')) {
                             const slug = url.split('/institute/')[1];
-                            if (slug) return `Visited Institute: ${slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}`;
+                            if (slug) {
+                              let nameParts = slug.split('-');
+                              if (nameParts[0].length >= 20) nameParts.shift(); // Remove CUID/UUID if present
+                              return `Visited Institute: ${nameParts.map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}`;
+                            }
                           }
                           if (url.startsWith('/categories/')) {
                             const slug = url.split('/categories/')[1];
-                            if (slug) return `Visited Category: ${slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}`;
+                            if (slug) {
+                              let nameParts = slug.split('-');
+                              if (nameParts[0].length >= 20) nameParts.shift();
+                              return `Visited Category: ${nameParts.map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}`;
+                            }
                           }
                           if (url.startsWith('/search')) {
                             const query = new URLSearchParams(url.split('?')[1]).get('q');
