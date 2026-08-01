@@ -16,6 +16,8 @@ import Link from "next/link"
 import { format } from "date-fns";
 import { formatIST } from "@/lib/utils";
 
+import { getTrafficData } from '@/lib/User/admin/analytics';
+
 export default async function AdminDashboardPage() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -32,7 +34,7 @@ export default async function AdminDashboardPage() {
         pendingBlogs,
         recentClaims,
         recentUsers,
-        todayVisitorsCount
+        gaData
     ] = await Promise.all([
         prisma.user.count(),
         prisma.institute.count(),
@@ -59,9 +61,15 @@ export default async function AdminDashboardPage() {
             select: { id: true, name: true, email: true, role: true, createdAt: true }
         }),
 
-        // Today's Visitors Count
-        prisma.visitorSession.count({ where: { updatedAt: { gte: today } } })
+        // Fetch GA4 Data
+        getTrafficData()
     ]);
+
+    // Get today's GA4 traffic (last item in trend array usually)
+    let todayVisitorsCount = 0;
+    if (!('error' in gaData) && 'trend' in gaData && Array.isArray(gaData.trend) && gaData.trend.length > 0) {
+        todayVisitorsCount = gaData.trend[gaData.trend.length - 1].visitors || 0;
+    }
 
     return (
         <div className="space-y-8 animate-in fade-in duration-500">
