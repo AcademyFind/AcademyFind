@@ -1,5 +1,14 @@
 import { google } from 'googleapis';
 
+function formatPrivateKey(key: string | undefined) {
+  if (!key) return undefined;
+  let formattedKey = key;
+  if (formattedKey.startsWith('"') && formattedKey.endsWith('"')) {
+    formattedKey = formattedKey.slice(1, -1);
+  }
+  return formattedKey.replace(/\\n/g, '\n');
+}
+
 export async function getSearchConsoleData() {
   const siteUrl = process.env.GSC_SITE_URL;
   if (!siteUrl) {
@@ -12,7 +21,7 @@ export async function getSearchConsoleData() {
         ? {
             credentials: {
               client_email: process.env.GOOGLE_CLIENT_EMAIL,
-              private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+              private_key: formatPrivateKey(process.env.GOOGLE_PRIVATE_KEY),
             },
             scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
           }

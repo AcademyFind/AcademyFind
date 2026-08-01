@@ -1,11 +1,20 @@
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 
+function formatPrivateKey(key: string | undefined) {
+  if (!key) return undefined;
+  let formattedKey = key;
+  if (formattedKey.startsWith('"') && formattedKey.endsWith('"')) {
+    formattedKey = formattedKey.slice(1, -1);
+  }
+  return formattedKey.replace(/\\n/g, '\n');
+}
+
 const analyticsDataClient = new BetaAnalyticsDataClient(
   process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY
     ? {
         credentials: {
           client_email: process.env.GOOGLE_CLIENT_EMAIL,
-          private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+          private_key: formatPrivateKey(process.env.GOOGLE_PRIVATE_KEY),
         },
       }
     : undefined
