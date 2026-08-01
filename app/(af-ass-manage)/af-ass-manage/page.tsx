@@ -65,10 +65,10 @@ export default async function AdminDashboardPage() {
         getTrafficData()
     ]);
 
-    // Get today's GA4 traffic (last item in trend array usually)
+    // Get today's GA4 traffic (last item in chartData array usually)
     let todayVisitorsCount = 0;
-    if (!('error' in gaData) && 'trend' in gaData && Array.isArray(gaData.trend) && gaData.trend.length > 0) {
-        todayVisitorsCount = gaData.trend[gaData.trend.length - 1].visitors || 0;
+    if (!('error' in gaData) && 'chartData' in gaData && Array.isArray(gaData.chartData) && gaData.chartData.length > 0) {
+        todayVisitorsCount = gaData.chartData[gaData.chartData.length - 1].visitors || 0;
     }
 
     return (
