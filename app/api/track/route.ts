@@ -23,6 +23,12 @@ export async function POST(req: NextRequest) {
     const country = req.headers.get('x-vercel-ip-country') || 'Unknown Country';
     const userAgent = req.headers.get('user-agent') || 'Unknown';
 
+    // Ignore bot traffic
+    const isBot = /bot|crawler|spider|crawling|googlebot|bingbot|yandexbot|duckduckbot|slurp|baiduspider|headless/i.test(userAgent);
+    if (isBot) {
+      return NextResponse.json({ success: true, message: 'Bot traffic ignored' });
+    }
+
     // Simple UA Parsing (can use 'ua-parser-js' if needed, but keeping it light)
     let browser = 'Unknown';
     if (userAgent.includes('Chrome')) browser = 'Chrome';

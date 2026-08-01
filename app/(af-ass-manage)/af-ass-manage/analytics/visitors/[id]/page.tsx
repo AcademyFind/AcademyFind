@@ -27,7 +27,7 @@ export default async function VisitorJourneyPage({ params }: { params: Promise<{
 
   const firstEvent = session.events[0];
   const lastEvent = session.events[session.events.length - 1];
-  
+
   let timeSpent = "0m";
   if (firstEvent && lastEvent) {
     const diffMs = lastEvent.createdAt.getTime() - firstEvent.createdAt.getTime();
@@ -54,8 +54,8 @@ export default async function VisitorJourneyPage({ params }: { params: Promise<{
 
   return (
     <div className="flex-1 space-y-6 p-4 md:p-8 pt-6 max-w-4xl mx-auto">
-      <Link 
-        href="/af-ass-manage/analytics/visitors" 
+      <Link
+        href="/af-ass-manage/analytics/visitors"
         className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
@@ -78,7 +78,7 @@ export default async function VisitorJourneyPage({ params }: { params: Promise<{
                 </div>
               )}
             </div>
-            
+
             <div className="flex-1 space-y-4">
               <div>
                 <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
@@ -125,7 +125,7 @@ export default async function VisitorJourneyPage({ params }: { params: Promise<{
         </h3>
 
         <div className="relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 md:ml-6 space-y-8 pb-8">
-          {session.events.map((event, index) => (
+          {session.events.map((event: any, index: any) => (
             <div key={event.id} className="relative pl-8 md:pl-10 group">
               {/* Timeline Dot */}
               <div className={`absolute -left-[17px] top-1 p-1.5 rounded-full border-4 border-white dark:border-slate-950 ${getEventColor(event.eventType)}`}>
@@ -147,7 +147,7 @@ export default async function VisitorJourneyPage({ params }: { params: Promise<{
                     {format(new Date(event.createdAt), "hh:mm:ss a")}
                   </span>
                 </div>
-                
+
                 {event.details && (
                   <div className="mt-3 bg-slate-50 dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-700/50 text-sm text-slate-600 dark:text-slate-300">
                     <span className="font-semibold text-slate-700 dark:text-slate-200 mr-2">Details:</span>
@@ -157,7 +157,7 @@ export default async function VisitorJourneyPage({ params }: { params: Promise<{
               </div>
             </div>
           ))}
-          
+
           {session.events.length === 0 && (
             <div className="pl-8 text-slate-500">No events logged for this session yet.</div>
           )}

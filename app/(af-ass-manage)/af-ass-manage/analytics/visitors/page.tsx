@@ -40,7 +40,7 @@ export default async function VisitorsPage() {
             Real-time tracking of users currently browsing the platform.
           </p>
         </div>
-        
+
         <div className="flex items-center space-x-2 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-sm font-medium border border-blue-100 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-300">
           <span className="relative flex h-2.5 w-2.5 mr-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -71,12 +71,12 @@ export default async function VisitorsPage() {
                   </td>
                 </tr>
               ) : (
-                recentSessions.map((session) => {
+                recentSessions.map((session: any) => {
                   const isOnline = new Date().getTime() - new Date(session.updatedAt).getTime() < 5 * 60 * 1000; // < 5 mins
-                  
+
                   return (
-                    <tr 
-                      key={session.id} 
+                    <tr
+                      key={session.id}
                       className="group hover:bg-white dark:hover:bg-slate-800/50 transition-colors duration-200"
                     >
                       {/* User Cell */}
@@ -147,7 +147,7 @@ export default async function VisitorsPage() {
 
                       {/* Action Cell */}
                       <td className="px-6 py-4 text-right">
-                        <Link 
+                        <Link
                           href={`/af-ass-manage/analytics/visitors/${session.id}`}
                           className="inline-flex items-center justify-center p-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-all shadow-sm group-hover:border-indigo-200 group-hover:shadow-md dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-indigo-400"
                         >

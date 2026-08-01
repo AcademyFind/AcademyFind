@@ -30,34 +30,34 @@ export default function AnalyticsCharts({ chartData, topPages, channels }: Analy
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis 
-                  dataKey="date" 
-                  stroke="#888888" 
-                  fontSize={12} 
-                  tickLine={false} 
-                  axisLine={false} 
+                <XAxis
+                  dataKey="date"
+                  stroke="#888888"
+                  fontSize={12}
+                  tickLine={false}
+                  axisLine={false}
                   tickFormatter={(value) => {
                     const date = new Date(value);
                     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                   }}
                 />
-                <YAxis 
-                  stroke="#888888" 
-                  fontSize={12} 
-                  tickLine={false} 
-                  axisLine={false} 
+                <YAxis
+                  stroke="#888888"
+                  fontSize={12}
+                  tickLine={false}
+                  axisLine={false}
                 />
-                <RechartsTooltip 
+                <RechartsTooltip
                   contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                   labelFormatter={(value) => new Date(value).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                 />
-                <Area 
-                  type="monotone" 
-                  dataKey="visitors" 
-                  stroke="#f59e0b" 
+                <Area
+                  type="monotone"
+                  dataKey="visitors"
+                  stroke="#f59e0b"
                   strokeWidth={2}
-                  fillOpacity={1} 
-                  fill="url(#colorVisitors)" 
+                  fillOpacity={1}
+                  fill="url(#colorVisitors)"
                 />
               </AreaChart>
             </ResponsiveContainer>
@@ -84,7 +84,7 @@ export default function AnalyticsCharts({ chartData, topPages, channels }: Analy
                     paddingAngle={2}
                     dataKey="value"
                   >
-                    {channels.map((entry, index) => (
+                    {channels.map((entry: any, index: any) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
@@ -115,7 +115,7 @@ export default function AnalyticsCharts({ chartData, topPages, channels }: Analy
                 </tr>
               </thead>
               <tbody>
-                {topPages.map((page, i) => (
+                {topPages.map((page: any, i: any) => (
                   <tr key={i} className="bg-white border-b hover:bg-slate-50 transition-colors">
                     <td className="px-6 py-4 font-medium text-slate-900 truncate max-w-[250px]" title={page.path}>
                       {page.path}
