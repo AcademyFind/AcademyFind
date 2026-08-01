@@ -135,7 +135,9 @@ export const ModelName = {
   UserEducation: 'UserEducation',
   UserExperience: 'UserExperience',
   UserAchievement: 'UserAchievement',
-  UserSkill: 'UserSkill'
+  UserSkill: 'UserSkill',
+  VisitorSession: 'VisitorSession',
+  VisitorEvent: 'VisitorEvent'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1528,6 +1530,35 @@ export const UserSkillScalarFieldEnum = {
 } as const
 
 export type UserSkillScalarFieldEnum = (typeof UserSkillScalarFieldEnum)[keyof typeof UserSkillScalarFieldEnum]
+
+
+export const VisitorSessionScalarFieldEnum = {
+  id: 'id',
+  cookieId: 'cookieId',
+  userId: 'userId',
+  ipAddress: 'ipAddress',
+  city: 'city',
+  country: 'country',
+  device: 'device',
+  browser: 'browser',
+  os: 'os',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VisitorSessionScalarFieldEnum = (typeof VisitorSessionScalarFieldEnum)[keyof typeof VisitorSessionScalarFieldEnum]
+
+
+export const VisitorEventScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  eventType: 'eventType',
+  pageUrl: 'pageUrl',
+  details: 'details',
+  createdAt: 'createdAt'
+} as const
+
+export type VisitorEventScalarFieldEnum = (typeof VisitorEventScalarFieldEnum)[keyof typeof VisitorEventScalarFieldEnum]
 
 
 export const SortOrder = {

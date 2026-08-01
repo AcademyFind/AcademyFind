@@ -18,6 +18,7 @@ import GlobalCallbackFAB from "@/components/User/GlobalCallBack";
 import UserActivityTracker from "@/components/User/UserActivityTracker";
 import Script from "next/script";
 import { getCachedSession } from "@/lib/auth/session";
+import VisitorTracker from "@/components/analytics/VisitorTracker";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -118,6 +119,7 @@ export default async function RootLayout({
         </GoogleMapsProvider>
 
         <UserActivityTracker />
+        <VisitorTracker />
         <Toaster position="top-center" reverseOrder={false} />
         <GoogleOneTap />
         {/* <AuthPromptModal isAuthenticated={Boolean(session?.user)} />

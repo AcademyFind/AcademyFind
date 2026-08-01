@@ -22,7 +22,8 @@ import {
     BookOpen,
     UserCheck,
     MessageCircle,
-    Wallet
+    Wallet,
+    Activity
 } from "lucide-react";
 import { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
@@ -121,6 +122,8 @@ export default async function AdminLayout({
 
                     <nav className="flex flex-col gap-1.5 mt-2">
                         <SidebarLink href="/af-ass-manage" icon={<LayoutDashboard />} label="Overview" />
+                        <SidebarLink href="/af-ass-manage/analytics" icon={<Activity />} label="Analytics & Stats" />
+                        <SidebarLink href="/af-ass-manage/analytics/visitors" icon={<Activity className="opacity-50" />} label="↳ Live Visitors" />
                         <SidebarLink href="/af-ass-manage/notifications" icon={<BellIcon />} label="Notifications" count={notificationCount} />
 
                         {/* 👇 Yahan naye counts pass kiye hain */}

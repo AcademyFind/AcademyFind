@@ -468,7 +468,9 @@ export const ModelName = {
   UserEducation: 'UserEducation',
   UserExperience: 'UserExperience',
   UserAchievement: 'UserAchievement',
-  UserSkill: 'UserSkill'
+  UserSkill: 'UserSkill',
+  VisitorSession: 'VisitorSession',
+  VisitorEvent: 'VisitorEvent'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -484,7 +486,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteVisit" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill"
+    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteVisit" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill" | "visitorSession" | "visitorEvent"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -6778,6 +6780,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    VisitorSession: {
+      payload: Prisma.$VisitorSessionPayload<ExtArgs>
+      fields: Prisma.VisitorSessionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VisitorSessionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VisitorSessionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload>
+        }
+        findFirst: {
+          args: Prisma.VisitorSessionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VisitorSessionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload>
+        }
+        findMany: {
+          args: Prisma.VisitorSessionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload>[]
+        }
+        create: {
+          args: Prisma.VisitorSessionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload>
+        }
+        createMany: {
+          args: Prisma.VisitorSessionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VisitorSessionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload>[]
+        }
+        delete: {
+          args: Prisma.VisitorSessionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload>
+        }
+        update: {
+          args: Prisma.VisitorSessionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload>
+        }
+        deleteMany: {
+          args: Prisma.VisitorSessionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VisitorSessionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VisitorSessionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload>[]
+        }
+        upsert: {
+          args: Prisma.VisitorSessionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorSessionPayload>
+        }
+        aggregate: {
+          args: Prisma.VisitorSessionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVisitorSession>
+        }
+        groupBy: {
+          args: Prisma.VisitorSessionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VisitorSessionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VisitorSessionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VisitorSessionCountAggregateOutputType> | number
+        }
+      }
+    }
+    VisitorEvent: {
+      payload: Prisma.$VisitorEventPayload<ExtArgs>
+      fields: Prisma.VisitorEventFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VisitorEventFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VisitorEventFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload>
+        }
+        findFirst: {
+          args: Prisma.VisitorEventFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VisitorEventFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload>
+        }
+        findMany: {
+          args: Prisma.VisitorEventFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload>[]
+        }
+        create: {
+          args: Prisma.VisitorEventCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload>
+        }
+        createMany: {
+          args: Prisma.VisitorEventCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VisitorEventCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload>[]
+        }
+        delete: {
+          args: Prisma.VisitorEventDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload>
+        }
+        update: {
+          args: Prisma.VisitorEventUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload>
+        }
+        deleteMany: {
+          args: Prisma.VisitorEventDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VisitorEventUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VisitorEventUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload>[]
+        }
+        upsert: {
+          args: Prisma.VisitorEventUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VisitorEventPayload>
+        }
+        aggregate: {
+          args: Prisma.VisitorEventAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVisitorEvent>
+        }
+        groupBy: {
+          args: Prisma.VisitorEventGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VisitorEventGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VisitorEventCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VisitorEventCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -8193,6 +8343,35 @@ export const UserSkillScalarFieldEnum = {
 export type UserSkillScalarFieldEnum = (typeof UserSkillScalarFieldEnum)[keyof typeof UserSkillScalarFieldEnum]
 
 
+export const VisitorSessionScalarFieldEnum = {
+  id: 'id',
+  cookieId: 'cookieId',
+  userId: 'userId',
+  ipAddress: 'ipAddress',
+  city: 'city',
+  country: 'country',
+  device: 'device',
+  browser: 'browser',
+  os: 'os',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VisitorSessionScalarFieldEnum = (typeof VisitorSessionScalarFieldEnum)[keyof typeof VisitorSessionScalarFieldEnum]
+
+
+export const VisitorEventScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  eventType: 'eventType',
+  pageUrl: 'pageUrl',
+  details: 'details',
+  createdAt: 'createdAt'
+} as const
+
+export type VisitorEventScalarFieldEnum = (typeof VisitorEventScalarFieldEnum)[keyof typeof VisitorEventScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -8959,6 +9138,8 @@ export type GlobalOmitConfig = {
   userExperience?: Prisma.UserExperienceOmit
   userAchievement?: Prisma.UserAchievementOmit
   userSkill?: Prisma.UserSkillOmit
+  visitorSession?: Prisma.VisitorSessionOmit
+  visitorEvent?: Prisma.VisitorEventOmit
 }
 
 /* Types for Logging */

@@ -376,6 +376,7 @@ export type UserWhereInput = {
   publishedPosts?: Prisma.BlogPostListRelationFilter
   editedPosts?: Prisma.BlogPostListRelationFilter
   blogRevisions?: Prisma.BlogRevisionListRelationFilter
+  visitorSessions?: Prisma.VisitorSessionListRelationFilter
   blogReports?: Prisma.BlogReportListRelationFilter
   resolvedBlogReports?: Prisma.BlogReportListRelationFilter
   studentProfile?: Prisma.XOR<Prisma.StudentProfileNullableScalarRelationFilter, Prisma.StudentProfileWhereInput> | null
@@ -455,6 +456,7 @@ export type UserOrderByWithRelationInput = {
   publishedPosts?: Prisma.BlogPostOrderByRelationAggregateInput
   editedPosts?: Prisma.BlogPostOrderByRelationAggregateInput
   blogRevisions?: Prisma.BlogRevisionOrderByRelationAggregateInput
+  visitorSessions?: Prisma.VisitorSessionOrderByRelationAggregateInput
   blogReports?: Prisma.BlogReportOrderByRelationAggregateInput
   resolvedBlogReports?: Prisma.BlogReportOrderByRelationAggregateInput
   studentProfile?: Prisma.StudentProfileOrderByWithRelationInput
@@ -537,6 +539,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   publishedPosts?: Prisma.BlogPostListRelationFilter
   editedPosts?: Prisma.BlogPostListRelationFilter
   blogRevisions?: Prisma.BlogRevisionListRelationFilter
+  visitorSessions?: Prisma.VisitorSessionListRelationFilter
   blogReports?: Prisma.BlogReportListRelationFilter
   resolvedBlogReports?: Prisma.BlogReportListRelationFilter
   studentProfile?: Prisma.XOR<Prisma.StudentProfileNullableScalarRelationFilter, Prisma.StudentProfileWhereInput> | null
@@ -680,6 +683,7 @@ export type UserCreateInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -759,6 +763,7 @@ export type UserUncheckedCreateInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -838,6 +843,7 @@ export type UserUpdateInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -917,6 +923,7 @@ export type UserUncheckedUpdateInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -1875,6 +1882,22 @@ export type UserUpdateOneRequiredWithoutSkillsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSkillsInput, Prisma.UserUpdateWithoutSkillsInput>, Prisma.UserUncheckedUpdateWithoutSkillsInput>
 }
 
+export type UserCreateNestedOneWithoutVisitorSessionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutVisitorSessionsInput, Prisma.UserUncheckedCreateWithoutVisitorSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutVisitorSessionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutVisitorSessionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutVisitorSessionsInput, Prisma.UserUncheckedCreateWithoutVisitorSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutVisitorSessionsInput
+  upsert?: Prisma.UserUpsertWithoutVisitorSessionsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutVisitorSessionsInput, Prisma.UserUpdateWithoutVisitorSessionsInput>, Prisma.UserUncheckedUpdateWithoutVisitorSessionsInput>
+}
+
 export type UserCreateWithoutWalletInput = {
   id?: string
   name?: string | null
@@ -1928,6 +1951,7 @@ export type UserCreateWithoutWalletInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -2006,6 +2030,7 @@ export type UserUncheckedCreateWithoutWalletInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -2100,6 +2125,7 @@ export type UserUpdateWithoutWalletInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -2178,6 +2204,7 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -2256,6 +2283,7 @@ export type UserCreateWithoutReputationInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -2334,6 +2362,7 @@ export type UserUncheckedCreateWithoutReputationInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -2428,6 +2457,7 @@ export type UserUpdateWithoutReputationInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -2506,6 +2536,7 @@ export type UserUncheckedUpdateWithoutReputationInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -2584,6 +2615,7 @@ export type UserCreateWithoutPreferencesInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -2662,6 +2694,7 @@ export type UserUncheckedCreateWithoutPreferencesInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -2756,6 +2789,7 @@ export type UserUpdateWithoutPreferencesInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -2834,6 +2868,7 @@ export type UserUncheckedUpdateWithoutPreferencesInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -2911,6 +2946,7 @@ export type UserCreateWithoutSessionsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -2989,6 +3025,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -3083,6 +3120,7 @@ export type UserUpdateWithoutSessionsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -3161,6 +3199,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -3239,6 +3278,7 @@ export type UserCreateWithoutAccountsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -3317,6 +3357,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -3411,6 +3452,7 @@ export type UserUpdateWithoutAccountsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -3489,6 +3531,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -3567,6 +3610,7 @@ export type UserCreateWithoutManagedInstitutesInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -3645,6 +3689,7 @@ export type UserUncheckedCreateWithoutManagedInstitutesInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -3739,6 +3784,7 @@ export type UserUpdateWithoutManagedInstitutesInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -3817,6 +3863,7 @@ export type UserUncheckedUpdateWithoutManagedInstitutesInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -3895,6 +3942,7 @@ export type UserCreateWithoutReviewsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -3973,6 +4021,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -4067,6 +4116,7 @@ export type UserUpdateWithoutReviewsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -4145,6 +4195,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -4223,6 +4274,7 @@ export type UserCreateWithoutClaimsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -4301,6 +4353,7 @@ export type UserUncheckedCreateWithoutClaimsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -4395,6 +4448,7 @@ export type UserUpdateWithoutClaimsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -4473,6 +4527,7 @@ export type UserUncheckedUpdateWithoutClaimsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -4551,6 +4606,7 @@ export type UserCreateWithoutShortlistedInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -4629,6 +4685,7 @@ export type UserUncheckedCreateWithoutShortlistedInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -4723,6 +4780,7 @@ export type UserUpdateWithoutShortlistedInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -4801,6 +4859,7 @@ export type UserUncheckedUpdateWithoutShortlistedInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -4879,6 +4938,7 @@ export type UserCreateWithoutViewHistoryInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -4957,6 +5017,7 @@ export type UserUncheckedCreateWithoutViewHistoryInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -5051,6 +5112,7 @@ export type UserUpdateWithoutViewHistoryInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -5129,6 +5191,7 @@ export type UserUncheckedUpdateWithoutViewHistoryInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -5208,6 +5271,7 @@ export type UserCreateWithoutTeacherProfileInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -5286,6 +5350,7 @@ export type UserUncheckedCreateWithoutTeacherProfileInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -5380,6 +5445,7 @@ export type UserUpdateWithoutTeacherProfileInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -5458,6 +5524,7 @@ export type UserUncheckedUpdateWithoutTeacherProfileInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -5536,6 +5603,7 @@ export type UserCreateWithoutStudentProfileInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   teacherProfile?: Prisma.TeacherProfileCreateNestedOneWithoutUserInput
@@ -5614,6 +5682,7 @@ export type UserUncheckedCreateWithoutStudentProfileInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   teacherProfile?: Prisma.TeacherProfileUncheckedCreateNestedOneWithoutUserInput
@@ -5708,6 +5777,7 @@ export type UserUpdateWithoutStudentProfileInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   teacherProfile?: Prisma.TeacherProfileUpdateOneWithoutUserNestedInput
@@ -5786,6 +5856,7 @@ export type UserUncheckedUpdateWithoutStudentProfileInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   teacherProfile?: Prisma.TeacherProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -5864,6 +5935,7 @@ export type UserCreateWithoutMembershipsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -5942,6 +6014,7 @@ export type UserUncheckedCreateWithoutMembershipsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -6036,6 +6109,7 @@ export type UserUpdateWithoutMembershipsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -6114,6 +6188,7 @@ export type UserUncheckedUpdateWithoutMembershipsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -6192,6 +6267,7 @@ export type UserCreateWithoutCreatedConversationsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -6270,6 +6346,7 @@ export type UserUncheckedCreateWithoutCreatedConversationsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -6364,6 +6441,7 @@ export type UserUpdateWithoutCreatedConversationsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -6442,6 +6520,7 @@ export type UserUncheckedUpdateWithoutCreatedConversationsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -6520,6 +6599,7 @@ export type UserCreateWithoutConversationParticipantsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -6598,6 +6678,7 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -6692,6 +6773,7 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -6770,6 +6852,7 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -6848,6 +6931,7 @@ export type UserCreateWithoutMessagesInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -6926,6 +7010,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -7020,6 +7105,7 @@ export type UserUpdateWithoutMessagesInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -7098,6 +7184,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -7176,6 +7263,7 @@ export type UserCreateWithoutMessageReactionsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -7254,6 +7342,7 @@ export type UserUncheckedCreateWithoutMessageReactionsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -7348,6 +7437,7 @@ export type UserUpdateWithoutMessageReactionsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -7426,6 +7516,7 @@ export type UserUncheckedUpdateWithoutMessageReactionsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -7504,6 +7595,7 @@ export type UserCreateWithoutMessageReadsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -7582,6 +7674,7 @@ export type UserUncheckedCreateWithoutMessageReadsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -7676,6 +7769,7 @@ export type UserUpdateWithoutMessageReadsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -7754,6 +7848,7 @@ export type UserUncheckedUpdateWithoutMessageReadsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -7832,6 +7927,7 @@ export type UserCreateWithoutMessageReportsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -7910,6 +8006,7 @@ export type UserUncheckedCreateWithoutMessageReportsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -7993,6 +8090,7 @@ export type UserCreateWithoutResolvedMessageReportsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -8071,6 +8169,7 @@ export type UserUncheckedCreateWithoutResolvedMessageReportsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -8165,6 +8264,7 @@ export type UserUpdateWithoutMessageReportsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -8243,6 +8343,7 @@ export type UserUncheckedUpdateWithoutMessageReportsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -8332,6 +8433,7 @@ export type UserUpdateWithoutResolvedMessageReportsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -8410,6 +8512,7 @@ export type UserUncheckedUpdateWithoutResolvedMessageReportsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -8488,6 +8591,7 @@ export type UserCreateWithoutChatSettingsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -8566,6 +8670,7 @@ export type UserUncheckedCreateWithoutChatSettingsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -8660,6 +8765,7 @@ export type UserUpdateWithoutChatSettingsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -8738,6 +8844,7 @@ export type UserUncheckedUpdateWithoutChatSettingsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -8816,6 +8923,7 @@ export type UserCreateWithoutNotificationsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -8894,6 +9002,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -8988,6 +9097,7 @@ export type UserUpdateWithoutNotificationsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -9066,6 +9176,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -9144,6 +9255,7 @@ export type UserCreateWithoutBlockedUsersInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -9222,6 +9334,7 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -9305,6 +9418,7 @@ export type UserCreateWithoutBlockedByUsersInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -9383,6 +9497,7 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -9477,6 +9592,7 @@ export type UserUpdateWithoutBlockedUsersInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -9555,6 +9671,7 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -9644,6 +9761,7 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -9722,6 +9840,7 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -9799,6 +9918,7 @@ export type UserCreateWithoutInstituteRequestsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -9877,6 +9997,7 @@ export type UserUncheckedCreateWithoutInstituteRequestsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -9971,6 +10092,7 @@ export type UserUpdateWithoutInstituteRequestsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -10049,6 +10171,7 @@ export type UserUncheckedUpdateWithoutInstituteRequestsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -10127,6 +10250,7 @@ export type UserCreateWithoutPaymentsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -10205,6 +10329,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -10299,6 +10424,7 @@ export type UserUpdateWithoutPaymentsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -10377,6 +10503,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -10455,6 +10582,7 @@ export type UserCreateWithoutSalesAssignmentsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -10533,6 +10661,7 @@ export type UserUncheckedCreateWithoutSalesAssignmentsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -10627,6 +10756,7 @@ export type UserUpdateWithoutSalesAssignmentsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -10705,6 +10835,7 @@ export type UserUncheckedUpdateWithoutSalesAssignmentsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -10783,6 +10914,7 @@ export type UserCreateWithoutSalesCategoryAssignmentsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -10861,6 +10993,7 @@ export type UserUncheckedCreateWithoutSalesCategoryAssignmentsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -10955,6 +11088,7 @@ export type UserUpdateWithoutSalesCategoryAssignmentsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -11033,6 +11167,7 @@ export type UserUncheckedUpdateWithoutSalesCategoryAssignmentsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -11111,6 +11246,7 @@ export type UserCreateWithoutAdminNotificationsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -11189,6 +11325,7 @@ export type UserUncheckedCreateWithoutAdminNotificationsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -11283,6 +11420,7 @@ export type UserUpdateWithoutAdminNotificationsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -11361,6 +11499,7 @@ export type UserUncheckedUpdateWithoutAdminNotificationsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -11440,6 +11579,7 @@ export type UserCreateWithoutInstituteVisitsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -11518,6 +11658,7 @@ export type UserUncheckedCreateWithoutInstituteVisitsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -11612,6 +11753,7 @@ export type UserUpdateWithoutInstituteVisitsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -11690,6 +11832,7 @@ export type UserUncheckedUpdateWithoutInstituteVisitsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -11767,6 +11910,7 @@ export type UserCreateWithoutCompareListsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -11845,6 +11989,7 @@ export type UserUncheckedCreateWithoutCompareListsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -11939,6 +12084,7 @@ export type UserUpdateWithoutCompareListsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -12017,6 +12163,7 @@ export type UserUncheckedUpdateWithoutCompareListsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -12095,6 +12242,7 @@ export type UserCreateWithoutCommunityQuestionsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -12173,6 +12321,7 @@ export type UserUncheckedCreateWithoutCommunityQuestionsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -12267,6 +12416,7 @@ export type UserUpdateWithoutCommunityQuestionsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -12345,6 +12495,7 @@ export type UserUncheckedUpdateWithoutCommunityQuestionsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -12423,6 +12574,7 @@ export type UserCreateWithoutCommunityAnswersInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -12501,6 +12653,7 @@ export type UserUncheckedCreateWithoutCommunityAnswersInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -12595,6 +12748,7 @@ export type UserUpdateWithoutCommunityAnswersInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -12673,6 +12827,7 @@ export type UserUncheckedUpdateWithoutCommunityAnswersInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -12751,6 +12906,7 @@ export type UserCreateWithoutDistributionLogsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -12829,6 +12985,7 @@ export type UserUncheckedCreateWithoutDistributionLogsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -12923,6 +13080,7 @@ export type UserUpdateWithoutDistributionLogsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -13001,6 +13159,7 @@ export type UserUncheckedUpdateWithoutDistributionLogsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -13079,6 +13238,7 @@ export type UserCreateWithoutBlogAuthorProfileInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -13157,6 +13317,7 @@ export type UserUncheckedCreateWithoutBlogAuthorProfileInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -13251,6 +13412,7 @@ export type UserUpdateWithoutBlogAuthorProfileInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -13329,6 +13491,7 @@ export type UserUncheckedUpdateWithoutBlogAuthorProfileInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -13407,6 +13570,7 @@ export type UserCreateWithoutReviewedPostsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -13485,6 +13649,7 @@ export type UserUncheckedCreateWithoutReviewedPostsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -13568,6 +13733,7 @@ export type UserCreateWithoutPublishedPostsInput = {
   reviewedPosts?: Prisma.BlogPostCreateNestedManyWithoutReviewedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -13646,6 +13812,7 @@ export type UserUncheckedCreateWithoutPublishedPostsInput = {
   reviewedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutReviewedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -13729,6 +13896,7 @@ export type UserCreateWithoutEditedPostsInput = {
   reviewedPosts?: Prisma.BlogPostCreateNestedManyWithoutReviewedByInput
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -13807,6 +13975,7 @@ export type UserUncheckedCreateWithoutEditedPostsInput = {
   reviewedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutReviewedByInput
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -13901,6 +14070,7 @@ export type UserUpdateWithoutReviewedPostsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -13979,6 +14149,7 @@ export type UserUncheckedUpdateWithoutReviewedPostsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -14068,6 +14239,7 @@ export type UserUpdateWithoutPublishedPostsInput = {
   reviewedPosts?: Prisma.BlogPostUpdateManyWithoutReviewedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -14146,6 +14318,7 @@ export type UserUncheckedUpdateWithoutPublishedPostsInput = {
   reviewedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutReviewedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -14235,6 +14408,7 @@ export type UserUpdateWithoutEditedPostsInput = {
   reviewedPosts?: Prisma.BlogPostUpdateManyWithoutReviewedByNestedInput
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -14313,6 +14487,7 @@ export type UserUncheckedUpdateWithoutEditedPostsInput = {
   reviewedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutReviewedByNestedInput
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -14391,6 +14566,7 @@ export type UserCreateWithoutBlogRevisionsInput = {
   reviewedPosts?: Prisma.BlogPostCreateNestedManyWithoutReviewedByInput
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -14469,6 +14645,7 @@ export type UserUncheckedCreateWithoutBlogRevisionsInput = {
   reviewedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutReviewedByInput
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -14563,6 +14740,7 @@ export type UserUpdateWithoutBlogRevisionsInput = {
   reviewedPosts?: Prisma.BlogPostUpdateManyWithoutReviewedByNestedInput
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -14641,6 +14819,7 @@ export type UserUncheckedUpdateWithoutBlogRevisionsInput = {
   reviewedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutReviewedByNestedInput
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -14719,6 +14898,7 @@ export type UserCreateWithoutBlogViewsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -14797,6 +14977,7 @@ export type UserUncheckedCreateWithoutBlogViewsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -14891,6 +15072,7 @@ export type UserUpdateWithoutBlogViewsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -14969,6 +15151,7 @@ export type UserUncheckedUpdateWithoutBlogViewsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -15047,6 +15230,7 @@ export type UserCreateWithoutBlogBookmarksInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -15125,6 +15309,7 @@ export type UserUncheckedCreateWithoutBlogBookmarksInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -15219,6 +15404,7 @@ export type UserUpdateWithoutBlogBookmarksInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -15297,6 +15483,7 @@ export type UserUncheckedUpdateWithoutBlogBookmarksInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -15375,6 +15562,7 @@ export type UserCreateWithoutFollowedAuthorsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -15453,6 +15641,7 @@ export type UserUncheckedCreateWithoutFollowedAuthorsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -15547,6 +15736,7 @@ export type UserUpdateWithoutFollowedAuthorsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -15625,6 +15815,7 @@ export type UserUncheckedUpdateWithoutFollowedAuthorsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -15704,6 +15895,7 @@ export type UserCreateWithoutResolvedBlogReportsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
   teacherProfile?: Prisma.TeacherProfileCreateNestedOneWithoutUserInput
@@ -15782,6 +15974,7 @@ export type UserUncheckedCreateWithoutResolvedBlogReportsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
   teacherProfile?: Prisma.TeacherProfileUncheckedCreateNestedOneWithoutUserInput
@@ -15865,6 +16058,7 @@ export type UserCreateWithoutBlogReportsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
   teacherProfile?: Prisma.TeacherProfileCreateNestedOneWithoutUserInput
@@ -15943,6 +16137,7 @@ export type UserUncheckedCreateWithoutBlogReportsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
   teacherProfile?: Prisma.TeacherProfileUncheckedCreateNestedOneWithoutUserInput
@@ -16037,6 +16232,7 @@ export type UserUpdateWithoutResolvedBlogReportsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
   teacherProfile?: Prisma.TeacherProfileUpdateOneWithoutUserNestedInput
@@ -16115,6 +16311,7 @@ export type UserUncheckedUpdateWithoutResolvedBlogReportsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
   teacherProfile?: Prisma.TeacherProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -16204,6 +16401,7 @@ export type UserUpdateWithoutBlogReportsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
   teacherProfile?: Prisma.TeacherProfileUpdateOneWithoutUserNestedInput
@@ -16282,6 +16480,7 @@ export type UserUncheckedUpdateWithoutBlogReportsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
   teacherProfile?: Prisma.TeacherProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -16359,6 +16558,7 @@ export type UserCreateWithoutBlogCommentsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -16437,6 +16637,7 @@ export type UserUncheckedCreateWithoutBlogCommentsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -16531,6 +16732,7 @@ export type UserUpdateWithoutBlogCommentsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -16609,6 +16811,7 @@ export type UserUncheckedUpdateWithoutBlogCommentsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -16687,6 +16890,7 @@ export type UserCreateWithoutBlogReactionsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -16765,6 +16969,7 @@ export type UserUncheckedCreateWithoutBlogReactionsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -16859,6 +17064,7 @@ export type UserUpdateWithoutBlogReactionsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -16937,6 +17143,7 @@ export type UserUncheckedUpdateWithoutBlogReactionsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -17016,6 +17223,7 @@ export type UserCreateWithoutEducationsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -17094,6 +17302,7 @@ export type UserUncheckedCreateWithoutEducationsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -17188,6 +17397,7 @@ export type UserUpdateWithoutEducationsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -17266,6 +17476,7 @@ export type UserUncheckedUpdateWithoutEducationsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -17344,6 +17555,7 @@ export type UserCreateWithoutExperiencesInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -17422,6 +17634,7 @@ export type UserUncheckedCreateWithoutExperiencesInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -17516,6 +17729,7 @@ export type UserUpdateWithoutExperiencesInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -17594,6 +17808,7 @@ export type UserUncheckedUpdateWithoutExperiencesInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -17672,6 +17887,7 @@ export type UserCreateWithoutAchievementsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -17750,6 +17966,7 @@ export type UserUncheckedCreateWithoutAchievementsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -17844,6 +18061,7 @@ export type UserUpdateWithoutAchievementsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -17922,6 +18140,7 @@ export type UserUncheckedUpdateWithoutAchievementsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -18000,6 +18219,7 @@ export type UserCreateWithoutSkillsInput = {
   publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
@@ -18078,6 +18298,7 @@ export type UserUncheckedCreateWithoutSkillsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
   editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
   blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
   blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
   studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
@@ -18172,6 +18393,7 @@ export type UserUpdateWithoutSkillsInput = {
   publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
@@ -18250,6 +18472,7 @@ export type UserUncheckedUpdateWithoutSkillsInput = {
   publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
   editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
   blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
   blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
   resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
   studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -18272,6 +18495,338 @@ export type UserUncheckedUpdateWithoutSkillsInput = {
   educations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
   experiences?: Prisma.UserExperienceUncheckedUpdateManyWithoutUserNestedInput
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+  instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutVisitorSessionsInput = {
+  id?: string
+  name?: string | null
+  username: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  image?: string | null
+  coverImage?: string | null
+  role?: $Enums.Role
+  isActive?: boolean
+  emailVerified?: boolean
+  onboardingCompleted?: boolean
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  canAddInstitute?: boolean
+  canWriteBlogs?: boolean
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+  telegramUrl?: string | null
+  twitterUrl?: string | null
+  youtubeUrl?: string | null
+  linkedinUrl?: string | null
+  whatsappUrl?: string | null
+  allowDms?: boolean
+  isVisible?: boolean
+  managedInstitutes?: Prisma.InstituteManagerCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  adminNotifications?: Prisma.AdminNotificationCreateNestedManyWithoutUserInput
+  communityAnswers?: Prisma.CommunityAnswerCreateNestedManyWithoutUserInput
+  communityQuestions?: Prisma.CommunityQuestionCreateNestedManyWithoutUserInput
+  claims?: Prisma.InstituteClaimCreateNestedManyWithoutUserInput
+  instituteRequests?: Prisma.InstituteRequestCreateNestedManyWithoutUserInput
+  salesAssignments?: Prisma.SalesAssignmentCreateNestedManyWithoutSalesManagerInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentCreateNestedManyWithoutSalesManagerInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  payments?: Prisma.SubscriptionPaymentCreateNestedManyWithoutUserInput
+  compareLists?: Prisma.UserCompareListCreateNestedManyWithoutUserInput
+  viewHistory?: Prisma.UserHistoryCreateNestedManyWithoutUserInput
+  shortlisted?: Prisma.UserShortlistCreateNestedManyWithoutUserInput
+  distributionLogs?: Prisma.LeadDistributionLogCreateNestedManyWithoutAdminInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileCreateNestedOneWithoutUserInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutUserInput
+  blogReactions?: Prisma.BlogReactionCreateNestedManyWithoutUserInput
+  blogViews?: Prisma.BlogViewCreateNestedManyWithoutUserInput
+  blogBookmarks?: Prisma.BlogBookmarkCreateNestedManyWithoutUserInput
+  followedAuthors?: Prisma.BlogAuthorFollowerCreateNestedManyWithoutUserInput
+  reviewedPosts?: Prisma.BlogPostCreateNestedManyWithoutReviewedByInput
+  publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
+  editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
+  blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
+  resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
+  studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
+  teacherProfile?: Prisma.TeacherProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.InstituteMembershipCreateNestedManyWithoutUserInput
+  chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
+  messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
+  resolvedMessageReports?: Prisma.MessageReportCreateNestedManyWithoutResolverInput
+  blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedInput
+  createdConversations?: Prisma.ConversationCreateNestedManyWithoutCreatedByInput
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  wallet?: Prisma.UserWalletCreateNestedOneWithoutUserInput
+  reputation?: Prisma.UserReputationCreateNestedOneWithoutUserInput
+  preferences?: Prisma.UserPreferenceCreateNestedOneWithoutUserInput
+  educations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  experiences?: Prisma.UserExperienceCreateNestedManyWithoutUserInput
+  achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
+  instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutVisitorSessionsInput = {
+  id?: string
+  name?: string | null
+  username: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  image?: string | null
+  coverImage?: string | null
+  role?: $Enums.Role
+  isActive?: boolean
+  emailVerified?: boolean
+  onboardingCompleted?: boolean
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  canAddInstitute?: boolean
+  canWriteBlogs?: boolean
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+  telegramUrl?: string | null
+  twitterUrl?: string | null
+  youtubeUrl?: string | null
+  linkedinUrl?: string | null
+  whatsappUrl?: string | null
+  allowDms?: boolean
+  isVisible?: boolean
+  managedInstitutes?: Prisma.InstituteManagerUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  adminNotifications?: Prisma.AdminNotificationUncheckedCreateNestedManyWithoutUserInput
+  communityAnswers?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUserInput
+  communityQuestions?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUserInput
+  claims?: Prisma.InstituteClaimUncheckedCreateNestedManyWithoutUserInput
+  instituteRequests?: Prisma.InstituteRequestUncheckedCreateNestedManyWithoutUserInput
+  salesAssignments?: Prisma.SalesAssignmentUncheckedCreateNestedManyWithoutSalesManagerInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentUncheckedCreateNestedManyWithoutSalesManagerInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  payments?: Prisma.SubscriptionPaymentUncheckedCreateNestedManyWithoutUserInput
+  compareLists?: Prisma.UserCompareListUncheckedCreateNestedManyWithoutUserInput
+  viewHistory?: Prisma.UserHistoryUncheckedCreateNestedManyWithoutUserInput
+  shortlisted?: Prisma.UserShortlistUncheckedCreateNestedManyWithoutUserInput
+  distributionLogs?: Prisma.LeadDistributionLogUncheckedCreateNestedManyWithoutAdminInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileUncheckedCreateNestedOneWithoutUserInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutUserInput
+  blogReactions?: Prisma.BlogReactionUncheckedCreateNestedManyWithoutUserInput
+  blogViews?: Prisma.BlogViewUncheckedCreateNestedManyWithoutUserInput
+  blogBookmarks?: Prisma.BlogBookmarkUncheckedCreateNestedManyWithoutUserInput
+  followedAuthors?: Prisma.BlogAuthorFollowerUncheckedCreateNestedManyWithoutUserInput
+  reviewedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutReviewedByInput
+  publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
+  editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
+  blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
+  resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
+  studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
+  teacherProfile?: Prisma.TeacherProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.InstituteMembershipUncheckedCreateNestedManyWithoutUserInput
+  chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
+  messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
+  resolvedMessageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutResolverInput
+  blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedInput
+  createdConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutCreatedByInput
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.UserWalletUncheckedCreateNestedOneWithoutUserInput
+  reputation?: Prisma.UserReputationUncheckedCreateNestedOneWithoutUserInput
+  preferences?: Prisma.UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+  educations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  experiences?: Prisma.UserExperienceUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
+  instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutVisitorSessionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutVisitorSessionsInput, Prisma.UserUncheckedCreateWithoutVisitorSessionsInput>
+}
+
+export type UserUpsertWithoutVisitorSessionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutVisitorSessionsInput, Prisma.UserUncheckedUpdateWithoutVisitorSessionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutVisitorSessionsInput, Prisma.UserUncheckedCreateWithoutVisitorSessionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutVisitorSessionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutVisitorSessionsInput, Prisma.UserUncheckedUpdateWithoutVisitorSessionsInput>
+}
+
+export type UserUpdateWithoutVisitorSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canAddInstitute?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  canWriteBlogs?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twitterUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsappUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowDms?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVisible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  managedInstitutes?: Prisma.InstituteManagerUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  adminNotifications?: Prisma.AdminNotificationUpdateManyWithoutUserNestedInput
+  communityAnswers?: Prisma.CommunityAnswerUpdateManyWithoutUserNestedInput
+  communityQuestions?: Prisma.CommunityQuestionUpdateManyWithoutUserNestedInput
+  claims?: Prisma.InstituteClaimUpdateManyWithoutUserNestedInput
+  instituteRequests?: Prisma.InstituteRequestUpdateManyWithoutUserNestedInput
+  salesAssignments?: Prisma.SalesAssignmentUpdateManyWithoutSalesManagerNestedInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentUpdateManyWithoutSalesManagerNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  payments?: Prisma.SubscriptionPaymentUpdateManyWithoutUserNestedInput
+  compareLists?: Prisma.UserCompareListUpdateManyWithoutUserNestedInput
+  viewHistory?: Prisma.UserHistoryUpdateManyWithoutUserNestedInput
+  shortlisted?: Prisma.UserShortlistUpdateManyWithoutUserNestedInput
+  distributionLogs?: Prisma.LeadDistributionLogUpdateManyWithoutAdminNestedInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileUpdateOneWithoutUserNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutUserNestedInput
+  blogReactions?: Prisma.BlogReactionUpdateManyWithoutUserNestedInput
+  blogViews?: Prisma.BlogViewUpdateManyWithoutUserNestedInput
+  blogBookmarks?: Prisma.BlogBookmarkUpdateManyWithoutUserNestedInput
+  followedAuthors?: Prisma.BlogAuthorFollowerUpdateManyWithoutUserNestedInput
+  reviewedPosts?: Prisma.BlogPostUpdateManyWithoutReviewedByNestedInput
+  publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
+  editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
+  blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
+  resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
+  studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
+  teacherProfile?: Prisma.TeacherProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.InstituteMembershipUpdateManyWithoutUserNestedInput
+  chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
+  messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
+  resolvedMessageReports?: Prisma.MessageReportUpdateManyWithoutResolverNestedInput
+  blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedNestedInput
+  createdConversations?: Prisma.ConversationUpdateManyWithoutCreatedByNestedInput
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.UserWalletUpdateOneWithoutUserNestedInput
+  reputation?: Prisma.UserReputationUpdateOneWithoutUserNestedInput
+  preferences?: Prisma.UserPreferenceUpdateOneWithoutUserNestedInput
+  educations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  experiences?: Prisma.UserExperienceUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
+  instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutVisitorSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canAddInstitute?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  canWriteBlogs?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twitterUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsappUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowDms?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVisible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  managedInstitutes?: Prisma.InstituteManagerUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  adminNotifications?: Prisma.AdminNotificationUncheckedUpdateManyWithoutUserNestedInput
+  communityAnswers?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUserNestedInput
+  communityQuestions?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUserNestedInput
+  claims?: Prisma.InstituteClaimUncheckedUpdateManyWithoutUserNestedInput
+  instituteRequests?: Prisma.InstituteRequestUncheckedUpdateManyWithoutUserNestedInput
+  salesAssignments?: Prisma.SalesAssignmentUncheckedUpdateManyWithoutSalesManagerNestedInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentUncheckedUpdateManyWithoutSalesManagerNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  payments?: Prisma.SubscriptionPaymentUncheckedUpdateManyWithoutUserNestedInput
+  compareLists?: Prisma.UserCompareListUncheckedUpdateManyWithoutUserNestedInput
+  viewHistory?: Prisma.UserHistoryUncheckedUpdateManyWithoutUserNestedInput
+  shortlisted?: Prisma.UserShortlistUncheckedUpdateManyWithoutUserNestedInput
+  distributionLogs?: Prisma.LeadDistributionLogUncheckedUpdateManyWithoutAdminNestedInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileUncheckedUpdateOneWithoutUserNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutUserNestedInput
+  blogReactions?: Prisma.BlogReactionUncheckedUpdateManyWithoutUserNestedInput
+  blogViews?: Prisma.BlogViewUncheckedUpdateManyWithoutUserNestedInput
+  blogBookmarks?: Prisma.BlogBookmarkUncheckedUpdateManyWithoutUserNestedInput
+  followedAuthors?: Prisma.BlogAuthorFollowerUncheckedUpdateManyWithoutUserNestedInput
+  reviewedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutReviewedByNestedInput
+  publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
+  editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
+  blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
+  resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
+  studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
+  teacherProfile?: Prisma.TeacherProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.InstituteMembershipUncheckedUpdateManyWithoutUserNestedInput
+  chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
+  messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
+  resolvedMessageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutResolverNestedInput
+  blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedNestedInput
+  createdConversations?: Prisma.ConversationUncheckedUpdateManyWithoutCreatedByNestedInput
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.UserWalletUncheckedUpdateOneWithoutUserNestedInput
+  reputation?: Prisma.UserReputationUncheckedUpdateOneWithoutUserNestedInput
+  preferences?: Prisma.UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  educations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  experiences?: Prisma.UserExperienceUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -18306,6 +18861,7 @@ export type UserCountOutputType = {
   publishedPosts: number
   editedPosts: number
   blogRevisions: number
+  visitorSessions: number
   blogReports: number
   resolvedBlogReports: number
   memberships: number
@@ -18352,6 +18908,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   publishedPosts?: boolean | UserCountOutputTypeCountPublishedPostsArgs
   editedPosts?: boolean | UserCountOutputTypeCountEditedPostsArgs
   blogRevisions?: boolean | UserCountOutputTypeCountBlogRevisionsArgs
+  visitorSessions?: boolean | UserCountOutputTypeCountVisitorSessionsArgs
   blogReports?: boolean | UserCountOutputTypeCountBlogReportsArgs
   resolvedBlogReports?: boolean | UserCountOutputTypeCountResolvedBlogReportsArgs
   memberships?: boolean | UserCountOutputTypeCountMembershipsArgs
@@ -18560,6 +19117,13 @@ export type UserCountOutputTypeCountBlogRevisionsArgs<ExtArgs extends runtime.Ty
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountVisitorSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VisitorSessionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountBlogReportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.BlogReportWhereInput
 }
@@ -18737,6 +19301,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   publishedPosts?: boolean | Prisma.User$publishedPostsArgs<ExtArgs>
   editedPosts?: boolean | Prisma.User$editedPostsArgs<ExtArgs>
   blogRevisions?: boolean | Prisma.User$blogRevisionsArgs<ExtArgs>
+  visitorSessions?: boolean | Prisma.User$visitorSessionsArgs<ExtArgs>
   blogReports?: boolean | Prisma.User$blogReportsArgs<ExtArgs>
   resolvedBlogReports?: boolean | Prisma.User$resolvedBlogReportsArgs<ExtArgs>
   studentProfile?: boolean | Prisma.User$studentProfileArgs<ExtArgs>
@@ -18879,6 +19444,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   publishedPosts?: boolean | Prisma.User$publishedPostsArgs<ExtArgs>
   editedPosts?: boolean | Prisma.User$editedPostsArgs<ExtArgs>
   blogRevisions?: boolean | Prisma.User$blogRevisionsArgs<ExtArgs>
+  visitorSessions?: boolean | Prisma.User$visitorSessionsArgs<ExtArgs>
   blogReports?: boolean | Prisma.User$blogReportsArgs<ExtArgs>
   resolvedBlogReports?: boolean | Prisma.User$resolvedBlogReportsArgs<ExtArgs>
   studentProfile?: boolean | Prisma.User$studentProfileArgs<ExtArgs>
@@ -18937,6 +19503,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     publishedPosts: Prisma.$BlogPostPayload<ExtArgs>[]
     editedPosts: Prisma.$BlogPostPayload<ExtArgs>[]
     blogRevisions: Prisma.$BlogRevisionPayload<ExtArgs>[]
+    visitorSessions: Prisma.$VisitorSessionPayload<ExtArgs>[]
     blogReports: Prisma.$BlogReportPayload<ExtArgs>[]
     resolvedBlogReports: Prisma.$BlogReportPayload<ExtArgs>[]
     studentProfile: Prisma.$StudentProfilePayload<ExtArgs> | null
@@ -19409,6 +19976,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   publishedPosts<T extends Prisma.User$publishedPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$publishedPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   editedPosts<T extends Prisma.User$editedPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$editedPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   blogRevisions<T extends Prisma.User$blogRevisionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blogRevisionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogRevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  visitorSessions<T extends Prisma.User$visitorSessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$visitorSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitorSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   blogReports<T extends Prisma.User$blogReportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blogReportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   resolvedBlogReports<T extends Prisma.User$resolvedBlogReportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$resolvedBlogReportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   studentProfile<T extends Prisma.User$studentProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$studentProfileArgs<ExtArgs>>): Prisma.Prisma__StudentProfileClient<runtime.Types.Result.GetResult<Prisma.$StudentProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -20497,6 +21065,30 @@ export type User$blogRevisionsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.BlogRevisionScalarFieldEnum | Prisma.BlogRevisionScalarFieldEnum[]
+}
+
+/**
+ * User.visitorSessions
+ */
+export type User$visitorSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VisitorSession
+   */
+  select?: Prisma.VisitorSessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VisitorSession
+   */
+  omit?: Prisma.VisitorSessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VisitorSessionInclude<ExtArgs> | null
+  where?: Prisma.VisitorSessionWhereInput
+  orderBy?: Prisma.VisitorSessionOrderByWithRelationInput | Prisma.VisitorSessionOrderByWithRelationInput[]
+  cursor?: Prisma.VisitorSessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VisitorSessionScalarFieldEnum | Prisma.VisitorSessionScalarFieldEnum[]
 }
 
 /**

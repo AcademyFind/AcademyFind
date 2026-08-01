@@ -58,6 +58,7 @@ model User {
   publishedPosts           BlogPost[]                @relation("PostPublisher")
   editedPosts              BlogPost[]                @relation("PostEditor")
   blogRevisions            BlogRevision[]            @relation("RevisionAuthor")
+  visitorSessions          VisitorSession[]
   blogReports              BlogReport[]
   resolvedBlogReports      BlogReport[]              @relation("ResolvedBlogReports")
   studentProfile           StudentProfile?
@@ -2305,4 +2306,34 @@ model UserSkill {
 
   @@index([userId])
   @@map("user_skill")
+}
+
+// ==========================================
+// Custom Real-time Analytics System
+// ==========================================
+
+model VisitorSession {
+  id          String   @id @default(cuid())
+  cookieId    String   @unique
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ipAddress   String?
+  city        String?
+  country     String?
+  device      String?
+  browser     String?
+  os          String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  events      VisitorEvent[]
+}
+
+model VisitorEvent {
+  id          String   @id @default(cuid())
+  sessionId   String
+  session     VisitorSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  eventType   String   // e.g., "PAGE_VIEW", "CLICK", "SEARCH"
+  pageUrl     String
+  details     String?  // Extra info like search query or button name
+  createdAt   DateTime @default(now())
 }

@@ -466,3 +466,13 @@ export type UserAchievement = Prisma.UserAchievementModel
  * 
  */
 export type UserSkill = Prisma.UserSkillModel
+/**
+ * Model VisitorSession
+ * 
+ */
+export type VisitorSession = Prisma.VisitorSessionModel
+/**
+ * Model VisitorEvent
+ * 
+ */
+export type VisitorEvent = Prisma.VisitorEventModel
