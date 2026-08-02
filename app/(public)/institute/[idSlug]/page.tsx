@@ -388,9 +388,9 @@ export default async function InstitutePage({ params }: PageProps) {
         {/* Immersive Cover Banner */}
         {institute.coverImage ? (
           <div className="absolute top-0 left-0 w-full h-[380px] md:h-[450px] z-0 overflow-hidden">
-            <Image 
-              src={institute.coverImage} 
-              alt={`${institute.name} Cover`} 
+            <Image
+              src={institute.coverImage}
+              alt={`${institute.name} Cover`}
               fill
               className="object-cover"
               priority
@@ -424,7 +424,7 @@ export default async function InstitutePage({ params }: PageProps) {
             <div className="space-y-8">
               {/* Profile Card */}
               <div className="rounded-[2.5rem] bg-white/95 backdrop-blur-xl p-6 md:p-10 shadow-2xl shadow-slate-200/50 border border-white relative mt-10 md:mt-16">
-                
+
                 {/* Floating Logo */}
                 <div className="absolute -top-16 md:-top-20 left-6 md:left-10 h-32 w-32 md:h-40 md:w-40 flex items-center justify-center overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border-4 border-white shadow-xl bg-white">
                   <Image src={mainLogo} alt={institute.name} width={160} height={160} className="h-full w-full object-contain object-center" />
@@ -432,104 +432,104 @@ export default async function InstitutePage({ params }: PageProps) {
 
                 <div className="mt-16 md:mt-20">
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                      <div>
-                        <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                          <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-                            {institute.name}
-                            <span className="block text-lg font-medium text-slate-500 mt-1">
-                              Best {institute.categories[0]?.category.name} in {institute.city.name}
-                            </span>
-                          </h1>
-                          {institute.isVerified && (
-                            <p className="text-[0.65rem] font-bold text-blue-600 flex items-center gap-1 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100 mt-1">
-                              <CheckCircle className="h-3.5 w-3.5" /> Verified
-                            </p>
-                          )}
-                        </div>
-                        <div className="mt-3 flex flex-wrap items-center justify-center md:justify-start gap-3">
-                          <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                            {/* Mode Badge */}
-                            {institute.mode && (
-                              <span className="rounded-full bg-purple-100 px-3 py-1 text-xs font-bold text-purple-800 tracking-wide uppercase whitespace-nowrap">
-                                {institute.mode}
-                              </span>
-                            )}
-                            {institute.categories.map((item: any) => (
-                              <span key={item.category.id} className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800 tracking-wide uppercase whitespace-nowrap">
-                                {item.category.name}
-                              </span>
-                            ))}
-                          </div>
-                          {displayRating > 0 && institute.googlePlaceId && (
-                            <Link
-                              href={`${process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL}${institute.googlePlaceId}`}
-                              prefetch={false}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-200"
-                            >
-                              <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                              <span>
-                                {displayRating} ({displayReviewCount} Reviews)
-                              </span>
-                            </Link>
-                          )}
-                        </div>
+                    <div>
+                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
+                          {institute.name}
+                          <span className="block text-lg font-medium text-slate-500 mt-1">
+                            Best {institute.categories[0]?.category.name} in {institute.city.name}
+                          </span>
+                        </h1>
+                        {institute.isVerified && (
+                          <p className="text-[0.65rem] font-bold text-blue-600 flex items-center gap-1 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100 mt-1">
+                            <CheckCircle className="h-3.5 w-3.5" /> Verified
+                          </p>
+                        )}
                       </div>
-                      <div className="shrink-0 relative z-20 flex items-center gap-2">
-                        {isMember && (
-                          (institute.subscriptionPlan === "BASIC" || institute.subscriptionPlan === "VERIFIED") ? (
-                            <div className="inline-flex h-10 items-center justify-center rounded-lg bg-amber-50 px-4 text-sm font-semibold text-amber-700 border border-amber-200 gap-2 cursor-not-allowed" title="Chat locked (Available on Premium/Ultra)">
-                              <Lock className="h-4 w-4" />
-                              <span className="hidden sm:inline">Chat Locked</span>
-                            </div>
-                          ) : (
-                            <Link href={`/chat?instituteId=${institute.id}`} className="inline-flex h-10 items-center justify-center rounded-lg bg-blue-50 px-4 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-100 border border-blue-200 gap-2">
-                              <MessageCircle className="h-4 w-4" />
-                              <span className="hidden sm:inline">Institute Chat</span>
-                            </Link>
-                          )
-                        )}
-                        {isManager && (
-                          <Link href={`/manager/${institute.id}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-700 transition-colors hover:bg-slate-200 border border-slate-200">
-                            <Settings className="h-5 w-5" />
+                      <div className="mt-3 flex flex-wrap items-center justify-center md:justify-start gap-3">
+                        <div className="flex flex-wrap justify-center md:justify-start gap-2">
+                          {/* Mode Badge */}
+                          {institute.mode && (
+                            <span className="rounded-full bg-purple-100 px-3 py-1 text-xs font-bold text-purple-800 tracking-wide uppercase whitespace-nowrap">
+                              {institute.mode}
+                            </span>
+                          )}
+                          {institute.categories.map((item: any) => (
+                            <span key={item.category.id} className="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800 tracking-wide uppercase whitespace-nowrap">
+                              {item.category.name}
+                            </span>
+                          ))}
+                        </div>
+                        {displayRating > 0 && institute.googlePlaceId && (
+                          <Link
+                            href={`${process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL}${institute.googlePlaceId}`}
+                            prefetch={false}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-200"
+                          >
+                            <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                            <span>
+                              {displayRating} ({displayReviewCount} Reviews)
+                            </span>
                           </Link>
                         )}
-                        {session?.user?.role === "ADMIN" && (
-                          <Link href={`/af-ass-manage/institutes/${institute.id}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-rose-100 text-rose-700 transition-colors hover:bg-rose-200 border border-rose-200" title="Admin View">
-                            <Settings className="h-5 w-5" />
-                          </Link>
-                        )}
-                        <SaveButton instituteId={institute.id} />
                       </div>
                     </div>
-
-                    <div className="mt-6 flex flex-col gap-3 rounded-2xl bg-slate-50 p-4 border border-slate-100 text-left">
-                      <Link href={safeMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2.5 text-slate-600 hover:text-amber-600 transition group">
-                        <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-500 group-hover:scale-110 transition-transform" />
-                        <span className="text-sm leading-relaxed underline-offset-4 group-hover:underline">{institute.address || institute.city.name}</span>
-                      </Link>
-                      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 pt-2 border-t border-slate-200/60 mt-1">
-                        {institute.phone && <a href={`tel:${institute.phone}`} className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Phone className="h-4 w-4 text-amber-500" /> {institute.phone}</a>}
-                        {institute.email && <a href={`mailto:${institute.email}`} className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Mail className="h-4 w-4 text-amber-500" /> {institute.email}</a>}
-                        {institute.website && <a href={institute.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Globe className="h-4 w-4 text-amber-500" /> Visit Website</a>}
-                      </div>
-
-                      {/* Social Media Section */}
-                      {(institute.facebookUrl || institute.instagramUrl || institute.twitterUrl || institute.youtubeUrl || institute.telegramUrl || institute.whatsappUrl) && (
-                        <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-200/60 mt-1">
-                          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mr-1">Follow:</span>
-                          {institute.whatsappUrl && <a href={institute.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-green-500 hover:scale-110 transition-transform"><FaWhatsapp className="h-5 w-5" /></a>}
-                          {institute.instagramUrl && <a href={institute.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:scale-110 transition-transform"><FaInstagram className="h-5 w-5" /></a>}
-                          {institute.facebookUrl && <a href={institute.facebookUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:scale-110 transition-transform"><FaFacebook className="h-5 w-5" /></a>}
-                          {institute.youtubeUrl && <a href={institute.youtubeUrl} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:scale-110 transition-transform"><FaYoutube className="h-5 w-5" /></a>}
-                          {institute.linkedinUrl && <a href={institute.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:scale-110 transition-transform"><FaLinkedin className="h-5 w-5" /></a>}
-                          {institute.twitterUrl && <a href={institute.twitterUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:scale-110 transition-transform"><FaTwitter className="h-5 w-5" /></a>}
-                          {institute.telegramUrl && <a href={institute.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:scale-110 transition-transform"><FaTelegram className="h-5 w-5" /></a>}
-                        </div>
+                    <div className="shrink-0 relative z-20 flex items-center gap-2">
+                      {isMember && (
+                        (institute.subscriptionPlan === "BASIC" || institute.subscriptionPlan === "VERIFIED") ? (
+                          <div className="inline-flex h-10 items-center justify-center rounded-lg bg-amber-50 px-4 text-sm font-semibold text-amber-700 border border-amber-200 gap-2 cursor-not-allowed" title="Chat locked (Available on Premium/Ultra)">
+                            <Lock className="h-4 w-4" />
+                            <span className="hidden sm:inline">Chat Locked</span>
+                          </div>
+                        ) : (
+                          <Link href={`/chat?instituteId=${institute.id}`} className="inline-flex h-10 items-center justify-center rounded-lg bg-blue-50 px-4 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-100 border border-blue-200 gap-2">
+                            <MessageCircle className="h-4 w-4" />
+                            <span className="hidden sm:inline">Institute Chat</span>
+                          </Link>
+                        )
                       )}
+                      {isManager && (
+                        <Link href={`/manager/${institute.id}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-slate-700 transition-colors hover:bg-slate-200 border border-slate-200">
+                          <Settings className="h-5 w-5" />
+                        </Link>
+                      )}
+                      {session?.user?.role === "ADMIN" && (
+                        <Link href={`/af-ass-manage/institutes/${institute.id}`} className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-rose-100 text-rose-700 transition-colors hover:bg-rose-200 border border-rose-200" title="Admin View">
+                          <Settings className="h-5 w-5" />
+                        </Link>
+                      )}
+                      <SaveButton instituteId={institute.id} />
                     </div>
                   </div>
+
+                  <div className="mt-6 flex flex-col gap-3 rounded-2xl bg-slate-50 p-4 border border-slate-100 text-left">
+                    <Link href={safeMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2.5 text-slate-600 hover:text-amber-600 transition group">
+                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-500 group-hover:scale-110 transition-transform" />
+                      <span className="text-sm leading-relaxed underline-offset-4 group-hover:underline">{institute.address || institute.city.name}</span>
+                    </Link>
+                    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 pt-2 border-t border-slate-200/60 mt-1">
+                      {institute.phone && <a href={`tel:${institute.phone}`} className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Phone className="h-4 w-4 text-amber-500" /> {institute.phone}</a>}
+                      {institute.email && <a href={`mailto:${institute.email}`} className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Mail className="h-4 w-4 text-amber-500" /> {institute.email}</a>}
+                      {institute.website && <a href={institute.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Globe className="h-4 w-4 text-amber-500" /> Visit Website</a>}
+                    </div>
+
+                    {/* Social Media Section */}
+                    {(institute.facebookUrl || institute.instagramUrl || institute.twitterUrl || institute.youtubeUrl || institute.telegramUrl || institute.whatsappUrl) && (
+                      <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-200/60 mt-1">
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mr-1">Follow:</span>
+                        {institute.whatsappUrl && <a href={institute.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-green-500 hover:scale-110 transition-transform"><FaWhatsapp className="h-5 w-5" /></a>}
+                        {institute.instagramUrl && <a href={institute.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:scale-110 transition-transform"><FaInstagram className="h-5 w-5" /></a>}
+                        {institute.facebookUrl && <a href={institute.facebookUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:scale-110 transition-transform"><FaFacebook className="h-5 w-5" /></a>}
+                        {institute.youtubeUrl && <a href={institute.youtubeUrl} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:scale-110 transition-transform"><FaYoutube className="h-5 w-5" /></a>}
+                        {institute.linkedinUrl && <a href={institute.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:scale-110 transition-transform"><FaLinkedin className="h-5 w-5" /></a>}
+                        {institute.twitterUrl && <a href={institute.twitterUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:scale-110 transition-transform"><FaTwitter className="h-5 w-5" /></a>}
+                        {institute.telegramUrl && <a href={institute.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:scale-110 transition-transform"><FaTelegram className="h-5 w-5" /></a>}
+                      </div>
+                    )}
+                  </div>
+                </div>
 
                 {/* Quick Amenities Toggles */}
                 <div className="mt-6 flex flex-wrap gap-2">
@@ -562,7 +562,7 @@ export default async function InstitutePage({ params }: PageProps) {
                         Don't miss out on student leads! Claim your profile now to manage enquiries, update details, and get real-time insights on who visits or saves your page.
                       </p>
                       <div className="inline-flex bg-amber-200/50 text-amber-900 px-3 py-1 rounded-md text-xs font-bold items-center gap-1.5 mt-1 border border-amber-200">
-                        🎉 Early Bird Offer: Free/Discounted pricing valid only till 31st July!
+                        🎉 Early Bird Offer: Free/Discounted pricing valid only till 15th August!
                       </div>
                     </div>
 
@@ -983,10 +983,10 @@ export default async function InstitutePage({ params }: PageProps) {
             <div className={`relative rounded-3xl overflow-hidden ${!hasUltraAccess ? 'min-h-[350px]' : ''}`}>
               {!hasUltraAccess && <LockedOverlay title="Infrastructure Images" instituteId={institute.id} slug={institute.slug} />}
 
-              <InteractiveGallery 
-                images={validClassroomImages} 
-                altPrefix={`${institute.name} Classroom`} 
-                hasUltraAccess={hasUltraAccess} 
+              <InteractiveGallery
+                images={validClassroomImages}
+                altPrefix={`${institute.name} Classroom`}
+                hasUltraAccess={hasUltraAccess}
               />
             </div>
           </section>
@@ -1012,10 +1012,10 @@ export default async function InstitutePage({ params }: PageProps) {
               )}
 
               {/* Grid Content (Actual or Mock for Blur) */}
-              <InteractiveGallery 
-                images={validGalleryImages} 
-                altPrefix="Gallery Image" 
-                hasUltraAccess={hasUltraAccess} 
+              <InteractiveGallery
+                images={validGalleryImages}
+                altPrefix="Gallery Image"
+                hasUltraAccess={hasUltraAccess}
               />
             </div>
           </section>
