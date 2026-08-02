@@ -41,14 +41,14 @@ export default async function AnalyticsPage() {
 
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
-      <div className="flex items-center justify-between space-y-2">
-        <h2 className="text-3xl font-bold tracking-tight">Analytics Overview</h2>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-2 mb-6 sm:space-y-2">
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Analytics Overview</h2>
         <div className="flex items-center space-x-2">
           <span className="text-sm text-slate-500">Last 30 Days</span>
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         <Card className="border-indigo-100 dark:border-indigo-900 bg-indigo-50/50 dark:bg-indigo-900/10">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-indigo-700 dark:text-indigo-300">Live Today</CardTitle>

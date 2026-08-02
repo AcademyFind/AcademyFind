@@ -55,11 +55,11 @@ export default async function VisitorsPage() {
           <table className="w-full text-sm text-left">
             <thead className="text-xs text-slate-500 uppercase bg-slate-100/50 dark:bg-slate-800/50 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
               <tr>
-                <th className="px-6 py-4 font-semibold">User</th>
-                <th className="px-6 py-4 font-semibold">Location</th>
-                <th className="px-6 py-4 font-semibold">Device / OS</th>
-                <th className="px-6 py-4 font-semibold">Activity</th>
-                <th className="px-6 py-4 font-semibold text-right">Action</th>
+                <th className="px-6 py-4 font-semibold whitespace-nowrap">User</th>
+                <th className="px-6 py-4 font-semibold whitespace-nowrap">Location</th>
+                <th className="px-6 py-4 font-semibold whitespace-nowrap">Device / OS</th>
+                <th className="px-6 py-4 font-semibold whitespace-nowrap">Activity</th>
+                <th className="px-6 py-4 font-semibold whitespace-nowrap text-right">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
@@ -80,7 +80,7 @@ export default async function VisitorsPage() {
                       className="group hover:bg-white dark:hover:bg-slate-800/50 transition-colors duration-200"
                     >
                       {/* User Cell */}
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center gap-3">
                           <div className="relative">
                             {session.user?.image ? (
@@ -106,7 +106,7 @@ export default async function VisitorsPage() {
                       </td>
 
                       {/* Location Cell */}
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center text-slate-700 dark:text-slate-300">
                           <Globe className="w-4 h-4 mr-2 text-slate-400" />
                           {session.city && session.city !== "Unknown City" ? (
@@ -118,7 +118,7 @@ export default async function VisitorsPage() {
                       </td>
 
                       {/* Device Cell */}
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center gap-2">
                           {session.device === "Mobile" ? (
                             <Smartphone className="w-4 h-4 text-slate-500" />
@@ -132,7 +132,7 @@ export default async function VisitorsPage() {
                       </td>
 
                       {/* Activity Cell */}
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex flex-col gap-1">
                           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 w-fit">
                             <Activity className="w-3.5 h-3.5 text-indigo-500" />
@@ -146,7 +146,7 @@ export default async function VisitorsPage() {
                       </td>
 
                       {/* Action Cell */}
-                      <td className="px-6 py-4 text-right">
+                      <td className="px-6 py-4 whitespace-nowrap text-right">
                         <Link
                           href={`/af-ass-manage/analytics/visitors/${session.id}`}
                           className="inline-flex items-center justify-center p-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-all shadow-sm group-hover:border-indigo-200 group-hover:shadow-md dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-indigo-400"
