@@ -45,7 +45,7 @@ export default function PostHero({ post }: PostHeroProps) {
     <header className="relative overflow-hidden bg-white" aria-labelledby="post-title">
       {/* ❌ 9. Changed max-w-7xl to max-w-6xl */}
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-        
+
         {/* ❌ 1. Category First */}
         {post.category && (
           <div className="mb-5">
@@ -118,59 +118,59 @@ export default function PostHero({ post }: PostHeroProps) {
 
         {/* ❌ 1. Meta Section Fifth */}
         <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-          
+
           {/* Meta Left: Author & Brand */}
           {post.authorProfile ? (
-          <div className="flex flex-1 items-start gap-4">
-            <div className="relative h-16 w-16 overflow-hidden rounded-full border border-slate-200 bg-slate-100">
-              {post.authorProfile.avatarUrl ? (
-                // ❌ 5. Fixed Avatar Image configuration
-                <Image
-                  src={post.authorProfile.avatarUrl}
-                  alt={post.authorProfile.displayName}
-                  fill
-                  quality={90}
-                  sizes="64px"
-                  className="object-cover"
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center bg-amber-100 text-xl font-bold text-amber-700">
-                  {post.authorProfile.displayName.charAt(0)}
-                </div>
-              )}
-            </div>
-
-            <div className="min-w-0 flex-1">
-              <Link
-                href={`/blog/author/${post.authorProfile.username}`}
-                className="inline-flex items-center gap-2"
-              >
-                <h3 className="text-lg font-semibold text-slate-900 transition-colors hover:text-amber-600">
-                  {post.authorProfile.displayName}
-                </h3>
-                {post.authorProfile.isVerified && (
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-xs font-bold text-white">
-                    ✓
-                  </span>
+            <div className="flex flex-1 items-start gap-4">
+              <div className="relative h-16 w-16 overflow-hidden rounded-full border border-slate-200 bg-slate-100">
+                {post.authorProfile.avatarUrl ? (
+                  // ❌ 5. Fixed Avatar Image configuration
+                  <Image
+                    src={post.authorProfile.avatarUrl}
+                    alt={post.authorProfile.displayName}
+                    fill
+                    quality={90}
+                    sizes="64px"
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-amber-100 text-xl font-bold text-amber-700">
+                    {post.authorProfile.displayName.charAt(0)}
+                  </div>
                 )}
-              </Link>
+              </div>
 
-              {post.authorProfile.designation && (
-                <p className="mt-1 text-sm text-slate-500">
-                  {post.authorProfile.designation}
-                </p>
-              )}
-
-              {post.brand && (
+              <div className="min-w-0 flex-1">
                 <Link
-                  href={`/blog/brand/${post.brand.slug}`}
-                  className="mt-2 inline-flex rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700 transition hover:bg-amber-100"
+                  href={`/blog/author/${post.authorProfile.username}`}
+                  className="inline-flex items-center gap-2"
                 >
-                  {post.brand.name}
+                  <h3 className="text-lg font-semibold text-slate-900 transition-colors hover:text-amber-600">
+                    {post.authorProfile.displayName}
+                  </h3>
+                  {post.authorProfile.isVerified && (
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-xs font-bold text-white">
+                      ✓
+                    </span>
+                  )}
                 </Link>
-              )}
+
+                {post.authorProfile.designation && (
+                  <p className="mt-1 text-sm text-slate-500">
+                    {post.authorProfile.designation}
+                  </p>
+                )}
+
+                {!post.authorProfile && post.brand && (
+                  <Link
+                    href={`/blog/brand/${post.brand.slug}`}
+                    className="mt-2 inline-flex rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700 transition hover:bg-amber-100"
+                  >
+                    {post.brand.name}
+                  </Link>
+                )}
+              </div>
             </div>
-          </div>
           ) : post.brand ? (
             <div className="flex flex-1 items-center gap-4">
               <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-slate-200 bg-amber-100">

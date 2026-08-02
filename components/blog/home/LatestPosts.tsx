@@ -122,7 +122,7 @@ export default function LatestPosts({ posts }: LatestPostsProps) {
 
                       <div className="mt-8 flex items-center justify-between border-t border-slate-200/60 pt-6">
                         <span className="text-sm font-bold text-slate-800">
-                          By {post.authorProfile?.displayName || "AcademyFind"}
+                          By {post.authorProfile?.displayName || post?.brand?.name || "AcademyFind"}
                         </span>
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-all group-hover:bg-amber-50 group-hover:text-amber-600 group-hover:translate-x-1">
                           <ArrowRight className="h-5 w-5" />
