@@ -23,12 +23,14 @@ export async function POST(req: NextRequest) {
 
     // 2. Extract Demographics from Vercel Headers
     const ipAddress = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'Unknown';
-    const city = req.headers.get('x-vercel-ip-city') || 'Unknown City';
+    let city = req.headers.get('x-vercel-ip-city') || 'Unknown City';
+    try { city = decodeURIComponent(city); } catch(e) {}
+    
     const country = req.headers.get('x-vercel-ip-country') || 'Unknown Country';
     const userAgent = req.headers.get('user-agent') || 'Unknown';
 
-    // Ignore bot traffic
-    const isBot = /bot|crawler|spider|crawling|googlebot|bingbot|yandexbot|duckduckbot|slurp|baiduspider|headless/i.test(userAgent);
+    // Ignore bot traffic (including social media scrapers from ads)
+    const isBot = /bot|crawler|spider|crawling|googlebot|bingbot|yandexbot|duckduckbot|slurp|baiduspider|headless|facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp|Instagram|TelegramBot|Discordbot/i.test(userAgent);
     if (isBot) {
       return NextResponse.json({ success: true, message: 'Bot traffic ignored' });
     }
