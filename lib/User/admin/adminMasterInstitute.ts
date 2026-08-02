@@ -289,6 +289,7 @@ export async function updateInstituteByAdmin(
         revalidatePath(`/af-ass-manage/institutes/${instituteId}`);
         revalidatePath(`/institute/${instituteId}-${slug}`); 
         revalidatePath(`/compare/[slug]`, 'page');
+        revalidatePath('/', 'layout'); // Clears listing pages cache
 
         return { success: true, message: "Master properties sync completed!" }
     } catch (error) {

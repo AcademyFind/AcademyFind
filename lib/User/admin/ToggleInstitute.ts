@@ -18,6 +18,7 @@ export async function toggleInstituteStatus(
         });
 
         revalidatePath('/af-ass-manage/institutes'); // Admin page refresh karne ke liye
+        revalidatePath('/', 'layout'); // Clear public cache to reflect status changes
         
         return { 
             success: true, 
