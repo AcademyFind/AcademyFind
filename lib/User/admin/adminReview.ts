@@ -37,7 +37,8 @@ export async function approveReview(reviewId: string, instituteId: string) {
     });
 
     // 4. UI ko turant refresh karne ke liye
-    revalidatePath("/admin/reviews");
+    revalidatePath("/af-ass-manage/reviews");
+    revalidatePath("/", "layout"); // Clears the public institute pages cache
     return { success: true };
 
   } catch (error) {
@@ -54,7 +55,7 @@ export async function rejectReview(reviewId: string) {
       data: { status: "REJECTED" },
     });
 
-    revalidatePath("/admin/reviews");
+    revalidatePath("/af-ass-manage/reviews");
     return { success: true };
 
   } catch (error) {
