@@ -28,9 +28,9 @@ export function DemographicsCharts({ cityData, deviceData, avgDuration }: { city
             </div>
 
             {/* Devices Chart */}
-            <div className="p-6 border border-stone-100 bg-white shadow-sm rounded-2xl col-span-1 lg:col-span-1 h-[300px] flex flex-col">
+            <div className="p-6 border border-stone-100 bg-white shadow-sm rounded-2xl col-span-1 lg:col-span-1 min-h-[300px] flex flex-col">
                 <h3 className="font-bold text-stone-800 mb-4">Visitors by Device</h3>
-                <div className="flex-1 w-full h-full min-h-[200px]">
+                <div className="flex-1 w-full h-[200px]">
                     {deviceData.length > 0 ? (
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
@@ -38,8 +38,8 @@ export function DemographicsCharts({ cityData, deviceData, avgDuration }: { city
                                     data={deviceData}
                                     cx="50%"
                                     cy="50%"
-                                    innerRadius={60}
-                                    outerRadius={80}
+                                    innerRadius={50}
+                                    outerRadius={70}
                                     paddingAngle={5}
                                     dataKey="value"
                                 >
@@ -65,7 +65,7 @@ export function DemographicsCharts({ cityData, deviceData, avgDuration }: { city
             </div>
 
             {/* City Chart */}
-            <div className="p-6 border border-stone-100 bg-white shadow-sm rounded-2xl col-span-1 lg:col-span-1 h-[300px] flex flex-col">
+            <div className="p-6 border border-stone-100 bg-white shadow-sm rounded-2xl col-span-1 lg:col-span-1 min-h-[300px] flex flex-col">
                 <h3 className="font-bold text-stone-800 mb-4">Top Cities</h3>
                 <div className="flex-1 w-full h-full min-h-[200px]">
                     {cityData.length > 0 ? (
