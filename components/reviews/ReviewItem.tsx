@@ -56,7 +56,7 @@ export function ReviewItem({ review, isLoggedIn }: { review: any, isLoggedIn: bo
     <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
       <div
         className="font-semibold text-slate-800 cursor-pointer hover:text-amber-600 inline-block transition-colors"
-        onClick={(e) => handleUserClick(review.user.username, e)}
+        onClick={(e) => handleUserClick(review.user.username || review.user.id, e)}
       >
         {review.user?.name || "Anonymous User"}
       </div>
@@ -92,7 +92,7 @@ export function ReviewItem({ review, isLoggedIn }: { review: any, isLoggedIn: bo
             <div key={reply.id} className="rounded-2xl border border-slate-100 bg-slate-50 p-4 shadow-sm">
               <div
                 className="font-semibold text-slate-800 text-sm cursor-pointer hover:text-amber-600 inline-block transition-colors"
-                onClick={(e) => handleUserClick(reply.user.username, e)}
+                onClick={(e) => handleUserClick(reply.user.username || reply.user.id, e)}
               >
                 {reply.user?.name || "Anonymous User"}
               </div>
