@@ -92,7 +92,7 @@ export function ReviewItem({ review, isLoggedIn }: { review: any, isLoggedIn: bo
             <div key={reply.id} className="rounded-2xl border border-slate-100 bg-slate-50 p-4 shadow-sm">
               <div
                 className="font-semibold text-slate-800 text-sm cursor-pointer hover:text-amber-600 inline-block transition-colors"
-                onClick={(e) => handleUserClick(reply.user.id, e)}
+                onClick={(e) => handleUserClick(reply.user.username, e)}
               >
                 {reply.user?.name || "Anonymous User"}
               </div>

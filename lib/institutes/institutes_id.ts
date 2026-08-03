@@ -34,6 +34,7 @@ export async function getInstituteById(
             select: {
               id: true,
               name: true,
+              username: true,
             },
           },
           replies: {
@@ -45,6 +46,7 @@ export async function getInstituteById(
                 select: {
                   id: true,
                   name: true,
+                  username: true,
                 }
               }
             },
