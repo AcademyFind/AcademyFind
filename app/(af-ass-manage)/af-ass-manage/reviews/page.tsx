@@ -16,8 +16,17 @@ export default async function AdminReviewsPage({
 
   // Build filter condition
   const whereCondition: any = {};
+  const repliesFilter: any = {
+    include: { user: { select: { name: true, email: true } } },
+    orderBy: { createdAt: 'desc' as const }
+  };
+
   if (currentFilter !== 'ALL') {
-    whereCondition.status = currentFilter as ReviewStatus;
+    whereCondition.OR = [
+      { status: currentFilter as ReviewStatus },
+      { replies: { some: { status: currentFilter as ReviewStatus } } }
+    ];
+    repliesFilter.where = { status: currentFilter as ReviewStatus };
   }
 
   const reviews = await prisma.review.findMany({
@@ -25,10 +34,7 @@ export default async function AdminReviewsPage({
     include: {
       user: { select: { name: true, email: true } },
       institute: { select: { name: true, id: true } },
-      replies: {
-        include: { user: { select: { name: true, email: true } } },
-        orderBy: { createdAt: 'desc' }
-      }
+      replies: repliesFilter
     },
     orderBy: { createdAt: "desc" },
   });
