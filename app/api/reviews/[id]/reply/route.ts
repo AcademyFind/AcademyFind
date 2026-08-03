@@ -1,19 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/app/generated/prisma";
-import { getAuthUser } from "@/lib/User/Auth/Auth";
+import { prisma } from "@/lib/prisma";
+import { auth } from "@/lib/auth/auth";
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> | { id: string } }
 ) {
   try {
-    const user = await getAuthUser();
+    const session = await auth.api.getSession({
+      headers: req.headers,
+    });
     
-    if (!user) {
+    if (!session?.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id: reviewId } = params;
+    const resolvedParams = await params;
+    const { id: reviewId } = resolvedParams;
     const body = await req.json();
     const { content } = body;
 
@@ -34,7 +37,7 @@ export async function POST(
     const reply = await prisma.reviewReply.create({
       data: {
         reviewId,
-        userId: user.id,
+        userId: session.user.id,
         content: content.trim(),
         status: "PENDING",
       },
