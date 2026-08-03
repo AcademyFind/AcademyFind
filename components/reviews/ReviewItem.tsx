@@ -21,7 +21,7 @@ export function ReviewItem({ review, isLoggedIn }: { review: any, isLoggedIn: bo
     if (!isLoggedIn) {
       setShowAuthModal(true);
     } else {
-      router.push(`/profile/${userId}`);
+      router.push(`/u/${userId}`);
     }
   };
 
@@ -30,7 +30,7 @@ export function ReviewItem({ review, isLoggedIn }: { review: any, isLoggedIn: bo
       toast.error("Reply content cannot be empty.");
       return;
     }
-    
+
     setLoading(true);
     try {
       const res = await fetch(`/api/reviews/${review.id}/reply`, {
@@ -38,10 +38,10 @@ export function ReviewItem({ review, isLoggedIn }: { review: any, isLoggedIn: bo
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: replyContent }),
       });
-      
+
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to submit reply");
-      
+
       toast.success("Reply submitted and pending admin approval.");
       setReplyContent("");
       setShowReplyForm(false);
@@ -54,15 +54,15 @@ export function ReviewItem({ review, isLoggedIn }: { review: any, isLoggedIn: bo
 
   return (
     <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-      <div 
+      <div
         className="font-semibold text-slate-800 cursor-pointer hover:text-amber-600 inline-block transition-colors"
-        onClick={(e) => handleUserClick(review.user.id, e)}
+        onClick={(e) => handleUserClick(review.user.username, e)}
       >
         {review.user?.name || "Anonymous User"}
       </div>
       <div className="mt-2 text-amber-400">{"⭐".repeat(review.rating)}</div>
       {review.comment && <p className="mt-3 text-slate-600">{review.comment}</p>}
-      
+
       <div className="mt-4">
         {isLoggedIn && (
           <Button variant="outline" size="sm" onClick={() => setShowReplyForm(!showReplyForm)}>
@@ -73,10 +73,10 @@ export function ReviewItem({ review, isLoggedIn }: { review: any, isLoggedIn: bo
 
       {showReplyForm && (
         <div className="mt-4 flex flex-col gap-2">
-          <Textarea 
-            placeholder="Write your reply..." 
-            value={replyContent} 
-            onChange={(e) => setReplyContent(e.target.value)} 
+          <Textarea
+            placeholder="Write your reply..."
+            value={replyContent}
+            onChange={(e) => setReplyContent(e.target.value)}
           />
           <div className="flex justify-end gap-2">
             <Button variant="ghost" onClick={() => setShowReplyForm(false)}>Cancel</Button>
@@ -90,7 +90,7 @@ export function ReviewItem({ review, isLoggedIn }: { review: any, isLoggedIn: bo
         <div className="mt-6 space-y-4 border-l-2 border-slate-100 pl-4">
           {review.replies.map((reply: any) => (
             <div key={reply.id} className="rounded-2xl border border-slate-100 bg-slate-50 p-4 shadow-sm">
-              <div 
+              <div
                 className="font-semibold text-slate-800 text-sm cursor-pointer hover:text-amber-600 inline-block transition-colors"
                 onClick={(e) => handleUserClick(reply.user.id, e)}
               >
