@@ -63,3 +63,36 @@ export async function rejectReview(reviewId: string) {
     return { success: false, error: "Failed to reject review" };
   }
 }
+
+// 3. Approve Reply
+export async function approveReply(replyId: string) {
+  try {
+    await prisma.reviewReply.update({
+      where: { id: replyId },
+      data: { status: "APPROVED" },
+    });
+
+    revalidatePath("/af-ass-manage/reviews");
+    revalidatePath("/", "layout"); // Clears the public institute pages cache
+    return { success: true };
+  } catch (error) {
+    console.error("Reply Approval Error:", error);
+    return { success: false, error: "Failed to approve reply" };
+  }
+}
+
+// 4. Reject Reply
+export async function rejectReply(replyId: string) {
+  try {
+    await prisma.reviewReply.update({
+      where: { id: replyId },
+      data: { status: "REJECTED" },
+    });
+
+    revalidatePath("/af-ass-manage/reviews");
+    return { success: true };
+  } catch (error) {
+    console.error("Reply Rejection Error:", error);
+    return { success: false, error: "Failed to reject reply" };
+  }
+}

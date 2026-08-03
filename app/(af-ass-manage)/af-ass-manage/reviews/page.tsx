@@ -1,8 +1,9 @@
 import { ReviewStatus } from "@/app/generated/prisma/enums";
 import { prisma } from "@/lib/prisma";
-import { approveReview, rejectReview } from "@/lib/User/admin/adminReview";
+import { approveReview, rejectReview, approveReply, rejectReply } from "@/lib/User/admin/adminReview";
 import { CheckCircle, XCircle, Star, MessageSquare, Filter } from "lucide-react";
 import Link from "next/link";
+import React from "react";
 
 // Server Component: Database se reviews fetch karega
 export default async function AdminReviewsPage({
@@ -24,6 +25,10 @@ export default async function AdminReviewsPage({
     include: {
       user: { select: { name: true, email: true } },
       institute: { select: { name: true, id: true } },
+      replies: {
+        include: { user: { select: { name: true, email: true } } },
+        orderBy: { createdAt: 'desc' }
+      }
     },
     orderBy: { createdAt: "desc" },
   });
@@ -94,7 +99,8 @@ export default async function AdminReviewsPage({
               </thead>
               <tbody className="divide-y divide-stone-100/50 text-sm">
                 {reviews.map((review: any) => (
-                  <tr key={review.id} className="hover:bg-slate-50/50 transition-colors">
+                  <React.Fragment key={review.id}>
+                  <tr className="hover:bg-slate-50/50 transition-colors">
                     
                     {/* User Info */}
                     <td className="p-4">
@@ -138,7 +144,7 @@ export default async function AdminReviewsPage({
                     </td>
 
                     {/* Actions */}
-                    <td className="p-4 text-right">
+                    <td className="p-4 text-right align-top">
                       {review.status === "PENDING" ? (
                         <div className="flex items-center justify-end gap-2">
                           {/* Approve Button */}
@@ -177,6 +183,61 @@ export default async function AdminReviewsPage({
                     </td>
 
                   </tr>
+                  
+                  {/* Render Replies for this review */}
+                  {review.replies && review.replies.length > 0 && review.replies.map((reply: any) => (
+                    <tr key={reply.id} className="bg-slate-50/30 border-b border-stone-100/30">
+                      <td className="p-4 pl-8 border-l-2 border-indigo-200">
+                        <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded mr-2">REPLY</span>
+                        <p className="font-bold text-slate-900 inline-block">{reply.user?.name || "Anonymous"}</p>
+                        <p className="text-xs text-slate-500 mt-0.5">{reply.user?.email || "No Email"}</p>
+                      </td>
+                      <td className="p-4" colSpan={2}>
+                         <p className="text-xs text-slate-400 italic">Reply to Review on {review.institute.name}</p>
+                      </td>
+                      <td className="p-4">
+                        <p className="text-slate-600 bg-white p-2 rounded-lg border border-slate-200 text-sm">
+                          {reply.content}
+                        </p>
+                      </td>
+                      <td className="p-4">
+                        <span className={`px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-wider border ${
+                          reply.status === "PENDING" ? "bg-stone-50 text-stone-700 border-stone-200" :
+                          reply.status === "APPROVED" ? "bg-emerald-50 text-emerald-700 border-emerald-200" :
+                          "bg-red-50 text-red-700 border-red-200"
+                        }`}>
+                          {reply.status}
+                        </span>
+                      </td>
+                      <td className="p-4 text-right">
+                        {reply.status === "PENDING" ? (
+                          <div className="flex items-center justify-end gap-2">
+                            <form action={async () => {
+                              "use server";
+                              await approveReply(reply.id);
+                            }}>
+                              <button type="submit" title="Approve Reply" className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200 hover:bg-emerald-600 hover:text-white transition-all text-xs font-bold">
+                                <CheckCircle className="h-4 w-4" /> Approve
+                              </button>
+                            </form>
+                            <form action={async () => {
+                              "use server";
+                              await rejectReply(reply.id);
+                            }}>
+                              <button type="submit" title="Reject Reply" className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-red-50 text-red-600 border border-red-200 hover:bg-red-600 hover:text-white transition-all text-xs font-bold">
+                                <XCircle className="h-4 w-4" /> Reject
+                              </button>
+                            </form>
+                          </div>
+                        ) : (
+                          <span className="text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
+                            Processed
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </React.Fragment>
                 ))}
               </tbody>
             </table>

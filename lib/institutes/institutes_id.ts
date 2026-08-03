@@ -36,6 +36,22 @@ export async function getInstituteById(
               name: true,
             },
           },
+          replies: {
+            where: {
+              status: "APPROVED"
+            },
+            include: {
+              user: {
+                select: {
+                  id: true,
+                  name: true,
+                }
+              }
+            },
+            orderBy: {
+              createdAt: "asc"
+            }
+          }
         },
 
         

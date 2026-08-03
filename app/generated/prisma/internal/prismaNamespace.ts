@@ -402,6 +402,7 @@ export const ModelName = {
   InstituteCategory: 'InstituteCategory',
   InstituteManager: 'InstituteManager',
   Review: 'Review',
+  ReviewReply: 'ReviewReply',
   InstituteClaim: 'InstituteClaim',
   UserShortlist: 'UserShortlist',
   UserHistory: 'UserHistory',
@@ -486,7 +487,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteVisit" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill" | "visitorSession" | "visitorEvent"
+    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "reviewReply" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteVisit" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill" | "visitorSession" | "visitorEvent"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1819,6 +1820,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ReviewCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ReviewCountAggregateOutputType> | number
+        }
+      }
+    }
+    ReviewReply: {
+      payload: Prisma.$ReviewReplyPayload<ExtArgs>
+      fields: Prisma.ReviewReplyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ReviewReplyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ReviewReplyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload>
+        }
+        findFirst: {
+          args: Prisma.ReviewReplyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ReviewReplyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload>
+        }
+        findMany: {
+          args: Prisma.ReviewReplyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload>[]
+        }
+        create: {
+          args: Prisma.ReviewReplyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload>
+        }
+        createMany: {
+          args: Prisma.ReviewReplyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ReviewReplyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload>[]
+        }
+        delete: {
+          args: Prisma.ReviewReplyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload>
+        }
+        update: {
+          args: Prisma.ReviewReplyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload>
+        }
+        deleteMany: {
+          args: Prisma.ReviewReplyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ReviewReplyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ReviewReplyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload>[]
+        }
+        upsert: {
+          args: Prisma.ReviewReplyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ReviewReplyPayload>
+        }
+        aggregate: {
+          args: Prisma.ReviewReplyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateReviewReply>
+        }
+        groupBy: {
+          args: Prisma.ReviewReplyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReviewReplyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ReviewReplyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ReviewReplyCountAggregateOutputType> | number
         }
       }
     }
@@ -7290,6 +7365,19 @@ export const ReviewScalarFieldEnum = {
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
 
 
+export const ReviewReplyScalarFieldEnum = {
+  id: 'id',
+  reviewId: 'reviewId',
+  userId: 'userId',
+  content: 'content',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ReviewReplyScalarFieldEnum = (typeof ReviewReplyScalarFieldEnum)[keyof typeof ReviewReplyScalarFieldEnum]
+
+
 export const InstituteClaimScalarFieldEnum = {
   id: 'id',
   instituteId: 'instituteId',
@@ -9071,6 +9159,7 @@ export type GlobalOmitConfig = {
   instituteCategory?: Prisma.InstituteCategoryOmit
   instituteManager?: Prisma.InstituteManagerOmit
   review?: Prisma.ReviewOmit
+  reviewReply?: Prisma.ReviewReplyOmit
   instituteClaim?: Prisma.InstituteClaimOmit
   userShortlist?: Prisma.UserShortlistOmit
   userHistory?: Prisma.UserHistoryOmit

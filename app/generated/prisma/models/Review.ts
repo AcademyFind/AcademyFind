@@ -242,6 +242,7 @@ export type ReviewWhereInput = {
   status?: Prisma.EnumReviewStatusFilter<"Review"> | $Enums.ReviewStatus
   institute?: Prisma.XOR<Prisma.InstituteScalarRelationFilter, Prisma.InstituteWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  replies?: Prisma.ReviewReplyListRelationFilter
 }
 
 export type ReviewOrderByWithRelationInput = {
@@ -255,6 +256,7 @@ export type ReviewOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   institute?: Prisma.InstituteOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
+  replies?: Prisma.ReviewReplyOrderByRelationAggregateInput
 }
 
 export type ReviewWhereUniqueInput = Prisma.AtLeast<{
@@ -272,6 +274,7 @@ export type ReviewWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumReviewStatusFilter<"Review"> | $Enums.ReviewStatus
   institute?: Prisma.XOR<Prisma.InstituteScalarRelationFilter, Prisma.InstituteWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  replies?: Prisma.ReviewReplyListRelationFilter
 }, "id" | "userId_instituteId">
 
 export type ReviewOrderByWithAggregationInput = {
@@ -313,6 +316,7 @@ export type ReviewCreateInput = {
   status?: $Enums.ReviewStatus
   institute: Prisma.InstituteCreateNestedOneWithoutReviewsInput
   user: Prisma.UserCreateNestedOneWithoutReviewsInput
+  replies?: Prisma.ReviewReplyCreateNestedManyWithoutReviewInput
 }
 
 export type ReviewUncheckedCreateInput = {
@@ -324,6 +328,7 @@ export type ReviewUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   status?: $Enums.ReviewStatus
+  replies?: Prisma.ReviewReplyUncheckedCreateNestedManyWithoutReviewInput
 }
 
 export type ReviewUpdateInput = {
@@ -335,6 +340,7 @@ export type ReviewUpdateInput = {
   status?: Prisma.EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
   institute?: Prisma.InstituteUpdateOneRequiredWithoutReviewsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutReviewsNestedInput
+  replies?: Prisma.ReviewReplyUpdateManyWithoutReviewNestedInput
 }
 
 export type ReviewUncheckedUpdateInput = {
@@ -346,6 +352,7 @@ export type ReviewUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+  replies?: Prisma.ReviewReplyUncheckedUpdateManyWithoutReviewNestedInput
 }
 
 export type ReviewCreateManyInput = {
@@ -433,6 +440,11 @@ export type ReviewMinOrderByAggregateInput = {
 
 export type ReviewSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
+}
+
+export type ReviewScalarRelationFilter = {
+  is?: Prisma.ReviewWhereInput
+  isNot?: Prisma.ReviewWhereInput
 }
 
 export type ReviewCreateNestedManyWithoutUserInput = {
@@ -523,6 +535,20 @@ export type EnumReviewStatusFieldUpdateOperationsInput = {
   set?: $Enums.ReviewStatus
 }
 
+export type ReviewCreateNestedOneWithoutRepliesInput = {
+  create?: Prisma.XOR<Prisma.ReviewCreateWithoutRepliesInput, Prisma.ReviewUncheckedCreateWithoutRepliesInput>
+  connectOrCreate?: Prisma.ReviewCreateOrConnectWithoutRepliesInput
+  connect?: Prisma.ReviewWhereUniqueInput
+}
+
+export type ReviewUpdateOneRequiredWithoutRepliesNestedInput = {
+  create?: Prisma.XOR<Prisma.ReviewCreateWithoutRepliesInput, Prisma.ReviewUncheckedCreateWithoutRepliesInput>
+  connectOrCreate?: Prisma.ReviewCreateOrConnectWithoutRepliesInput
+  upsert?: Prisma.ReviewUpsertWithoutRepliesInput
+  connect?: Prisma.ReviewWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ReviewUpdateToOneWithWhereWithoutRepliesInput, Prisma.ReviewUpdateWithoutRepliesInput>, Prisma.ReviewUncheckedUpdateWithoutRepliesInput>
+}
+
 export type ReviewCreateWithoutUserInput = {
   id?: string
   rating: number
@@ -531,6 +557,7 @@ export type ReviewCreateWithoutUserInput = {
   updatedAt?: Date | string
   status?: $Enums.ReviewStatus
   institute: Prisma.InstituteCreateNestedOneWithoutReviewsInput
+  replies?: Prisma.ReviewReplyCreateNestedManyWithoutReviewInput
 }
 
 export type ReviewUncheckedCreateWithoutUserInput = {
@@ -541,6 +568,7 @@ export type ReviewUncheckedCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   status?: $Enums.ReviewStatus
+  replies?: Prisma.ReviewReplyUncheckedCreateNestedManyWithoutReviewInput
 }
 
 export type ReviewCreateOrConnectWithoutUserInput = {
@@ -591,6 +619,7 @@ export type ReviewCreateWithoutInstituteInput = {
   updatedAt?: Date | string
   status?: $Enums.ReviewStatus
   user: Prisma.UserCreateNestedOneWithoutReviewsInput
+  replies?: Prisma.ReviewReplyCreateNestedManyWithoutReviewInput
 }
 
 export type ReviewUncheckedCreateWithoutInstituteInput = {
@@ -601,6 +630,7 @@ export type ReviewUncheckedCreateWithoutInstituteInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   status?: $Enums.ReviewStatus
+  replies?: Prisma.ReviewReplyUncheckedCreateNestedManyWithoutReviewInput
 }
 
 export type ReviewCreateOrConnectWithoutInstituteInput = {
@@ -629,6 +659,66 @@ export type ReviewUpdateManyWithWhereWithoutInstituteInput = {
   data: Prisma.XOR<Prisma.ReviewUpdateManyMutationInput, Prisma.ReviewUncheckedUpdateManyWithoutInstituteInput>
 }
 
+export type ReviewCreateWithoutRepliesInput = {
+  id?: string
+  rating: number
+  comment?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  status?: $Enums.ReviewStatus
+  institute: Prisma.InstituteCreateNestedOneWithoutReviewsInput
+  user: Prisma.UserCreateNestedOneWithoutReviewsInput
+}
+
+export type ReviewUncheckedCreateWithoutRepliesInput = {
+  id?: string
+  rating: number
+  comment?: string | null
+  userId: string
+  instituteId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  status?: $Enums.ReviewStatus
+}
+
+export type ReviewCreateOrConnectWithoutRepliesInput = {
+  where: Prisma.ReviewWhereUniqueInput
+  create: Prisma.XOR<Prisma.ReviewCreateWithoutRepliesInput, Prisma.ReviewUncheckedCreateWithoutRepliesInput>
+}
+
+export type ReviewUpsertWithoutRepliesInput = {
+  update: Prisma.XOR<Prisma.ReviewUpdateWithoutRepliesInput, Prisma.ReviewUncheckedUpdateWithoutRepliesInput>
+  create: Prisma.XOR<Prisma.ReviewCreateWithoutRepliesInput, Prisma.ReviewUncheckedCreateWithoutRepliesInput>
+  where?: Prisma.ReviewWhereInput
+}
+
+export type ReviewUpdateToOneWithWhereWithoutRepliesInput = {
+  where?: Prisma.ReviewWhereInput
+  data: Prisma.XOR<Prisma.ReviewUpdateWithoutRepliesInput, Prisma.ReviewUncheckedUpdateWithoutRepliesInput>
+}
+
+export type ReviewUpdateWithoutRepliesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+  institute?: Prisma.InstituteUpdateOneRequiredWithoutReviewsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutReviewsNestedInput
+}
+
+export type ReviewUncheckedUpdateWithoutRepliesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  rating?: Prisma.IntFieldUpdateOperationsInput | number
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  instituteId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  status?: Prisma.EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+}
+
 export type ReviewCreateManyUserInput = {
   id?: string
   rating: number
@@ -647,6 +737,7 @@ export type ReviewUpdateWithoutUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
   institute?: Prisma.InstituteUpdateOneRequiredWithoutReviewsNestedInput
+  replies?: Prisma.ReviewReplyUpdateManyWithoutReviewNestedInput
 }
 
 export type ReviewUncheckedUpdateWithoutUserInput = {
@@ -657,6 +748,7 @@ export type ReviewUncheckedUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+  replies?: Prisma.ReviewReplyUncheckedUpdateManyWithoutReviewNestedInput
 }
 
 export type ReviewUncheckedUpdateManyWithoutUserInput = {
@@ -687,6 +779,7 @@ export type ReviewUpdateWithoutInstituteInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
   user?: Prisma.UserUpdateOneRequiredWithoutReviewsNestedInput
+  replies?: Prisma.ReviewReplyUpdateManyWithoutReviewNestedInput
 }
 
 export type ReviewUncheckedUpdateWithoutInstituteInput = {
@@ -697,6 +790,7 @@ export type ReviewUncheckedUpdateWithoutInstituteInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumReviewStatusFieldUpdateOperationsInput | $Enums.ReviewStatus
+  replies?: Prisma.ReviewReplyUncheckedUpdateManyWithoutReviewNestedInput
 }
 
 export type ReviewUncheckedUpdateManyWithoutInstituteInput = {
@@ -710,6 +804,35 @@ export type ReviewUncheckedUpdateManyWithoutInstituteInput = {
 }
 
 
+/**
+ * Count Type ReviewCountOutputType
+ */
+
+export type ReviewCountOutputType = {
+  replies: number
+}
+
+export type ReviewCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  replies?: boolean | ReviewCountOutputTypeCountRepliesArgs
+}
+
+/**
+ * ReviewCountOutputType without action
+ */
+export type ReviewCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ReviewCountOutputType
+   */
+  select?: Prisma.ReviewCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ReviewCountOutputType without action
+ */
+export type ReviewCountOutputTypeCountRepliesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReviewReplyWhereInput
+}
+
 
 export type ReviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -722,6 +845,8 @@ export type ReviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   status?: boolean
   institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  replies?: boolean | Prisma.Review$repliesArgs<ExtArgs>
+  _count?: boolean | Prisma.ReviewCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["review"]>
 
 export type ReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -765,6 +890,8 @@ export type ReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 export type ReviewInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  replies?: boolean | Prisma.Review$repliesArgs<ExtArgs>
+  _count?: boolean | Prisma.ReviewCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ReviewIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   institute?: boolean | Prisma.InstituteDefaultArgs<ExtArgs>
@@ -780,6 +907,7 @@ export type $ReviewPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   objects: {
     institute: Prisma.$InstitutePayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
+    replies: Prisma.$ReviewReplyPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1186,6 +1314,7 @@ export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends runtime.T
   readonly [Symbol.toStringTag]: "PrismaPromise"
   institute<T extends Prisma.InstituteDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.InstituteDefaultArgs<ExtArgs>>): Prisma.Prisma__InstituteClient<runtime.Types.Result.GetResult<Prisma.$InstitutePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  replies<T extends Prisma.Review$repliesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Review$repliesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewReplyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1621,6 +1750,30 @@ export type ReviewDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Limit how many Reviews to delete.
    */
   limit?: number
+}
+
+/**
+ * Review.replies
+ */
+export type Review$repliesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ReviewReply
+   */
+  select?: Prisma.ReviewReplySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ReviewReply
+   */
+  omit?: Prisma.ReviewReplyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReviewReplyInclude<ExtArgs> | null
+  where?: Prisma.ReviewReplyWhereInput
+  orderBy?: Prisma.ReviewReplyOrderByWithRelationInput | Prisma.ReviewReplyOrderByWithRelationInput[]
+  cursor?: Prisma.ReviewReplyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReviewReplyScalarFieldEnum | Prisma.ReviewReplyScalarFieldEnum[]
 }
 
 /**

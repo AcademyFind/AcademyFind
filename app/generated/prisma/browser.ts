@@ -108,6 +108,11 @@ export type InstituteManager = Prisma.InstituteManagerModel
  */
 export type Review = Prisma.ReviewModel
 /**
+ * Model ReviewReply
+ * 
+ */
+export type ReviewReply = Prisma.ReviewReplyModel
+/**
  * Model InstituteClaim
  * 
  */

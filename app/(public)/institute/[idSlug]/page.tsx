@@ -33,6 +33,7 @@ import BlogCard from "@/components/blog/cards/BlogCard";
 import { BlogCardPost } from "@/types/BlogCard";
 import { OpenBatchChatButton } from "@/components/manager/OpenBatchChatButton";
 import { InteractiveGallery } from "@/components/ui/interactive-gallery";
+import { ReviewItem } from "@/components/reviews/ReviewItem";
 
 export const revalidate = 0;
 
@@ -1289,11 +1290,7 @@ export default async function InstitutePage({ params }: PageProps) {
               </div>
             ) : (
               institute.reviews.map((review: any) => (
-                <div key={review.id} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <div className="font-semibold text-slate-800">{review.user?.name || "Anonymous User"}</div>
-                  <div className="mt-2 text-amber-400">{"⭐".repeat(review.rating)}</div>
-                  {review.comment && <p className="mt-3 text-slate-600">{review.comment}</p>}
-                </div>
+                <ReviewItem key={review.id} review={review} isLoggedIn={!!userId} />
               ))
             )}
           </div>

@@ -69,6 +69,7 @@ export const ModelName = {
   InstituteCategory: 'InstituteCategory',
   InstituteManager: 'InstituteManager',
   Review: 'Review',
+  ReviewReply: 'ReviewReply',
   InstituteClaim: 'InstituteClaim',
   UserShortlist: 'UserShortlist',
   UserHistory: 'UserHistory',
@@ -477,6 +478,19 @@ export const ReviewScalarFieldEnum = {
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const ReviewReplyScalarFieldEnum = {
+  id: 'id',
+  reviewId: 'reviewId',
+  userId: 'userId',
+  content: 'content',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ReviewReplyScalarFieldEnum = (typeof ReviewReplyScalarFieldEnum)[keyof typeof ReviewReplyScalarFieldEnum]
 
 
 export const InstituteClaimScalarFieldEnum = {
