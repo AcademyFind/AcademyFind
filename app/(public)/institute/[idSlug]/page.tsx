@@ -261,6 +261,11 @@ export default async function InstitutePage({ params }: PageProps) {
   // Derive membership states per role
   const studentMembership = userMemberships.find((m: any) => m.role === "STUDENT") ?? null;
   const teacherMembership = userMemberships.find((m: any) => m.role === "TEACHER") ?? null;
+  const isOwner = instituteManagers.some(m => m.user.id === userId);
+  
+  // Lock contact details for claimed institutes without a premium plan
+  const isContactLocked = institute.subscriptionPlan === "BASIC" && instituteManagers.length > 0;
+
   const isManager = instituteManagers.some((m: any) => m.user.id === userId);
   const isMember = userMemberships.some((m: any) => m.status === "ACTIVE") || isManager || session?.user?.role === "ADMIN";
 
@@ -510,24 +515,67 @@ export default async function InstitutePage({ params }: PageProps) {
                       <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-amber-500 group-hover:scale-110 transition-transform" />
                       <span className="text-sm leading-relaxed underline-offset-4 group-hover:underline">{institute.address || institute.city.name}</span>
                     </Link>
-                    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 pt-2 border-t border-slate-200/60 mt-1">
-                      {institute.phone && <a href={`tel:${institute.phone}`} className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Phone className="h-4 w-4 text-amber-500" /> {institute.phone}</a>}
-                      {institute.email && <a href={`mailto:${institute.email}`} className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Mail className="h-4 w-4 text-amber-500" /> {institute.email}</a>}
-                      {institute.website && <a href={institute.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Globe className="h-4 w-4 text-amber-500" /> Visit Website</a>}
-                    </div>
-
-                    {/* Social Media Section */}
-                    {(institute.facebookUrl || institute.instagramUrl || institute.twitterUrl || institute.youtubeUrl || institute.telegramUrl || institute.whatsappUrl) && (
-                      <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-200/60 mt-1">
-                        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mr-1">Follow:</span>
-                        {institute.whatsappUrl && <a href={institute.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-green-500 hover:scale-110 transition-transform"><FaWhatsapp className="h-5 w-5" /></a>}
-                        {institute.instagramUrl && <a href={institute.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:scale-110 transition-transform"><FaInstagram className="h-5 w-5" /></a>}
-                        {institute.facebookUrl && <a href={institute.facebookUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:scale-110 transition-transform"><FaFacebook className="h-5 w-5" /></a>}
-                        {institute.youtubeUrl && <a href={institute.youtubeUrl} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:scale-110 transition-transform"><FaYoutube className="h-5 w-5" /></a>}
-                        {institute.linkedinUrl && <a href={institute.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:scale-110 transition-transform"><FaLinkedin className="h-5 w-5" /></a>}
-                        {institute.twitterUrl && <a href={institute.twitterUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:scale-110 transition-transform"><FaTwitter className="h-5 w-5" /></a>}
-                        {institute.telegramUrl && <a href={institute.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:scale-110 transition-transform"><FaTelegram className="h-5 w-5" /></a>}
+                    {isContactLocked ? (
+                      <div className="flex flex-col gap-3 pt-3 border-t border-slate-200/60 mt-1">
+                        <div className="flex flex-col sm:flex-row gap-4">
+                          {institute.phone && (
+                            <div className="flex items-center gap-2 text-sm font-medium text-slate-400 select-none" title="Hidden for Free Plan">
+                              <Phone className="h-4 w-4 text-slate-300" />
+                              <span className="blur-[3px] bg-slate-200/50 rounded px-1">+91 98XXX XX123</span>
+                              <Lock className="h-3 w-3 text-slate-400" />
+                            </div>
+                          )}
+                          {institute.email && (
+                            <div className="flex items-center gap-2 text-sm font-medium text-slate-400 select-none" title="Hidden for Free Plan">
+                              <Mail className="h-4 w-4 text-slate-300" />
+                              <span className="blur-[3px] bg-slate-200/50 rounded px-1">contact@hidden.com</span>
+                              <Lock className="h-3 w-3 text-slate-400" />
+                            </div>
+                          )}
+                          {institute.website && (
+                            <div className="flex items-center gap-2 text-sm font-medium text-slate-400 select-none" title="Hidden for Free Plan">
+                              <Globe className="h-4 w-4 text-slate-300" />
+                              <span className="blur-[3px] bg-slate-200/50 rounded px-1">Visit Website</span>
+                              <Lock className="h-3 w-3 text-slate-400" />
+                            </div>
+                          )}
+                        </div>
+                        {(institute.facebookUrl || institute.instagramUrl || institute.twitterUrl || institute.youtubeUrl || institute.telegramUrl || institute.whatsappUrl) && (
+                           <div className="flex flex-wrap items-center gap-3 pt-2">
+                             <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mr-1 flex items-center gap-1">
+                               Social <Lock className="h-3 w-3" />
+                             </span>
+                             {institute.whatsappUrl && <div className="text-slate-300 blur-[2px]"><FaWhatsapp className="h-5 w-5" /></div>}
+                             {institute.instagramUrl && <div className="text-slate-300 blur-[2px]"><FaInstagram className="h-5 w-5" /></div>}
+                             {institute.facebookUrl && <div className="text-slate-300 blur-[2px]"><FaFacebook className="h-5 w-5" /></div>}
+                             {institute.youtubeUrl && <div className="text-slate-300 blur-[2px]"><FaYoutube className="h-5 w-5" /></div>}
+                             {institute.linkedinUrl && <div className="text-slate-300 blur-[2px]"><FaLinkedin className="h-5 w-5" /></div>}
+                             {institute.twitterUrl && <div className="text-slate-300 blur-[2px]"><FaTwitter className="h-5 w-5" /></div>}
+                           </div>
+                        )}
                       </div>
+                    ) : (
+                      <>
+                        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 pt-2 border-t border-slate-200/60 mt-1">
+                          {institute.phone && <a href={`tel:${institute.phone}`} className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Phone className="h-4 w-4 text-amber-500" /> {institute.phone}</a>}
+                          {institute.email && <a href={`mailto:${institute.email}`} className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Mail className="h-4 w-4 text-amber-500" /> {institute.email}</a>}
+                          {institute.website && <a href={institute.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-amber-600"><Globe className="h-4 w-4 text-amber-500" /> Visit Website</a>}
+                        </div>
+
+                        {/* Social Media Section */}
+                        {(institute.facebookUrl || institute.instagramUrl || institute.twitterUrl || institute.youtubeUrl || institute.telegramUrl || institute.whatsappUrl) && (
+                          <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-200/60 mt-1">
+                            <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mr-1">Follow:</span>
+                            {institute.whatsappUrl && <a href={institute.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-green-500 hover:scale-110 transition-transform"><FaWhatsapp className="h-5 w-5" /></a>}
+                            {institute.instagramUrl && <a href={institute.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:scale-110 transition-transform"><FaInstagram className="h-5 w-5" /></a>}
+                            {institute.facebookUrl && <a href={institute.facebookUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:scale-110 transition-transform"><FaFacebook className="h-5 w-5" /></a>}
+                            {institute.youtubeUrl && <a href={institute.youtubeUrl} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:scale-110 transition-transform"><FaYoutube className="h-5 w-5" /></a>}
+                            {institute.linkedinUrl && <a href={institute.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:scale-110 transition-transform"><FaLinkedin className="h-5 w-5" /></a>}
+                            {institute.twitterUrl && <a href={institute.twitterUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:scale-110 transition-transform"><FaTwitter className="h-5 w-5" /></a>}
+                            {institute.telegramUrl && <a href={institute.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:scale-110 transition-transform"><FaTelegram className="h-5 w-5" /></a>}
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>
