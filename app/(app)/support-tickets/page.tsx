@@ -3,7 +3,7 @@ import { getCachedSession } from "@/lib/auth/session";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { formatIST } from "@/lib/utils";
-import { MessageCircle, Clock, CheckCircle } from "lucide-react";
+import { MessageCircle, Clock, CheckCircle, ArrowLeft } from "lucide-react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 export default async function SupportTicketsPage() {
@@ -28,6 +28,12 @@ export default async function SupportTicketsPage() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-12 p-4 md:p-8">
+      <div className="mb-2">
+        <Link href="/" className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Home
+        </Link>
+      </div>
       <div>
         <h1 className="text-3xl font-black text-slate-800">Support Tickets</h1>
         <p className="text-slate-500 mt-1">View and manage your support requests and inquiries.</p>
