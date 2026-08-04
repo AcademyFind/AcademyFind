@@ -386,6 +386,7 @@ export type UserWhereInput = {
   chatSettings?: Prisma.XOR<Prisma.ChatSettingsNullableScalarRelationFilter, Prisma.ChatSettingsWhereInput> | null
   conversationParticipants?: Prisma.ConversationParticipantListRelationFilter
   messages?: Prisma.MessageListRelationFilter
+  contactMessages?: Prisma.ContactMessageListRelationFilter
   messageReads?: Prisma.MessageReadListRelationFilter
   messageReactions?: Prisma.MessageReactionListRelationFilter
   messageReports?: Prisma.MessageReportListRelationFilter
@@ -467,6 +468,7 @@ export type UserOrderByWithRelationInput = {
   chatSettings?: Prisma.ChatSettingsOrderByWithRelationInput
   conversationParticipants?: Prisma.ConversationParticipantOrderByRelationAggregateInput
   messages?: Prisma.MessageOrderByRelationAggregateInput
+  contactMessages?: Prisma.ContactMessageOrderByRelationAggregateInput
   messageReads?: Prisma.MessageReadOrderByRelationAggregateInput
   messageReactions?: Prisma.MessageReactionOrderByRelationAggregateInput
   messageReports?: Prisma.MessageReportOrderByRelationAggregateInput
@@ -551,6 +553,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   chatSettings?: Prisma.XOR<Prisma.ChatSettingsNullableScalarRelationFilter, Prisma.ChatSettingsWhereInput> | null
   conversationParticipants?: Prisma.ConversationParticipantListRelationFilter
   messages?: Prisma.MessageListRelationFilter
+  contactMessages?: Prisma.ContactMessageListRelationFilter
   messageReads?: Prisma.MessageReadListRelationFilter
   messageReactions?: Prisma.MessageReactionListRelationFilter
   messageReports?: Prisma.MessageReportListRelationFilter
@@ -696,6 +699,7 @@ export type UserCreateInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -777,6 +781,7 @@ export type UserUncheckedCreateInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -858,6 +863,7 @@ export type UserUpdateInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -939,6 +945,7 @@ export type UserUncheckedUpdateInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -1521,6 +1528,22 @@ export type UserUpdateOneRequiredWithoutBlockedByUsersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBlockedByUsersInput, Prisma.UserUpdateWithoutBlockedByUsersInput>, Prisma.UserUncheckedUpdateWithoutBlockedByUsersInput>
 }
 
+export type UserCreateNestedOneWithoutContactMessagesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutContactMessagesInput, Prisma.UserUncheckedCreateWithoutContactMessagesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutContactMessagesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutContactMessagesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutContactMessagesInput, Prisma.UserUncheckedCreateWithoutContactMessagesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutContactMessagesInput
+  upsert?: Prisma.UserUpsertWithoutContactMessagesInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutContactMessagesInput, Prisma.UserUpdateWithoutContactMessagesInput>, Prisma.UserUncheckedUpdateWithoutContactMessagesInput>
+}
+
 export type UserCreateNestedOneWithoutInstituteRequestsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutInstituteRequestsInput, Prisma.UserUncheckedCreateWithoutInstituteRequestsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutInstituteRequestsInput
@@ -1982,6 +2005,7 @@ export type UserCreateWithoutWalletInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -2062,6 +2086,7 @@ export type UserUncheckedCreateWithoutWalletInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -2158,6 +2183,7 @@ export type UserUpdateWithoutWalletInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -2238,6 +2264,7 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -2318,6 +2345,7 @@ export type UserCreateWithoutReputationInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -2398,6 +2426,7 @@ export type UserUncheckedCreateWithoutReputationInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -2494,6 +2523,7 @@ export type UserUpdateWithoutReputationInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -2574,6 +2604,7 @@ export type UserUncheckedUpdateWithoutReputationInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -2654,6 +2685,7 @@ export type UserCreateWithoutPreferencesInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -2734,6 +2766,7 @@ export type UserUncheckedCreateWithoutPreferencesInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -2830,6 +2863,7 @@ export type UserUpdateWithoutPreferencesInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -2910,6 +2944,7 @@ export type UserUncheckedUpdateWithoutPreferencesInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -2989,6 +3024,7 @@ export type UserCreateWithoutSessionsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -3069,6 +3105,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -3165,6 +3202,7 @@ export type UserUpdateWithoutSessionsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -3245,6 +3283,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -3325,6 +3364,7 @@ export type UserCreateWithoutAccountsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -3405,6 +3445,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -3501,6 +3542,7 @@ export type UserUpdateWithoutAccountsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -3581,6 +3623,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -3661,6 +3704,7 @@ export type UserCreateWithoutManagedInstitutesInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -3741,6 +3785,7 @@ export type UserUncheckedCreateWithoutManagedInstitutesInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -3837,6 +3882,7 @@ export type UserUpdateWithoutManagedInstitutesInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -3917,6 +3963,7 @@ export type UserUncheckedUpdateWithoutManagedInstitutesInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -3997,6 +4044,7 @@ export type UserCreateWithoutReviewsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -4077,6 +4125,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -4173,6 +4222,7 @@ export type UserUpdateWithoutReviewsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -4253,6 +4303,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -4333,6 +4384,7 @@ export type UserCreateWithoutReviewRepliesInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -4413,6 +4465,7 @@ export type UserUncheckedCreateWithoutReviewRepliesInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -4509,6 +4562,7 @@ export type UserUpdateWithoutReviewRepliesInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -4589,6 +4643,7 @@ export type UserUncheckedUpdateWithoutReviewRepliesInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -4669,6 +4724,7 @@ export type UserCreateWithoutClaimsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -4749,6 +4805,7 @@ export type UserUncheckedCreateWithoutClaimsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -4845,6 +4902,7 @@ export type UserUpdateWithoutClaimsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -4925,6 +4983,7 @@ export type UserUncheckedUpdateWithoutClaimsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -5005,6 +5064,7 @@ export type UserCreateWithoutShortlistedInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -5085,6 +5145,7 @@ export type UserUncheckedCreateWithoutShortlistedInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -5181,6 +5242,7 @@ export type UserUpdateWithoutShortlistedInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -5261,6 +5323,7 @@ export type UserUncheckedUpdateWithoutShortlistedInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -5341,6 +5404,7 @@ export type UserCreateWithoutViewHistoryInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -5421,6 +5485,7 @@ export type UserUncheckedCreateWithoutViewHistoryInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -5517,6 +5582,7 @@ export type UserUpdateWithoutViewHistoryInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -5597,6 +5663,7 @@ export type UserUncheckedUpdateWithoutViewHistoryInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -5677,6 +5744,7 @@ export type UserCreateWithoutTeacherProfileInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -5757,6 +5825,7 @@ export type UserUncheckedCreateWithoutTeacherProfileInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -5853,6 +5922,7 @@ export type UserUpdateWithoutTeacherProfileInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -5933,6 +6003,7 @@ export type UserUncheckedUpdateWithoutTeacherProfileInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -6013,6 +6084,7 @@ export type UserCreateWithoutStudentProfileInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -6093,6 +6165,7 @@ export type UserUncheckedCreateWithoutStudentProfileInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -6189,6 +6262,7 @@ export type UserUpdateWithoutStudentProfileInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -6269,6 +6343,7 @@ export type UserUncheckedUpdateWithoutStudentProfileInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -6349,6 +6424,7 @@ export type UserCreateWithoutMembershipsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -6429,6 +6505,7 @@ export type UserUncheckedCreateWithoutMembershipsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -6525,6 +6602,7 @@ export type UserUpdateWithoutMembershipsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -6605,6 +6683,7 @@ export type UserUncheckedUpdateWithoutMembershipsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -6686,6 +6765,7 @@ export type UserCreateWithoutCreatedConversationsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -6766,6 +6846,7 @@ export type UserUncheckedCreateWithoutCreatedConversationsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -6862,6 +6943,7 @@ export type UserUpdateWithoutCreatedConversationsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -6942,6 +7024,7 @@ export type UserUncheckedUpdateWithoutCreatedConversationsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -7021,6 +7104,7 @@ export type UserCreateWithoutConversationParticipantsInput = {
   memberships?: Prisma.InstituteMembershipCreateNestedManyWithoutUserInput
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -7101,6 +7185,7 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   memberships?: Prisma.InstituteMembershipUncheckedCreateNestedManyWithoutUserInput
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -7197,6 +7282,7 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   memberships?: Prisma.InstituteMembershipUpdateManyWithoutUserNestedInput
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -7277,6 +7363,7 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   memberships?: Prisma.InstituteMembershipUncheckedUpdateManyWithoutUserNestedInput
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -7357,6 +7444,7 @@ export type UserCreateWithoutMessagesInput = {
   memberships?: Prisma.InstituteMembershipCreateNestedManyWithoutUserInput
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -7437,6 +7525,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   memberships?: Prisma.InstituteMembershipUncheckedCreateNestedManyWithoutUserInput
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -7533,6 +7622,7 @@ export type UserUpdateWithoutMessagesInput = {
   memberships?: Prisma.InstituteMembershipUpdateManyWithoutUserNestedInput
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -7613,6 +7703,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   memberships?: Prisma.InstituteMembershipUncheckedUpdateManyWithoutUserNestedInput
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -7694,6 +7785,7 @@ export type UserCreateWithoutMessageReactionsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
   resolvedMessageReports?: Prisma.MessageReportCreateNestedManyWithoutResolverInput
@@ -7774,6 +7866,7 @@ export type UserUncheckedCreateWithoutMessageReactionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
   resolvedMessageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutResolverInput
@@ -7870,6 +7963,7 @@ export type UserUpdateWithoutMessageReactionsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
   resolvedMessageReports?: Prisma.MessageReportUpdateManyWithoutResolverNestedInput
@@ -7950,6 +8044,7 @@ export type UserUncheckedUpdateWithoutMessageReactionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
   resolvedMessageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutResolverNestedInput
@@ -8030,6 +8125,7 @@ export type UserCreateWithoutMessageReadsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
   resolvedMessageReports?: Prisma.MessageReportCreateNestedManyWithoutResolverInput
@@ -8110,6 +8206,7 @@ export type UserUncheckedCreateWithoutMessageReadsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
   resolvedMessageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutResolverInput
@@ -8206,6 +8303,7 @@ export type UserUpdateWithoutMessageReadsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
   resolvedMessageReports?: Prisma.MessageReportUpdateManyWithoutResolverNestedInput
@@ -8286,6 +8384,7 @@ export type UserUncheckedUpdateWithoutMessageReadsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
   resolvedMessageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutResolverNestedInput
@@ -8366,6 +8465,7 @@ export type UserCreateWithoutMessageReportsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   resolvedMessageReports?: Prisma.MessageReportCreateNestedManyWithoutResolverInput
@@ -8446,6 +8546,7 @@ export type UserUncheckedCreateWithoutMessageReportsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   resolvedMessageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutResolverInput
@@ -8531,6 +8632,7 @@ export type UserCreateWithoutResolvedMessageReportsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -8611,6 +8713,7 @@ export type UserUncheckedCreateWithoutResolvedMessageReportsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -8707,6 +8810,7 @@ export type UserUpdateWithoutMessageReportsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   resolvedMessageReports?: Prisma.MessageReportUpdateManyWithoutResolverNestedInput
@@ -8787,6 +8891,7 @@ export type UserUncheckedUpdateWithoutMessageReportsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   resolvedMessageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutResolverNestedInput
@@ -8878,6 +8983,7 @@ export type UserUpdateWithoutResolvedMessageReportsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -8958,6 +9064,7 @@ export type UserUncheckedUpdateWithoutResolvedMessageReportsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -9037,6 +9144,7 @@ export type UserCreateWithoutChatSettingsInput = {
   memberships?: Prisma.InstituteMembershipCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -9117,6 +9225,7 @@ export type UserUncheckedCreateWithoutChatSettingsInput = {
   memberships?: Prisma.InstituteMembershipUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -9213,6 +9322,7 @@ export type UserUpdateWithoutChatSettingsInput = {
   memberships?: Prisma.InstituteMembershipUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -9293,6 +9403,7 @@ export type UserUncheckedUpdateWithoutChatSettingsInput = {
   memberships?: Prisma.InstituteMembershipUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -9374,6 +9485,7 @@ export type UserCreateWithoutNotificationsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -9454,6 +9566,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -9550,6 +9663,7 @@ export type UserUpdateWithoutNotificationsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -9630,6 +9744,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -9710,6 +9825,7 @@ export type UserCreateWithoutBlockedUsersInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -9790,6 +9906,7 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -9875,6 +9992,7 @@ export type UserCreateWithoutBlockedByUsersInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -9955,6 +10073,7 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -10051,6 +10170,7 @@ export type UserUpdateWithoutBlockedUsersInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -10131,6 +10251,7 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -10222,6 +10343,7 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -10302,11 +10424,352 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
   resolvedMessageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutResolverNestedInput
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
+  createdConversations?: Prisma.ConversationUncheckedUpdateManyWithoutCreatedByNestedInput
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.UserWalletUncheckedUpdateOneWithoutUserNestedInput
+  reputation?: Prisma.UserReputationUncheckedUpdateOneWithoutUserNestedInput
+  preferences?: Prisma.UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  educations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  experiences?: Prisma.UserExperienceUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
+  instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutContactMessagesInput = {
+  id?: string
+  name?: string | null
+  username: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  image?: string | null
+  coverImage?: string | null
+  role?: $Enums.Role
+  isActive?: boolean
+  emailVerified?: boolean
+  onboardingCompleted?: boolean
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  canAddInstitute?: boolean
+  canWriteBlogs?: boolean
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+  telegramUrl?: string | null
+  twitterUrl?: string | null
+  youtubeUrl?: string | null
+  linkedinUrl?: string | null
+  whatsappUrl?: string | null
+  allowDms?: boolean
+  isVisible?: boolean
+  managedInstitutes?: Prisma.InstituteManagerCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  adminNotifications?: Prisma.AdminNotificationCreateNestedManyWithoutUserInput
+  communityAnswers?: Prisma.CommunityAnswerCreateNestedManyWithoutUserInput
+  communityQuestions?: Prisma.CommunityQuestionCreateNestedManyWithoutUserInput
+  claims?: Prisma.InstituteClaimCreateNestedManyWithoutUserInput
+  instituteRequests?: Prisma.InstituteRequestCreateNestedManyWithoutUserInput
+  salesAssignments?: Prisma.SalesAssignmentCreateNestedManyWithoutSalesManagerInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentCreateNestedManyWithoutSalesManagerInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  payments?: Prisma.SubscriptionPaymentCreateNestedManyWithoutUserInput
+  compareLists?: Prisma.UserCompareListCreateNestedManyWithoutUserInput
+  viewHistory?: Prisma.UserHistoryCreateNestedManyWithoutUserInput
+  shortlisted?: Prisma.UserShortlistCreateNestedManyWithoutUserInput
+  distributionLogs?: Prisma.LeadDistributionLogCreateNestedManyWithoutAdminInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileCreateNestedOneWithoutUserInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutUserInput
+  blogReactions?: Prisma.BlogReactionCreateNestedManyWithoutUserInput
+  blogViews?: Prisma.BlogViewCreateNestedManyWithoutUserInput
+  blogBookmarks?: Prisma.BlogBookmarkCreateNestedManyWithoutUserInput
+  followedAuthors?: Prisma.BlogAuthorFollowerCreateNestedManyWithoutUserInput
+  reviewedPosts?: Prisma.BlogPostCreateNestedManyWithoutReviewedByInput
+  publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
+  editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
+  blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  reviewReplies?: Prisma.ReviewReplyCreateNestedManyWithoutUserInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
+  blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
+  resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
+  studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
+  teacherProfile?: Prisma.TeacherProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.InstituteMembershipCreateNestedManyWithoutUserInput
+  chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
+  messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
+  resolvedMessageReports?: Prisma.MessageReportCreateNestedManyWithoutResolverInput
+  blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedInput
+  createdConversations?: Prisma.ConversationCreateNestedManyWithoutCreatedByInput
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  wallet?: Prisma.UserWalletCreateNestedOneWithoutUserInput
+  reputation?: Prisma.UserReputationCreateNestedOneWithoutUserInput
+  preferences?: Prisma.UserPreferenceCreateNestedOneWithoutUserInput
+  educations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  experiences?: Prisma.UserExperienceCreateNestedManyWithoutUserInput
+  achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
+  instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutContactMessagesInput = {
+  id?: string
+  name?: string | null
+  username: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  image?: string | null
+  coverImage?: string | null
+  role?: $Enums.Role
+  isActive?: boolean
+  emailVerified?: boolean
+  onboardingCompleted?: boolean
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  canAddInstitute?: boolean
+  canWriteBlogs?: boolean
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+  telegramUrl?: string | null
+  twitterUrl?: string | null
+  youtubeUrl?: string | null
+  linkedinUrl?: string | null
+  whatsappUrl?: string | null
+  allowDms?: boolean
+  isVisible?: boolean
+  managedInstitutes?: Prisma.InstituteManagerUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  adminNotifications?: Prisma.AdminNotificationUncheckedCreateNestedManyWithoutUserInput
+  communityAnswers?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUserInput
+  communityQuestions?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUserInput
+  claims?: Prisma.InstituteClaimUncheckedCreateNestedManyWithoutUserInput
+  instituteRequests?: Prisma.InstituteRequestUncheckedCreateNestedManyWithoutUserInput
+  salesAssignments?: Prisma.SalesAssignmentUncheckedCreateNestedManyWithoutSalesManagerInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentUncheckedCreateNestedManyWithoutSalesManagerInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  payments?: Prisma.SubscriptionPaymentUncheckedCreateNestedManyWithoutUserInput
+  compareLists?: Prisma.UserCompareListUncheckedCreateNestedManyWithoutUserInput
+  viewHistory?: Prisma.UserHistoryUncheckedCreateNestedManyWithoutUserInput
+  shortlisted?: Prisma.UserShortlistUncheckedCreateNestedManyWithoutUserInput
+  distributionLogs?: Prisma.LeadDistributionLogUncheckedCreateNestedManyWithoutAdminInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileUncheckedCreateNestedOneWithoutUserInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutUserInput
+  blogReactions?: Prisma.BlogReactionUncheckedCreateNestedManyWithoutUserInput
+  blogViews?: Prisma.BlogViewUncheckedCreateNestedManyWithoutUserInput
+  blogBookmarks?: Prisma.BlogBookmarkUncheckedCreateNestedManyWithoutUserInput
+  followedAuthors?: Prisma.BlogAuthorFollowerUncheckedCreateNestedManyWithoutUserInput
+  reviewedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutReviewedByInput
+  publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
+  editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
+  blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  reviewReplies?: Prisma.ReviewReplyUncheckedCreateNestedManyWithoutUserInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
+  blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
+  resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
+  studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
+  teacherProfile?: Prisma.TeacherProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.InstituteMembershipUncheckedCreateNestedManyWithoutUserInput
+  chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
+  messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
+  resolvedMessageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutResolverInput
+  blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedInput
+  createdConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutCreatedByInput
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.UserWalletUncheckedCreateNestedOneWithoutUserInput
+  reputation?: Prisma.UserReputationUncheckedCreateNestedOneWithoutUserInput
+  preferences?: Prisma.UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+  educations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  experiences?: Prisma.UserExperienceUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
+  instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutContactMessagesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutContactMessagesInput, Prisma.UserUncheckedCreateWithoutContactMessagesInput>
+}
+
+export type UserUpsertWithoutContactMessagesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutContactMessagesInput, Prisma.UserUncheckedUpdateWithoutContactMessagesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutContactMessagesInput, Prisma.UserUncheckedCreateWithoutContactMessagesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutContactMessagesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutContactMessagesInput, Prisma.UserUncheckedUpdateWithoutContactMessagesInput>
+}
+
+export type UserUpdateWithoutContactMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canAddInstitute?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  canWriteBlogs?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twitterUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsappUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowDms?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVisible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  managedInstitutes?: Prisma.InstituteManagerUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  adminNotifications?: Prisma.AdminNotificationUpdateManyWithoutUserNestedInput
+  communityAnswers?: Prisma.CommunityAnswerUpdateManyWithoutUserNestedInput
+  communityQuestions?: Prisma.CommunityQuestionUpdateManyWithoutUserNestedInput
+  claims?: Prisma.InstituteClaimUpdateManyWithoutUserNestedInput
+  instituteRequests?: Prisma.InstituteRequestUpdateManyWithoutUserNestedInput
+  salesAssignments?: Prisma.SalesAssignmentUpdateManyWithoutSalesManagerNestedInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentUpdateManyWithoutSalesManagerNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  payments?: Prisma.SubscriptionPaymentUpdateManyWithoutUserNestedInput
+  compareLists?: Prisma.UserCompareListUpdateManyWithoutUserNestedInput
+  viewHistory?: Prisma.UserHistoryUpdateManyWithoutUserNestedInput
+  shortlisted?: Prisma.UserShortlistUpdateManyWithoutUserNestedInput
+  distributionLogs?: Prisma.LeadDistributionLogUpdateManyWithoutAdminNestedInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileUpdateOneWithoutUserNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutUserNestedInput
+  blogReactions?: Prisma.BlogReactionUpdateManyWithoutUserNestedInput
+  blogViews?: Prisma.BlogViewUpdateManyWithoutUserNestedInput
+  blogBookmarks?: Prisma.BlogBookmarkUpdateManyWithoutUserNestedInput
+  followedAuthors?: Prisma.BlogAuthorFollowerUpdateManyWithoutUserNestedInput
+  reviewedPosts?: Prisma.BlogPostUpdateManyWithoutReviewedByNestedInput
+  publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
+  editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
+  blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  reviewReplies?: Prisma.ReviewReplyUpdateManyWithoutUserNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
+  blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
+  resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
+  studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
+  teacherProfile?: Prisma.TeacherProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.InstituteMembershipUpdateManyWithoutUserNestedInput
+  chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
+  messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
+  resolvedMessageReports?: Prisma.MessageReportUpdateManyWithoutResolverNestedInput
+  blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedNestedInput
+  createdConversations?: Prisma.ConversationUpdateManyWithoutCreatedByNestedInput
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.UserWalletUpdateOneWithoutUserNestedInput
+  reputation?: Prisma.UserReputationUpdateOneWithoutUserNestedInput
+  preferences?: Prisma.UserPreferenceUpdateOneWithoutUserNestedInput
+  educations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  experiences?: Prisma.UserExperienceUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
+  instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutContactMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canAddInstitute?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  canWriteBlogs?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twitterUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsappUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowDms?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVisible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  managedInstitutes?: Prisma.InstituteManagerUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  adminNotifications?: Prisma.AdminNotificationUncheckedUpdateManyWithoutUserNestedInput
+  communityAnswers?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUserNestedInput
+  communityQuestions?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUserNestedInput
+  claims?: Prisma.InstituteClaimUncheckedUpdateManyWithoutUserNestedInput
+  instituteRequests?: Prisma.InstituteRequestUncheckedUpdateManyWithoutUserNestedInput
+  salesAssignments?: Prisma.SalesAssignmentUncheckedUpdateManyWithoutSalesManagerNestedInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentUncheckedUpdateManyWithoutSalesManagerNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  payments?: Prisma.SubscriptionPaymentUncheckedUpdateManyWithoutUserNestedInput
+  compareLists?: Prisma.UserCompareListUncheckedUpdateManyWithoutUserNestedInput
+  viewHistory?: Prisma.UserHistoryUncheckedUpdateManyWithoutUserNestedInput
+  shortlisted?: Prisma.UserShortlistUncheckedUpdateManyWithoutUserNestedInput
+  distributionLogs?: Prisma.LeadDistributionLogUncheckedUpdateManyWithoutAdminNestedInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileUncheckedUpdateOneWithoutUserNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutUserNestedInput
+  blogReactions?: Prisma.BlogReactionUncheckedUpdateManyWithoutUserNestedInput
+  blogViews?: Prisma.BlogViewUncheckedUpdateManyWithoutUserNestedInput
+  blogBookmarks?: Prisma.BlogBookmarkUncheckedUpdateManyWithoutUserNestedInput
+  followedAuthors?: Prisma.BlogAuthorFollowerUncheckedUpdateManyWithoutUserNestedInput
+  reviewedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutReviewedByNestedInput
+  publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
+  editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
+  blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  reviewReplies?: Prisma.ReviewReplyUncheckedUpdateManyWithoutUserNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
+  blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
+  resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
+  studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
+  teacherProfile?: Prisma.TeacherProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.InstituteMembershipUncheckedUpdateManyWithoutUserNestedInput
+  chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
+  messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
+  resolvedMessageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutResolverNestedInput
+  blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedNestedInput
   createdConversations?: Prisma.ConversationUncheckedUpdateManyWithoutCreatedByNestedInput
   notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
   wallet?: Prisma.UserWalletUncheckedUpdateOneWithoutUserNestedInput
@@ -10381,6 +10844,7 @@ export type UserCreateWithoutInstituteRequestsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -10461,6 +10925,7 @@ export type UserUncheckedCreateWithoutInstituteRequestsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -10557,6 +11022,7 @@ export type UserUpdateWithoutInstituteRequestsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -10637,6 +11103,7 @@ export type UserUncheckedUpdateWithoutInstituteRequestsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -10717,6 +11184,7 @@ export type UserCreateWithoutPaymentsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -10797,6 +11265,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -10893,6 +11362,7 @@ export type UserUpdateWithoutPaymentsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -10973,6 +11443,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -11053,6 +11524,7 @@ export type UserCreateWithoutSalesAssignmentsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -11133,6 +11605,7 @@ export type UserUncheckedCreateWithoutSalesAssignmentsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -11229,6 +11702,7 @@ export type UserUpdateWithoutSalesAssignmentsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -11309,6 +11783,7 @@ export type UserUncheckedUpdateWithoutSalesAssignmentsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -11389,6 +11864,7 @@ export type UserCreateWithoutSalesCategoryAssignmentsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -11469,6 +11945,7 @@ export type UserUncheckedCreateWithoutSalesCategoryAssignmentsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -11565,6 +12042,7 @@ export type UserUpdateWithoutSalesCategoryAssignmentsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -11645,6 +12123,7 @@ export type UserUncheckedUpdateWithoutSalesCategoryAssignmentsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -11725,6 +12204,7 @@ export type UserCreateWithoutAdminNotificationsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -11805,6 +12285,7 @@ export type UserUncheckedCreateWithoutAdminNotificationsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -11901,6 +12382,7 @@ export type UserUpdateWithoutAdminNotificationsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -11981,6 +12463,7 @@ export type UserUncheckedUpdateWithoutAdminNotificationsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -12062,6 +12545,7 @@ export type UserCreateWithoutInstituteVisitsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -12142,6 +12626,7 @@ export type UserUncheckedCreateWithoutInstituteVisitsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -12238,6 +12723,7 @@ export type UserUpdateWithoutInstituteVisitsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -12318,6 +12804,7 @@ export type UserUncheckedUpdateWithoutInstituteVisitsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -12397,6 +12884,7 @@ export type UserCreateWithoutCompareListsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -12477,6 +12965,7 @@ export type UserUncheckedCreateWithoutCompareListsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -12573,6 +13062,7 @@ export type UserUpdateWithoutCompareListsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -12653,6 +13143,7 @@ export type UserUncheckedUpdateWithoutCompareListsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -12733,6 +13224,7 @@ export type UserCreateWithoutCommunityQuestionsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -12813,6 +13305,7 @@ export type UserUncheckedCreateWithoutCommunityQuestionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -12909,6 +13402,7 @@ export type UserUpdateWithoutCommunityQuestionsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -12989,6 +13483,7 @@ export type UserUncheckedUpdateWithoutCommunityQuestionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -13069,6 +13564,7 @@ export type UserCreateWithoutCommunityAnswersInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -13149,6 +13645,7 @@ export type UserUncheckedCreateWithoutCommunityAnswersInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -13245,6 +13742,7 @@ export type UserUpdateWithoutCommunityAnswersInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -13325,6 +13823,7 @@ export type UserUncheckedUpdateWithoutCommunityAnswersInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -13405,6 +13904,7 @@ export type UserCreateWithoutDistributionLogsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -13485,6 +13985,7 @@ export type UserUncheckedCreateWithoutDistributionLogsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -13581,6 +14082,7 @@ export type UserUpdateWithoutDistributionLogsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -13661,6 +14163,7 @@ export type UserUncheckedUpdateWithoutDistributionLogsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -13741,6 +14244,7 @@ export type UserCreateWithoutBlogAuthorProfileInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -13821,6 +14325,7 @@ export type UserUncheckedCreateWithoutBlogAuthorProfileInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -13917,6 +14422,7 @@ export type UserUpdateWithoutBlogAuthorProfileInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -13997,6 +14503,7 @@ export type UserUncheckedUpdateWithoutBlogAuthorProfileInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -14077,6 +14584,7 @@ export type UserCreateWithoutReviewedPostsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -14157,6 +14665,7 @@ export type UserUncheckedCreateWithoutReviewedPostsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -14242,6 +14751,7 @@ export type UserCreateWithoutPublishedPostsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -14322,6 +14832,7 @@ export type UserUncheckedCreateWithoutPublishedPostsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -14407,6 +14918,7 @@ export type UserCreateWithoutEditedPostsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -14487,6 +14999,7 @@ export type UserUncheckedCreateWithoutEditedPostsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -14583,6 +15096,7 @@ export type UserUpdateWithoutReviewedPostsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -14663,6 +15177,7 @@ export type UserUncheckedUpdateWithoutReviewedPostsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -14754,6 +15269,7 @@ export type UserUpdateWithoutPublishedPostsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -14834,6 +15350,7 @@ export type UserUncheckedUpdateWithoutPublishedPostsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -14925,6 +15442,7 @@ export type UserUpdateWithoutEditedPostsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -15005,6 +15523,7 @@ export type UserUncheckedUpdateWithoutEditedPostsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -15085,6 +15604,7 @@ export type UserCreateWithoutBlogRevisionsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -15165,6 +15685,7 @@ export type UserUncheckedCreateWithoutBlogRevisionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -15261,6 +15782,7 @@ export type UserUpdateWithoutBlogRevisionsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -15341,6 +15863,7 @@ export type UserUncheckedUpdateWithoutBlogRevisionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -15421,6 +15944,7 @@ export type UserCreateWithoutBlogViewsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -15501,6 +16025,7 @@ export type UserUncheckedCreateWithoutBlogViewsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -15597,6 +16122,7 @@ export type UserUpdateWithoutBlogViewsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -15677,6 +16203,7 @@ export type UserUncheckedUpdateWithoutBlogViewsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -15757,6 +16284,7 @@ export type UserCreateWithoutBlogBookmarksInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -15837,6 +16365,7 @@ export type UserUncheckedCreateWithoutBlogBookmarksInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -15933,6 +16462,7 @@ export type UserUpdateWithoutBlogBookmarksInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -16013,6 +16543,7 @@ export type UserUncheckedUpdateWithoutBlogBookmarksInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -16093,6 +16624,7 @@ export type UserCreateWithoutFollowedAuthorsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -16173,6 +16705,7 @@ export type UserUncheckedCreateWithoutFollowedAuthorsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -16269,6 +16802,7 @@ export type UserUpdateWithoutFollowedAuthorsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -16349,6 +16883,7 @@ export type UserUncheckedUpdateWithoutFollowedAuthorsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -16429,6 +16964,7 @@ export type UserCreateWithoutResolvedBlogReportsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -16509,6 +17045,7 @@ export type UserUncheckedCreateWithoutResolvedBlogReportsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -16594,6 +17131,7 @@ export type UserCreateWithoutBlogReportsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -16674,6 +17212,7 @@ export type UserUncheckedCreateWithoutBlogReportsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -16770,6 +17309,7 @@ export type UserUpdateWithoutResolvedBlogReportsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -16850,6 +17390,7 @@ export type UserUncheckedUpdateWithoutResolvedBlogReportsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -16941,6 +17482,7 @@ export type UserUpdateWithoutBlogReportsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -17021,6 +17563,7 @@ export type UserUncheckedUpdateWithoutBlogReportsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -17101,6 +17644,7 @@ export type UserCreateWithoutBlogCommentsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -17181,6 +17725,7 @@ export type UserUncheckedCreateWithoutBlogCommentsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -17277,6 +17822,7 @@ export type UserUpdateWithoutBlogCommentsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -17357,6 +17903,7 @@ export type UserUncheckedUpdateWithoutBlogCommentsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -17437,6 +17984,7 @@ export type UserCreateWithoutBlogReactionsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -17517,6 +18065,7 @@ export type UserUncheckedCreateWithoutBlogReactionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -17613,6 +18162,7 @@ export type UserUpdateWithoutBlogReactionsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -17693,6 +18243,7 @@ export type UserUncheckedUpdateWithoutBlogReactionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -17774,6 +18325,7 @@ export type UserCreateWithoutEducationsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -17854,6 +18406,7 @@ export type UserUncheckedCreateWithoutEducationsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -17950,6 +18503,7 @@ export type UserUpdateWithoutEducationsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -18030,6 +18584,7 @@ export type UserUncheckedUpdateWithoutEducationsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -18110,6 +18665,7 @@ export type UserCreateWithoutExperiencesInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -18190,6 +18746,7 @@ export type UserUncheckedCreateWithoutExperiencesInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -18286,6 +18843,7 @@ export type UserUpdateWithoutExperiencesInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -18366,6 +18924,7 @@ export type UserUncheckedUpdateWithoutExperiencesInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -18446,6 +19005,7 @@ export type UserCreateWithoutAchievementsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -18526,6 +19086,7 @@ export type UserUncheckedCreateWithoutAchievementsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -18622,6 +19183,7 @@ export type UserUpdateWithoutAchievementsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -18702,6 +19264,7 @@ export type UserUncheckedUpdateWithoutAchievementsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -18782,6 +19345,7 @@ export type UserCreateWithoutSkillsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -18862,6 +19426,7 @@ export type UserUncheckedCreateWithoutSkillsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -18958,6 +19523,7 @@ export type UserUpdateWithoutSkillsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -19038,6 +19604,7 @@ export type UserUncheckedUpdateWithoutSkillsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -19117,6 +19684,7 @@ export type UserCreateWithoutVisitorSessionsInput = {
   chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
@@ -19197,6 +19765,7 @@ export type UserUncheckedCreateWithoutVisitorSessionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
   messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
   messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
@@ -19293,6 +19862,7 @@ export type UserUpdateWithoutVisitorSessionsInput = {
   chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
@@ -19373,6 +19943,7 @@ export type UserUncheckedUpdateWithoutVisitorSessionsInput = {
   chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
   messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
   messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
@@ -19429,6 +20000,7 @@ export type UserCountOutputType = {
   memberships: number
   conversationParticipants: number
   messages: number
+  contactMessages: number
   messageReads: number
   messageReactions: number
   messageReports: number
@@ -19477,6 +20049,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   memberships?: boolean | UserCountOutputTypeCountMembershipsArgs
   conversationParticipants?: boolean | UserCountOutputTypeCountConversationParticipantsArgs
   messages?: boolean | UserCountOutputTypeCountMessagesArgs
+  contactMessages?: boolean | UserCountOutputTypeCountContactMessagesArgs
   messageReads?: boolean | UserCountOutputTypeCountMessageReadsArgs
   messageReactions?: boolean | UserCountOutputTypeCountMessageReactionsArgs
   messageReports?: boolean | UserCountOutputTypeCountMessageReportsArgs
@@ -19729,6 +20302,13 @@ export type UserCountOutputTypeCountMessagesArgs<ExtArgs extends runtime.Types.E
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountContactMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContactMessageWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountMessageReadsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.MessageReadWhereInput
 }
@@ -19881,6 +20461,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   chatSettings?: boolean | Prisma.User$chatSettingsArgs<ExtArgs>
   conversationParticipants?: boolean | Prisma.User$conversationParticipantsArgs<ExtArgs>
   messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
+  contactMessages?: boolean | Prisma.User$contactMessagesArgs<ExtArgs>
   messageReads?: boolean | Prisma.User$messageReadsArgs<ExtArgs>
   messageReactions?: boolean | Prisma.User$messageReactionsArgs<ExtArgs>
   messageReports?: boolean | Prisma.User$messageReportsArgs<ExtArgs>
@@ -20025,6 +20606,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   chatSettings?: boolean | Prisma.User$chatSettingsArgs<ExtArgs>
   conversationParticipants?: boolean | Prisma.User$conversationParticipantsArgs<ExtArgs>
   messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
+  contactMessages?: boolean | Prisma.User$contactMessagesArgs<ExtArgs>
   messageReads?: boolean | Prisma.User$messageReadsArgs<ExtArgs>
   messageReactions?: boolean | Prisma.User$messageReactionsArgs<ExtArgs>
   messageReports?: boolean | Prisma.User$messageReportsArgs<ExtArgs>
@@ -20085,6 +20667,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     chatSettings: Prisma.$ChatSettingsPayload<ExtArgs> | null
     conversationParticipants: Prisma.$ConversationParticipantPayload<ExtArgs>[]
     messages: Prisma.$MessagePayload<ExtArgs>[]
+    contactMessages: Prisma.$ContactMessagePayload<ExtArgs>[]
     messageReads: Prisma.$MessageReadPayload<ExtArgs>[]
     messageReactions: Prisma.$MessageReactionPayload<ExtArgs>[]
     messageReports: Prisma.$MessageReportPayload<ExtArgs>[]
@@ -20559,6 +21142,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   chatSettings<T extends Prisma.User$chatSettingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatSettingsArgs<ExtArgs>>): Prisma.Prisma__ChatSettingsClient<runtime.Types.Result.GetResult<Prisma.$ChatSettingsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   conversationParticipants<T extends Prisma.User$conversationParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$conversationParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConversationParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messages<T extends Prisma.User$messagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  contactMessages<T extends Prisma.User$contactMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$contactMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContactMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messageReads<T extends Prisma.User$messageReadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messageReadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessageReadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messageReactions<T extends Prisma.User$messageReactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messageReactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessageReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messageReports<T extends Prisma.User$messageReportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messageReportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessageReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -21864,6 +22448,30 @@ export type User$messagesArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.MessageScalarFieldEnum | Prisma.MessageScalarFieldEnum[]
+}
+
+/**
+ * User.contactMessages
+ */
+export type User$contactMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ContactMessage
+   */
+  select?: Prisma.ContactMessageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ContactMessage
+   */
+  omit?: Prisma.ContactMessageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactMessageInclude<ExtArgs> | null
+  where?: Prisma.ContactMessageWhereInput
+  orderBy?: Prisma.ContactMessageOrderByWithRelationInput | Prisma.ContactMessageOrderByWithRelationInput[]
+  cursor?: Prisma.ContactMessageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ContactMessageScalarFieldEnum | Prisma.ContactMessageScalarFieldEnum[]
 }
 
 /**

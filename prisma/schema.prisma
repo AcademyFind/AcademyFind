@@ -68,6 +68,7 @@ model User {
   chatSettings             ChatSettings?
   conversationParticipants ConversationParticipant[]
   messages                 Message[]
+  contactMessages          ContactMessage[]          @relation("UserContactMessages")
   messageReads             MessageRead[]
   messageReactions         MessageReaction[]
   messageReports           MessageReport[]           @relation("Reporter")
@@ -1013,9 +1014,29 @@ model ContactMessage {
   subject   String?
   message   String
   isRead    Boolean  @default(false)
+  userId    String?
+  user      User?    @relation("UserContactMessages", fields: [userId], references: [id])
+  replies   ContactReply[]
   createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@map("contact_message")
+}
+
+model ContactReply {
+  id               String            @id @default(cuid())
+  contactMessageId String
+  contactMessage   ContactMessage    @relation(fields: [contactMessageId], references: [id], onDelete: Cascade)
+  sender           ContactSenderType
+  message          String
+  createdAt        DateTime          @default(now())
+
+  @@map("contact_reply")
+}
+
+enum ContactSenderType {
+  ADMIN
+  USER
 }
 
 model InstituteRequest {

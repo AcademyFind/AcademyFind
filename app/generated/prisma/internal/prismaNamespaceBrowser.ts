@@ -90,6 +90,7 @@ export const ModelName = {
   UserNotification: 'UserNotification',
   UserBlock: 'UserBlock',
   ContactMessage: 'ContactMessage',
+  ContactReply: 'ContactReply',
   InstituteRequest: 'InstituteRequest',
   SubscriptionPayment: 'SubscriptionPayment',
   SalesAssignment: 'SalesAssignment',
@@ -814,10 +815,23 @@ export const ContactMessageScalarFieldEnum = {
   subject: 'subject',
   message: 'message',
   isRead: 'isRead',
-  createdAt: 'createdAt'
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ContactMessageScalarFieldEnum = (typeof ContactMessageScalarFieldEnum)[keyof typeof ContactMessageScalarFieldEnum]
+
+
+export const ContactReplyScalarFieldEnum = {
+  id: 'id',
+  contactMessageId: 'contactMessageId',
+  sender: 'sender',
+  message: 'message',
+  createdAt: 'createdAt'
+} as const
+
+export type ContactReplyScalarFieldEnum = (typeof ContactReplyScalarFieldEnum)[keyof typeof ContactReplyScalarFieldEnum]
 
 
 export const InstituteRequestScalarFieldEnum = {

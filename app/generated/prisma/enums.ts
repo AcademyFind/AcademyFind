@@ -174,6 +174,14 @@ export const ConversationRole = {
 export type ConversationRole = (typeof ConversationRole)[keyof typeof ConversationRole]
 
 
+export const ContactSenderType = {
+  ADMIN: 'ADMIN',
+  USER: 'USER'
+} as const
+
+export type ContactSenderType = (typeof ContactSenderType)[keyof typeof ContactSenderType]
+
+
 export const InstituteMode = {
   OFFLINE: 'OFFLINE',
   ONLINE: 'ONLINE',

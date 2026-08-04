@@ -213,6 +213,11 @@ export type UserBlock = Prisma.UserBlockModel
  */
 export type ContactMessage = Prisma.ContactMessageModel
 /**
+ * Model ContactReply
+ * 
+ */
+export type ContactReply = Prisma.ContactReplyModel
+/**
  * Model InstituteRequest
  * 
  */

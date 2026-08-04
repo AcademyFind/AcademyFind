@@ -1,6 +1,8 @@
 "use server"
 
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/lib/auth/auth";
+import { headers } from "next/headers";
 
 export async function submitContactForm(formData: FormData) {
     try {
@@ -20,9 +22,14 @@ export async function submitContactForm(formData: FormData) {
         if (!phoneRegex.test(phone)) {
             return { success: false, error: "Please enter a valid 10-digit mobile number." };
         }
+        // Link to user if logged in
+        const headersList = await headers();
+        const session = await auth.api.getSession({ headers: headersList });
+        const userId = session?.user?.id || null;
+
         // Save to Database
         await prisma.contactMessage.create({
-            data: { name, email, phone,subject, message }
+            data: { name, email, phone, subject, message, userId }
         });
 
         return { 

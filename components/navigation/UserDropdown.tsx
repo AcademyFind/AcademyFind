@@ -116,6 +116,13 @@ export default function UserDropdown({ user }: { user: any }) {
             <span className="font-medium text-sm">Wallet</span>
           </Link>
         </DropdownMenuItem>
+        
+        <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 px-3 focus:bg-amber-50 focus:text-amber-700 transition-colors">
+          <Link href="/support-tickets">
+            <MessageCircle className="mr-3 h-4 w-4" />
+            <span className="font-medium text-sm">Support Tickets</span>
+          </Link>
+        </DropdownMenuItem>
 
         <DropdownMenuSeparator className="bg-slate-100 my-1" />
 

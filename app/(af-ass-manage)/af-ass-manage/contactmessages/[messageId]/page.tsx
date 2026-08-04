@@ -4,14 +4,20 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { formatIST } from "@/lib/utils";
 import { ArrowLeft, Mail, Phone, Calendar, MessageSquareQuote } from "lucide-react";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import ContactChat from "@/components/contact/ContactChat";
 
 export default async function ContactMessageDetail({ params }: { params: Promise<{ messageId: string }> }) {
     const {messageId} = await params;
 
     const message = await prisma.contactMessage.findUnique({
-        where: { id: messageId }
+        where: { id: messageId },
+        include: {
+            replies: {
+                orderBy: { createdAt: 'asc' }
+            }
+        }
     });
 
     if (!message) notFound();
@@ -85,16 +91,14 @@ export default async function ContactMessageDetail({ params }: { params: Promise
                 </CardContent>
                 <Separator className="bg-stone-100" />
 
-                {/* Action Footer */}
-                <CardFooter className="p-6 bg-stone-50 flex gap-3 justify-end">
-                    <a 
-                        href={`mailto:${message.email}?subject=Reply to: ${message.subject || 'Your Inquiry on AcademyFind'}`}
-                        className="inline-flex justify-center items-center bg-stone-800 hover:bg-stone-900 text-stone-50 font-bold px-6 py-2.5 rounded-xl transition-all shadow-sm border border-stone-900"
-                    >
-                        <Mail className="w-4 h-4 mr-2" /> Reply via Email
-                    </a>
-                </CardFooter>
             </Card>
+
+            {/* Interactive Chat Section */}
+            <ContactChat 
+                messageId={message.id} 
+                replies={message.replies} 
+                currentUserType="ADMIN" 
+            />
 
         </div>
     );

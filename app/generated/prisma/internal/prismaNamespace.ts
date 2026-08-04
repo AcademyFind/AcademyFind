@@ -423,6 +423,7 @@ export const ModelName = {
   UserNotification: 'UserNotification',
   UserBlock: 'UserBlock',
   ContactMessage: 'ContactMessage',
+  ContactReply: 'ContactReply',
   InstituteRequest: 'InstituteRequest',
   SubscriptionPayment: 'SubscriptionPayment',
   SalesAssignment: 'SalesAssignment',
@@ -487,7 +488,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "reviewReply" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteVisit" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill" | "visitorSession" | "visitorEvent"
+    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "reviewReply" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "contactReply" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteVisit" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill" | "visitorSession" | "visitorEvent"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3374,6 +3375,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ContactMessageCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ContactMessageCountAggregateOutputType> | number
+        }
+      }
+    }
+    ContactReply: {
+      payload: Prisma.$ContactReplyPayload<ExtArgs>
+      fields: Prisma.ContactReplyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ContactReplyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ContactReplyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload>
+        }
+        findFirst: {
+          args: Prisma.ContactReplyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ContactReplyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload>
+        }
+        findMany: {
+          args: Prisma.ContactReplyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload>[]
+        }
+        create: {
+          args: Prisma.ContactReplyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload>
+        }
+        createMany: {
+          args: Prisma.ContactReplyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ContactReplyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload>[]
+        }
+        delete: {
+          args: Prisma.ContactReplyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload>
+        }
+        update: {
+          args: Prisma.ContactReplyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload>
+        }
+        deleteMany: {
+          args: Prisma.ContactReplyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ContactReplyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ContactReplyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload>[]
+        }
+        upsert: {
+          args: Prisma.ContactReplyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactReplyPayload>
+        }
+        aggregate: {
+          args: Prisma.ContactReplyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateContactReply>
+        }
+        groupBy: {
+          args: Prisma.ContactReplyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ContactReplyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ContactReplyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ContactReplyCountAggregateOutputType> | number
         }
       }
     }
@@ -7699,10 +7774,23 @@ export const ContactMessageScalarFieldEnum = {
   subject: 'subject',
   message: 'message',
   isRead: 'isRead',
-  createdAt: 'createdAt'
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ContactMessageScalarFieldEnum = (typeof ContactMessageScalarFieldEnum)[keyof typeof ContactMessageScalarFieldEnum]
+
+
+export const ContactReplyScalarFieldEnum = {
+  id: 'id',
+  contactMessageId: 'contactMessageId',
+  sender: 'sender',
+  message: 'message',
+  createdAt: 'createdAt'
+} as const
+
+export type ContactReplyScalarFieldEnum = (typeof ContactReplyScalarFieldEnum)[keyof typeof ContactReplyScalarFieldEnum]
 
 
 export const InstituteRequestScalarFieldEnum = {
@@ -8837,6 +8925,20 @@ export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
+ * Reference to a field of type 'ContactSenderType'
+ */
+export type EnumContactSenderTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactSenderType'>
+    
+
+
+/**
+ * Reference to a field of type 'ContactSenderType[]'
+ */
+export type ListEnumContactSenderTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactSenderType[]'>
+    
+
+
+/**
  * Reference to a field of type 'ContactStatus'
  */
 export type EnumContactStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactStatus'>
@@ -9180,6 +9282,7 @@ export type GlobalOmitConfig = {
   userNotification?: Prisma.UserNotificationOmit
   userBlock?: Prisma.UserBlockOmit
   contactMessage?: Prisma.ContactMessageOmit
+  contactReply?: Prisma.ContactReplyOmit
   instituteRequest?: Prisma.InstituteRequestOmit
   subscriptionPayment?: Prisma.SubscriptionPaymentOmit
   salesAssignment?: Prisma.SalesAssignmentOmit
