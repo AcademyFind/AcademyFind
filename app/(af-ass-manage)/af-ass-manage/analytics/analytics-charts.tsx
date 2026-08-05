@@ -14,7 +14,7 @@ const COLORS = ['#f59e0b', '#3b82f6', '#10b981', '#6366f1', '#ef4444'];
 export default function AnalyticsCharts({ chartData, topPages, channels }: AnalyticsChartsProps) {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7 mt-4">
-      <Card className="col-span-4">
+      <Card className="col-span-1 md:col-span-2 lg:col-span-4">
         <CardHeader>
           <CardTitle>Visitor Traffic (Last 30 Days)</CardTitle>
           <CardDescription>Daily active users from Google Analytics</CardDescription>
@@ -65,7 +65,7 @@ export default function AnalyticsCharts({ chartData, topPages, channels }: Analy
         </CardContent>
       </Card>
 
-      <Card className="col-span-3">
+      <Card className="col-span-1 md:col-span-2 lg:col-span-3">
         <CardHeader>
           <CardTitle>Traffic Sources</CardTitle>
           <CardDescription>Where your users are coming from</CardDescription>
@@ -99,7 +99,7 @@ export default function AnalyticsCharts({ chartData, topPages, channels }: Analy
         </CardContent>
       </Card>
 
-      <Card className="col-span-7 mt-4">
+      <Card className="col-span-1 md:col-span-2 lg:col-span-7 mt-4">
         <CardHeader>
           <CardTitle>Top Visited Pages</CardTitle>
           <CardDescription>The most popular pages on your website</CardDescription>

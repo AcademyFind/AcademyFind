@@ -71,7 +71,7 @@ export default function TrendingPosts({ posts }: TrendingPostsProps) {
                   src={post.coverImage || DEFAULT_IMAGE}
                   alt={post.title}
                   fill
-                  className="object-contain bg-slate-950 transition duration-700 group-hover:scale-110"
+                  className="object-cover transition duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
 

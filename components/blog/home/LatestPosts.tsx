@@ -87,7 +87,7 @@ export default function LatestPosts({ posts }: LatestPostsProps) {
                         src={post.coverImage || DEFAULT_IMAGE}
                         alt={post.title}
                         fill
-                        className="object-contain bg-slate-100 transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-slate-900/10 transition-colors group-hover:bg-transparent" />
 
