@@ -76,8 +76,20 @@ export default async function LifeCoachDetailPage({ params }: { params: Promise<
                     <MessageSquare className="w-4 h-4 text-stone-500" />
                     <span className="font-bold text-stone-800 text-sm">Message / Dilemma</span>
                 </div>
-                <p className="text-stone-700 text-sm leading-relaxed whitespace-pre-wrap flex-1">
-                    {request.message || <span className="italic text-stone-400">No specific message provided. Please call to ask.</span>}
+                <p className="text-stone-700 text-sm leading-relaxed whitespace-pre-wrap flex-1 break-words">
+                    {request.message ? (
+                      request.message.split(/(https?:\/\/[^\s]+)/g).map((part, i) => 
+                        /(https?:\/\/[^\s]+)/g.test(part) ? (
+                          <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">
+                            {part}
+                          </a>
+                        ) : (
+                          part
+                        )
+                      )
+                    ) : (
+                      <span className="italic text-stone-400">No specific message provided. Please call to ask.</span>
+                    )}
                 </p>
                 </div>
             </div>
