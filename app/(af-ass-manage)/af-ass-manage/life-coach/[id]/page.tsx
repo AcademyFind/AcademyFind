@@ -23,81 +23,81 @@ export default async function LifeCoachDetailPage({ params }: { params: Promise<
       </Link>
 
       <Card className="border-stone-200 shadow-sm overflow-hidden bg-white">
-        
+
         {/* Header & Status Updater */}
         <CardHeader className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-stone-50/50 pb-6">
           <div>
             <CardTitle className="text-2xl font-bold text-stone-900">Counseling Request</CardTitle>
             <p className="text-sm text-stone-500 font-mono mt-2 bg-white px-2 py-1 rounded border border-stone-200 w-fit">ID: {request.id}</p>
           </div>
-          
+
           <StatusUpdater requestId={request.id} currentStatus={request.status as any} currentNotes={request.notes} />
         </CardHeader>
         <Separator className="bg-stone-100" />
 
         <CardContent className="p-6 md:p-8">
-            {/* Lead Details Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Lead Details Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400">Student Information</h3>
-                
-                <div className="bg-stone-50 rounded-2xl p-5 space-y-4 border border-stone-100 shadow-sm">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400">Student Information</h3>
+
+              <div className="bg-stone-50 rounded-2xl p-5 space-y-4 border border-stone-100 shadow-sm">
                 <div className="flex items-center gap-3">
-                    <div className="p-2 bg-white rounded-lg shadow-sm"><User className="w-4 h-4 text-stone-600" /></div>
-                    <div>
+                  <div className="p-2 bg-white rounded-lg shadow-sm"><User className="w-4 h-4 text-stone-600" /></div>
+                  <div>
                     <p className="text-[10px] font-bold text-stone-400 uppercase">Full Name</p>
                     <p className="font-semibold text-stone-800">{request.fullName}</p>
-                    </div>
+                  </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <div className="p-2 bg-white rounded-lg shadow-sm"><Phone className="w-4 h-4 text-stone-600" /></div>
-                    <div>
+                  <div className="p-2 bg-white rounded-lg shadow-sm"><Phone className="w-4 h-4 text-stone-600" /></div>
+                  <div>
                     <p className="text-[10px] font-bold text-stone-400 uppercase">Phone Number</p>
                     <a href={`tel:${request.phone}`} className="font-semibold text-emerald-700 hover:underline">{request.phone}</a>
-                    </div>
+                  </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <div className="p-2 bg-white rounded-lg shadow-sm"><Mail className="w-4 h-4 text-stone-600" /></div>
-                    <div>
+                  <div className="p-2 bg-white rounded-lg shadow-sm"><Mail className="w-4 h-4 text-stone-600" /></div>
+                  <div>
                     <p className="text-[10px] font-bold text-stone-400 uppercase">Email Address</p>
                     <a href={`mailto:${request.email}`} className="font-semibold text-blue-700 hover:underline">{request.email}</a>
-                    </div>
+                  </div>
                 </div>
-                </div>
+              </div>
             </div>
 
             <div className="space-y-6">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400">Query Details</h3>
-                
-                <div className="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm h-full flex flex-col">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400">Query Details</h3>
+
+              <div className="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm h-full flex flex-col">
                 <div className="flex items-center gap-2 mb-3">
-                    <MessageSquare className="w-4 h-4 text-stone-500" />
-                    <span className="font-bold text-stone-800 text-sm">Message / Dilemma</span>
+                  <MessageSquare className="w-4 h-4 text-stone-500" />
+                  <span className="font-bold text-stone-800 text-sm">Message / Dilemma</span>
                 </div>
                 <p className="text-stone-700 text-sm leading-relaxed whitespace-pre-wrap flex-1 break-words">
-                    {request.message ? (
-                      request.message.split(/(https?:\/\/[^\s]+)/g).map((part, i) => 
-                        /(https?:\/\/[^\s]+)/g.test(part) ? (
-                          <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">
-                            {part}
-                          </a>
-                        ) : (
-                          part
-                        )
+                  {request.message ? (
+                    request.message.split(/(https?:\/\/[^\s]+)/g).map((part: any, i: any) =>
+                      /(https?:\/\/[^\s]+)/g.test(part) ? (
+                        <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">
+                          {part}
+                        </a>
+                      ) : (
+                        part
                       )
-                    ) : (
-                      <span className="italic text-stone-400">No specific message provided. Please call to ask.</span>
-                    )}
+                    )
+                  ) : (
+                    <span className="italic text-stone-400">No specific message provided. Please call to ask.</span>
+                  )}
                 </p>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div className="mt-8 pt-6 border-t border-stone-100 text-xs text-stone-400 flex items-center gap-2">
+          <div className="mt-8 pt-6 border-t border-stone-100 text-xs text-stone-400 flex items-center gap-2">
             <Clock className="w-4 h-4" /> Requested on {formatIST(request.createdAt)}
-            </div>
+          </div>
         </CardContent>
       </Card>
     </div>
