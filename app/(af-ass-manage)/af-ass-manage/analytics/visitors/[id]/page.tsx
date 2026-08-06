@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { format } from "date-fns";
+import { formatIST } from "@/lib/utils";
 import { ArrowLeft, MapPin, Monitor, Smartphone, Globe, Clock, MousePointer2, Search, Link as LinkIcon, Activity } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -177,7 +177,7 @@ export default async function VisitorJourneyPage({ params }: { params: Promise<{
                     </span>
                   </div>
                   <span className="text-xs font-mono text-slate-400 whitespace-nowrap bg-slate-50 dark:bg-slate-800/50 px-2 py-1 rounded">
-                    {format(new Date(event.createdAt), "hh:mm:ss a")}
+                    {formatIST(event.createdAt, "hh:mm:ss a")}
                   </span>
                 </div>
 
