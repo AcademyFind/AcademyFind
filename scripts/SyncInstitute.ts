@@ -89,16 +89,16 @@ export async function syncSingleInstituteToMeili(instituteId: string) {
   }
 }
 
-async function main() {
-  const instituteId = "cms7y08dm000004i5s51n9inj";
-  try {
-    console.log(`Starting sync for institute ID: ${instituteId}...`);
-    await syncSingleInstituteToMeili(instituteId);
-  } catch (err) {
-    console.error("Error syncing institute:", err);
-  } finally {
-    await prisma.$disconnect(); // Prevents the terminal process from hanging
-  }
-}
+// async function main() {
+//   const instituteId = "cms7y08dm000004i5s51n9inj";
+//   try {
+//     console.log(`Starting sync for institute ID: ${instituteId}...`);
+//     await syncSingleInstituteToMeili(instituteId);
+//   } catch (err) {
+//     console.error("Error syncing institute:", err);
+//   } finally {
+//     await prisma.$disconnect(); // Prevents the terminal process from hanging
+//   }
+// }
 
-main();
+// main();

@@ -47,10 +47,10 @@ export async function createInstitute(formData: FormData, selectedCategoryIds: s
         const isFeatured = formData.get("isFeatured") === "true";
         const isActive = formData.get("isActive") === "true";
 
-        const latitude = formData.get("latitude") ? parseFloat(formData.get("latitude") as string) : null;
-        const longitude = formData.get("longitude") ? parseFloat(formData.get("longitude") as string) : null;
-        const googleRating = formData.get("googleRating") ? parseFloat(formData.get("googleRating") as string) : null;
-        const googleReviewCount = formData.get("googleReviewCount") ? parseInt(formData.get("googleReviewCount") as string) : null;
+        const latitude = formData.get("latitude") ? parseFloat(formData.get("latitude") as string) : undefined;
+        const longitude = formData.get("longitude") ? parseFloat(formData.get("longitude") as string) : undefined;
+        const googleRating = formData.get("googleRating") ? parseFloat(formData.get("googleRating") as string) : undefined;
+        const googleReviewCount = formData.get("googleReviewCount") ? parseInt(formData.get("googleReviewCount") as string) : undefined;
 
         if (!name || !cityId || !address) {
             return { success: false, error: "Name, City, and Address are required." };
@@ -204,10 +204,10 @@ export async function updateInstituteByAdmin(
         }
 
         // Floats
-        const latitude = formData.get("latitude") ? parseFloat(formData.get("latitude") as string) : null;
-        const longitude = formData.get("longitude") ? parseFloat(formData.get("longitude") as string) : null;
-        const googleRating = formData.get("googleRating") ? parseFloat(formData.get("googleRating") as string) : null;
-        const googleReviewCount = formData.get("googleReviewCount") ? parseInt(formData.get("googleReviewCount") as string) : null;
+        const latitude = formData.get("latitude") ? parseFloat(formData.get("latitude") as string) : undefined;
+        const longitude = formData.get("longitude") ? parseFloat(formData.get("longitude") as string) : undefined;
+        const googleRating = formData.get("googleRating") ? parseFloat(formData.get("googleRating") as string) : undefined;
+        const googleReviewCount = formData.get("googleReviewCount") ? parseInt(formData.get("googleReviewCount") as string) : undefined;
 
 
         // ⚡ RUNNING EVERYTHING IN A SINGLE TRANSACTION
@@ -223,7 +223,10 @@ export async function updateInstituteByAdmin(
                     whatsappUrl, instagramUrl, facebookUrl, youtubeUrl, linkedinUrl, twitterUrl, telegramUrl,
                     
                     isVerified, isFeatured, isPublished, isActive,    
-                    latitude, longitude, googleRating, googleReviewCount,
+                    ...(latitude !== undefined && { latitude }),
+                    ...(longitude !== undefined && { longitude }),
+                    ...(googleRating !== undefined && { googleRating }),
+                    ...(googleReviewCount !== undefined && { googleReviewCount }),
 
                     // SEO & Features
                     metaTitle, metaDescription, mode, establishedYear, totalStudents, totalBranches, refundPolicy, brochureUrl,

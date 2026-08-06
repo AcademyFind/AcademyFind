@@ -7,6 +7,7 @@ import {
     PAYMENT_REJECTED_STATUS,
     validatePaymentTransition,
 } from "@/lib/institutes/institute-workflow";
+import { syncSingleInstituteToMeili } from "@/scripts/SyncInstitute";
 
 export async function approvePayment(paymentId: string) {
     try{
@@ -45,6 +46,12 @@ export async function approvePayment(paymentId: string) {
                 }
             })
         ]);
+
+        // Sync to Meilisearch after updating subscription plan
+        const syncResult = await syncSingleInstituteToMeili(payment.instituteId);
+        if (!syncResult.success) {
+            console.error("Failed to sync approved institute payment to Meilisearch:", syncResult.error);
+        }
 
         revalidatePath("/af-ass-manage/payments");
         revalidatePath(`/af-ass-manage/payments/${paymentId}`);
