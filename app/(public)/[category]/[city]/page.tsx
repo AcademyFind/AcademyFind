@@ -380,7 +380,7 @@ function JsonLdSchemas({
 // ─── 3. PAGE COMPONENT ───────────────────────────────────────
 export default async function CategoryCityPage({ params, searchParams }: PageProps) {
   const { category, city } = await params;
-  const { sort = "rating", page, q, lat, lng, address, radius, rating, userLat, userLng, closestUser, mode, providerType } =
+  const { sort = "reviews", page, q, lat, lng, address, radius, rating, userLat, userLng, closestUser, mode, providerType } =
     await searchParams;
 
   const categoryName = formatSlug(category);

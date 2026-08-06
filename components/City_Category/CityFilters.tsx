@@ -31,7 +31,7 @@ export default function CityFilters({ category, city, hasLocation }: Props) {
 
   const [isLocating, setIsLocating] = useState(false);
 
-  const currentSort = searchParams.get("sort") || "rating";
+  const currentSort = searchParams.get("sort") || "reviews";
   const currentRadius = searchParams.get("radius") || "5";
   const currentRating = searchParams.get("rating") || "all";
   const currentFee = searchParams.get("fee") || "all";
@@ -103,7 +103,7 @@ export default function CityFilters({ category, city, hasLocation }: Props) {
       params.delete("userLng");
     }
 
-    if (key === "sort" && value === "rating") {
+    if (key === "sort" && value === "reviews") {
       params.delete(key);
     } else if (value && value !== "all") {
       params.set(key, value);

@@ -315,7 +315,7 @@ function JsonLdSchemas({ institutes, cities, categoryData, category, totalCount 
 // ─── 3. PAGE COMPONENT ───────────────────────────────────────
 export default async function CategoryPage({ params, searchParams }: PageProps) {
   const { category } = await params;
-  const { page, q, sort = "rating", rating, mode, userLat, userLng, closestUser, providerType } = await searchParams;
+  const { page, q, sort = "reviews", rating, mode, userLat, userLng, closestUser, providerType } = await searchParams;
 
   const categoryData = await getCategoryBySlug(category);
   if (!categoryData) {
