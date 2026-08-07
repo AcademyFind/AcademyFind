@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import toast from "react-hot-toast";
-import { Archive, ArchiveRestore, ExternalLink, Loader2, Pencil, Trash2, Check, X } from "lucide-react";
+import { Archive, ArchiveRestore, ExternalLink, Loader2, Pencil, Trash2, Check, X, BarChart2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -126,6 +126,14 @@ export default function AdminBlogActions({
           aria-label="Edit post"
         >
           <Pencil />
+        </Link>
+      </Button>
+      <Button asChild type="button" variant="ghost" size="icon-sm" title="View analytics">
+        <Link
+          href={`/af-ass-manage/blog/analytics/${postId}`}
+          aria-label="View analytics"
+        >
+          <BarChart2 />
         </Link>
       </Button>
       {!isArchived ? (
