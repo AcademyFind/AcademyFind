@@ -372,6 +372,7 @@ model Institute {
   mediumOfInstruction String[]                   @default(["English", "Hindi"])
   metaDescription     String?
   metaTitle           String?
+  metaKeywords        String?
   pros                String[]                   @default([])
   refundPolicy        String?
   totalBranches       Int?

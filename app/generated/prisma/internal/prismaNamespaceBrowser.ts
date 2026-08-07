@@ -386,6 +386,7 @@ export const InstituteScalarFieldEnum = {
   mediumOfInstruction: 'mediumOfInstruction',
   metaDescription: 'metaDescription',
   metaTitle: 'metaTitle',
+  metaKeywords: 'metaKeywords',
   pros: 'pros',
   refundPolicy: 'refundPolicy',
   totalBranches: 'totalBranches',

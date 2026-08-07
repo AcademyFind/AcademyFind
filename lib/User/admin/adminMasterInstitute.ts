@@ -162,6 +162,7 @@ export async function updateInstituteByAdmin(
         // ==========================================
         const metaTitle = formData.get("metaTitle") as string;
         const metaDescription = formData.get("metaDescription") as string;
+        const metaKeywords = formData.get("metaKeywords") as string;
         const mode = formData.get("mode") as "OFFLINE" | "ONLINE" | "HYBRID";
         const refundPolicy = formData.get("refundPolicy") as string;
         const brochureUrl = formData.get("brochureUrl") as string;
@@ -229,7 +230,7 @@ export async function updateInstituteByAdmin(
                     ...(googleReviewCount !== undefined && { googleReviewCount }),
 
                     // SEO & Features
-                    metaTitle, metaDescription, mode, establishedYear, totalStudents, totalBranches, refundPolicy, brochureUrl,
+                    metaTitle, metaDescription, metaKeywords, mode, establishedYear, totalStudents, totalBranches, refundPolicy, brochureUrl,
                     hasOnlineClasses, hasHostelFacility, hasDemoClasses, hasScholarship, hasCertification,
                     pros, cons, affiliations, awards, mediumOfInstruction,
                     

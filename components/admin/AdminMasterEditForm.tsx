@@ -65,6 +65,7 @@ export default function MasterEditForm({ institute, allCities, allCategories, cu
 
     const [metaTitle, setMetaTitle] = useState(institute.metaTitle || "");
     const [metaDescription, setMetaDescription] = useState(institute.metaDescription || "");
+    const [metaKeywords, setMetaKeywords] = useState(institute.metaKeywords || "");
 
     const [facilities, setFacilities] = useState<Facility[]>(
         (institute.facilities || []).map((f: any) => ({ id: f.id || genId(), name: f.name, available: f.available }))
@@ -132,6 +133,7 @@ export default function MasterEditForm({ institute, allCities, allCategories, cu
 
         formData.set("metaTitle", metaTitle);
         formData.set("metaDescription", metaDescription);
+        formData.set("metaKeywords", metaKeywords);
 
         formData.set("facilities", JSON.stringify(facilities.filter(f => f.name.trim())));
         formData.set("highlightStats", JSON.stringify(stats.filter(s => s.label.trim() && s.value.trim())));
@@ -379,6 +381,11 @@ export default function MasterEditForm({ institute, allCities, allCategories, cu
                                 <div className="space-y-2">
                                     <div className="flex items-center justify-between"><Label>Meta Description</Label><span className="text-xs text-stone-400">{metaDescription.length}/160</span></div>
                                     <Textarea name="metaDescription" value={metaDescription} onChange={(e) => setMetaDescription(e.target.value)} rows={3} maxLength={200} />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label>Meta Keywords</Label>
+                                    <Input name="metaKeywords" value={metaKeywords} onChange={(e) => setMetaKeywords(e.target.value)} placeholder="e.g. JEE Coaching, Best Institute, IIT Delhi" />
+                                    <p className="text-[11px] text-stone-500">Comma separated keywords for search engines.</p>
                                 </div>
                             </CardContent>
                         </Card>

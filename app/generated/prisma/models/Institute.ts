@@ -113,6 +113,7 @@ export type InstituteMinAggregateOutputType = {
   hasScholarship: boolean | null
   metaDescription: string | null
   metaTitle: string | null
+  metaKeywords: string | null
   refundPolicy: string | null
   totalBranches: number | null
   totalStudents: number | null
@@ -171,6 +172,7 @@ export type InstituteMaxAggregateOutputType = {
   hasScholarship: boolean | null
   metaDescription: string | null
   metaTitle: string | null
+  metaKeywords: string | null
   refundPolicy: string | null
   totalBranches: number | null
   totalStudents: number | null
@@ -237,6 +239,7 @@ export type InstituteCountAggregateOutputType = {
   mediumOfInstruction: number
   metaDescription: number
   metaTitle: number
+  metaKeywords: number
   pros: number
   refundPolicy: number
   totalBranches: number
@@ -332,6 +335,7 @@ export type InstituteMinAggregateInputType = {
   hasScholarship?: true
   metaDescription?: true
   metaTitle?: true
+  metaKeywords?: true
   refundPolicy?: true
   totalBranches?: true
   totalStudents?: true
@@ -390,6 +394,7 @@ export type InstituteMaxAggregateInputType = {
   hasScholarship?: true
   metaDescription?: true
   metaTitle?: true
+  metaKeywords?: true
   refundPolicy?: true
   totalBranches?: true
   totalStudents?: true
@@ -456,6 +461,7 @@ export type InstituteCountAggregateInputType = {
   mediumOfInstruction?: true
   metaDescription?: true
   metaTitle?: true
+  metaKeywords?: true
   pros?: true
   refundPolicy?: true
   totalBranches?: true
@@ -610,6 +616,7 @@ export type InstituteGroupByOutputType = {
   mediumOfInstruction: string[]
   metaDescription: string | null
   metaTitle: string | null
+  metaKeywords: string | null
   pros: string[]
   refundPolicy: string | null
   totalBranches: number | null
@@ -700,6 +707,7 @@ export type InstituteWhereInput = {
   mediumOfInstruction?: Prisma.StringNullableListFilter<"Institute">
   metaDescription?: Prisma.StringNullableFilter<"Institute"> | string | null
   metaTitle?: Prisma.StringNullableFilter<"Institute"> | string | null
+  metaKeywords?: Prisma.StringNullableFilter<"Institute"> | string | null
   pros?: Prisma.StringNullableListFilter<"Institute">
   refundPolicy?: Prisma.StringNullableFilter<"Institute"> | string | null
   totalBranches?: Prisma.IntNullableFilter<"Institute"> | number | null
@@ -797,6 +805,7 @@ export type InstituteOrderByWithRelationInput = {
   mediumOfInstruction?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   metaTitle?: Prisma.SortOrderInput | Prisma.SortOrder
+  metaKeywords?: Prisma.SortOrderInput | Prisma.SortOrder
   pros?: Prisma.SortOrder
   refundPolicy?: Prisma.SortOrderInput | Prisma.SortOrder
   totalBranches?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -897,6 +906,7 @@ export type InstituteWhereUniqueInput = Prisma.AtLeast<{
   mediumOfInstruction?: Prisma.StringNullableListFilter<"Institute">
   metaDescription?: Prisma.StringNullableFilter<"Institute"> | string | null
   metaTitle?: Prisma.StringNullableFilter<"Institute"> | string | null
+  metaKeywords?: Prisma.StringNullableFilter<"Institute"> | string | null
   pros?: Prisma.StringNullableListFilter<"Institute">
   refundPolicy?: Prisma.StringNullableFilter<"Institute"> | string | null
   totalBranches?: Prisma.IntNullableFilter<"Institute"> | number | null
@@ -994,6 +1004,7 @@ export type InstituteOrderByWithAggregationInput = {
   mediumOfInstruction?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   metaTitle?: Prisma.SortOrderInput | Prisma.SortOrder
+  metaKeywords?: Prisma.SortOrderInput | Prisma.SortOrder
   pros?: Prisma.SortOrder
   refundPolicy?: Prisma.SortOrderInput | Prisma.SortOrder
   totalBranches?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1069,6 +1080,7 @@ export type InstituteScalarWhereWithAggregatesInput = {
   mediumOfInstruction?: Prisma.StringNullableListFilter<"Institute">
   metaDescription?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
   metaTitle?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
+  metaKeywords?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
   pros?: Prisma.StringNullableListFilter<"Institute">
   refundPolicy?: Prisma.StringNullableWithAggregatesFilter<"Institute"> | string | null
   totalBranches?: Prisma.IntNullableWithAggregatesFilter<"Institute"> | number | null
@@ -1135,6 +1147,7 @@ export type InstituteCreateInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -1232,6 +1245,7 @@ export type InstituteUncheckedCreateInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -1327,6 +1341,7 @@ export type InstituteUpdateInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1424,6 +1439,7 @@ export type InstituteUncheckedUpdateInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1520,6 +1536,7 @@ export type InstituteCreateManyInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -1586,6 +1603,7 @@ export type InstituteUpdateManyMutationInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1653,6 +1671,7 @@ export type InstituteUncheckedUpdateManyInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1728,6 +1747,7 @@ export type InstituteCountOrderByAggregateInput = {
   mediumOfInstruction?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   metaTitle?: Prisma.SortOrder
+  metaKeywords?: Prisma.SortOrder
   pros?: Prisma.SortOrder
   refundPolicy?: Prisma.SortOrder
   totalBranches?: Prisma.SortOrder
@@ -1804,6 +1824,7 @@ export type InstituteMaxOrderByAggregateInput = {
   hasScholarship?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   metaTitle?: Prisma.SortOrder
+  metaKeywords?: Prisma.SortOrder
   refundPolicy?: Prisma.SortOrder
   totalBranches?: Prisma.SortOrder
   totalStudents?: Prisma.SortOrder
@@ -1862,6 +1883,7 @@ export type InstituteMinOrderByAggregateInput = {
   hasScholarship?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   metaTitle?: Prisma.SortOrder
+  metaKeywords?: Prisma.SortOrder
   refundPolicy?: Prisma.SortOrder
   totalBranches?: Prisma.SortOrder
   totalStudents?: Prisma.SortOrder
@@ -2525,6 +2547,7 @@ export type InstituteCreateWithoutCityInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -2620,6 +2643,7 @@ export type InstituteUncheckedCreateWithoutCityInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -2745,6 +2769,7 @@ export type InstituteScalarWhereInput = {
   mediumOfInstruction?: Prisma.StringNullableListFilter<"Institute">
   metaDescription?: Prisma.StringNullableFilter<"Institute"> | string | null
   metaTitle?: Prisma.StringNullableFilter<"Institute"> | string | null
+  metaKeywords?: Prisma.StringNullableFilter<"Institute"> | string | null
   pros?: Prisma.StringNullableListFilter<"Institute">
   refundPolicy?: Prisma.StringNullableFilter<"Institute"> | string | null
   totalBranches?: Prisma.IntNullableFilter<"Institute"> | number | null
@@ -2811,6 +2836,7 @@ export type InstituteCreateWithoutCategoriesInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -2907,6 +2933,7 @@ export type InstituteUncheckedCreateWithoutCategoriesInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -3017,6 +3044,7 @@ export type InstituteUpdateWithoutCategoriesInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3113,6 +3141,7 @@ export type InstituteUncheckedUpdateWithoutCategoriesInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3207,6 +3236,7 @@ export type InstituteCreateWithoutManagersInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -3303,6 +3333,7 @@ export type InstituteUncheckedCreateWithoutManagersInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -3413,6 +3444,7 @@ export type InstituteUpdateWithoutManagersInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3509,6 +3541,7 @@ export type InstituteUncheckedUpdateWithoutManagersInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3603,6 +3636,7 @@ export type InstituteCreateWithoutReviewsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -3699,6 +3733,7 @@ export type InstituteUncheckedCreateWithoutReviewsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -3809,6 +3844,7 @@ export type InstituteUpdateWithoutReviewsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3905,6 +3941,7 @@ export type InstituteUncheckedUpdateWithoutReviewsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3999,6 +4036,7 @@ export type InstituteCreateWithoutClaimsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -4095,6 +4133,7 @@ export type InstituteUncheckedCreateWithoutClaimsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -4205,6 +4244,7 @@ export type InstituteUpdateWithoutClaimsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4301,6 +4341,7 @@ export type InstituteUncheckedUpdateWithoutClaimsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4395,6 +4436,7 @@ export type InstituteCreateWithoutShortlistedByInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -4491,6 +4533,7 @@ export type InstituteUncheckedCreateWithoutShortlistedByInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -4601,6 +4644,7 @@ export type InstituteUpdateWithoutShortlistedByInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4697,6 +4741,7 @@ export type InstituteUncheckedUpdateWithoutShortlistedByInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4791,6 +4836,7 @@ export type InstituteCreateWithoutViewHistoryInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -4887,6 +4933,7 @@ export type InstituteUncheckedCreateWithoutViewHistoryInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -4997,6 +5044,7 @@ export type InstituteUpdateWithoutViewHistoryInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5093,6 +5141,7 @@ export type InstituteUncheckedUpdateWithoutViewHistoryInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5187,6 +5236,7 @@ export type InstituteCreateWithoutEnquiriesInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -5283,6 +5333,7 @@ export type InstituteUncheckedCreateWithoutEnquiriesInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -5393,6 +5444,7 @@ export type InstituteUpdateWithoutEnquiriesInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5489,6 +5541,7 @@ export type InstituteUncheckedUpdateWithoutEnquiriesInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5583,6 +5636,7 @@ export type InstituteCreateWithoutMembershipsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -5679,6 +5733,7 @@ export type InstituteUncheckedCreateWithoutMembershipsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -5789,6 +5844,7 @@ export type InstituteUpdateWithoutMembershipsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5885,6 +5941,7 @@ export type InstituteUncheckedUpdateWithoutMembershipsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5979,6 +6036,7 @@ export type InstituteCreateWithoutStudentRecordsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -6075,6 +6133,7 @@ export type InstituteUncheckedCreateWithoutStudentRecordsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -6185,6 +6244,7 @@ export type InstituteUpdateWithoutStudentRecordsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -6281,6 +6341,7 @@ export type InstituteUncheckedUpdateWithoutStudentRecordsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -6375,6 +6436,7 @@ export type InstituteCreateWithoutTeacherRecordsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -6471,6 +6533,7 @@ export type InstituteUncheckedCreateWithoutTeacherRecordsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -6581,6 +6644,7 @@ export type InstituteUpdateWithoutTeacherRecordsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -6677,6 +6741,7 @@ export type InstituteUncheckedUpdateWithoutTeacherRecordsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -6771,6 +6836,7 @@ export type InstituteCreateWithoutConversationsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -6867,6 +6933,7 @@ export type InstituteUncheckedCreateWithoutConversationsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -6977,6 +7044,7 @@ export type InstituteUpdateWithoutConversationsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -7073,6 +7141,7 @@ export type InstituteUncheckedUpdateWithoutConversationsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -7167,6 +7236,7 @@ export type InstituteCreateWithoutInstituteRequestInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -7263,6 +7333,7 @@ export type InstituteUncheckedCreateWithoutInstituteRequestInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -7373,6 +7444,7 @@ export type InstituteUpdateWithoutInstituteRequestInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -7469,6 +7541,7 @@ export type InstituteUncheckedUpdateWithoutInstituteRequestInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -7563,6 +7636,7 @@ export type InstituteCreateWithoutPaymentsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -7659,6 +7733,7 @@ export type InstituteUncheckedCreateWithoutPaymentsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -7769,6 +7844,7 @@ export type InstituteUpdateWithoutPaymentsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -7865,6 +7941,7 @@ export type InstituteUncheckedUpdateWithoutPaymentsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -7959,6 +8036,7 @@ export type InstituteCreateWithoutSalesAssignmentsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -8055,6 +8133,7 @@ export type InstituteUncheckedCreateWithoutSalesAssignmentsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -8165,6 +8244,7 @@ export type InstituteUpdateWithoutSalesAssignmentsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -8261,6 +8341,7 @@ export type InstituteUncheckedUpdateWithoutSalesAssignmentsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -8355,6 +8436,7 @@ export type InstituteCreateWithoutDailyViewsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -8451,6 +8533,7 @@ export type InstituteUncheckedCreateWithoutDailyViewsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -8561,6 +8644,7 @@ export type InstituteUpdateWithoutDailyViewsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -8657,6 +8741,7 @@ export type InstituteUncheckedUpdateWithoutDailyViewsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -8751,6 +8836,7 @@ export type InstituteCreateWithoutVisitsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -8847,6 +8933,7 @@ export type InstituteUncheckedCreateWithoutVisitsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -8957,6 +9044,7 @@ export type InstituteUpdateWithoutVisitsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -9053,6 +9141,7 @@ export type InstituteUncheckedUpdateWithoutVisitsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -9147,6 +9236,7 @@ export type InstituteCreateWithoutFacilitiesInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -9243,6 +9333,7 @@ export type InstituteUncheckedCreateWithoutFacilitiesInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -9353,6 +9444,7 @@ export type InstituteUpdateWithoutFacilitiesInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -9449,6 +9541,7 @@ export type InstituteUncheckedUpdateWithoutFacilitiesInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -9543,6 +9636,7 @@ export type InstituteCreateWithoutBatchesInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -9639,6 +9733,7 @@ export type InstituteUncheckedCreateWithoutBatchesInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -9749,6 +9844,7 @@ export type InstituteUpdateWithoutBatchesInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -9845,6 +9941,7 @@ export type InstituteUncheckedUpdateWithoutBatchesInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -9939,6 +10036,7 @@ export type InstituteCreateWithoutHighlightStatsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -10035,6 +10133,7 @@ export type InstituteUncheckedCreateWithoutHighlightStatsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -10145,6 +10244,7 @@ export type InstituteUpdateWithoutHighlightStatsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -10241,6 +10341,7 @@ export type InstituteUncheckedUpdateWithoutHighlightStatsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -10335,6 +10436,7 @@ export type InstituteCreateWithoutAchievementsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -10431,6 +10533,7 @@ export type InstituteUncheckedCreateWithoutAchievementsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -10541,6 +10644,7 @@ export type InstituteUpdateWithoutAchievementsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -10637,6 +10741,7 @@ export type InstituteUncheckedUpdateWithoutAchievementsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -10731,6 +10836,7 @@ export type InstituteCreateWithoutFaqsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -10827,6 +10933,7 @@ export type InstituteUncheckedCreateWithoutFaqsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -10937,6 +11044,7 @@ export type InstituteUpdateWithoutFaqsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -11033,6 +11141,7 @@ export type InstituteUncheckedUpdateWithoutFaqsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -11127,6 +11236,7 @@ export type InstituteCreateWithoutOperatingHoursInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -11223,6 +11333,7 @@ export type InstituteUncheckedCreateWithoutOperatingHoursInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -11333,6 +11444,7 @@ export type InstituteUpdateWithoutOperatingHoursInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -11429,6 +11541,7 @@ export type InstituteUncheckedUpdateWithoutOperatingHoursInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -11523,6 +11636,7 @@ export type InstituteCreateWithoutCompareListItemsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -11619,6 +11733,7 @@ export type InstituteUncheckedCreateWithoutCompareListItemsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -11729,6 +11844,7 @@ export type InstituteUpdateWithoutCompareListItemsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -11825,6 +11941,7 @@ export type InstituteUncheckedUpdateWithoutCompareListItemsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -11919,6 +12036,7 @@ export type InstituteCreateWithoutCommunityQuestionsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -12015,6 +12133,7 @@ export type InstituteUncheckedCreateWithoutCommunityQuestionsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -12125,6 +12244,7 @@ export type InstituteUpdateWithoutCommunityQuestionsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -12221,6 +12341,7 @@ export type InstituteUncheckedUpdateWithoutCommunityQuestionsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -12315,6 +12436,7 @@ export type InstituteCreateWithoutNotablepersonsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -12411,6 +12533,7 @@ export type InstituteUncheckedCreateWithoutNotablepersonsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -12521,6 +12644,7 @@ export type InstituteUpdateWithoutNotablepersonsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -12617,6 +12741,7 @@ export type InstituteUncheckedUpdateWithoutNotablepersonsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -12711,6 +12836,7 @@ export type InstituteCreateWithoutComparisonsAsFirstInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -12807,6 +12933,7 @@ export type InstituteUncheckedCreateWithoutComparisonsAsFirstInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -12906,6 +13033,7 @@ export type InstituteCreateWithoutComparisonsAsSecondInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -13002,6 +13130,7 @@ export type InstituteUncheckedCreateWithoutComparisonsAsSecondInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -13112,6 +13241,7 @@ export type InstituteUpdateWithoutComparisonsAsFirstInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -13208,6 +13338,7 @@ export type InstituteUncheckedUpdateWithoutComparisonsAsFirstInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -13313,6 +13444,7 @@ export type InstituteUpdateWithoutComparisonsAsSecondInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -13409,6 +13541,7 @@ export type InstituteUncheckedUpdateWithoutComparisonsAsSecondInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -13503,6 +13636,7 @@ export type InstituteCreateWithoutBlogPostsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -13599,6 +13733,7 @@ export type InstituteUncheckedCreateWithoutBlogPostsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -13709,6 +13844,7 @@ export type InstituteUpdateWithoutBlogPostsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -13805,6 +13941,7 @@ export type InstituteUncheckedUpdateWithoutBlogPostsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -13899,6 +14036,7 @@ export type InstituteCreateWithoutCrmIntegrationsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -13995,6 +14133,7 @@ export type InstituteUncheckedCreateWithoutCrmIntegrationsInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -14105,6 +14244,7 @@ export type InstituteUpdateWithoutCrmIntegrationsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -14201,6 +14341,7 @@ export type InstituteUncheckedUpdateWithoutCrmIntegrationsInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -14295,6 +14436,7 @@ export type InstituteCreateManyCityInput = {
   mediumOfInstruction?: Prisma.InstituteCreatemediumOfInstructionInput | string[]
   metaDescription?: string | null
   metaTitle?: string | null
+  metaKeywords?: string | null
   pros?: Prisma.InstituteCreateprosInput | string[]
   refundPolicy?: string | null
   totalBranches?: number | null
@@ -14361,6 +14503,7 @@ export type InstituteUpdateWithoutCityInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -14456,6 +14599,7 @@ export type InstituteUncheckedUpdateWithoutCityInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -14551,6 +14695,7 @@ export type InstituteUncheckedUpdateManyWithoutCityInput = {
   mediumOfInstruction?: Prisma.InstituteUpdatemediumOfInstructionInput | string[]
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pros?: Prisma.InstituteUpdateprosInput | string[]
   refundPolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalBranches?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -14883,6 +15028,7 @@ export type InstituteSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   mediumOfInstruction?: boolean
   metaDescription?: boolean
   metaTitle?: boolean
+  metaKeywords?: boolean
   pros?: boolean
   refundPolicy?: boolean
   totalBranches?: boolean
@@ -14981,6 +15127,7 @@ export type InstituteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   mediumOfInstruction?: boolean
   metaDescription?: boolean
   metaTitle?: boolean
+  metaKeywords?: boolean
   pros?: boolean
   refundPolicy?: boolean
   totalBranches?: boolean
@@ -15049,6 +15196,7 @@ export type InstituteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   mediumOfInstruction?: boolean
   metaDescription?: boolean
   metaTitle?: boolean
+  metaKeywords?: boolean
   pros?: boolean
   refundPolicy?: boolean
   totalBranches?: boolean
@@ -15117,13 +15265,14 @@ export type InstituteSelectScalar = {
   mediumOfInstruction?: boolean
   metaDescription?: boolean
   metaTitle?: boolean
+  metaKeywords?: boolean
   pros?: boolean
   refundPolicy?: boolean
   totalBranches?: boolean
   totalStudents?: boolean
 }
 
-export type InstituteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "providerType" | "name" | "slug" | "description" | "phone" | "email" | "website" | "address" | "latitude" | "longitude" | "logo" | "coverImage" | "googlePlaceId" | "googleRating" | "googleReviewCount" | "cityId" | "isVerified" | "isFeatured" | "isActive" | "createdAt" | "updatedAt" | "imageUrl" | "averageRating" | "reviewCount" | "googleMapsUrl" | "placeTypes" | "gallery" | "subscriptionPlan" | "planWeight" | "youtubeVideos" | "classroomImages" | "feeInfo" | "planExpiresAt" | "facebookUrl" | "instagramUrl" | "telegramUrl" | "twitterUrl" | "youtubeUrl" | "linkedinUrl" | "whatsappUrl" | "isPublished" | "mode" | "viewCount" | "affiliations" | "awards" | "brochureUrl" | "compareCount" | "cons" | "establishedYear" | "feeMax" | "feeMin" | "hasCertification" | "hasDemoClasses" | "hasHostelFacility" | "hasOnlineClasses" | "hasScholarship" | "mediumOfInstruction" | "metaDescription" | "metaTitle" | "pros" | "refundPolicy" | "totalBranches" | "totalStudents", ExtArgs["result"]["institute"]>
+export type InstituteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "providerType" | "name" | "slug" | "description" | "phone" | "email" | "website" | "address" | "latitude" | "longitude" | "logo" | "coverImage" | "googlePlaceId" | "googleRating" | "googleReviewCount" | "cityId" | "isVerified" | "isFeatured" | "isActive" | "createdAt" | "updatedAt" | "imageUrl" | "averageRating" | "reviewCount" | "googleMapsUrl" | "placeTypes" | "gallery" | "subscriptionPlan" | "planWeight" | "youtubeVideos" | "classroomImages" | "feeInfo" | "planExpiresAt" | "facebookUrl" | "instagramUrl" | "telegramUrl" | "twitterUrl" | "youtubeUrl" | "linkedinUrl" | "whatsappUrl" | "isPublished" | "mode" | "viewCount" | "affiliations" | "awards" | "brochureUrl" | "compareCount" | "cons" | "establishedYear" | "feeMax" | "feeMin" | "hasCertification" | "hasDemoClasses" | "hasHostelFacility" | "hasOnlineClasses" | "hasScholarship" | "mediumOfInstruction" | "metaDescription" | "metaTitle" | "metaKeywords" | "pros" | "refundPolicy" | "totalBranches" | "totalStudents", ExtArgs["result"]["institute"]>
 export type InstituteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   crmIntegrations?: boolean | Prisma.Institute$crmIntegrationsArgs<ExtArgs>
   city?: boolean | Prisma.CityDefaultArgs<ExtArgs>
@@ -15259,6 +15408,7 @@ export type $InstitutePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     mediumOfInstruction: string[]
     metaDescription: string | null
     metaTitle: string | null
+    metaKeywords: string | null
     pros: string[]
     refundPolicy: string | null
     totalBranches: number | null
@@ -15776,6 +15926,7 @@ export interface InstituteFieldRefs {
   readonly mediumOfInstruction: Prisma.FieldRef<"Institute", 'String[]'>
   readonly metaDescription: Prisma.FieldRef<"Institute", 'String'>
   readonly metaTitle: Prisma.FieldRef<"Institute", 'String'>
+  readonly metaKeywords: Prisma.FieldRef<"Institute", 'String'>
   readonly pros: Prisma.FieldRef<"Institute", 'String[]'>
   readonly refundPolicy: Prisma.FieldRef<"Institute", 'String'>
   readonly totalBranches: Prisma.FieldRef<"Institute", 'Int'>

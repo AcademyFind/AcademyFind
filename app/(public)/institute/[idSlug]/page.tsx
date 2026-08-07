@@ -77,25 +77,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!institute) return { title: "Institute Not Found | AcademyFind" };
 
   const currentYear = new Date().getFullYear();
-  const title = `${institute.name} ${institute.city.name} - Fees, Reviews, Admission & Contact ${currentYear}`;
-  const description = institute.description?.substring(0, 155) || `Get complete details about ${institute.name} in ${institute.city.name}. Check ${currentYear} fee structure, read genuine student reviews, and get admission guidance. ⚡ Click to learn more.`;
+  const title = institute.metaTitle || `${institute.name} ${institute.city.name} - Fees, Reviews, Admission & Contact ${currentYear}`;
+  const description = institute.metaDescription || institute.description?.substring(0, 155) || `Get complete details about ${institute.name} in ${institute.city.name}. Check ${currentYear} fee structure, read genuine student reviews, and get admission guidance. ⚡ Click to learn more.`;
 
   const safeOgImage = getSafeImageUrl(institute.logo, institute.imageUrl);
 
   const baseUrl = institute.providerType === 'INDIVIDUAL' ? '/educator' : '/institute';
 
+  let keywordArray = [
+    `${institute.name} ${institute.city.name}`,
+    `${institute.name} fees`,
+    `${institute.name} reviews`,
+    `${institute.name} admission`,
+    `best coaching in ${institute.city.name}`,
+    `${institute.categories[0]?.category.name} in ${institute.city.name}`
+  ];
+
+  if (institute.metaKeywords) {
+    const customKeywords = institute.metaKeywords.split(',').map(k => k.trim()).filter(Boolean);
+    keywordArray = [...customKeywords, ...keywordArray];
+  }
+
   return {
     title,
     description,
     alternates: { canonical: `https://academyfind.com${baseUrl}/${idSlug}` },
-    keywords: [
-      `${institute.name} ${institute.city.name}`,
-      `${institute.name} fees`,
-      `${institute.name} reviews`,
-      `${institute.name} admission`,
-      `best coaching in ${institute.city.name}`,
-      `${institute.categories[0]?.category.name} in ${institute.city.name}`
-    ],
+    keywords: keywordArray,
     openGraph: {
       title,
       description,
