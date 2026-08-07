@@ -64,6 +64,7 @@ interface PostListItem {
   viewCount: number;
   commentCount: number;
   updatedAt: Date;
+  publishedAt: Date | null;
   brand: { id: string; name: string; avatarUrl: string | null } | null;
   authorProfile: { displayName: string } | null;
   category: { name: string } | null;
@@ -113,6 +114,7 @@ export default async function AdminBlogPage({
         viewCount: true,
         commentCount: true,
         updatedAt: true,
+        publishedAt: true,
         brand: {
           select: { id: true, name: true, avatarUrl: true },
         },
@@ -209,7 +211,7 @@ export default async function AdminBlogPage({
               <th className="p-4">Attribution</th>
               <th className="p-4">Status</th>
               <th className="p-4">Performance</th>
-              <th className="p-4">Updated</th>
+              <th className="p-4">Updated / Published</th>
               <th className="p-4 text-right">Actions</th>
             </tr>
           </thead>
@@ -278,7 +280,10 @@ export default async function AdminBlogPage({
                   </div>
                 </td>
                 <td className="p-4 text-xs text-slate-500">
-                  {post.updatedAt.toLocaleDateString("en-IN")}
+                  <p>Upd: {post.updatedAt.toLocaleDateString("en-IN")}</p>
+                  {post.publishedAt && (
+                    <p className="mt-1 text-slate-400">Pub: {post.publishedAt.toLocaleDateString("en-IN")}</p>
+                  )}
                 </td>
                 <td className="p-4">
                   <AdminBlogActions
