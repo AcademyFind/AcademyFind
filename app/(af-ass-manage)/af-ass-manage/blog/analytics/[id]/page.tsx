@@ -70,7 +70,7 @@ export default async function BlogAnalyticsPage({
         ipHash: true,
         deviceType: true,
         country: true,
-        // we'll just check userId presence for Registered vs Anonymous
+        user: { select: { name: true, username: true, image: true } },
       },
     }),
     prisma.blogReaction.findMany({
@@ -185,8 +185,17 @@ export default async function BlogAnalyticsPage({
                   views.map((v: any) => (
                     <tr key={v.id} className="hover:bg-slate-50">
                       <td className="px-6 py-4">
-                        {v.userId ? (
-                          <span className="font-medium text-slate-900">Registered User</span>
+                        {v.user ? (
+                          <Link href={`/u/${v.user.username}`} target="_blank" className="flex items-center gap-2 hover:underline text-blue-600">
+                            {v.user.image ? (
+                              <img src={v.user.image} alt={v.user.name || v.user.username} className="w-6 h-6 rounded-full object-cover" />
+                            ) : (
+                              <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-xs text-slate-600 font-medium">
+                                {(v.user.name || v.user.username || "?")[0].toUpperCase()}
+                              </div>
+                            )}
+                            <span className="font-medium">{v.user.name || v.user.username}</span>
+                          </Link>
                         ) : (
                           <span className="text-slate-500 italic">Anonymous</span>
                         )}
