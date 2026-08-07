@@ -42,6 +42,8 @@ export default async function BlogAnalyticsPage({
       title: true,
       slug: true,
       status: true,
+      viewCount: true,
+      commentCount: true,
       _count: {
         select: {
           views: true,
@@ -143,7 +145,7 @@ export default async function BlogAnalyticsPage({
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 flex flex-col justify-center items-center">
           <Eye className="size-6 text-blue-500 mb-2" />
           <p className="text-sm font-semibold uppercase text-slate-500">Views</p>
-          <p className="mt-1 text-3xl font-bold text-slate-900">{post._count.views}</p>
+          <p className="mt-1 text-3xl font-bold text-slate-900">{Math.max(post.viewCount || 0, post._count.views)}</p>
         </div>
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 flex flex-col justify-center items-center">
           <Heart className="size-6 text-pink-500 mb-2" />
@@ -158,7 +160,7 @@ export default async function BlogAnalyticsPage({
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 flex flex-col justify-center items-center">
           <MessageSquare className="size-6 text-emerald-500 mb-2" />
           <p className="text-sm font-semibold uppercase text-slate-500">Comments</p>
-          <p className="mt-1 text-3xl font-bold text-slate-900">{post._count.comments}</p>
+          <p className="mt-1 text-3xl font-bold text-slate-900">{Math.max(post.commentCount || 0, post._count.comments)}</p>
         </div>
       </div>
 
