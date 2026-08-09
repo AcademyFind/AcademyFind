@@ -106,22 +106,21 @@ export default async function RootLayout({
     >
       <head>
         {/* Unified Google Tag for Analytics and Ads */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=AW-18380080605`}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18380080605"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              gtag('config', 'AW-18380080605');
+              gtag('config', 'G-DE480Y479E', {
+                page_path: window.location.pathname,
+              });
+            `
+          }}
         />
-        <Script id="google-analytics-and-ads" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            
-            gtag('config', 'AW-18380080605');
-            gtag('config', 'G-DE480Y479E', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
       </head>
       <body
         className={`min-h-full flex flex-col ${inter.className}`}
