@@ -104,6 +104,25 @@ export default async function RootLayout({
       className={`${plusJakartaSans.className} h-full antialiased`}
       suppressHydrationWarning // Prevents hydration warnings from browser extensions
     >
+      <head>
+        {/* Unified Google Tag for Analytics and Ads */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=AW-18380080605`}
+        />
+        <Script id="google-analytics-and-ads" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'AW-18380080605');
+            gtag('config', 'G-DE480Y479E', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+      </head>
       <body
         className={`min-h-full flex flex-col ${inter.className}`}
       >
@@ -128,23 +147,6 @@ export default async function RootLayout({
         {/* <GlobalCallbackFAB /> */}
         <SpeedInsights />
         <Analytics />
-        {/* Unified Google Tag for Analytics and Ads */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-DE480Y479E`}
-        />
-        <Script id="google-analytics-and-ads" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            
-            gtag('config', 'G-DE480Y479E', {
-              page_path: window.location.pathname,
-            });
-            gtag('config', 'AW-18380080605');
-          `}
-        </Script>
       </body>
     </html>
   );
