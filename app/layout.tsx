@@ -128,32 +128,20 @@ export default async function RootLayout({
         {/* <GlobalCallbackFAB /> */}
         <SpeedInsights />
         <Analytics />
-        {/* Existing Google Analytics */}
+        {/* Unified Google Tag for Analytics and Ads */}
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-DE480Y479E`}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics-and-ads" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            
             gtag('config', 'G-DE480Y479E', {
               page_path: window.location.pathname,
             });
-          `}
-        </Script>
-        
-        {/* Google Ads Tag */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=AW-18380080605`}
-        />
-        <Script id="google-ads" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
             gtag('config', 'AW-18380080605');
           `}
         </Script>
