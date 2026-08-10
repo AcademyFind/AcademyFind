@@ -9,6 +9,7 @@ import HeroCards from "@/components/home/HeroCards";
 import { HeroSection } from "@/components/home/HeroSection";
 import { LifeCoachCTA } from "@/components/home/LifeCoachCTA";
 import { PopularCities } from "@/components/home/PopularCities";
+import { OwnerCTA } from "@/components/home/OwnerCTA";
 import { StartJourney } from "@/components/home/StartJourney";
 import { TrendingDestinations } from "@/components/home/Trending";
 import { getSession } from "@/lib/auth/getSession";
@@ -225,6 +226,10 @@ export default async function Home() {
         <PopularCities />
       </ScrollReveal>
       
+      <ScrollReveal direction="up">
+        <OwnerCTA />
+      </ScrollReveal>
+
       <ScrollReveal direction="up">
         <StartJourney />
       </ScrollReveal>
