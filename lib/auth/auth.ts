@@ -102,6 +102,8 @@ export const auth = betterAuth({
                     htmlContent = `<p>We received a request to reset your password. Use this code to proceed:</p>`;
                 }
 
+                const verificationLink = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/verify-email?email=${encodeURIComponent(email)}&otp=${otp}&type=${type}`;
+
                 // 3. Resend ko use karke Email bhejo
                 try {
                     const result = await resend.emails.send({
@@ -114,6 +116,10 @@ export const auth = betterAuth({
                                 ${htmlContent}
                                 <div style="margin: 20px 0; padding: 15px; background-color: #f3f4f6; border-radius: 8px; text-align: center;">
                                     <strong style="font-size: 28px; letter-spacing: 4px; color: #1f2937;">${otp}</strong>
+                                </div>
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <a href="${verificationLink}" style="display: inline-block; padding: 12px 24px; background-color: #f59e0b; color: #fff; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px;">Verify Automatically</a>
+                                    <p style="font-size: 12px; margin-top: 10px; color: #6b7280;">Or click this link: <a href="${verificationLink}" style="color: #3b82f6;">${verificationLink}</a></p>
                                 </div>
                                 <p style="font-size: 14px; color: #6b7280;">This code is valid for a limited time. Please do not share it with anyone.</p>
                             </div>

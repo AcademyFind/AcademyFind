@@ -101,6 +101,11 @@ export default function RegisterComponent() { // Component ka naam RegisterPage 
       } else {
         // Step C: UI change karke OTP screen dikhayein (No Redirect)
         setShowOtpScreen(true);
+        // Store temporarily for auto-login if they verify via link in the same browser
+        if (typeof window !== "undefined") {
+          localStorage.setItem("temp_reg_email", email);
+          localStorage.setItem("temp_reg_password", password);
+        }
         toast.success("OTP Sent your mail, Please verify")
       }
     } catch (error) {
@@ -143,6 +148,10 @@ export default function RegisterComponent() { // Component ka naam RegisterPage 
         router.push("/login");
       } else {
         // Step C: Makkhan redirect to dashboard
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("temp_reg_email");
+          localStorage.removeItem("temp_reg_password");
+        }
         router.push("/");
       }
     } catch (error) {
