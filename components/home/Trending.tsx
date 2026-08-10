@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, TrendingUp } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
 
 const destinations = [
   {
@@ -70,11 +73,33 @@ const categories = [
     title: "Class 6 Tuition",
     href: "/class-6-tuition",
   },
-
 ];
 
-
 export function TrendingDestinations() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Vertical Infinite Auto-Scroll Logic
+  useEffect(() => {
+    let animationFrameId: number;
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scroll = () => {
+      if (!isHovered) {
+        scrollContainer.scrollTop += 0.8; // scroll speed
+        // Loop back when we scroll through a full set
+        if (scrollContainer.scrollTop >= scrollContainer.scrollHeight / 3) {
+          scrollContainer.scrollTop = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isHovered]);
+
   return (
     <section className="py-12 sm:py-16 lg:py-24 z-10">
       <div className="container mx-auto px-4">
@@ -107,10 +132,17 @@ export function TrendingDestinations() {
         <div className="grid gap-6 lg:grid-cols-12">
           {/* Left */}
           <div className="lg:col-span-8">
-            <div className="space-y-3">
-              {destinations.map((item, index) => (
+            <div 
+              ref={scrollRef}
+              className="space-y-3 max-h-[450px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pb-4"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onTouchStart={() => setIsHovered(true)}
+              onTouchEnd={() => setIsHovered(false)}
+            >
+              {[...destinations, ...destinations, ...destinations].map((item, index) => (
                 <Link
-                  key={item.title}
+                  key={`${item.title}-${index}`}
                   href={item.href}
                   prefetch={false}
                   className="
@@ -144,7 +176,7 @@ export function TrendingDestinations() {
                         text-amber-500
                       "
                     >
-                      #{index + 1}
+                      #{ (index % destinations.length) + 1 }
                     </div>
 
                     <div className="min-w-0">

@@ -214,18 +214,20 @@ export function HeroSection() {
           </div>
 
           {/* Trending */}
-          <div className="mt-6">
+          <div className="mt-6 w-full max-w-4xl overflow-hidden">
             <p className="mb-3 text-sm font-medium text-muted-foreground">
               🔥 Trending Today
             </p>
 
-            <div className="flex flex-wrap justify-center gap-2">
-              {trendingSearches.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={item.slug}
-                  prefetch={false}
-                  className="
+            <div className="relative flex w-full overflow-hidden mask-horizontal-fades">
+              <div className="flex w-max min-w-full shrink-0 animate-marquee gap-2 py-2">
+                {[...trendingSearches, ...trendingSearches, ...trendingSearches, ...trendingSearches].map((item, index) => (
+                  <Link
+                    key={`${item.slug}-${index}`}
+                    href={item.slug}
+                    prefetch={false}
+                    className="
+                      shrink-0
                       rounded-full
                       border
                       border-white/30
@@ -238,10 +240,11 @@ export function HeroSection() {
                       hover:border-amber-200/50
                       hover:bg-white/40
                     "
-                >
-                  {item.title}
-                </Link>
-              ))}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
