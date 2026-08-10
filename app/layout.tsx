@@ -16,7 +16,6 @@ import { Toaster } from 'react-hot-toast'
 import { GoogleOneTap } from "@/components/layout/GoogleOneTap";
 import GlobalCallbackFAB from "@/components/User/GlobalCallBack";
 import UserActivityTracker from "@/components/User/UserActivityTracker";
-import Script from "next/script";
 import { getCachedSession } from "@/lib/auth/session";
 import VisitorTracker from "@/components/analytics/VisitorTracker";
 
