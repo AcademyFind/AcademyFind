@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { Capacitor } from '@capacitor/core';
 import { PushNotifications } from '@capacitor/push-notifications';
 
+import { App as CapacitorApp } from '@capacitor/app';
+
 export function useMobileApp() {
   const [isMobileApp, setIsMobileApp] = useState(false);
   const [pushToken, setPushToken] = useState<string | null>(null);
@@ -12,6 +14,14 @@ export function useMobileApp() {
     if (Capacitor.isNativePlatform()) {
       setIsMobileApp(true);
       registerPushNotifications();
+      
+      CapacitorApp.addListener('backButton', ({ canGoBack }) => {
+        if(!canGoBack){
+          CapacitorApp.exitApp();
+        } else {
+          window.history.back();
+        }
+      });
     }
   }, []);
 
