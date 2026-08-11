@@ -7,6 +7,7 @@ import MissionSection from "@/components/about/MissionSection";
 import WhyChooseUs from "@/components/about/WhyChooseUs";
 import StatsSection from "@/components/about/StatsSection";
 import AboutCTA from "@/components/about/AboutSection";
+import { OwnerCTA } from "@/components/home/OwnerCTA";
 import { Metadata } from "next";
 import Script from "next/script";
 
@@ -159,6 +160,7 @@ export default function AboutPage() {
         <WhyChooseUs />
         <StatsSection />
         <AboutCTA />
+        <OwnerCTA />
       </main>
     </>
   );
