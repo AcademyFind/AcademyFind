@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import { SearchBar } from "@/components/search/SearchBar";
 import TypingHeading from "./TypingHeading";
 import { SocialSidebar } from "@/components/layout/SocialSidebar";
+import { AdvertiseButton } from "@/components/layout/AdvertiseButton";
 
 
 const trendingSearches = [
@@ -65,6 +66,7 @@ export function HeroSection() {
     <section ref={container} className="relative border-b bg-linear-to-b from-amber-50 via-background to-background perspective-[1000px]">
       {/* Social Sidebar localized to Hero Section */}
       <SocialSidebar />
+      <AdvertiseButton />
       
       {/* Background Glow */}
       <div

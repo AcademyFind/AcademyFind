@@ -486,3 +486,18 @@ export type VisitorSession = Prisma.VisitorSessionModel
  * 
  */
 export type VisitorEvent = Prisma.VisitorEventModel
+/**
+ * Model Advertisement
+ * 
+ */
+export type Advertisement = Prisma.AdvertisementModel
+/**
+ * Model AdvertisementAnalytic
+ * 
+ */
+export type AdvertisementAnalytic = Prisma.AdvertisementAnalyticModel
+/**
+ * Model SystemSetting
+ * 
+ */
+export type SystemSetting = Prisma.SystemSettingModel

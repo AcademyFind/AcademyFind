@@ -23,7 +23,8 @@ import {
     UserCheck,
     MessageCircle,
     Wallet,
-    Activity
+    Activity,
+    Megaphone
 } from "lucide-react";
 import { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
@@ -31,6 +32,7 @@ import type { ReactNode } from "react";
 import { ManagerSidebarWrapper } from "@/components/manager/ManagerSidebarWrapper";
 import { SidebarLink } from "@/components/manager/SidebarLink";
 import { ScrollToTopAdmin } from "@/components/admin/ScrollToTopAdmin";
+import { AdminSidebarSearch } from "@/components/admin/AdminSidebarSearch";
 
 export const metadata: Metadata = {
     title: "Admin Control Panel | AcademyFind",
@@ -83,6 +85,7 @@ export default async function AdminLayout({
         jobAppCount,
         enquiryCount,
         blogCount,
+        adCount,
     ] = await Promise.all([
         prisma.instituteClaim.count({ where: { status: "PENDING" } }),
         prisma.review.count({ where: { status: "PENDING" } }),
@@ -94,6 +97,7 @@ export default async function AdminLayout({
         prisma.jobApplication.count({ where: { status: "NEW" } }),
         prisma.instituteEnquiry.count({ where: { status: "NEW", isForwarded: false } }),
         prisma.blogPost.count({ where: { status: "PENDING_REVIEW" } }),
+        prisma.advertisement.count({ where: { status: "PENDING" } }),
     ]);
 
     // New route counts
@@ -120,6 +124,8 @@ export default async function AdminLayout({
                         </span>
                     </div>
 
+                    <AdminSidebarSearch />
+
                     <nav className="flex flex-col gap-1.5 mt-2">
                         <SidebarLink href="/af-ass-manage" icon={<LayoutDashboard />} label="Overview" />
                         <SidebarLink href="/af-ass-manage/analytics" icon={<Activity />} label="Analytics & Stats" exact />
@@ -134,6 +140,7 @@ export default async function AdminLayout({
                         <SidebarLink href="/af-ass-manage/instituteCallbacks" icon={<PhoneCall />} label="Institute Callbacks" count={enquiryCount} />
                         <SidebarLink href="/af-ass-manage/contactmessages" icon={<Contact />} label="Contact Messages" count={contactCount} />
                         <SidebarLink href="/af-ass-manage/payments" icon={<Pyramid />} label="Payment Approvals" count={paymentCount} />
+                        <SidebarLink href="/af-ass-manage/advertisements" icon={<Megaphone />} label="Advertisements" count={adCount} />
 
                         <SidebarLink href="/af-ass-manage/institutes" icon={<Building2 />} label="All Institutes" />
                         <SidebarLink href="/af-ass-manage/users" icon={<Users />} label="User Management" />

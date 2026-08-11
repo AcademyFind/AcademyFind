@@ -472,7 +472,10 @@ export const ModelName = {
   UserAchievement: 'UserAchievement',
   UserSkill: 'UserSkill',
   VisitorSession: 'VisitorSession',
-  VisitorEvent: 'VisitorEvent'
+  VisitorEvent: 'VisitorEvent',
+  Advertisement: 'Advertisement',
+  AdvertisementAnalytic: 'AdvertisementAnalytic',
+  SystemSetting: 'SystemSetting'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -488,7 +491,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "reviewReply" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "contactReply" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteVisit" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill" | "visitorSession" | "visitorEvent"
+    modelProps: "user" | "userWallet" | "walletTransaction" | "userReputation" | "userPreference" | "userPreferredCategory" | "userPreferenceCity" | "reputationLog" | "session" | "account" | "verification" | "institute" | "city" | "category" | "categoryCityContent" | "instituteCategory" | "instituteManager" | "review" | "reviewReply" | "instituteClaim" | "userShortlist" | "userHistory" | "instituteEnquiry" | "teacherProfile" | "studentProfile" | "instituteMembership" | "studentInstituteRecord" | "teacherInstituteRecord" | "conversation" | "conversationParticipant" | "message" | "messageAttachment" | "messageReaction" | "messageRead" | "messageReport" | "chatSettings" | "userNotification" | "userBlock" | "contactMessage" | "contactReply" | "instituteRequest" | "subscriptionPayment" | "salesAssignment" | "salesCategoryAssignment" | "lifeCoachRequest" | "adminNotification" | "jobPosting" | "jobApplication" | "generalResume" | "instituteDailyView" | "instituteVisit" | "instituteFacility" | "instituteBatch" | "batchStudent" | "batchTeacher" | "instituteHighlightStat" | "instituteAchievement" | "instituteFAQ" | "instituteOperatingHour" | "userCompareList" | "compareListInstitute" | "communityQuestion" | "communityAnswer" | "notablePersons" | "instituteComparisonCache" | "leadDistributionLog" | "blogAuthorProfile" | "blogCategory" | "blogTag" | "blogPost" | "blogSlugHistory" | "blogRevision" | "blogView" | "blogBookmark" | "blogAuthorFollower" | "blogSubscriber" | "blogReport" | "blogPostTag" | "blogComment" | "blogReaction" | "blogFAQ" | "blogBrand" | "cRMIntegration" | "userEducation" | "userExperience" | "userAchievement" | "userSkill" | "visitorSession" | "visitorEvent" | "advertisement" | "advertisementAnalytic" | "systemSetting"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -7078,6 +7081,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Advertisement: {
+      payload: Prisma.$AdvertisementPayload<ExtArgs>
+      fields: Prisma.AdvertisementFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdvertisementFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdvertisementFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload>
+        }
+        findFirst: {
+          args: Prisma.AdvertisementFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdvertisementFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload>
+        }
+        findMany: {
+          args: Prisma.AdvertisementFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload>[]
+        }
+        create: {
+          args: Prisma.AdvertisementCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload>
+        }
+        createMany: {
+          args: Prisma.AdvertisementCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdvertisementCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload>[]
+        }
+        delete: {
+          args: Prisma.AdvertisementDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload>
+        }
+        update: {
+          args: Prisma.AdvertisementUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdvertisementDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdvertisementUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdvertisementUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdvertisementUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementPayload>
+        }
+        aggregate: {
+          args: Prisma.AdvertisementAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdvertisement>
+        }
+        groupBy: {
+          args: Prisma.AdvertisementGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdvertisementGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdvertisementCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdvertisementCountAggregateOutputType> | number
+        }
+      }
+    }
+    AdvertisementAnalytic: {
+      payload: Prisma.$AdvertisementAnalyticPayload<ExtArgs>
+      fields: Prisma.AdvertisementAnalyticFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdvertisementAnalyticFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdvertisementAnalyticFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload>
+        }
+        findFirst: {
+          args: Prisma.AdvertisementAnalyticFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdvertisementAnalyticFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload>
+        }
+        findMany: {
+          args: Prisma.AdvertisementAnalyticFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload>[]
+        }
+        create: {
+          args: Prisma.AdvertisementAnalyticCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload>
+        }
+        createMany: {
+          args: Prisma.AdvertisementAnalyticCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdvertisementAnalyticCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload>[]
+        }
+        delete: {
+          args: Prisma.AdvertisementAnalyticDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload>
+        }
+        update: {
+          args: Prisma.AdvertisementAnalyticUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdvertisementAnalyticDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdvertisementAnalyticUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdvertisementAnalyticUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdvertisementAnalyticUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvertisementAnalyticPayload>
+        }
+        aggregate: {
+          args: Prisma.AdvertisementAnalyticAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdvertisementAnalytic>
+        }
+        groupBy: {
+          args: Prisma.AdvertisementAnalyticGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdvertisementAnalyticGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdvertisementAnalyticCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdvertisementAnalyticCountAggregateOutputType> | number
+        }
+      }
+    }
+    SystemSetting: {
+      payload: Prisma.$SystemSettingPayload<ExtArgs>
+      fields: Prisma.SystemSettingFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SystemSettingFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SystemSettingFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        findFirst: {
+          args: Prisma.SystemSettingFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SystemSettingFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        findMany: {
+          args: Prisma.SystemSettingFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>[]
+        }
+        create: {
+          args: Prisma.SystemSettingCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        createMany: {
+          args: Prisma.SystemSettingCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SystemSettingCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>[]
+        }
+        delete: {
+          args: Prisma.SystemSettingDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        update: {
+          args: Prisma.SystemSettingUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        deleteMany: {
+          args: Prisma.SystemSettingDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SystemSettingUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SystemSettingUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>[]
+        }
+        upsert: {
+          args: Prisma.SystemSettingUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        aggregate: {
+          args: Prisma.SystemSettingAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSystemSetting>
+        }
+        groupBy: {
+          args: Prisma.SystemSettingGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SystemSettingGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SystemSettingCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SystemSettingCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -8549,6 +8774,54 @@ export const VisitorEventScalarFieldEnum = {
 export type VisitorEventScalarFieldEnum = (typeof VisitorEventScalarFieldEnum)[keyof typeof VisitorEventScalarFieldEnum]
 
 
+export const AdvertisementScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  description: 'description',
+  linkUrl: 'linkUrl',
+  images: 'images',
+  status: 'status',
+  visibility: 'visibility',
+  pricePaid: 'pricePaid',
+  paymentScreenshot: 'paymentScreenshot',
+  utrNumber: 'utrNumber',
+  isRenewalRequest: 'isRenewalRequest',
+  editRequestData: 'editRequestData',
+  startDate: 'startDate',
+  expiryDate: 'expiryDate',
+  views: 'views',
+  clicks: 'clicks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdvertisementScalarFieldEnum = (typeof AdvertisementScalarFieldEnum)[keyof typeof AdvertisementScalarFieldEnum]
+
+
+export const AdvertisementAnalyticScalarFieldEnum = {
+  id: 'id',
+  advertisementId: 'advertisementId',
+  actionType: 'actionType',
+  pageUrl: 'pageUrl',
+  userId: 'userId',
+  count: 'count',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdvertisementAnalyticScalarFieldEnum = (typeof AdvertisementAnalyticScalarFieldEnum)[keyof typeof AdvertisementAnalyticScalarFieldEnum]
+
+
+export const SystemSettingScalarFieldEnum = {
+  key: 'key',
+  value: 'value',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SystemSettingScalarFieldEnum = (typeof SystemSettingScalarFieldEnum)[keyof typeof SystemSettingScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -9134,6 +9407,34 @@ export type EnumSkillLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
 export type ListEnumSkillLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SkillLevel[]'>
     
 
+
+/**
+ * Reference to a field of type 'AdvertisementStatus'
+ */
+export type EnumAdvertisementStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdvertisementStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AdvertisementStatus[]'
+ */
+export type ListEnumAdvertisementStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdvertisementStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AdvertisementVisibility'
+ */
+export type EnumAdvertisementVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdvertisementVisibility'>
+    
+
+
+/**
+ * Reference to a field of type 'AdvertisementVisibility[]'
+ */
+export type ListEnumAdvertisementVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdvertisementVisibility[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -9333,6 +9634,9 @@ export type GlobalOmitConfig = {
   userSkill?: Prisma.UserSkillOmit
   visitorSession?: Prisma.VisitorSessionOmit
   visitorEvent?: Prisma.VisitorEventOmit
+  advertisement?: Prisma.AdvertisementOmit
+  advertisementAnalytic?: Prisma.AdvertisementAnalyticOmit
+  systemSetting?: Prisma.SystemSettingOmit
 }
 
 /* Types for Logging */

@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { User, LogOut, LayoutDashboard, ChevronDown, PlusCircle, Building2, Briefcase, FileText, Bookmark, Wallet, MessageCircle, Settings } from "lucide-react";
+import { User, LogOut, LayoutDashboard, ChevronDown, PlusCircle, Building2, Briefcase, FileText, Bookmark, Wallet, MessageCircle, Settings, Megaphone } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth/auth-client";
 import Image from "next/image";
@@ -116,6 +116,14 @@ export default function UserDropdown({ user }: { user: any }) {
             <span className="font-medium text-sm">Wallet</span>
           </Link>
         </DropdownMenuItem>
+
+        <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 px-3 focus:bg-amber-50 focus:text-amber-700 transition-colors">
+          <Link href="/user/advertisements">
+            <Megaphone className="mr-3 h-4 w-4" />
+            <span className="font-medium text-sm">My Advertisements</span>
+          </Link>
+        </DropdownMenuItem>
+
         
         <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 px-3 focus:bg-amber-50 focus:text-amber-700 transition-colors">
           <Link href="/support-tickets">

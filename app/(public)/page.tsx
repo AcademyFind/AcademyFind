@@ -15,6 +15,7 @@ import { TrendingDestinations } from "@/components/home/Trending";
 import { getSession } from "@/lib/auth/getSession";
 import { prisma } from "@/lib/prisma";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { AdvertisementCarousel } from "@/components/advertisement/AdvertisementCarousel";
 
 // Removed static revalidate to allow personalized dynamic rendering for logged in users
 // export const revalidate = 86400; // Cache for 24 hours
@@ -193,10 +194,29 @@ export default async function Home() {
     }
   }
 
+  // Fetch Advertisements
+  const activeAds = await prisma.advertisement.findMany({
+    where: {
+      status: "APPROVED",
+      visibility: "VISIBLE",
+      OR: [
+        { expiryDate: null },
+        { expiryDate: { gt: new Date() } }
+      ]
+    },
+    orderBy: { createdAt: "desc" }
+  });
+
   return (
     <>
       <JsonLdSchemas />
       <HeroSection />
+      
+      {activeAds.length > 0 && (
+        <div className="container mx-auto px-4 mt-8 mb-4 max-w-6xl">
+            <AdvertisementCarousel ads={activeAds} />
+        </div>
+      )}
       
       <ScrollReveal direction="up">
         <HeroCards />

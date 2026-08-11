@@ -139,7 +139,10 @@ export const ModelName = {
   UserAchievement: 'UserAchievement',
   UserSkill: 'UserSkill',
   VisitorSession: 'VisitorSession',
-  VisitorEvent: 'VisitorEvent'
+  VisitorEvent: 'VisitorEvent',
+  Advertisement: 'Advertisement',
+  AdvertisementAnalytic: 'AdvertisementAnalytic',
+  SystemSetting: 'SystemSetting'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1588,6 +1591,54 @@ export const VisitorEventScalarFieldEnum = {
 } as const
 
 export type VisitorEventScalarFieldEnum = (typeof VisitorEventScalarFieldEnum)[keyof typeof VisitorEventScalarFieldEnum]
+
+
+export const AdvertisementScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  description: 'description',
+  linkUrl: 'linkUrl',
+  images: 'images',
+  status: 'status',
+  visibility: 'visibility',
+  pricePaid: 'pricePaid',
+  paymentScreenshot: 'paymentScreenshot',
+  utrNumber: 'utrNumber',
+  isRenewalRequest: 'isRenewalRequest',
+  editRequestData: 'editRequestData',
+  startDate: 'startDate',
+  expiryDate: 'expiryDate',
+  views: 'views',
+  clicks: 'clicks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdvertisementScalarFieldEnum = (typeof AdvertisementScalarFieldEnum)[keyof typeof AdvertisementScalarFieldEnum]
+
+
+export const AdvertisementAnalyticScalarFieldEnum = {
+  id: 'id',
+  advertisementId: 'advertisementId',
+  actionType: 'actionType',
+  pageUrl: 'pageUrl',
+  userId: 'userId',
+  count: 'count',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdvertisementAnalyticScalarFieldEnum = (typeof AdvertisementAnalyticScalarFieldEnum)[keyof typeof AdvertisementAnalyticScalarFieldEnum]
+
+
+export const SystemSettingScalarFieldEnum = {
+  key: 'key',
+  value: 'value',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SystemSettingScalarFieldEnum = (typeof SystemSettingScalarFieldEnum)[keyof typeof SystemSettingScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -403,6 +403,7 @@ export type UserWhereInput = {
   achievements?: Prisma.UserAchievementListRelationFilter
   skills?: Prisma.UserSkillListRelationFilter
   instituteVisits?: Prisma.InstituteVisitListRelationFilter
+  advertisements?: Prisma.AdvertisementListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -485,6 +486,7 @@ export type UserOrderByWithRelationInput = {
   achievements?: Prisma.UserAchievementOrderByRelationAggregateInput
   skills?: Prisma.UserSkillOrderByRelationAggregateInput
   instituteVisits?: Prisma.InstituteVisitOrderByRelationAggregateInput
+  advertisements?: Prisma.AdvertisementOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -570,6 +572,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   achievements?: Prisma.UserAchievementListRelationFilter
   skills?: Prisma.UserSkillListRelationFilter
   instituteVisits?: Prisma.InstituteVisitListRelationFilter
+  advertisements?: Prisma.AdvertisementListRelationFilter
 }, "id" | "username" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -716,6 +719,7 @@ export type UserCreateInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -798,6 +802,7 @@ export type UserUncheckedCreateInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -880,6 +885,7 @@ export type UserUpdateInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -962,6 +968,7 @@ export type UserUncheckedUpdateInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1942,6 +1949,20 @@ export type UserUpdateOneWithoutVisitorSessionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutVisitorSessionsInput, Prisma.UserUpdateWithoutVisitorSessionsInput>, Prisma.UserUncheckedUpdateWithoutVisitorSessionsInput>
 }
 
+export type UserCreateNestedOneWithoutAdvertisementsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAdvertisementsInput, Prisma.UserUncheckedCreateWithoutAdvertisementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdvertisementsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAdvertisementsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAdvertisementsInput, Prisma.UserUncheckedCreateWithoutAdvertisementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAdvertisementsInput
+  upsert?: Prisma.UserUpsertWithoutAdvertisementsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAdvertisementsInput, Prisma.UserUpdateWithoutAdvertisementsInput>, Prisma.UserUncheckedUpdateWithoutAdvertisementsInput>
+}
+
 export type UserCreateWithoutWalletInput = {
   id?: string
   name?: string | null
@@ -2021,6 +2042,7 @@ export type UserCreateWithoutWalletInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWalletInput = {
@@ -2102,6 +2124,7 @@ export type UserUncheckedCreateWithoutWalletInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWalletInput = {
@@ -2199,6 +2222,7 @@ export type UserUpdateWithoutWalletInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWalletInput = {
@@ -2280,6 +2304,7 @@ export type UserUncheckedUpdateWithoutWalletInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReputationInput = {
@@ -2361,6 +2386,7 @@ export type UserCreateWithoutReputationInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReputationInput = {
@@ -2442,6 +2468,7 @@ export type UserUncheckedCreateWithoutReputationInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReputationInput = {
@@ -2539,6 +2566,7 @@ export type UserUpdateWithoutReputationInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReputationInput = {
@@ -2620,6 +2648,7 @@ export type UserUncheckedUpdateWithoutReputationInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPreferencesInput = {
@@ -2701,6 +2730,7 @@ export type UserCreateWithoutPreferencesInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPreferencesInput = {
@@ -2782,6 +2812,7 @@ export type UserUncheckedCreateWithoutPreferencesInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPreferencesInput = {
@@ -2879,6 +2910,7 @@ export type UserUpdateWithoutPreferencesInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPreferencesInput = {
@@ -2960,6 +2992,7 @@ export type UserUncheckedUpdateWithoutPreferencesInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -3041,6 +3074,7 @@ export type UserCreateWithoutSessionsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -3122,6 +3156,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -3219,6 +3254,7 @@ export type UserUpdateWithoutSessionsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -3300,6 +3336,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -3381,6 +3418,7 @@ export type UserCreateWithoutAccountsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -3462,6 +3500,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -3559,6 +3598,7 @@ export type UserUpdateWithoutAccountsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -3640,6 +3680,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutManagedInstitutesInput = {
@@ -3721,6 +3762,7 @@ export type UserCreateWithoutManagedInstitutesInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutManagedInstitutesInput = {
@@ -3802,6 +3844,7 @@ export type UserUncheckedCreateWithoutManagedInstitutesInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutManagedInstitutesInput = {
@@ -3899,6 +3942,7 @@ export type UserUpdateWithoutManagedInstitutesInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutManagedInstitutesInput = {
@@ -3980,6 +4024,7 @@ export type UserUncheckedUpdateWithoutManagedInstitutesInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewsInput = {
@@ -4061,6 +4106,7 @@ export type UserCreateWithoutReviewsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReviewsInput = {
@@ -4142,6 +4188,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReviewsInput = {
@@ -4239,6 +4286,7 @@ export type UserUpdateWithoutReviewsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -4320,6 +4368,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewRepliesInput = {
@@ -4401,6 +4450,7 @@ export type UserCreateWithoutReviewRepliesInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReviewRepliesInput = {
@@ -4482,6 +4532,7 @@ export type UserUncheckedCreateWithoutReviewRepliesInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReviewRepliesInput = {
@@ -4579,6 +4630,7 @@ export type UserUpdateWithoutReviewRepliesInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewRepliesInput = {
@@ -4660,6 +4712,7 @@ export type UserUncheckedUpdateWithoutReviewRepliesInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutClaimsInput = {
@@ -4741,6 +4794,7 @@ export type UserCreateWithoutClaimsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutClaimsInput = {
@@ -4822,6 +4876,7 @@ export type UserUncheckedCreateWithoutClaimsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutClaimsInput = {
@@ -4919,6 +4974,7 @@ export type UserUpdateWithoutClaimsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutClaimsInput = {
@@ -5000,6 +5056,7 @@ export type UserUncheckedUpdateWithoutClaimsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutShortlistedInput = {
@@ -5081,6 +5138,7 @@ export type UserCreateWithoutShortlistedInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutShortlistedInput = {
@@ -5162,6 +5220,7 @@ export type UserUncheckedCreateWithoutShortlistedInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutShortlistedInput = {
@@ -5259,6 +5318,7 @@ export type UserUpdateWithoutShortlistedInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutShortlistedInput = {
@@ -5340,6 +5400,7 @@ export type UserUncheckedUpdateWithoutShortlistedInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutViewHistoryInput = {
@@ -5421,6 +5482,7 @@ export type UserCreateWithoutViewHistoryInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutViewHistoryInput = {
@@ -5502,6 +5564,7 @@ export type UserUncheckedCreateWithoutViewHistoryInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutViewHistoryInput = {
@@ -5599,6 +5662,7 @@ export type UserUpdateWithoutViewHistoryInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutViewHistoryInput = {
@@ -5680,6 +5744,7 @@ export type UserUncheckedUpdateWithoutViewHistoryInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutTeacherProfileInput = {
@@ -5761,6 +5826,7 @@ export type UserCreateWithoutTeacherProfileInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTeacherProfileInput = {
@@ -5842,6 +5908,7 @@ export type UserUncheckedCreateWithoutTeacherProfileInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTeacherProfileInput = {
@@ -5939,6 +6006,7 @@ export type UserUpdateWithoutTeacherProfileInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTeacherProfileInput = {
@@ -6020,6 +6088,7 @@ export type UserUncheckedUpdateWithoutTeacherProfileInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutStudentProfileInput = {
@@ -6101,6 +6170,7 @@ export type UserCreateWithoutStudentProfileInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutStudentProfileInput = {
@@ -6182,6 +6252,7 @@ export type UserUncheckedCreateWithoutStudentProfileInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutStudentProfileInput = {
@@ -6279,6 +6350,7 @@ export type UserUpdateWithoutStudentProfileInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutStudentProfileInput = {
@@ -6360,6 +6432,7 @@ export type UserUncheckedUpdateWithoutStudentProfileInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMembershipsInput = {
@@ -6441,6 +6514,7 @@ export type UserCreateWithoutMembershipsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMembershipsInput = {
@@ -6522,6 +6596,7 @@ export type UserUncheckedCreateWithoutMembershipsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMembershipsInput = {
@@ -6619,6 +6694,7 @@ export type UserUpdateWithoutMembershipsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMembershipsInput = {
@@ -6700,6 +6776,7 @@ export type UserUncheckedUpdateWithoutMembershipsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCreatedConversationsInput = {
@@ -6781,6 +6858,7 @@ export type UserCreateWithoutCreatedConversationsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCreatedConversationsInput = {
@@ -6862,6 +6940,7 @@ export type UserUncheckedCreateWithoutCreatedConversationsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCreatedConversationsInput = {
@@ -6959,6 +7038,7 @@ export type UserUpdateWithoutCreatedConversationsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedConversationsInput = {
@@ -7040,6 +7120,7 @@ export type UserUncheckedUpdateWithoutCreatedConversationsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutConversationParticipantsInput = {
@@ -7121,6 +7202,7 @@ export type UserCreateWithoutConversationParticipantsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationParticipantsInput = {
@@ -7202,6 +7284,7 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutConversationParticipantsInput = {
@@ -7299,6 +7382,7 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
@@ -7380,6 +7464,7 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -7461,6 +7546,7 @@ export type UserCreateWithoutMessagesInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -7542,6 +7628,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -7639,6 +7726,7 @@ export type UserUpdateWithoutMessagesInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -7720,6 +7808,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessageReactionsInput = {
@@ -7801,6 +7890,7 @@ export type UserCreateWithoutMessageReactionsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessageReactionsInput = {
@@ -7882,6 +7972,7 @@ export type UserUncheckedCreateWithoutMessageReactionsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessageReactionsInput = {
@@ -7979,6 +8070,7 @@ export type UserUpdateWithoutMessageReactionsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReactionsInput = {
@@ -8060,6 +8152,7 @@ export type UserUncheckedUpdateWithoutMessageReactionsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessageReadsInput = {
@@ -8141,6 +8234,7 @@ export type UserCreateWithoutMessageReadsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessageReadsInput = {
@@ -8222,6 +8316,7 @@ export type UserUncheckedCreateWithoutMessageReadsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessageReadsInput = {
@@ -8319,6 +8414,7 @@ export type UserUpdateWithoutMessageReadsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReadsInput = {
@@ -8400,6 +8496,7 @@ export type UserUncheckedUpdateWithoutMessageReadsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessageReportsInput = {
@@ -8481,6 +8578,7 @@ export type UserCreateWithoutMessageReportsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessageReportsInput = {
@@ -8562,6 +8660,7 @@ export type UserUncheckedCreateWithoutMessageReportsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessageReportsInput = {
@@ -8648,6 +8747,7 @@ export type UserCreateWithoutResolvedMessageReportsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutResolvedMessageReportsInput = {
@@ -8729,6 +8829,7 @@ export type UserUncheckedCreateWithoutResolvedMessageReportsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutResolvedMessageReportsInput = {
@@ -8826,6 +8927,7 @@ export type UserUpdateWithoutMessageReportsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReportsInput = {
@@ -8907,6 +9009,7 @@ export type UserUncheckedUpdateWithoutMessageReportsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutResolvedMessageReportsInput = {
@@ -8999,6 +9102,7 @@ export type UserUpdateWithoutResolvedMessageReportsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutResolvedMessageReportsInput = {
@@ -9080,6 +9184,7 @@ export type UserUncheckedUpdateWithoutResolvedMessageReportsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChatSettingsInput = {
@@ -9161,6 +9266,7 @@ export type UserCreateWithoutChatSettingsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChatSettingsInput = {
@@ -9242,6 +9348,7 @@ export type UserUncheckedCreateWithoutChatSettingsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChatSettingsInput = {
@@ -9339,6 +9446,7 @@ export type UserUpdateWithoutChatSettingsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChatSettingsInput = {
@@ -9420,6 +9528,7 @@ export type UserUncheckedUpdateWithoutChatSettingsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -9501,6 +9610,7 @@ export type UserCreateWithoutNotificationsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -9582,6 +9692,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -9679,6 +9790,7 @@ export type UserUpdateWithoutNotificationsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -9760,6 +9872,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlockedUsersInput = {
@@ -9841,6 +9954,7 @@ export type UserCreateWithoutBlockedUsersInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlockedUsersInput = {
@@ -9922,6 +10036,7 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlockedUsersInput = {
@@ -10008,6 +10123,7 @@ export type UserCreateWithoutBlockedByUsersInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlockedByUsersInput = {
@@ -10089,6 +10205,7 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlockedByUsersInput = {
@@ -10186,6 +10303,7 @@ export type UserUpdateWithoutBlockedUsersInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedUsersInput = {
@@ -10267,6 +10385,7 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBlockedByUsersInput = {
@@ -10359,6 +10478,7 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
@@ -10440,6 +10560,7 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutContactMessagesInput = {
@@ -10521,6 +10642,7 @@ export type UserCreateWithoutContactMessagesInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutContactMessagesInput = {
@@ -10602,6 +10724,7 @@ export type UserUncheckedCreateWithoutContactMessagesInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutContactMessagesInput = {
@@ -10699,6 +10822,7 @@ export type UserUpdateWithoutContactMessagesInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutContactMessagesInput = {
@@ -10780,6 +10904,7 @@ export type UserUncheckedUpdateWithoutContactMessagesInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInstituteRequestsInput = {
@@ -10861,6 +10986,7 @@ export type UserCreateWithoutInstituteRequestsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInstituteRequestsInput = {
@@ -10942,6 +11068,7 @@ export type UserUncheckedCreateWithoutInstituteRequestsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInstituteRequestsInput = {
@@ -11039,6 +11166,7 @@ export type UserUpdateWithoutInstituteRequestsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInstituteRequestsInput = {
@@ -11120,6 +11248,7 @@ export type UserUncheckedUpdateWithoutInstituteRequestsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -11201,6 +11330,7 @@ export type UserCreateWithoutPaymentsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -11282,6 +11412,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -11379,6 +11510,7 @@ export type UserUpdateWithoutPaymentsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -11460,6 +11592,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSalesAssignmentsInput = {
@@ -11541,6 +11674,7 @@ export type UserCreateWithoutSalesAssignmentsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSalesAssignmentsInput = {
@@ -11622,6 +11756,7 @@ export type UserUncheckedCreateWithoutSalesAssignmentsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSalesAssignmentsInput = {
@@ -11719,6 +11854,7 @@ export type UserUpdateWithoutSalesAssignmentsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSalesAssignmentsInput = {
@@ -11800,6 +11936,7 @@ export type UserUncheckedUpdateWithoutSalesAssignmentsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSalesCategoryAssignmentsInput = {
@@ -11881,6 +12018,7 @@ export type UserCreateWithoutSalesCategoryAssignmentsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSalesCategoryAssignmentsInput = {
@@ -11962,6 +12100,7 @@ export type UserUncheckedCreateWithoutSalesCategoryAssignmentsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSalesCategoryAssignmentsInput = {
@@ -12059,6 +12198,7 @@ export type UserUpdateWithoutSalesCategoryAssignmentsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSalesCategoryAssignmentsInput = {
@@ -12140,6 +12280,7 @@ export type UserUncheckedUpdateWithoutSalesCategoryAssignmentsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAdminNotificationsInput = {
@@ -12221,6 +12362,7 @@ export type UserCreateWithoutAdminNotificationsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAdminNotificationsInput = {
@@ -12302,6 +12444,7 @@ export type UserUncheckedCreateWithoutAdminNotificationsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAdminNotificationsInput = {
@@ -12399,6 +12542,7 @@ export type UserUpdateWithoutAdminNotificationsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAdminNotificationsInput = {
@@ -12480,6 +12624,7 @@ export type UserUncheckedUpdateWithoutAdminNotificationsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutInstituteVisitsInput = {
@@ -12561,6 +12706,7 @@ export type UserCreateWithoutInstituteVisitsInput = {
   experiences?: Prisma.UserExperienceCreateNestedManyWithoutUserInput
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutInstituteVisitsInput = {
@@ -12642,6 +12788,7 @@ export type UserUncheckedCreateWithoutInstituteVisitsInput = {
   experiences?: Prisma.UserExperienceUncheckedCreateNestedManyWithoutUserInput
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutInstituteVisitsInput = {
@@ -12739,6 +12886,7 @@ export type UserUpdateWithoutInstituteVisitsInput = {
   experiences?: Prisma.UserExperienceUpdateManyWithoutUserNestedInput
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInstituteVisitsInput = {
@@ -12820,6 +12968,7 @@ export type UserUncheckedUpdateWithoutInstituteVisitsInput = {
   experiences?: Prisma.UserExperienceUncheckedUpdateManyWithoutUserNestedInput
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCompareListsInput = {
@@ -12901,6 +13050,7 @@ export type UserCreateWithoutCompareListsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCompareListsInput = {
@@ -12982,6 +13132,7 @@ export type UserUncheckedCreateWithoutCompareListsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCompareListsInput = {
@@ -13079,6 +13230,7 @@ export type UserUpdateWithoutCompareListsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCompareListsInput = {
@@ -13160,6 +13312,7 @@ export type UserUncheckedUpdateWithoutCompareListsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommunityQuestionsInput = {
@@ -13241,6 +13394,7 @@ export type UserCreateWithoutCommunityQuestionsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommunityQuestionsInput = {
@@ -13322,6 +13476,7 @@ export type UserUncheckedCreateWithoutCommunityQuestionsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommunityQuestionsInput = {
@@ -13419,6 +13574,7 @@ export type UserUpdateWithoutCommunityQuestionsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommunityQuestionsInput = {
@@ -13500,6 +13656,7 @@ export type UserUncheckedUpdateWithoutCommunityQuestionsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommunityAnswersInput = {
@@ -13581,6 +13738,7 @@ export type UserCreateWithoutCommunityAnswersInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommunityAnswersInput = {
@@ -13662,6 +13820,7 @@ export type UserUncheckedCreateWithoutCommunityAnswersInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommunityAnswersInput = {
@@ -13759,6 +13918,7 @@ export type UserUpdateWithoutCommunityAnswersInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommunityAnswersInput = {
@@ -13840,6 +14000,7 @@ export type UserUncheckedUpdateWithoutCommunityAnswersInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDistributionLogsInput = {
@@ -13921,6 +14082,7 @@ export type UserCreateWithoutDistributionLogsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDistributionLogsInput = {
@@ -14002,6 +14164,7 @@ export type UserUncheckedCreateWithoutDistributionLogsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDistributionLogsInput = {
@@ -14099,6 +14262,7 @@ export type UserUpdateWithoutDistributionLogsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDistributionLogsInput = {
@@ -14180,6 +14344,7 @@ export type UserUncheckedUpdateWithoutDistributionLogsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlogAuthorProfileInput = {
@@ -14261,6 +14426,7 @@ export type UserCreateWithoutBlogAuthorProfileInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlogAuthorProfileInput = {
@@ -14342,6 +14508,7 @@ export type UserUncheckedCreateWithoutBlogAuthorProfileInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlogAuthorProfileInput = {
@@ -14439,6 +14606,7 @@ export type UserUpdateWithoutBlogAuthorProfileInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlogAuthorProfileInput = {
@@ -14520,6 +14688,7 @@ export type UserUncheckedUpdateWithoutBlogAuthorProfileInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewedPostsInput = {
@@ -14601,6 +14770,7 @@ export type UserCreateWithoutReviewedPostsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReviewedPostsInput = {
@@ -14682,6 +14852,7 @@ export type UserUncheckedCreateWithoutReviewedPostsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReviewedPostsInput = {
@@ -14768,6 +14939,7 @@ export type UserCreateWithoutPublishedPostsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPublishedPostsInput = {
@@ -14849,6 +15021,7 @@ export type UserUncheckedCreateWithoutPublishedPostsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPublishedPostsInput = {
@@ -14935,6 +15108,7 @@ export type UserCreateWithoutEditedPostsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEditedPostsInput = {
@@ -15016,6 +15190,7 @@ export type UserUncheckedCreateWithoutEditedPostsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEditedPostsInput = {
@@ -15113,6 +15288,7 @@ export type UserUpdateWithoutReviewedPostsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewedPostsInput = {
@@ -15194,6 +15370,7 @@ export type UserUncheckedUpdateWithoutReviewedPostsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutPublishedPostsInput = {
@@ -15286,6 +15463,7 @@ export type UserUpdateWithoutPublishedPostsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPublishedPostsInput = {
@@ -15367,6 +15545,7 @@ export type UserUncheckedUpdateWithoutPublishedPostsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutEditedPostsInput = {
@@ -15459,6 +15638,7 @@ export type UserUpdateWithoutEditedPostsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEditedPostsInput = {
@@ -15540,6 +15720,7 @@ export type UserUncheckedUpdateWithoutEditedPostsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlogRevisionsInput = {
@@ -15621,6 +15802,7 @@ export type UserCreateWithoutBlogRevisionsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlogRevisionsInput = {
@@ -15702,6 +15884,7 @@ export type UserUncheckedCreateWithoutBlogRevisionsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlogRevisionsInput = {
@@ -15799,6 +15982,7 @@ export type UserUpdateWithoutBlogRevisionsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlogRevisionsInput = {
@@ -15880,6 +16064,7 @@ export type UserUncheckedUpdateWithoutBlogRevisionsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlogViewsInput = {
@@ -15961,6 +16146,7 @@ export type UserCreateWithoutBlogViewsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlogViewsInput = {
@@ -16042,6 +16228,7 @@ export type UserUncheckedCreateWithoutBlogViewsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlogViewsInput = {
@@ -16139,6 +16326,7 @@ export type UserUpdateWithoutBlogViewsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlogViewsInput = {
@@ -16220,6 +16408,7 @@ export type UserUncheckedUpdateWithoutBlogViewsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlogBookmarksInput = {
@@ -16301,6 +16490,7 @@ export type UserCreateWithoutBlogBookmarksInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlogBookmarksInput = {
@@ -16382,6 +16572,7 @@ export type UserUncheckedCreateWithoutBlogBookmarksInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlogBookmarksInput = {
@@ -16479,6 +16670,7 @@ export type UserUpdateWithoutBlogBookmarksInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlogBookmarksInput = {
@@ -16560,6 +16752,7 @@ export type UserUncheckedUpdateWithoutBlogBookmarksInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowedAuthorsInput = {
@@ -16641,6 +16834,7 @@ export type UserCreateWithoutFollowedAuthorsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowedAuthorsInput = {
@@ -16722,6 +16916,7 @@ export type UserUncheckedCreateWithoutFollowedAuthorsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowedAuthorsInput = {
@@ -16819,6 +17014,7 @@ export type UserUpdateWithoutFollowedAuthorsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowedAuthorsInput = {
@@ -16900,6 +17096,7 @@ export type UserUncheckedUpdateWithoutFollowedAuthorsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutResolvedBlogReportsInput = {
@@ -16981,6 +17178,7 @@ export type UserCreateWithoutResolvedBlogReportsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutResolvedBlogReportsInput = {
@@ -17062,6 +17260,7 @@ export type UserUncheckedCreateWithoutResolvedBlogReportsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutResolvedBlogReportsInput = {
@@ -17148,6 +17347,7 @@ export type UserCreateWithoutBlogReportsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlogReportsInput = {
@@ -17229,6 +17429,7 @@ export type UserUncheckedCreateWithoutBlogReportsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlogReportsInput = {
@@ -17326,6 +17527,7 @@ export type UserUpdateWithoutResolvedBlogReportsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutResolvedBlogReportsInput = {
@@ -17407,6 +17609,7 @@ export type UserUncheckedUpdateWithoutResolvedBlogReportsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBlogReportsInput = {
@@ -17499,6 +17702,7 @@ export type UserUpdateWithoutBlogReportsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlogReportsInput = {
@@ -17580,6 +17784,7 @@ export type UserUncheckedUpdateWithoutBlogReportsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlogCommentsInput = {
@@ -17661,6 +17866,7 @@ export type UserCreateWithoutBlogCommentsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlogCommentsInput = {
@@ -17742,6 +17948,7 @@ export type UserUncheckedCreateWithoutBlogCommentsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlogCommentsInput = {
@@ -17839,6 +18046,7 @@ export type UserUpdateWithoutBlogCommentsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlogCommentsInput = {
@@ -17920,6 +18128,7 @@ export type UserUncheckedUpdateWithoutBlogCommentsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlogReactionsInput = {
@@ -18001,6 +18210,7 @@ export type UserCreateWithoutBlogReactionsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlogReactionsInput = {
@@ -18082,6 +18292,7 @@ export type UserUncheckedCreateWithoutBlogReactionsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlogReactionsInput = {
@@ -18179,6 +18390,7 @@ export type UserUpdateWithoutBlogReactionsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlogReactionsInput = {
@@ -18260,6 +18472,7 @@ export type UserUncheckedUpdateWithoutBlogReactionsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEducationsInput = {
@@ -18341,6 +18554,7 @@ export type UserCreateWithoutEducationsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEducationsInput = {
@@ -18422,6 +18636,7 @@ export type UserUncheckedCreateWithoutEducationsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEducationsInput = {
@@ -18519,6 +18734,7 @@ export type UserUpdateWithoutEducationsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEducationsInput = {
@@ -18600,6 +18816,7 @@ export type UserUncheckedUpdateWithoutEducationsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutExperiencesInput = {
@@ -18681,6 +18898,7 @@ export type UserCreateWithoutExperiencesInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutExperiencesInput = {
@@ -18762,6 +18980,7 @@ export type UserUncheckedCreateWithoutExperiencesInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutExperiencesInput = {
@@ -18859,6 +19078,7 @@ export type UserUpdateWithoutExperiencesInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutExperiencesInput = {
@@ -18940,6 +19160,7 @@ export type UserUncheckedUpdateWithoutExperiencesInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAchievementsInput = {
@@ -19021,6 +19242,7 @@ export type UserCreateWithoutAchievementsInput = {
   experiences?: Prisma.UserExperienceCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAchievementsInput = {
@@ -19102,6 +19324,7 @@ export type UserUncheckedCreateWithoutAchievementsInput = {
   experiences?: Prisma.UserExperienceUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAchievementsInput = {
@@ -19199,6 +19422,7 @@ export type UserUpdateWithoutAchievementsInput = {
   experiences?: Prisma.UserExperienceUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAchievementsInput = {
@@ -19280,6 +19504,7 @@ export type UserUncheckedUpdateWithoutAchievementsInput = {
   experiences?: Prisma.UserExperienceUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSkillsInput = {
@@ -19361,6 +19586,7 @@ export type UserCreateWithoutSkillsInput = {
   experiences?: Prisma.UserExperienceCreateNestedManyWithoutUserInput
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSkillsInput = {
@@ -19442,6 +19668,7 @@ export type UserUncheckedCreateWithoutSkillsInput = {
   experiences?: Prisma.UserExperienceUncheckedCreateNestedManyWithoutUserInput
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSkillsInput = {
@@ -19539,6 +19766,7 @@ export type UserUpdateWithoutSkillsInput = {
   experiences?: Prisma.UserExperienceUpdateManyWithoutUserNestedInput
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSkillsInput = {
@@ -19620,6 +19848,7 @@ export type UserUncheckedUpdateWithoutSkillsInput = {
   experiences?: Prisma.UserExperienceUncheckedUpdateManyWithoutUserNestedInput
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutVisitorSessionsInput = {
@@ -19701,6 +19930,7 @@ export type UserCreateWithoutVisitorSessionsInput = {
   achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutVisitorSessionsInput = {
@@ -19782,6 +20012,7 @@ export type UserUncheckedCreateWithoutVisitorSessionsInput = {
   achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
   skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
   instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+  advertisements?: Prisma.AdvertisementUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutVisitorSessionsInput = {
@@ -19879,6 +20110,7 @@ export type UserUpdateWithoutVisitorSessionsInput = {
   achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutVisitorSessionsInput = {
@@ -19960,6 +20192,351 @@ export type UserUncheckedUpdateWithoutVisitorSessionsInput = {
   achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
   skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
   instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
+  advertisements?: Prisma.AdvertisementUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutAdvertisementsInput = {
+  id?: string
+  name?: string | null
+  username: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  image?: string | null
+  coverImage?: string | null
+  role?: $Enums.Role
+  isActive?: boolean
+  emailVerified?: boolean
+  onboardingCompleted?: boolean
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  canAddInstitute?: boolean
+  canWriteBlogs?: boolean
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+  telegramUrl?: string | null
+  twitterUrl?: string | null
+  youtubeUrl?: string | null
+  linkedinUrl?: string | null
+  whatsappUrl?: string | null
+  allowDms?: boolean
+  isVisible?: boolean
+  managedInstitutes?: Prisma.InstituteManagerCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  adminNotifications?: Prisma.AdminNotificationCreateNestedManyWithoutUserInput
+  communityAnswers?: Prisma.CommunityAnswerCreateNestedManyWithoutUserInput
+  communityQuestions?: Prisma.CommunityQuestionCreateNestedManyWithoutUserInput
+  claims?: Prisma.InstituteClaimCreateNestedManyWithoutUserInput
+  instituteRequests?: Prisma.InstituteRequestCreateNestedManyWithoutUserInput
+  salesAssignments?: Prisma.SalesAssignmentCreateNestedManyWithoutSalesManagerInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentCreateNestedManyWithoutSalesManagerInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  payments?: Prisma.SubscriptionPaymentCreateNestedManyWithoutUserInput
+  compareLists?: Prisma.UserCompareListCreateNestedManyWithoutUserInput
+  viewHistory?: Prisma.UserHistoryCreateNestedManyWithoutUserInput
+  shortlisted?: Prisma.UserShortlistCreateNestedManyWithoutUserInput
+  distributionLogs?: Prisma.LeadDistributionLogCreateNestedManyWithoutAdminInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileCreateNestedOneWithoutUserInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutUserInput
+  blogReactions?: Prisma.BlogReactionCreateNestedManyWithoutUserInput
+  blogViews?: Prisma.BlogViewCreateNestedManyWithoutUserInput
+  blogBookmarks?: Prisma.BlogBookmarkCreateNestedManyWithoutUserInput
+  followedAuthors?: Prisma.BlogAuthorFollowerCreateNestedManyWithoutUserInput
+  reviewedPosts?: Prisma.BlogPostCreateNestedManyWithoutReviewedByInput
+  publishedPosts?: Prisma.BlogPostCreateNestedManyWithoutPublishedByInput
+  editedPosts?: Prisma.BlogPostCreateNestedManyWithoutLastEditedByInput
+  blogRevisions?: Prisma.BlogRevisionCreateNestedManyWithoutCreatedByInput
+  reviewReplies?: Prisma.ReviewReplyCreateNestedManyWithoutUserInput
+  visitorSessions?: Prisma.VisitorSessionCreateNestedManyWithoutUserInput
+  blogReports?: Prisma.BlogReportCreateNestedManyWithoutUserInput
+  resolvedBlogReports?: Prisma.BlogReportCreateNestedManyWithoutResolvedByInput
+  studentProfile?: Prisma.StudentProfileCreateNestedOneWithoutUserInput
+  teacherProfile?: Prisma.TeacherProfileCreateNestedOneWithoutUserInput
+  memberships?: Prisma.InstituteMembershipCreateNestedManyWithoutUserInput
+  chatSettings?: Prisma.ChatSettingsCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageCreateNestedManyWithoutUserInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  messageReactions?: Prisma.MessageReactionCreateNestedManyWithoutUserInput
+  messageReports?: Prisma.MessageReportCreateNestedManyWithoutReporterInput
+  resolvedMessageReports?: Prisma.MessageReportCreateNestedManyWithoutResolverInput
+  blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedInput
+  createdConversations?: Prisma.ConversationCreateNestedManyWithoutCreatedByInput
+  notifications?: Prisma.UserNotificationCreateNestedManyWithoutUserInput
+  wallet?: Prisma.UserWalletCreateNestedOneWithoutUserInput
+  reputation?: Prisma.UserReputationCreateNestedOneWithoutUserInput
+  preferences?: Prisma.UserPreferenceCreateNestedOneWithoutUserInput
+  educations?: Prisma.UserEducationCreateNestedManyWithoutUserInput
+  experiences?: Prisma.UserExperienceCreateNestedManyWithoutUserInput
+  achievements?: Prisma.UserAchievementCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillCreateNestedManyWithoutUserInput
+  instituteVisits?: Prisma.InstituteVisitCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutAdvertisementsInput = {
+  id?: string
+  name?: string | null
+  username: string
+  email: string
+  phone?: string | null
+  passwordHash?: string | null
+  image?: string | null
+  coverImage?: string | null
+  role?: $Enums.Role
+  isActive?: boolean
+  emailVerified?: boolean
+  onboardingCompleted?: boolean
+  lastLoginAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  canAddInstitute?: boolean
+  canWriteBlogs?: boolean
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+  telegramUrl?: string | null
+  twitterUrl?: string | null
+  youtubeUrl?: string | null
+  linkedinUrl?: string | null
+  whatsappUrl?: string | null
+  allowDms?: boolean
+  isVisible?: boolean
+  managedInstitutes?: Prisma.InstituteManagerUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  adminNotifications?: Prisma.AdminNotificationUncheckedCreateNestedManyWithoutUserInput
+  communityAnswers?: Prisma.CommunityAnswerUncheckedCreateNestedManyWithoutUserInput
+  communityQuestions?: Prisma.CommunityQuestionUncheckedCreateNestedManyWithoutUserInput
+  claims?: Prisma.InstituteClaimUncheckedCreateNestedManyWithoutUserInput
+  instituteRequests?: Prisma.InstituteRequestUncheckedCreateNestedManyWithoutUserInput
+  salesAssignments?: Prisma.SalesAssignmentUncheckedCreateNestedManyWithoutSalesManagerInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentUncheckedCreateNestedManyWithoutSalesManagerInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  payments?: Prisma.SubscriptionPaymentUncheckedCreateNestedManyWithoutUserInput
+  compareLists?: Prisma.UserCompareListUncheckedCreateNestedManyWithoutUserInput
+  viewHistory?: Prisma.UserHistoryUncheckedCreateNestedManyWithoutUserInput
+  shortlisted?: Prisma.UserShortlistUncheckedCreateNestedManyWithoutUserInput
+  distributionLogs?: Prisma.LeadDistributionLogUncheckedCreateNestedManyWithoutAdminInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileUncheckedCreateNestedOneWithoutUserInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutUserInput
+  blogReactions?: Prisma.BlogReactionUncheckedCreateNestedManyWithoutUserInput
+  blogViews?: Prisma.BlogViewUncheckedCreateNestedManyWithoutUserInput
+  blogBookmarks?: Prisma.BlogBookmarkUncheckedCreateNestedManyWithoutUserInput
+  followedAuthors?: Prisma.BlogAuthorFollowerUncheckedCreateNestedManyWithoutUserInput
+  reviewedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutReviewedByInput
+  publishedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutPublishedByInput
+  editedPosts?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastEditedByInput
+  blogRevisions?: Prisma.BlogRevisionUncheckedCreateNestedManyWithoutCreatedByInput
+  reviewReplies?: Prisma.ReviewReplyUncheckedCreateNestedManyWithoutUserInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedCreateNestedManyWithoutUserInput
+  blogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutUserInput
+  resolvedBlogReports?: Prisma.BlogReportUncheckedCreateNestedManyWithoutResolvedByInput
+  studentProfile?: Prisma.StudentProfileUncheckedCreateNestedOneWithoutUserInput
+  teacherProfile?: Prisma.TeacherProfileUncheckedCreateNestedOneWithoutUserInput
+  memberships?: Prisma.InstituteMembershipUncheckedCreateNestedManyWithoutUserInput
+  chatSettings?: Prisma.ChatSettingsUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  contactMessages?: Prisma.ContactMessageUncheckedCreateNestedManyWithoutUserInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  messageReactions?: Prisma.MessageReactionUncheckedCreateNestedManyWithoutUserInput
+  messageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutReporterInput
+  resolvedMessageReports?: Prisma.MessageReportUncheckedCreateNestedManyWithoutResolverInput
+  blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedInput
+  createdConversations?: Prisma.ConversationUncheckedCreateNestedManyWithoutCreatedByInput
+  notifications?: Prisma.UserNotificationUncheckedCreateNestedManyWithoutUserInput
+  wallet?: Prisma.UserWalletUncheckedCreateNestedOneWithoutUserInput
+  reputation?: Prisma.UserReputationUncheckedCreateNestedOneWithoutUserInput
+  preferences?: Prisma.UserPreferenceUncheckedCreateNestedOneWithoutUserInput
+  educations?: Prisma.UserEducationUncheckedCreateNestedManyWithoutUserInput
+  experiences?: Prisma.UserExperienceUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.UserAchievementUncheckedCreateNestedManyWithoutUserInput
+  skills?: Prisma.UserSkillUncheckedCreateNestedManyWithoutUserInput
+  instituteVisits?: Prisma.InstituteVisitUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutAdvertisementsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAdvertisementsInput, Prisma.UserUncheckedCreateWithoutAdvertisementsInput>
+}
+
+export type UserUpsertWithoutAdvertisementsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAdvertisementsInput, Prisma.UserUncheckedUpdateWithoutAdvertisementsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAdvertisementsInput, Prisma.UserUncheckedCreateWithoutAdvertisementsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAdvertisementsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAdvertisementsInput, Prisma.UserUncheckedUpdateWithoutAdvertisementsInput>
+}
+
+export type UserUpdateWithoutAdvertisementsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canAddInstitute?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  canWriteBlogs?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twitterUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsappUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowDms?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVisible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  managedInstitutes?: Prisma.InstituteManagerUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  adminNotifications?: Prisma.AdminNotificationUpdateManyWithoutUserNestedInput
+  communityAnswers?: Prisma.CommunityAnswerUpdateManyWithoutUserNestedInput
+  communityQuestions?: Prisma.CommunityQuestionUpdateManyWithoutUserNestedInput
+  claims?: Prisma.InstituteClaimUpdateManyWithoutUserNestedInput
+  instituteRequests?: Prisma.InstituteRequestUpdateManyWithoutUserNestedInput
+  salesAssignments?: Prisma.SalesAssignmentUpdateManyWithoutSalesManagerNestedInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentUpdateManyWithoutSalesManagerNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  payments?: Prisma.SubscriptionPaymentUpdateManyWithoutUserNestedInput
+  compareLists?: Prisma.UserCompareListUpdateManyWithoutUserNestedInput
+  viewHistory?: Prisma.UserHistoryUpdateManyWithoutUserNestedInput
+  shortlisted?: Prisma.UserShortlistUpdateManyWithoutUserNestedInput
+  distributionLogs?: Prisma.LeadDistributionLogUpdateManyWithoutAdminNestedInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileUpdateOneWithoutUserNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutUserNestedInput
+  blogReactions?: Prisma.BlogReactionUpdateManyWithoutUserNestedInput
+  blogViews?: Prisma.BlogViewUpdateManyWithoutUserNestedInput
+  blogBookmarks?: Prisma.BlogBookmarkUpdateManyWithoutUserNestedInput
+  followedAuthors?: Prisma.BlogAuthorFollowerUpdateManyWithoutUserNestedInput
+  reviewedPosts?: Prisma.BlogPostUpdateManyWithoutReviewedByNestedInput
+  publishedPosts?: Prisma.BlogPostUpdateManyWithoutPublishedByNestedInput
+  editedPosts?: Prisma.BlogPostUpdateManyWithoutLastEditedByNestedInput
+  blogRevisions?: Prisma.BlogRevisionUpdateManyWithoutCreatedByNestedInput
+  reviewReplies?: Prisma.ReviewReplyUpdateManyWithoutUserNestedInput
+  visitorSessions?: Prisma.VisitorSessionUpdateManyWithoutUserNestedInput
+  blogReports?: Prisma.BlogReportUpdateManyWithoutUserNestedInput
+  resolvedBlogReports?: Prisma.BlogReportUpdateManyWithoutResolvedByNestedInput
+  studentProfile?: Prisma.StudentProfileUpdateOneWithoutUserNestedInput
+  teacherProfile?: Prisma.TeacherProfileUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.InstituteMembershipUpdateManyWithoutUserNestedInput
+  chatSettings?: Prisma.ChatSettingsUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUpdateManyWithoutUserNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  messageReactions?: Prisma.MessageReactionUpdateManyWithoutUserNestedInput
+  messageReports?: Prisma.MessageReportUpdateManyWithoutReporterNestedInput
+  resolvedMessageReports?: Prisma.MessageReportUpdateManyWithoutResolverNestedInput
+  blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedNestedInput
+  createdConversations?: Prisma.ConversationUpdateManyWithoutCreatedByNestedInput
+  notifications?: Prisma.UserNotificationUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.UserWalletUpdateOneWithoutUserNestedInput
+  reputation?: Prisma.UserReputationUpdateOneWithoutUserNestedInput
+  preferences?: Prisma.UserPreferenceUpdateOneWithoutUserNestedInput
+  educations?: Prisma.UserEducationUpdateManyWithoutUserNestedInput
+  experiences?: Prisma.UserExperienceUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.UserAchievementUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillUpdateManyWithoutUserNestedInput
+  instituteVisits?: Prisma.InstituteVisitUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAdvertisementsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  onboardingCompleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canAddInstitute?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  canWriteBlogs?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  facebookUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twitterUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsappUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  allowDms?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isVisible?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  managedInstitutes?: Prisma.InstituteManagerUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  adminNotifications?: Prisma.AdminNotificationUncheckedUpdateManyWithoutUserNestedInput
+  communityAnswers?: Prisma.CommunityAnswerUncheckedUpdateManyWithoutUserNestedInput
+  communityQuestions?: Prisma.CommunityQuestionUncheckedUpdateManyWithoutUserNestedInput
+  claims?: Prisma.InstituteClaimUncheckedUpdateManyWithoutUserNestedInput
+  instituteRequests?: Prisma.InstituteRequestUncheckedUpdateManyWithoutUserNestedInput
+  salesAssignments?: Prisma.SalesAssignmentUncheckedUpdateManyWithoutSalesManagerNestedInput
+  salesCategoryAssignments?: Prisma.SalesCategoryAssignmentUncheckedUpdateManyWithoutSalesManagerNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  payments?: Prisma.SubscriptionPaymentUncheckedUpdateManyWithoutUserNestedInput
+  compareLists?: Prisma.UserCompareListUncheckedUpdateManyWithoutUserNestedInput
+  viewHistory?: Prisma.UserHistoryUncheckedUpdateManyWithoutUserNestedInput
+  shortlisted?: Prisma.UserShortlistUncheckedUpdateManyWithoutUserNestedInput
+  distributionLogs?: Prisma.LeadDistributionLogUncheckedUpdateManyWithoutAdminNestedInput
+  blogAuthorProfile?: Prisma.BlogAuthorProfileUncheckedUpdateOneWithoutUserNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutUserNestedInput
+  blogReactions?: Prisma.BlogReactionUncheckedUpdateManyWithoutUserNestedInput
+  blogViews?: Prisma.BlogViewUncheckedUpdateManyWithoutUserNestedInput
+  blogBookmarks?: Prisma.BlogBookmarkUncheckedUpdateManyWithoutUserNestedInput
+  followedAuthors?: Prisma.BlogAuthorFollowerUncheckedUpdateManyWithoutUserNestedInput
+  reviewedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutReviewedByNestedInput
+  publishedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutPublishedByNestedInput
+  editedPosts?: Prisma.BlogPostUncheckedUpdateManyWithoutLastEditedByNestedInput
+  blogRevisions?: Prisma.BlogRevisionUncheckedUpdateManyWithoutCreatedByNestedInput
+  reviewReplies?: Prisma.ReviewReplyUncheckedUpdateManyWithoutUserNestedInput
+  visitorSessions?: Prisma.VisitorSessionUncheckedUpdateManyWithoutUserNestedInput
+  blogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutUserNestedInput
+  resolvedBlogReports?: Prisma.BlogReportUncheckedUpdateManyWithoutResolvedByNestedInput
+  studentProfile?: Prisma.StudentProfileUncheckedUpdateOneWithoutUserNestedInput
+  teacherProfile?: Prisma.TeacherProfileUncheckedUpdateOneWithoutUserNestedInput
+  memberships?: Prisma.InstituteMembershipUncheckedUpdateManyWithoutUserNestedInput
+  chatSettings?: Prisma.ChatSettingsUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  contactMessages?: Prisma.ContactMessageUncheckedUpdateManyWithoutUserNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  messageReactions?: Prisma.MessageReactionUncheckedUpdateManyWithoutUserNestedInput
+  messageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutReporterNestedInput
+  resolvedMessageReports?: Prisma.MessageReportUncheckedUpdateManyWithoutResolverNestedInput
+  blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedNestedInput
+  createdConversations?: Prisma.ConversationUncheckedUpdateManyWithoutCreatedByNestedInput
+  notifications?: Prisma.UserNotificationUncheckedUpdateManyWithoutUserNestedInput
+  wallet?: Prisma.UserWalletUncheckedUpdateOneWithoutUserNestedInput
+  reputation?: Prisma.UserReputationUncheckedUpdateOneWithoutUserNestedInput
+  preferences?: Prisma.UserPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  educations?: Prisma.UserEducationUncheckedUpdateManyWithoutUserNestedInput
+  experiences?: Prisma.UserExperienceUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+  skills?: Prisma.UserSkillUncheckedUpdateManyWithoutUserNestedInput
+  instituteVisits?: Prisma.InstituteVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -20014,6 +20591,7 @@ export type UserCountOutputType = {
   achievements: number
   skills: number
   instituteVisits: number
+  advertisements: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -20063,6 +20641,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   achievements?: boolean | UserCountOutputTypeCountAchievementsArgs
   skills?: boolean | UserCountOutputTypeCountSkillsArgs
   instituteVisits?: boolean | UserCountOutputTypeCountInstituteVisitsArgs
+  advertisements?: boolean | UserCountOutputTypeCountAdvertisementsArgs
 }
 
 /**
@@ -20397,6 +20976,13 @@ export type UserCountOutputTypeCountInstituteVisitsArgs<ExtArgs extends runtime.
   where?: Prisma.InstituteVisitWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAdvertisementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AdvertisementWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -20478,6 +21064,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   achievements?: boolean | Prisma.User$achievementsArgs<ExtArgs>
   skills?: boolean | Prisma.User$skillsArgs<ExtArgs>
   instituteVisits?: boolean | Prisma.User$instituteVisitsArgs<ExtArgs>
+  advertisements?: boolean | Prisma.User$advertisementsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -20623,6 +21210,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   achievements?: boolean | Prisma.User$achievementsArgs<ExtArgs>
   skills?: boolean | Prisma.User$skillsArgs<ExtArgs>
   instituteVisits?: boolean | Prisma.User$instituteVisitsArgs<ExtArgs>
+  advertisements?: boolean | Prisma.User$advertisementsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -20684,6 +21272,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     achievements: Prisma.$UserAchievementPayload<ExtArgs>[]
     skills: Prisma.$UserSkillPayload<ExtArgs>[]
     instituteVisits: Prisma.$InstituteVisitPayload<ExtArgs>[]
+    advertisements: Prisma.$AdvertisementPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -21159,6 +21748,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   achievements<T extends Prisma.User$achievementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$achievementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   skills<T extends Prisma.User$skillsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$skillsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserSkillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   instituteVisits<T extends Prisma.User$instituteVisitsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$instituteVisitsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InstituteVisitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  advertisements<T extends Prisma.User$advertisementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$advertisementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdvertisementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -22841,6 +23431,30 @@ export type User$instituteVisitsArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.InstituteVisitScalarFieldEnum | Prisma.InstituteVisitScalarFieldEnum[]
+}
+
+/**
+ * User.advertisements
+ */
+export type User$advertisementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Advertisement
+   */
+  select?: Prisma.AdvertisementSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Advertisement
+   */
+  omit?: Prisma.AdvertisementOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdvertisementInclude<ExtArgs> | null
+  where?: Prisma.AdvertisementWhereInput
+  orderBy?: Prisma.AdvertisementOrderByWithRelationInput | Prisma.AdvertisementOrderByWithRelationInput[]
+  cursor?: Prisma.AdvertisementWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AdvertisementScalarFieldEnum | Prisma.AdvertisementScalarFieldEnum[]
 }
 
 /**

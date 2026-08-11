@@ -373,3 +373,22 @@ export const SkillLevel = {
 } as const
 
 export type SkillLevel = (typeof SkillLevel)[keyof typeof SkillLevel]
+
+
+export const AdvertisementStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type AdvertisementStatus = (typeof AdvertisementStatus)[keyof typeof AdvertisementStatus]
+
+
+export const AdvertisementVisibility = {
+  VISIBLE: 'VISIBLE',
+  HIDDEN: 'HIDDEN',
+  DELETED: 'DELETED'
+} as const
+
+export type AdvertisementVisibility = (typeof AdvertisementVisibility)[keyof typeof AdvertisementVisibility]

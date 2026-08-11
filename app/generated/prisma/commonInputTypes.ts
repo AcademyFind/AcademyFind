@@ -875,6 +875,40 @@ export type EnumSkillLevelWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumSkillLevelFilter<$PrismaModel>
 }
 
+export type EnumAdvertisementStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.AdvertisementStatus | Prisma.EnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.AdvertisementStatus[] | Prisma.ListEnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AdvertisementStatus[] | Prisma.ListEnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAdvertisementStatusFilter<$PrismaModel> | $Enums.AdvertisementStatus
+}
+
+export type EnumAdvertisementVisibilityFilter<$PrismaModel = never> = {
+  equals?: $Enums.AdvertisementVisibility | Prisma.EnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  in?: $Enums.AdvertisementVisibility[] | Prisma.ListEnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AdvertisementVisibility[] | Prisma.ListEnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAdvertisementVisibilityFilter<$PrismaModel> | $Enums.AdvertisementVisibility
+}
+
+export type EnumAdvertisementStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AdvertisementStatus | Prisma.EnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.AdvertisementStatus[] | Prisma.ListEnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AdvertisementStatus[] | Prisma.ListEnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAdvertisementStatusWithAggregatesFilter<$PrismaModel> | $Enums.AdvertisementStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAdvertisementStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAdvertisementStatusFilter<$PrismaModel>
+}
+
+export type EnumAdvertisementVisibilityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AdvertisementVisibility | Prisma.EnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  in?: $Enums.AdvertisementVisibility[] | Prisma.ListEnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AdvertisementVisibility[] | Prisma.ListEnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAdvertisementVisibilityWithAggregatesFilter<$PrismaModel> | $Enums.AdvertisementVisibility
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAdvertisementVisibilityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAdvertisementVisibilityFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -1709,6 +1743,40 @@ export type NestedEnumSkillLevelWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumSkillLevelFilter<$PrismaModel>
   _max?: Prisma.NestedEnumSkillLevelFilter<$PrismaModel>
+}
+
+export type NestedEnumAdvertisementStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.AdvertisementStatus | Prisma.EnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.AdvertisementStatus[] | Prisma.ListEnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AdvertisementStatus[] | Prisma.ListEnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAdvertisementStatusFilter<$PrismaModel> | $Enums.AdvertisementStatus
+}
+
+export type NestedEnumAdvertisementVisibilityFilter<$PrismaModel = never> = {
+  equals?: $Enums.AdvertisementVisibility | Prisma.EnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  in?: $Enums.AdvertisementVisibility[] | Prisma.ListEnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AdvertisementVisibility[] | Prisma.ListEnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAdvertisementVisibilityFilter<$PrismaModel> | $Enums.AdvertisementVisibility
+}
+
+export type NestedEnumAdvertisementStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AdvertisementStatus | Prisma.EnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.AdvertisementStatus[] | Prisma.ListEnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AdvertisementStatus[] | Prisma.ListEnumAdvertisementStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAdvertisementStatusWithAggregatesFilter<$PrismaModel> | $Enums.AdvertisementStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAdvertisementStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAdvertisementStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumAdvertisementVisibilityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AdvertisementVisibility | Prisma.EnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  in?: $Enums.AdvertisementVisibility[] | Prisma.ListEnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AdvertisementVisibility[] | Prisma.ListEnumAdvertisementVisibilityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAdvertisementVisibilityWithAggregatesFilter<$PrismaModel> | $Enums.AdvertisementVisibility
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAdvertisementVisibilityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAdvertisementVisibilityFilter<$PrismaModel>
 }
 
 

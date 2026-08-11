@@ -28,7 +28,8 @@ export function SidebarLink({
         <Link 
             href={href} 
             prefetch={false}
-            className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
+            data-search-label={label.toLowerCase()}
+            className={`manager-sidebar-link flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                 isActive 
                 ? "bg-stone-100 text-stone-900 shadow-sm border border-stone-200/50" 
                 : "hover:bg-stone-50 hover:text-stone-800 text-slate-600 border border-transparent"
