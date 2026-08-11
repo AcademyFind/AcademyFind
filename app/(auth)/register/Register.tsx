@@ -282,6 +282,7 @@ export default function RegisterComponent() { // Component ka naam RegisterPage 
 
               /* ================= ORIGINAL REGISTRATION UI ================= */
               <div className="animate-in fade-in duration-300">
+
                 <div className="mb-6 text-center">
                   <h2 className="text-3xl font-bold bg-linear-to-r from-amber-500 to-rose-200 bg-clip-text text-transparent">
                     Create Account
