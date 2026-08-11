@@ -7,24 +7,24 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { requestAdvertisementEdit } from "@/lib/advertisement/actions";
 
-export default function AdvertisementEditForm({ 
+export default function AdvertisementEditForm({
     ad,
-    settings 
-}: { 
+    settings
+}: {
     ad: any,
     settings?: { maxImages: number }
 }) {
     const router = useRouter();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
-    
+
     // Form Data
     const [title, setTitle] = useState(ad.title);
     const [description, setDescription] = useState(ad.description || "");
     const [linkUrl, setLinkUrl] = useState(ad.linkUrl || "");
     const [existingImages, setExistingImages] = useState<string[]>(ad.images || []);
     const [newImages, setNewImages] = useState<File[]>([]);
-    
+
     const totalImages = existingImages.length + newImages.length;
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +38,7 @@ export default function AdvertisementEditForm({
             setNewImages(prev => [...prev, ...addedFiles]);
         }
     };
-    
+
     const removeExistingImage = (index: number) => {
         setExistingImages(existingImages.filter((_, i) => i !== index));
     };
@@ -50,7 +50,7 @@ export default function AdvertisementEditForm({
     const handleSubmit = async () => {
         if (!title.trim()) return toast.error("Title is required");
         if (totalImages === 0) return toast.error("At least 1 image is required");
-        
+
         setIsSubmitting(true);
         try {
             const formData = new FormData();
@@ -58,13 +58,13 @@ export default function AdvertisementEditForm({
             formData.append("description", description);
             formData.append("linkUrl", linkUrl);
             formData.append("existingImages", JSON.stringify(existingImages));
-            
-            newImages.forEach((img, idx) => {
+
+            newImages.forEach((img: any, idx: number) => {
                 formData.append(`newImage_${idx}`, img);
             });
-            
+
             const result = await requestAdvertisementEdit(ad.id, formData);
-            
+
             if (result.success) {
                 toast.success("Edit request submitted for approval!");
                 setIsEditing(false);
@@ -84,7 +84,7 @@ export default function AdvertisementEditForm({
             <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
                 <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
                     <h3 className="text-xl font-black text-slate-800">Advertisement Details</h3>
-                    <button 
+                    <button
                         onClick={() => setIsEditing(true)}
                         disabled={!!ad.editRequestData}
                         className="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-xl font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -126,7 +126,7 @@ export default function AdvertisementEditForm({
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {ad.images.map((img: string, idx: number) => (
                                 <div key={idx} className="aspect-video rounded-xl overflow-hidden border border-slate-200 shadow-sm relative">
-                                    <Image src={img} alt={`Image ${idx+1}`} fill className="object-cover" />
+                                    <Image src={img} alt={`Image ${idx + 1}`} fill className="object-cover" />
                                 </div>
                             ))}
                         </div>
@@ -140,7 +140,7 @@ export default function AdvertisementEditForm({
         <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm animate-in fade-in zoom-in-95 duration-300">
             <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
                 <h3 className="text-xl font-black text-slate-800">Edit Advertisement</h3>
-                <button 
+                <button
                     onClick={() => setIsEditing(false)}
                     className="text-slate-400 hover:text-slate-600 font-bold text-sm"
                 >
@@ -158,7 +158,7 @@ export default function AdvertisementEditForm({
                         className="w-full rounded-xl bg-slate-50 border border-slate-200 p-3 text-slate-900 outline-none transition-all hover:bg-slate-100 focus:bg-white focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10"
                     />
                 </div>
-                
+
                 <div>
                     <label className="block text-sm font-bold text-slate-700 mb-1.5">Description (Optional)</label>
                     <textarea
@@ -168,7 +168,7 @@ export default function AdvertisementEditForm({
                         className="w-full rounded-xl bg-slate-50 border border-slate-200 p-3 text-slate-900 outline-none transition-all hover:bg-slate-100 focus:bg-white focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10 resize-none"
                     />
                 </div>
-                
+
                 <div>
                     <label className="block text-sm font-bold text-slate-700 mb-1.5">Target Link URL (Optional)</label>
                     <input
@@ -186,10 +186,10 @@ export default function AdvertisementEditForm({
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {/* Existing Images */}
-                        {existingImages.map((img, idx) => (
+                        {existingImages.map((img: any, idx: number) => (
                             <div key={`old-${idx}`} className="group relative aspect-video rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
                                 <Image src={img} alt={`Preview ${idx}`} fill className="object-cover" />
-                                <button 
+                                <button
                                     onClick={(e) => { e.preventDefault(); removeExistingImage(idx); }}
                                     className="absolute top-2 right-2 bg-white/90 backdrop-blur-md text-red-500 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white shadow-sm"
                                 >
@@ -198,12 +198,12 @@ export default function AdvertisementEditForm({
                                 <div className="absolute bottom-1 left-1 bg-black/60 px-2 py-0.5 rounded text-[10px] text-white">Current</div>
                             </div>
                         ))}
-                        
+
                         {/* New Images */}
-                        {newImages.map((img, idx) => (
+                        {newImages.map((img: any, idx: number) => (
                             <div key={`new-${idx}`} className="group relative aspect-video rounded-xl overflow-hidden border border-amber-200 shadow-sm bg-slate-100">
                                 <img src={URL.createObjectURL(img)} alt={`New Preview ${idx}`} className="w-full h-full object-cover" />
-                                <button 
+                                <button
                                     onClick={(e) => { e.preventDefault(); removeNewImage(idx); }}
                                     className="absolute top-2 right-2 bg-white/90 backdrop-blur-md text-red-500 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white shadow-sm"
                                 >
@@ -224,7 +224,7 @@ export default function AdvertisementEditForm({
                 </div>
 
                 <div className="pt-4 flex justify-end">
-                    <button 
+                    <button
                         onClick={handleSubmit}
                         disabled={isSubmitting}
                         className="flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-6 py-3 font-bold text-white shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-600 disabled:opacity-70"

@@ -6,10 +6,10 @@ import Image from "next/image";
 
 export default async function AdvertisementAnalyticsTable({ adId, isAdmin = false }: { adId: string, isAdmin?: boolean }) {
     const analytics = await fetchAdAnalytics(adId);
-    
+
     // Group them for quick stats
-    const totalViews = analytics.filter(a => a.actionType === "VIEW").reduce((acc, curr) => acc + curr.count, 0);
-    const totalClicks = analytics.filter(a => a.actionType === "CLICK").reduce((acc, curr) => acc + curr.count, 0);
+    const totalViews = analytics.filter((a: any) => a.actionType === "VIEW").reduce((acc, curr) => acc + curr.count, 0);
+    const totalClicks = analytics.filter((a: any) => a.actionType === "CLICK").reduce((acc, curr) => acc + curr.count, 0);
 
     return (
         <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm space-y-6">
@@ -17,7 +17,7 @@ export default async function AdvertisementAnalyticsTable({ adId, isAdmin = fals
                 <h3 className="text-xl font-black text-slate-800">Analytics Log (Recent)</h3>
                 <p className="text-sm text-slate-500 mt-1">Showing up to the last 100 interactions with your advertisement.</p>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-4">
                 <div className="bg-amber-50 rounded-2xl p-4 border border-amber-100 flex items-center gap-4">
                     <div className="h-12 w-12 rounded-full bg-amber-100 text-amber-500 flex items-center justify-center">
@@ -40,8 +40,8 @@ export default async function AdvertisementAnalyticsTable({ adId, isAdmin = fals
             </div>
 
             <div className="border border-slate-200 rounded-2xl overflow-hidden mt-6">
-                    <div className="max-h-[400px] overflow-y-auto">
-                        <table className="w-full text-left text-sm text-slate-600">
+                <div className="max-h-[400px] overflow-y-auto">
+                    <table className="w-full text-left text-sm text-slate-600">
                         <thead className="bg-slate-50 text-xs uppercase text-slate-500 sticky top-0 border-b border-slate-200 z-10">
                             <tr>
                                 <th scope="col" className="px-6 py-4 font-bold">Action</th>
@@ -52,7 +52,7 @@ export default async function AdvertisementAnalyticsTable({ adId, isAdmin = fals
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100">
-                            {analytics.map((log) => (
+                            {analytics.map((log: any) => (
                                 <tr key={log.id} className="hover:bg-slate-50 transition-colors">
                                     <td className="px-6 py-4 font-medium">
                                         {log.actionType === "VIEW" ? (
@@ -102,7 +102,7 @@ export default async function AdvertisementAnalyticsTable({ adId, isAdmin = fals
                                     </td>
                                 </tr>
                             ))}
-                            
+
                             {analytics.length === 0 && (
                                 <tr>
                                     <td colSpan={5} className="px-6 py-12 text-center text-slate-400 italic">

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { submitAdvertisement } from "@/lib/advertisement/actions";
 
-export default function AdvertisementForm({ 
+export default function AdvertisementForm({
     user,
     bankDetails = {
         upiId: "9045639340@mbk",
@@ -17,8 +17,8 @@ export default function AdvertisementForm({
         ifscCode: "PUNB0487600"
     },
     settings
-}: { 
-    user: any, 
+}: {
+    user: any,
     bankDetails?: {
         upiId: string;
         bankName: string;
@@ -34,13 +34,13 @@ export default function AdvertisementForm({
     const router = useRouter();
     const [step, setStep] = useState(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    
+
     // Form Data
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [linkUrl, setLinkUrl] = useState("");
     const [images, setImages] = useState<File[]>([]);
-    
+
     // Payment Data
     const [utrNumber, setUtrNumber] = useState("");
     const [paymentScreenshot, setPaymentScreenshot] = useState<File | null>(null);
@@ -56,7 +56,7 @@ export default function AdvertisementForm({
             setImages(prev => [...prev, ...newFiles]);
         }
     };
-    
+
     const removeImage = (index: number) => {
         setImages(images.filter((_, i) => i !== index));
     };
@@ -70,7 +70,7 @@ export default function AdvertisementForm({
     const handleSubmit = async () => {
         if (!utrNumber.trim()) return toast.error("UTR Number is required");
         if (!paymentScreenshot) return toast.error("Payment Screenshot is required");
-        
+
         setIsSubmitting(true);
         try {
             const formData = new FormData();
@@ -79,13 +79,13 @@ export default function AdvertisementForm({
             formData.append("linkUrl", linkUrl);
             formData.append("utrNumber", utrNumber);
             formData.append("paymentScreenshot", paymentScreenshot);
-            
-            images.forEach((img, idx) => {
+
+            images.forEach((img: File, idx: number) => {
                 formData.append(`image_${idx}`, img);
             });
-            
+
             const result = await submitAdvertisement(formData);
-            
+
             if (result.success) {
                 toast.success("Advertisement submitted for approval!");
                 router.push("/user/advertisements");
@@ -105,7 +105,7 @@ export default function AdvertisementForm({
             <div className="mb-10 relative">
                 <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
                 <div className="absolute top-1/2 left-0 h-0.5 bg-amber-500 -translate-y-1/2 z-0 transition-all duration-500" style={{ width: step === 1 ? '50%' : '100%' }}></div>
-                
+
                 <div className="relative z-10 flex items-center justify-between px-8">
                     <div className={`flex flex-col items-center gap-2 transition-colors duration-300 ${step >= 1 ? 'text-amber-600' : 'text-slate-400'}`}>
                         <div className={`flex h-12 w-12 items-center justify-center rounded-2xl shadow-sm transition-all duration-500 ${step >= 1 ? 'bg-amber-500 text-white scale-110 shadow-amber-500/30' : 'bg-white text-slate-400 border border-slate-200'}`}>
@@ -113,7 +113,7 @@ export default function AdvertisementForm({
                         </div>
                         <span className="font-bold text-sm tracking-wide">Ad Details</span>
                     </div>
-                    
+
                     <div className={`flex flex-col items-center gap-2 transition-colors duration-300 ${step >= 2 ? 'text-amber-600' : 'text-slate-400'}`}>
                         <div className={`flex h-12 w-12 items-center justify-center rounded-2xl shadow-sm transition-all duration-500 ${step >= 2 ? 'bg-amber-500 text-white scale-110 shadow-amber-500/30' : 'bg-white text-slate-400 border border-slate-200'}`}>
                             <IndianRupee className="h-5 w-5" />
@@ -175,7 +175,7 @@ export default function AdvertisementForm({
                             className="w-full rounded-2xl bg-slate-50/50 border border-slate-200 p-4 text-slate-900 outline-none transition-all placeholder:text-slate-400 hover:bg-slate-50 focus:bg-white focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10"
                         />
                     </div>
-                    
+
                     <div>
                         <label className="block text-sm font-bold text-slate-700 mb-1.5">Description (Optional)</label>
                         <textarea
@@ -186,7 +186,7 @@ export default function AdvertisementForm({
                             className="w-full rounded-2xl bg-slate-50/50 border border-slate-200 p-4 text-slate-900 outline-none transition-all placeholder:text-slate-400 hover:bg-slate-50 focus:bg-white focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10 resize-none"
                         />
                     </div>
-                    
+
                     <div>
                         <label className="block text-sm font-bold text-slate-700 mb-1.5">Target Link URL (Optional)</label>
                         <input
@@ -211,7 +211,7 @@ export default function AdvertisementForm({
                                 <span className="text-xs font-bold text-amber-700">16:9 Recommended</span>
                             </div>
                         </div>
-                        
+
                         {images.length < 4 && (
                             <label className="group relative flex w-full cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50/50 py-10 transition-all hover:border-amber-400 hover:bg-amber-50/30 overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50/50 pointer-events-none"></div>
@@ -228,19 +228,19 @@ export default function AdvertisementForm({
                             <div className="mt-6">
                                 <h5 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Uploaded Images ({images.length}/4)</h5>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    {images.map((img, idx) => (
+                                    {images.map((img: any, idx: number) => (
                                         <div key={idx} className="group relative aspect-video rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
                                             <img src={URL.createObjectURL(img)} alt={`Preview ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                                             <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/20 transition-colors duration-300"></div>
-                                            
-                                            <button 
+
+                                            <button
                                                 onClick={(e) => { e.preventDefault(); removeImage(idx); }}
                                                 className="absolute top-2 right-2 bg-white/90 backdrop-blur-md text-red-500 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500 hover:text-white shadow-sm scale-90 group-hover:scale-100"
                                                 title="Remove Image"
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
                                             </button>
-                                            
+
                                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/80 to-transparent p-3 pt-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                                                 <p className="text-[10px] font-medium text-white truncate">{img.name}</p>
                                                 <p className="text-[9px] text-slate-300">{(img.size / 1024 / 1024).toFixed(2)} MB</p>
@@ -251,9 +251,9 @@ export default function AdvertisementForm({
                             </div>
                         )}
                     </div>
-                    
+
                     <div className="pt-6 flex justify-end">
-                        <button 
+                        <button
                             onClick={handleNext}
                             className="group relative inline-flex items-center justify-center overflow-hidden rounded-2xl bg-amber-500 px-8 py-4 font-bold text-white shadow-xl shadow-amber-500/20 transition-all hover:bg-amber-600 hover:scale-[1.02] active:scale-[0.98]"
                         >
@@ -290,7 +290,7 @@ export default function AdvertisementForm({
                             <div className="text-center w-full">
                                 <p className="font-bold text-slate-800 text-lg mb-1">{bankDetails.upiId}</p>
                                 <p className="text-[10px] text-amber-600 bg-amber-50 rounded-full px-2 py-0.5 inline-block uppercase tracking-wider font-bold mb-4 border border-amber-100">Verified Merchant</p>
-                                
+
                                 <div className="w-full bg-white rounded-xl border border-slate-200 p-4 text-left shadow-sm space-y-2 relative">
                                     <div className="absolute top-0 left-0 w-1 h-full bg-slate-300 rounded-l-xl"></div>
                                     <div className="flex justify-between items-center border-b border-slate-100 pb-2">
@@ -346,7 +346,7 @@ export default function AdvertisementForm({
                                         </div>
                                         <span className="text-sm font-bold text-slate-600 group-hover:text-amber-600 transition-colors">Upload Screenshot</span>
                                         <span className="text-[11px] text-slate-400 mt-1 font-medium">PNG or JPG</span>
-                                        <input type="file" accept="image/*" onChange={(e) => { if(e.target.files) setPaymentScreenshot(e.target.files[0]) }} className="hidden" />
+                                        <input type="file" accept="image/*" onChange={(e) => { if (e.target.files) setPaymentScreenshot(e.target.files[0]) }} className="hidden" />
                                     </label>
                                 )}
                             </div>
@@ -354,13 +354,13 @@ export default function AdvertisementForm({
                     </div>
 
                     <div className="pt-8 flex flex-col-reverse sm:flex-row justify-between gap-4">
-                        <button 
+                        <button
                             onClick={() => setStep(1)}
                             className="flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-8 py-4 font-bold text-slate-600 transition-all hover:bg-slate-50 hover:text-slate-900"
                         >
                             Back to Details
                         </button>
-                        <button 
+                        <button
                             onClick={handleSubmit}
                             disabled={isSubmitting}
                             className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-2xl bg-amber-500 px-8 py-4 font-bold text-white shadow-xl shadow-amber-500/20 transition-all hover:bg-amber-600 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
