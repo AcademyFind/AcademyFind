@@ -18,6 +18,7 @@ import GlobalCallbackFAB from "@/components/User/GlobalCallBack";
 import UserActivityTracker from "@/components/User/UserActivityTracker";
 import { getCachedSession } from "@/lib/auth/session";
 import VisitorTracker from "@/components/analytics/VisitorTracker";
+import MobileAppProvider from "@/components/providers/MobileAppProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -139,6 +140,7 @@ export default async function RootLayout({
         <VisitorTracker />
         <Toaster position="top-center" reverseOrder={false} />
         <GoogleOneTap />
+        <MobileAppProvider />
         {/* <AuthPromptModal isAuthenticated={Boolean(session?.user)} />
         
         <Footer />
