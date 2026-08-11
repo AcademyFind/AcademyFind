@@ -78,7 +78,7 @@ export async function submitAdvertisement(formData: FormData) {
         }
 
         // Save to DB
-        await prisma.advertisement.create({
+        const newAd = await prisma.advertisement.create({
             data: {
                 userId: session.user.id,
                 title,
@@ -90,6 +90,18 @@ export async function submitAdvertisement(formData: FormData) {
                 status: "PENDING",
                 visibility: "VISIBLE",
                 pricePaid: settings.rate,
+            }
+        });
+
+        // Generate Admin Notification
+        await prisma.adminNotification.create({
+            data: {
+                type: "ADVERTISEMENT_SUBMITTED",
+                title: "New Advertisement Submitted",
+                message: `${session.user.name || 'A user'} has submitted a new advertisement: ${title}.`,
+                referenceId: newAd.id,
+                actionUrl: "/af-ass-manage/advertisements",
+                userId: session.user.id,
             }
         });
 
@@ -166,17 +178,19 @@ export async function requestAdvertisementEdit(adId: string, formData: FormData)
 
         await prisma.advertisement.update({
             where: { id: adId },
-            data: { editRequestData }
+            data: {
+                editRequestData: JSON.stringify(editRequestData)
+            }
         });
 
-        // Generate admin notification
+        // Generate Admin Notification for Edit Request
         await prisma.adminNotification.create({
             data: {
                 type: "ADVERTISEMENT_EDIT_REQUEST",
-                title: "Advertisement Edit Request",
-                message: `User requested to edit advertisement: ${title}`,
+                title: "Advertisement Edit Requested",
+                message: `${session.user.name || 'A user'} requested an edit for advertisement: ${title}.`,
                 referenceId: ad.id,
-                actionUrl: `/af-ass-manage/advertisements/${ad.id}`,
+                actionUrl: "/af-ass-manage/advertisements?filter=PENDING_EDIT",
                 userId: session.user.id
             }
         });

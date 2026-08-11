@@ -6,6 +6,7 @@ import { CheckCircle, XCircle, Eye, EyeOff, Trash2, Megaphone } from "lucide-rea
 import { updateAdvertisementStatus } from "@/lib/advertisement/admin-actions";
 import { getAdSettings } from "@/lib/advertisement/admin-settings-actions";
 import AdminAdSettingsWrapper from "@/components/advertisement/AdminAdSettingsWrapper";
+import { Advertisement } from "@/app/generated/prisma/client";
 
 export const metadata = {
     title: "Manage Advertisements | Admin",
@@ -69,7 +70,7 @@ export default async function AdminAdvertisementsPage({
             </div>
 
             <div className="grid gap-6">
-                {advertisements.map((ad) => (
+                {advertisements.map((ad: any) => (
                     <div key={ad.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-md">
                         <div className="flex flex-col md:flex-row">
                             {/* Image Thumbnails */}
@@ -79,11 +80,11 @@ export default async function AdminAdvertisementsPage({
                                         <img src={ad.images[0]} alt={ad.title} className="h-full w-full object-cover" />
                                     ) : (
                                         <div className="grid grid-cols-2 grid-rows-2 h-full w-full gap-0.5 bg-white">
-                                            {ad.images.slice(0, 4).map((img, i) => (
+                                            {ad.images.slice(0, 4).map((img: any, i: number) => (
                                                 <img key={i} src={img} alt={`${ad.title} ${i + 1}`} className="h-full w-full object-cover" />
                                             ))}
                                             {/* Fill empty spots if less than 4 but more than 1 */}
-                                            {Array.from({ length: 4 - ad.images.slice(0, 4).length }).map((_, i) => (
+                                            {Array.from({ length: 4 - ad.images.slice(0, 4).length }).map((_, i: number) => (
                                                 <div key={`empty-${i}`} className="bg-slate-100 h-full w-full" />
                                             ))}
                                         </div>
@@ -93,8 +94,8 @@ export default async function AdminAdvertisementsPage({
                                 )}
                                 <div className="absolute top-2 left-2 flex flex-col gap-1">
                                     <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm inline-block self-start ${ad.status === 'APPROVED' ? 'bg-green-500' :
-                                            ad.status === 'REJECTED' ? 'bg-red-500' :
-                                                ad.status === 'EXPIRED' ? 'bg-slate-500' : 'bg-amber-500'
+                                        ad.status === 'REJECTED' ? 'bg-red-500' :
+                                            ad.status === 'EXPIRED' ? 'bg-slate-500' : 'bg-amber-500'
                                         }`}>
                                         {ad.status}
                                     </span>
