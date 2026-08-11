@@ -227,11 +227,11 @@ export default async function Home() {
       </ScrollReveal>
       
       <ScrollReveal direction="up">
-        <OwnerCTA />
-      </ScrollReveal>
-
-      <ScrollReveal direction="up">
         <StartJourney />
+      </ScrollReveal>
+      
+      <ScrollReveal direction="up">
+        <OwnerCTA />
       </ScrollReveal>
       
       <ScrollReveal direction="up">
