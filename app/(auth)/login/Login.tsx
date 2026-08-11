@@ -17,7 +17,7 @@ import { authClient } from "@/lib/auth/auth-client";
 import { redirect, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { auth } from "@/lib/auth/auth";
-
+import { useMobileApp } from "@/hooks/useMobileApp";
 
 export default function LoginComponent() {
   const [method, setMethod] = useState<"email" | "phone">("email");
@@ -25,6 +25,7 @@ export default function LoginComponent() {
   const [email, setEmail] = useState("");
   const [phone, setphone] = useState("");
   const [password, setPassword] = useState("");
+  const { isMobileApp } = useMobileApp();
 
   // Nayi States for OTP and Loading
   const [showOtpScreen, setShowOtpScreen] = useState(false);
@@ -398,21 +399,25 @@ export default function LoginComponent() {
                 </form>
 
                 {/* Divider */}
-                <div className="my-6 flex items-center">
-                  <div className="h-px flex-1 bg-slate-200" />
-                  <span className="mx-4 text-xs text-slate-400">OR</span>
-                  <div className="h-px flex-1 bg-slate-200" />
-                </div>
+                {!isMobileApp && (
+                  <>
+                    <div className="my-6 flex items-center">
+                      <div className="h-px flex-1 bg-slate-200" />
+                      <span className="mx-4 text-xs text-slate-400">OR</span>
+                      <div className="h-px flex-1 bg-slate-200" />
+                    </div>
 
-                {/* Google Login */}
-                <button
-                  type="button"
-                  className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 transition hover:bg-slate-50"
-                  onClick={handleGoogleLogin}
-                >
-                  <FcGoogle size={20} />
-                  Continue with Google
-                </button>
+                    {/* Google Login */}
+                    <button
+                      type="button"
+                      className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                      onClick={handleGoogleLogin}
+                    >
+                      <FcGoogle size={20} />
+                      Continue with Google
+                    </button>
+                  </>
+                )}
 
                 {/* Signup */}
                 <p className="mt-8 text-center text-sm text-slate-500">

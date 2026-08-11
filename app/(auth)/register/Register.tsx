@@ -16,12 +16,13 @@ import Image from "next/image";
 import { authClient } from "@/lib/auth/auth-client";
 import { useRouter } from "next/navigation";
 import toast from 'react-hot-toast'
-
+import { useMobileApp } from "@/hooks/useMobileApp";
 
 export default function RegisterComponent() { // Component ka naam RegisterPage hona better hai
   const [method, setMethod] = useState<"email" | "phone">("email");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { isMobileApp } = useMobileApp();
 
   // User Details States
   const [name, setName] = useState("");
@@ -428,19 +429,23 @@ export default function RegisterComponent() { // Component ka naam RegisterPage 
                   </button>
                 </form>
 
-                <div className="my-6 flex items-center">
-                  <div className="h-px flex-1 bg-slate-200" />
-                  <span className="mx-4 text-xs text-slate-400">OR</span>
-                  <div className="h-px flex-1 bg-slate-200" />
-                </div>
+                {!isMobileApp && (
+                  <>
+                    <div className="my-6 flex items-center">
+                      <div className="h-px flex-1 bg-slate-200" />
+                      <span className="mx-4 text-xs text-slate-400">OR</span>
+                      <div className="h-px flex-1 bg-slate-200" />
+                    </div>
 
-                <button
-                  type="button"
-                  className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 transition hover:bg-slate-50"
-                  onClick={handleGoogleLogin}
-                >
-                  <FcGoogle size={20} /> Continue with Google
-                </button>
+                    <button
+                      type="button"
+                      className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                      onClick={handleGoogleLogin}
+                    >
+                      <FcGoogle size={20} /> Continue with Google
+                    </button>
+                  </>
+                )}
 
                 <p className="mt-8 text-center text-sm text-slate-500">
                   Already have an account?{" "}
