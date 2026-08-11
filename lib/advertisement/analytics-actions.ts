@@ -8,7 +8,7 @@ import { auth } from "@/lib/auth/auth";
 export async function trackAdAnalytics(advertisementId: string, actionType: "VIEW" | "CLICK", pageUrl?: string) {
     try {
         console.log(`[ANALYTICS] Tracking ${actionType} for ad ${advertisementId} by user on page ${pageUrl}`);
-        
+
         let session = null;
         try {
             session = await auth.api.getSession({
@@ -64,7 +64,7 @@ export async function trackAdAnalytics(advertisementId: string, actionType: "VIE
 export async function fetchAdAnalytics(advertisementId: string) {
     try {
         const analytics = await prisma.advertisementAnalytic.findMany({
-            where: { 
+            where: {
                 advertisementId,
                 userId: { not: null }
             },
@@ -72,16 +72,16 @@ export async function fetchAdAnalytics(advertisementId: string) {
             // Only fetch first 100 to avoid massive lists, or we can paginate later.
             take: 100,
         });
-        
+
         // Since userId is not a relation in schema, we fetch the users manually for those who have a userId.
-        const userIds = [...new Set(analytics.map(a => a.userId).filter(Boolean))] as string[];
+        const userIds = [...new Set(analytics.map((a: any) => a.userId).filter(Boolean))] as string[];
         const users = await prisma.user.findMany({
             where: { id: { in: userIds } },
             select: { id: true, name: true, username: true, email: true, image: true }
         });
-        const userMap = new Map(users.map(u => [u.id, u]));
-        
-        return analytics.map(a => ({
+        const userMap = new Map(users.map((u: any) => [u.id, u]));
+
+        return analytics.map((a: any) => ({
             ...a,
             user: a.userId ? userMap.get(a.userId) : null
         }));
