@@ -8,8 +8,8 @@ export default async function AdvertisementAnalyticsTable({ adId, isAdmin = fals
     const analytics = await fetchAdAnalytics(adId);
 
     // Group them for quick stats
-    const totalViews = analytics.filter((a: any) => a.actionType === "VIEW").reduce((acc, curr) => acc + curr.count, 0);
-    const totalClicks = analytics.filter((a: any) => a.actionType === "CLICK").reduce((acc, curr) => acc + curr.count, 0);
+    const totalViews = analytics.filter((a: any) => a.actionType === "VIEW").reduce((acc: number, curr: any) => acc + curr.count, 0);
+    const totalClicks = analytics.filter((a: any) => a.actionType === "CLICK").reduce((acc: number, curr: any) => acc + curr.count, 0);
 
     return (
         <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm space-y-6">
