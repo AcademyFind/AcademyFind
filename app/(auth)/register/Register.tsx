@@ -206,6 +206,17 @@ export default function RegisterComponent() { // Component ka naam RegisterPage 
             </div>
           </div>
 
+          {/* Institute Owner CTA - Desktop Only */}
+          <div className="mt-auto pt-12 relative z-10">
+            <div className="rounded-3xl bg-white/10 border border-white/20 p-6 text-center backdrop-blur-md shadow-xl">
+              <p className="text-lg font-bold text-white">Are you an Institute Owner?</p>
+              <p className="text-sm text-orange-100 mt-2 mb-5">List your institute on AcademyFind to reach thousands of students in your city.</p>
+              <Link href="/user/create-institute" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white text-orange-600 px-6 py-3 text-sm font-black transition-all hover:bg-orange-50 hover:scale-105 active:scale-95 w-full sm:w-auto shadow-lg shadow-white/10">
+                Join AcademyFind
+              </Link>
+            </div>
+          </div>
+
           {/* Decorative Circles */}
           <div className="absolute -bottom-32 -right-32 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute -top-20 -left-20 h-60 w-60 rounded-full bg-white/10 blur-3xl" />
@@ -282,6 +293,16 @@ export default function RegisterComponent() { // Component ka naam RegisterPage 
 
               /* ================= ORIGINAL REGISTRATION UI ================= */
               <div className="animate-in fade-in duration-300">
+                
+                {/* Institute Owner CTA - Mobile Only (Hidden on Desktop since it's on the left column) */}
+                <div className="mb-8 lg:hidden rounded-2xl bg-amber-50 border border-amber-100 p-5 text-center transition-all shadow-sm">
+                  <p className="text-sm font-bold text-slate-800">Are you an Institute Owner?</p>
+                  <p className="text-xs text-slate-500 mt-1.5 mb-4">List your institute on AcademyFind to reach thousands of students in your city.</p>
+                  <Link href="/user/create-institute" className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-5 py-2.5 text-xs font-bold text-white transition-all hover:bg-amber-500 w-full">
+                    Join AcademyFind
+                  </Link>
+                </div>
+
                 <div className="mb-6 text-center">
                   <h2 className="text-3xl font-bold bg-linear-to-r from-amber-500 to-rose-200 bg-clip-text text-transparent">
                     Create Account

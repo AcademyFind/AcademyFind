@@ -16,35 +16,17 @@ export default async function AdvertisePage() {
         headers: await headers()
     });
 
-    if (!session?.user) {
-        return (
-            <div className="flex min-h-[70vh] items-center justify-center p-4 bg-slate-50">
-                <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-xl">
-                    <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-100 text-amber-400">
-                        <Megaphone className="h-8 w-8" />
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-800">Login Required</h2>
-                    <p className="mt-3 text-sm text-slate-400">You must be logged in to create and manage advertisements.</p>
-                    <Link href="/register?callbackUrl=/advertise" className="mt-8 block w-full rounded-xl bg-amber-400 px-4 py-3.5 text-sm font-bold text-white transition-all hover:bg-amber-600 hover:shadow-md">
-                        Login or Register to Continue
-                    </Link>
-                </div>
-            </div>
-        );
-    }
-
-    const dbUser = await prisma.user.findUnique({
-        where: { id: session.user.id },
-        select: {
-            id: true,
-            name: true,
-            email: true,
-            phone: true
-        }
-    });
-
-    if (!dbUser) {
-        return <div>User not found.</div>;
+    let dbUser = null;
+    if (session?.user) {
+        dbUser = await prisma.user.findUnique({
+            where: { id: session.user.id },
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                phone: true
+            }
+        });
     }
 
     const settings = await getAdSettings();
@@ -119,17 +101,30 @@ export default async function AdvertisePage() {
                             <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-amber-400/10 blur-3xl pointer-events-none"></div>
 
                             <div className="relative z-10">
-                                <AdvertisementForm 
-                                    user={dbUser} 
-                                    settings={settings}
-                                    bankDetails={{
-                                        upiId: process.env.PAYMENT_UPI_ID || "9045639340@mbk",
-                                        bankName: process.env.PAYMENT_BANK_NAME || "Punjab National Bank",
-                                        accountName: process.env.PAYMENT_ACCOUNT_NAME || "JNGEE International Private Limited",
-                                        accountNumber: process.env.PAYMENT_ACCOUNT_NUMBER || "4876002100004743",
-                                        ifscCode: process.env.PAYMENT_IFSC_CODE || "PUNB0487600"
-                                    }} 
-                                />
+                                {session?.user && dbUser ? (
+                                    <AdvertisementForm 
+                                        user={dbUser} 
+                                        settings={settings}
+                                        bankDetails={{
+                                            upiId: process.env.PAYMENT_UPI_ID || "9045639340@mbk",
+                                            bankName: process.env.PAYMENT_BANK_NAME || "Punjab National Bank",
+                                            accountName: process.env.PAYMENT_ACCOUNT_NAME || "JNGEE International Private Limited",
+                                            accountNumber: process.env.PAYMENT_ACCOUNT_NUMBER || "4876002100004743",
+                                            ifscCode: process.env.PAYMENT_IFSC_CODE || "PUNB0487600"
+                                        }} 
+                                    />
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center py-12 text-center">
+                                        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-100 text-amber-500">
+                                            <Megaphone className="h-8 w-8" />
+                                        </div>
+                                        <h2 className="text-2xl font-bold text-slate-800">Ready to grow your institute?</h2>
+                                        <p className="mt-3 text-sm text-slate-500 mb-8 max-w-sm">Sign in or create an account to start configuring your advertisement and reach thousands of students today.</p>
+                                        <Link href="/login?callbackUrl=/advertise" className="w-full rounded-xl bg-amber-500 px-6 py-4 text-sm font-bold text-white transition-all hover:bg-amber-600 hover:shadow-lg hover:shadow-amber-500/20">
+                                            Login or Sign Up to Continue
+                                        </Link>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

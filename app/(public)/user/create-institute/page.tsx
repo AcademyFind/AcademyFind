@@ -7,6 +7,7 @@ import { prisma } from "@/lib/prisma";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "List Your Institute | AcademyFind",
@@ -22,31 +23,32 @@ export default async function UserCreateInstitutePage() {
         headers: await headers()
     });
 
-    if (!session) redirect('/login');
+    let user = null;
+    let latestReq = null;
 
-    // 2. Fetch User alongside their InstituteManager relation map
-    const user = await prisma.user.findUnique({
-        where: { id: session.user.id },
-        include: {
-            managedInstitutes: true
-        }
-    });
-
-    if (!user) redirect('/login');
-
-    // Fetch the absolute newest request context
-    const latestReq = await prisma.instituteRequest.findFirst({
-        where: { userId: user.id },
-        orderBy: { createdAt: "desc" },
-        include: {
-            institute: {
-                select: { id: true, name: true }
+    if (session?.user) {
+        user = await prisma.user.findUnique({
+            where: { id: session.user.id },
+            include: {
+                managedInstitutes: true
             }
+        });
+
+        if (user) {
+            latestReq = await prisma.instituteRequest.findFirst({
+                where: { userId: user.id },
+                orderBy: { createdAt: "desc" },
+                include: {
+                    institute: {
+                        select: { id: true, name: true }
+                    }
+                }
+            }) as any;
         }
-    }) as any;
+    }
 
     const latestStatus = latestReq?.status;
-    const isPendingRequest = latestStatus === "PENDING" && !user.canAddInstitute;
+    const isPendingRequest = user && latestStatus === "PENDING" && !user.canAddInstitute;
 
 
     // ==========================================
@@ -100,7 +102,7 @@ export default async function UserCreateInstitutePage() {
         );
     }
 
-    if (!user.canAddInstitute) {
+    if (user && !user.canAddInstitute) {
         if (latestStatus === "REJECTED") {
             return (
                 <div className="container mx-auto py-10 px-4 font-sans">
@@ -150,7 +152,7 @@ export default async function UserCreateInstitutePage() {
 
     else if (latestStatus === "APPROVED") {
         const isAlreadyManager = latestReq
-            ? user.managedInstitutes.some(
+            ? user?.managedInstitutes.some(
                 (manager: { instituteId: string }) => manager.instituteId === latestReq.instituteId
             )
             : false;
@@ -184,24 +186,70 @@ export default async function UserCreateInstitutePage() {
                         <h1 className="text-3xl font-bold mb-2 text-slate-800">Create a Listing</h1>
                         <p className="text-slate-500 mb-8">Fill up the form parameters below to propose a new profile listing on AcademyFind.</p>
                     </div>
-                    <PricingModal>
-                        <button className="inline-flex items-center gap-1 text-sm font-medium text-amber-500 transition-colors hover:text-amber-600 cursor-pointer">
-                            View Pricing
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </button>
-                    </PricingModal>
+                    {user && (
+                        <PricingModal>
+                            <button className="inline-flex items-center gap-1 text-sm font-medium text-amber-500 transition-colors hover:text-amber-600 cursor-pointer">
+                                View Pricing
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </button>
+                        </PricingModal>
+                    )}
                 </div>
 
-                {latestStatus !== "PENDING" && (
-                    <CreateInstituteForm
-                        userId={user.id}
-                        allCities={allCities}
-                        allCategories={allCategories}
-                        defaultName={user?.name}
-                        defaultPhone={user?.phone}
-                    />
+                {user ? (
+                    latestStatus !== "PENDING" && (
+                        <CreateInstituteForm
+                            userId={user.id}
+                            allCities={allCities}
+                            allCategories={allCategories}
+                            defaultName={user?.name}
+                            defaultPhone={user?.phone}
+                        />
+                    )
+                ) : (
+                    <div className="mt-12 flex justify-center relative py-8 overflow-hidden">
+                        {/* Decorative Background Blurred Blobs */}
+                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-amber-400/20 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
+                        <div className="absolute right-0 top-0 w-64 h-64 bg-orange-400/20 rounded-full blur-[80px] pointer-events-none"></div>
+                        <div className="absolute left-0 bottom-0 w-72 h-72 bg-yellow-300/20 rounded-full blur-[80px] pointer-events-none"></div>
+
+                        <div className="relative z-10 w-full max-w-md overflow-hidden rounded-[2.5rem] shadow-[0_20px_50px_-12px_rgb(0,0,0,0.1)] border border-white/60 bg-white/40 backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-500">
+                            <div className="bg-linear-to-br from-amber-50/90 via-white/80 to-orange-50/90 p-8 sm:p-10">
+                                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-100 shadow-sm border border-amber-200/50">
+                                    <Sparkles className="h-8 w-8 text-amber-600" />
+                                </div>
+
+                                <h2 className="text-center text-2xl font-black text-slate-900 tracking-tight">
+                                    Authentication Required
+                                </h2>
+
+                                <p className="mt-3 text-center text-sm text-zinc-600 leading-relaxed">
+                                    You must be logged in to list your institute on AcademyFind. Create a free account or sign in to continue.
+                                </p>
+
+                                <div className="mt-8 flex flex-col gap-3">
+                                    <Link href="/register?callbackUrl=/user/create-institute">
+                                        <Button className="w-full h-12 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm shadow-md shadow-amber-500/20 hover:scale-[1.02] transition-all">
+                                            Create Free Account
+                                            <ArrowRight className="ml-2 h-4 w-4" />
+                                        </Button>
+                                    </Link>
+
+                                    <Link href="/login?callbackUrl=/user/create-institute">
+                                        <Button variant="outline" className="w-full h-12 rounded-xl font-semibold text-sm border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors">
+                                            Login
+                                        </Button>
+                                    </Link>
+                                </div>
+
+                                <p className="mt-6 text-center text-xs text-zinc-500 font-medium">
+                                    Join thousands of students discovering the best coaching institutes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 )}
             </div>
         </div>
