@@ -8,14 +8,14 @@ import Link from "next/link";
 import { renewAdvertisementRequest } from "@/lib/advertisement/user-actions";
 
 export const metadata = {
-  title: "My Advertisements | AcademyFind",
+    title: "My Advertisements | AcademyFind",
 };
 
 export default async function UserAdvertisementsPage() {
     const session = await auth.api.getSession({
         headers: await headers()
     });
-    
+
     if (!session?.user) {
         redirect('/login?callbackUrl=/user/advertisements');
     }
@@ -39,7 +39,7 @@ export default async function UserAdvertisementsPage() {
                 </div>
 
                 <div className="grid gap-6">
-                    {advertisements.map((ad) => (
+                    {advertisements.map((ad: any) => (
                         <div key={ad.id} className="overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                             <div className="flex flex-col md:flex-row gap-6">
                                 <div className="relative h-48 w-full md:w-64 shrink-0 rounded-2xl bg-slate-100 overflow-hidden">
@@ -49,11 +49,10 @@ export default async function UserAdvertisementsPage() {
                                         <div className="flex h-full w-full items-center justify-center text-slate-400">No Image</div>
                                     )}
                                     <div className="absolute top-3 left-3 flex flex-col gap-1">
-                                        <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm inline-block self-start ${
-                                            ad.status === 'APPROVED' ? 'bg-green-500' :
+                                        <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm inline-block self-start ${ad.status === 'APPROVED' ? 'bg-green-500' :
                                             ad.status === 'REJECTED' ? 'bg-red-500' :
-                                            ad.status === 'EXPIRED' ? 'bg-slate-500' : 'bg-amber-500'
-                                        }`}>
+                                                ad.status === 'EXPIRED' ? 'bg-slate-500' : 'bg-amber-500'
+                                            }`}>
                                             {ad.status}
                                         </span>
                                         {ad.editRequestData && (
@@ -63,7 +62,7 @@ export default async function UserAdvertisementsPage() {
                                         )}
                                     </div>
                                 </div>
-                                
+
                                 <div className="flex-1 flex flex-col justify-between">
                                     <div>
                                         <div className="flex justify-between items-start">
@@ -76,7 +75,7 @@ export default async function UserAdvertisementsPage() {
                                             </div>
                                         </div>
                                         <p className="mt-2 text-sm text-slate-600 line-clamp-2 max-w-2xl">{ad.description || "No description provided."}</p>
-                                        
+
                                         <div className="mt-6 flex flex-wrap gap-8 text-sm">
                                             <div>
                                                 <p className="font-semibold text-slate-400 text-xs uppercase tracking-wider mb-1">Dates</p>
@@ -94,25 +93,24 @@ export default async function UserAdvertisementsPage() {
                                             </div>
                                             <div>
                                                 <p className="font-semibold text-slate-400 text-xs uppercase tracking-wider mb-1">Visibility</p>
-                                                <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${
-                                                    ad.visibility === 'VISIBLE' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-slate-100 text-slate-600 border border-slate-200'
-                                                }`}>
+                                                <span className={`inline-flex rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${ad.visibility === 'VISIBLE' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-slate-100 text-slate-600 border border-slate-200'
+                                                    }`}>
                                                     {ad.visibility}
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="mt-6 border-t border-slate-100 pt-5 flex items-center justify-between">
                                         <span className="text-xs text-slate-400 font-medium">
                                             {ad.isRenewalRequest ? "Renewal request is pending." : "Manage this advertisement."}
                                         </span>
-                                        
+
                                         <div className="flex gap-3">
                                             <Link href={`/user/advertisements/${ad.id}`} className="flex items-center gap-1.5 rounded-xl bg-slate-800 px-4 py-2 text-sm font-bold text-white hover:bg-slate-900 transition-colors shadow-sm">
                                                 <Edit className="h-4 w-4" /> View / Edit
                                             </Link>
-                                            
+
                                             {ad.status === 'EXPIRED' && !ad.isRenewalRequest && (
                                                 <form action={async () => { "use server"; await renewAdvertisementRequest(ad.id); }}>
                                                     <button className="flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-bold text-amber-700 hover:bg-amber-100 transition-colors">
@@ -126,7 +124,7 @@ export default async function UserAdvertisementsPage() {
                             </div>
                         </div>
                     ))}
-                    
+
                     {advertisements.length === 0 && (
                         <div className="flex min-h-[50vh] flex-col items-center justify-center rounded-3xl border border-dashed border-slate-300 bg-white p-8 text-center text-slate-500 shadow-sm">
                             <div className="mb-5 rounded-full bg-amber-50 p-6 border border-amber-100">
