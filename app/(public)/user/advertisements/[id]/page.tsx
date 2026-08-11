@@ -29,7 +29,7 @@ export default async function UserAdvertisementDetailPage(props: { params: Promi
 
     const settings = await getAdSettings();
 
-    const statusColors = {
+    const statusColors: Record<string, string> = {
         PENDING: "bg-blue-100 text-blue-700 border-blue-200",
         APPROVED: "bg-green-100 text-green-700 border-green-200",
         REJECTED: "bg-red-100 text-red-700 border-red-200",
