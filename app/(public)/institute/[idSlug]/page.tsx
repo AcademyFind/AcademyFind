@@ -117,6 +117,10 @@ export default async function InstitutePage({ params }: PageProps) {
   const { idSlug } = await params;
   const id = extractId(idSlug);
 
+  if (id === "cmqqige1706majgifuypl92mg") {
+    notFound();
+  }
+
   const institute = await getCachedInstituteById(id);
 
   if (!institute) notFound();
