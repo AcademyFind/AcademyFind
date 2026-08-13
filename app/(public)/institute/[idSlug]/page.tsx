@@ -621,16 +621,21 @@ export default async function InstitutePage({ params }: PageProps) {
                       <p className="text-amber-700 text-xs md:text-sm leading-relaxed">
                         Don't miss out on student leads! Claim your profile now to manage enquiries, update details, and get real-time insights on who visits or saves your page.
                       </p>
-                      <div className="inline-flex bg-amber-200/50 text-amber-900 px-3 py-1 rounded-md text-xs font-bold items-center gap-1.5 mt-1 border border-amber-200">
+                      {false && <div className="inline-flex bg-amber-200/50 text-amber-900 px-3 py-1 rounded-md text-xs font-bold items-center gap-1.5 mt-1 border border-amber-200">
                         🎉 Early Bird Offer: Free/Discounted pricing valid only till 15th August!
-                      </div>
+                      </div>}
                     </div>
 
-                    <Link href={`/institute/${institute.id}-${institute.slug}/claim`} className="shrink-0 w-full sm:w-auto">
-                      <Button className="bg-amber-600 hover:bg-amber-700 text-white transition-colors px-6 font-bold w-full sm:w-auto rounded-xl cursor-pointer">
-                        Claim Profile
-                      </Button>
-                    </Link>
+                    <div className="shrink-0 w-full sm:w-auto flex flex-col gap-3">
+                      <Link href={`/institute/${institute.id}-${institute.slug}/claim`} className="w-full">
+                        <Button className="bg-amber-600 hover:bg-amber-700 text-white transition-colors px-6 font-bold w-full rounded-xl cursor-pointer">
+                          Claim Profile
+                        </Button>
+                      </Link>
+                      <p className="text-center text-[11px] text-amber-700/80 font-medium">
+                        Want to remove this listing? <Link href="/contact" className="underline underline-offset-2 hover:text-amber-900 transition-colors">Contact us</Link>
+                      </p>
+                    </div>
                   </div>
                 )}
               </div>
