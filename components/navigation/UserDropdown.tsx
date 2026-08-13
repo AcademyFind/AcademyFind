@@ -117,12 +117,12 @@ export default function UserDropdown({ user }: { user: any }) {
           </Link>
         </DropdownMenuItem>
 
-        <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 px-3 focus:bg-amber-50 focus:text-amber-700 transition-colors">
+        {false && <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 px-3 focus:bg-amber-50 focus:text-amber-700 transition-colors">
           <Link href="/user/advertisements">
             <Megaphone className="mr-3 h-4 w-4" />
             <span className="font-medium text-sm">My Advertisements</span>
           </Link>
-        </DropdownMenuItem>
+        </DropdownMenuItem>}
 
         
         <DropdownMenuItem asChild className="rounded-xl cursor-pointer py-3 px-3 focus:bg-amber-50 focus:text-amber-700 transition-colors">
