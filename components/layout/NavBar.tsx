@@ -46,7 +46,7 @@ export default function Navbar({ session }: { session: any }) {
   return (
     <header className="sticky top-0 z-[110] border-b border-slate-100 bg-white/80 backdrop-blur-md shadow-xs">
       {/* max-w ko thoda badhaya aur justify-between rakha taaki left, center, right me perfect distribution ho */}
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4 lg:px-10">
 
         {/* Left Area: Logo */}
         <div className="flex-1 flex justify-start">
@@ -162,7 +162,7 @@ export default function Navbar({ session }: { session: any }) {
               </Button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-75 z-[110] rounded-l-3xl p-6 border-slate-100">
+            <SheetContent side="right" className="w-[85vw] sm:w-80 max-w-sm z-[110] rounded-l-3xl p-6 border-slate-100 overflow-y-auto">
               <SheetHeader className="sr-only">
                 <SheetTitle>Navigation Menu</SheetTitle>
               </SheetHeader>

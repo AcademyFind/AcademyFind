@@ -37,7 +37,7 @@ export default async function HeroCards() {
 
   return (
     <section className="container mx-auto px-4 py-8">
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
         {statsData.map((item) => {
           const Icon = item.icon;
 
@@ -45,7 +45,7 @@ export default async function HeroCards() {
           const CardContent = (
             <>
               <div className="flex items-center justify-between">
-                <Icon className="h-6 w-6 text-amber-500" />
+                <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-amber-500" />
                 {item.link && <ArrowRight className="h-4 w-4 text-slate-300 group-hover:text-amber-500 transition-colors" />}
               </div>
               
@@ -56,7 +56,7 @@ export default async function HeroCards() {
                 </p>
               </div>
 
-              <h3 className="mt-2 text-4xl font-extrabold text-slate-800">
+              <h3 className="mt-1 sm:mt-2 text-2xl sm:text-4xl font-extrabold text-slate-800">
                 <AnimatedCounter value={item.value} decimals={item.decimals} suffix={item.suffix} />
               </h3>
             </>
@@ -69,7 +69,7 @@ export default async function HeroCards() {
                 href={item.link}
                 key={item.title}
                 prefetch={false}
-                className="group block rounded-3xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-amber-300 cursor-pointer"
+                className="group block rounded-2xl sm:rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-amber-300 cursor-pointer"
               >
                 {CardContent}
               </Link>
@@ -80,7 +80,7 @@ export default async function HeroCards() {
           return (
             <div
               key={item.title}
-              className="rounded-3xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="rounded-2xl sm:rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
               {CardContent}
             </div>

@@ -82,8 +82,7 @@ export function Footer() {
                 flex
                 items-center
                 gap-2
-                justify-center
-                sm:justify-start
+                justify-start
               "
             >
               <Image
@@ -107,17 +106,16 @@ export function Footer() {
               className="
                 mt-4
                 max-w-sm
-                text-center
+                text-left
                 text-sm
                 text-muted-foreground
-                sm:text-left
               "
             >
               Discover coaching institutes, compare options,
               read reviews, and make smarter education decisions.
             </p>
 
-            <div className="mt-6 flex justify-center sm:justify-start gap-4">
+            <div className="mt-6 flex justify-start gap-4 flex-wrap">
               <SocialLink href="https://wa.me/919045699938" icon={<FaWhatsapp className="h-5 w-5 text-[#128C7E]" />} />
               <SocialLink href="https://t.me/academyfind" icon={<FaTelegram className="h-5 w-5 text-[#24A1DE]" />} />
               <SocialLink href="https://www.linkedin.com/company/academyfind" icon={<FaLinkedinIn className="h-5 w-5 text-[#0A66C2]" />} />

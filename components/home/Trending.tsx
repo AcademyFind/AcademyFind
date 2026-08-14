@@ -131,7 +131,7 @@ export function TrendingDestinations() {
 
         <div className="grid gap-6 lg:grid-cols-12">
           {/* Left */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 min-w-0">
             <div 
               ref={scrollRef}
               className="space-y-3 max-h-[450px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pb-4"
@@ -148,6 +148,7 @@ export function TrendingDestinations() {
                   className="
                     group
                     flex
+                    min-w-0
                     items-center
                     justify-between
                     rounded-2xl
@@ -229,7 +230,7 @@ export function TrendingDestinations() {
           </div>
 
           {/* Right */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 min-w-0">
             <div className="rounded-2xl border bg-background p-5 shadow-sm sm:p-6">
               <div className="flex items-center gap-2">
                 <TrendingUp className="h-5 w-5 text-amber-500" />
