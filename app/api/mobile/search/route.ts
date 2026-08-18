@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     if (providerType && providerType !== "ALL") searchFilters.push(`providerType = "${providerType}"`);
 
     if (modeStr) {
-      const modes = modeStr.split(',').map(m => `"${m.trim().toLowerCase()}"`);
+      const modes = modeStr.split(',').map((m: string) => `"${m.trim().toLowerCase()}"`);
       if (modes.length > 0 && modes.length < 3) {
         searchFilters.push(`mode IN [${modes.join(", ")}]`);
       }
@@ -70,7 +70,7 @@ export async function GET(request: NextRequest) {
     // Fallback if strict radius returns nothing
     if (hits.length === 0 && q.trim().length > 0) {
        // Remove geoRadius, fallback to city/category search
-       const fallbackFilters = searchFilters.filter(f => !f.startsWith("_geoRadius"));
+       const fallbackFilters = searchFilters.filter((f: string) => !f.startsWith("_geoRadius"));
        if (type === "ALL") fallbackFilters.push(`type = "institute"`); // Force institute for fallback
 
        searchRes = await meili.index("global_search").search(q, {
@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Fetch institutes from Prisma to get nested relations
-    const instituteIds = hits.filter(h => h.type === "institute").map(h => h.prismaId);
+    const instituteIds = hits.filter((h: any) => h.type === "institute").map((h: any) => h.prismaId);
     
     const dbInstitutes = await prisma.institute.findMany({
       where: { 
@@ -97,9 +97,9 @@ export async function GET(request: NextRequest) {
       }
     });
 
-    const orderedInstitutes = instituteIds.flatMap((id) => {
-      const inst = dbInstitutes.find((i) => i.id === id);
-      const hit = hits.find(h => h.prismaId === id);
+    const orderedInstitutes = instituteIds.flatMap((id: string) => {
+      const inst = dbInstitutes.find((i: any) => i.id === id);
+      const hit = hits.find((h: any) => h.prismaId === id);
       if (!inst) return [];
       
       return [{
@@ -112,12 +112,12 @@ export async function GET(request: NextRequest) {
     });
 
     // For Jobs and Blogs, we just return the Meilisearch hits directly
-    const jobs = hits.filter(h => h.type === "job").map(h => ({
+    const jobs = hits.filter((h: any) => h.type === "job").map((h: any) => ({
        ...h,
        _type: "job"
     }));
 
-    const blogs = hits.filter(h => h.type === "blog").map(h => ({
+    const blogs = hits.filter((h: any) => h.type === "blog").map((h: any) => ({
        ...h,
        _type: "blog"
     }));

@@ -5,7 +5,7 @@ import { getSession } from '@/lib/auth/getSession';
 export async function GET() {
   try {
     const session = await getSession();
-    
+
     // In a real app, verify if the user has MANAGER/ADMIN role
     if (!session?.user) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
@@ -35,7 +35,7 @@ export async function GET() {
           revenue: '₹45k', // Placeholder for demo
           conversionRate: '+14%'
         },
-        recentLeads: recentLeads.map(lead => ({
+        recentLeads: recentLeads.map((lead: any) => ({
           id: lead.id,
           name: lead.name,
           course: lead.institute?.name || 'General Inquiry',

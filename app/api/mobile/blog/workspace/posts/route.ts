@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
         coverImageUrl = await uploadImageToCloudinary(imageFile, "blog", "cover");
     }
 
-    const tagNames = tagNamesStr ? tagNamesStr.split(',').map(t => t.trim()).filter(Boolean) : [];
+    const tagNames = tagNamesStr ? tagNamesStr.split(',').map((t: string) => t.trim()).filter(Boolean) : [];
     
     // Auto generate slug
     const generatedSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -122,7 +122,7 @@ export async function PUT(request: NextRequest) {
           coverImageUrl = await uploadImageToCloudinary(imageFile, "blog", "cover");
       }
   
-      const tagNames = tagNamesStr ? tagNamesStr.split(',').map(t => t.trim()).filter(Boolean) : [];
+      const tagNames = tagNamesStr ? tagNamesStr.split(',').map((t: string) => t.trim()).filter(Boolean) : [];
       
       const input: BlogEditorSaveInput = {
           id,

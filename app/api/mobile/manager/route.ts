@@ -31,7 +31,7 @@ export async function GET() {
 
     return NextResponse.json({
       success: true,
-      data: managedInstitutes.map(m => ({
+      data: managedInstitutes.map((m: any) => ({
         ...m.institute,
         newLeads: m.institute._count.enquiries,
         pendingMembers: m.institute._count.memberships,
