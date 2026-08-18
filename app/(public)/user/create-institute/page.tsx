@@ -89,14 +89,14 @@ export default async function UserCreateInstitutePage() {
 
                 {/* Pricing Link - visible even when request is pending */}
                 <div className="flex justify-center mt-6">
-                    {false && <PricingModal>
+                    <PricingModal>
                         <button className="inline-flex items-center gap-1 text-sm font-medium text-amber-500 transition-colors hover:text-amber-600 cursor-pointer">
                             View Pricing
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>
                         </button>
-                    </PricingModal>}
+                    </PricingModal>
                 </div>
             </div>
         );
@@ -186,7 +186,7 @@ export default async function UserCreateInstitutePage() {
                         <h1 className="text-3xl font-bold mb-2 text-slate-800">Create a Listing</h1>
                         <p className="text-slate-500 mb-8">Fill up the form parameters below to propose a new profile listing on AcademyFind.</p>
                     </div>
-                    {user && false && (
+                    {user && (
                         <PricingModal>
                             <button className="inline-flex items-center gap-1 text-sm font-medium text-amber-500 transition-colors hover:text-amber-600 cursor-pointer">
                                 View Pricing

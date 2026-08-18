@@ -114,12 +114,12 @@ export default function ClaimForm({ instituteId, instituteName, userId, defaultN
 
           {/* Right Side: View Pricing Link */}
           <div className="sm:text-right">
-            {false && <PricingModal>
+            <PricingModal>
               <button className="inline-flex items-center gap-1 text-sm font-medium text-amber-500 transition-colors hover:text-amber-600 cursor-pointer">
                 View Pricing
                 <ArrowRight className="h-4 w-4" />
               </button>
-            </PricingModal>}
+            </PricingModal>
           </div>
         </div>
 
@@ -161,7 +161,7 @@ export default function ClaimForm({ instituteId, instituteName, userId, defaultN
                   className="w-full py-3.5 pr-4 pl-11 bg-slate-50/50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 outline-none transition-all"
                   placeholder="98765 43210"
                   onInput={(e) => {
-                      e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                    e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
                   }}
                 />
               </div>
